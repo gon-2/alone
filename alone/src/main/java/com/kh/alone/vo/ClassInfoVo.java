@@ -3,7 +3,7 @@ package com.kh.alone.vo;
 public class ClassInfoVo {
 	String c_group;  // 주간반, 야간반, 주말반 
 	String c_title;  // 수업제목
-	String c_period; // 수업기간
+	int c_period; // 수업기간
 	int classroom;   // 교실(몇호실인지)
 	int person;      // 인원수
 	public ClassInfoVo() {
@@ -22,10 +22,10 @@ public class ClassInfoVo {
 	public void setC_title(String c_title) {
 		this.c_title = c_title;
 	}
-	public String getC_period() {
+	public int getC_period() {
 		return c_period;
 	}
-	public void setC_period(String c_period) {
+	public void setC_period(int c_period) {
 		this.c_period = c_period;
 	}
 	public int getClassroom() {
@@ -45,5 +45,6 @@ public class ClassInfoVo {
 		return "ClassInfoVo [c_group=" + c_group + ", c_title=" + c_title + ", c_period=" + c_period + ", classroom="
 				+ classroom + ", person=" + person + "]";
 	}
+	
 
 }

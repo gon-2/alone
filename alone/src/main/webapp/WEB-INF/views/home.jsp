@@ -59,13 +59,13 @@
 			<section class="col-6 col-12-narrower">
 				<div class="tabbable" id="tabs-214280">
 					<ul class="nav nav-tabs">
-						<li class="nav-item"><a class="nav-link active show" href="#tab1" data-toggle="tab">Section 1</a></li>
-						<li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">Section 2</a></li>
-						<li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">Section 3</a></li>
-						<li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">Section 4</a></li>
+						<li class="nav-item"><a class="nav-link active show" href="#tab1" data-toggle="tab">전체보기</a></li>
+						<li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">주간반</a></li>
+						<li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">야간반</a></li>
+						<li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">주말반</a></li>
 					</ul>
 					<div class="tab-content">
-						<div class="tab-pane active" id="panel-849273">
+						<div class="tab-pane active" id="tab1">
 							<p>I'm in Section 1.</p>
 							<div class="col-md-12">
 								<table class="table">
@@ -159,8 +159,8 @@
 								</table>
 							</div>
 						</div>
-						<div class="tab-pane" id="tab2">
-							<p>Howdy, I'm in Section 2.</p>
+						<div class="tab-pane" id="tab3">
+							<p>Howdy, I'm in Section3.</p>
 							<div class="col-md-12">
 								<table class="table">
 									<thead>
@@ -206,8 +206,8 @@
 								</table>
 							</div>
 						</div>
-						<div class="tab-pane" id="tab2">
-							<p>Howdy, I'm in Section 2.</p>
+						<div class="tab-pane" id="tab4">
+							<p>Howdy, I'm in Section 4.</p>
 							<div class="col-md-12">
 								<table class="table">
 									<thead>

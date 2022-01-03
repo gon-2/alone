@@ -6,27 +6,27 @@
 	
 	
 	<select id="selectAll" resultType="ClassInfoVo">
-		select * from class
-		order by classgroup
+		select * from tbl_class
+		order by c_group
 	</select>
 	
 	<!-- 주간반 -->
-	<select id="selectWeekly">
-		select * from tbl_class
-		where c_group = '주간반'
-	</select>
+<!-- 	<select id="selectWeekly"> -->
+<!-- 		select * from tbl_class -->
+<!-- 		where c_group = '주간반' -->
+<!-- 	</select> -->
 	
 	<!-- 주말반 -->
-	<select id="selectWeekend">
-		select * from tbl_class
-		where c_group = '주말반'
-	</select>
+<!-- 	<select id="selectWeekend"> -->
+<!-- 		select * from tbl_class -->
+<!-- 		where c_group = '주말반' -->
+<!-- 	</select> -->
 	
 	<!-- 야간반 -->
-	<select id="selectNight">
-		select * from tbl_class
-		where c_group = '야간반'
-	</select>
+<!-- 	<select id="selectNight"> -->
+<!-- 		select * from tbl_class -->
+<!-- 		where c_group = '야간반' -->
+<!-- 	</select> -->
 	
 	
 </mapper>
