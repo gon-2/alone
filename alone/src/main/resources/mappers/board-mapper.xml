@@ -10,8 +10,6 @@
 		order by classgroup
 	</select>
 	
-	<select id="getTime" resultType="java.lang.String">
-		select sysdate from dual
-	</select>
+	
 	
 </mapper>

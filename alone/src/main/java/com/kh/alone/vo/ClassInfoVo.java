@@ -1,39 +1,38 @@
 package com.kh.alone.vo;
 
 public class ClassInfoVo {
-	int classgroup; // 평일반, 주말반, 야간반
-	String title;   // 수업제목
-	String period;  // 교육기간
-	int pay;    	// 수강료
-	int classroom;  // 교육장소
-	int person;		// 총원
+	String c_group;
+	String c_cate;
+	String c_title;
+	String c_period;
+	int classroom;
+	int person;
 	public ClassInfoVo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public int getClassgroup() {
-		return classgroup;
+	public String getC_group() {
+		return c_group;
 	}
-	public void setClassgroup(int classgroup) {
-		this.classgroup = classgroup;
+	public void setC_group(String c_group) {
+		this.c_group = c_group;
 	}
-	public String getTitle() {
-		return title;
+	public String getC_cate() {
+		return c_cate;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setC_cate(String c_cate) {
+		this.c_cate = c_cate;
 	}
-	public String getPeriod() {
-		return period;
+	public String getC_title() {
+		return c_title;
 	}
-	public void setPeriod(String period) {
-		this.period = period;
+	public void setC_title(String c_title) {
+		this.c_title = c_title;
 	}
-	public int getPay() {
-		return pay;
+	public String getC_period() {
+		return c_period;
 	}
-	public void setPay(int pay) {
-		this.pay = pay;
+	public void setC_period(String c_period) {
+		this.c_period = c_period;
 	}
 	public int getClassroom() {
 		return classroom;
@@ -49,8 +48,7 @@ public class ClassInfoVo {
 	}
 	@Override
 	public String toString() {
-		return "ClassInfoVo [classgroup=" + classgroup + ", title=" + title + ", period=" + period + ", pay=" + pay
-				+ ", classroom=" + classroom + ", person=" + person + "]";
+		return "ClassInfoVo [c_group=" + c_group + ", c_cate=" + c_cate + ", c_title=" + c_title + ", c_period="
+				+ c_period + ", classroom=" + classroom + ", person=" + person + "]";
 	}
-	
 }
