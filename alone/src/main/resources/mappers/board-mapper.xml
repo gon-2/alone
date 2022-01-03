@@ -10,6 +10,23 @@
 		order by classgroup
 	</select>
 	
+	<!-- 주간반 -->
+	<select id="selectWeekly">
+		select * from tbl_class
+		where c_group = '주간반'
+	</select>
+	
+	<!-- 주말반 -->
+	<select id="selectWeekend">
+		select * from tbl_class
+		where c_group = '주말반'
+	</select>
+	
+	<!-- 야간반 -->
+	<select id="selectNight">
+		select * from tbl_class
+		where c_group = '야간반'
+	</select>
 	
 	
 </mapper>
