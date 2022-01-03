@@ -1,12 +1,12 @@
 package com.kh.alone.vo;
 
 public class ClassInfoVo {
-	String c_group;
-	String c_cate;
-	String c_title;
-	String c_period;
-	int classroom;
-	int person;
+	String c_group;  // 주간반, 야간반, 주말반 
+	String c_cate;   // 수업종류(프로그램인지 요리인지 기타등등분류)
+	String c_title;  // 수업제목
+	String c_period; // 수업기간
+	int classroom;   // 교실(몇호실인지)
+	int person;      // 인원수
 	public ClassInfoVo() {
 		super();
 	}
