@@ -72,7 +72,7 @@ BODY {
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="home" id="logo">KH정보교육원 </a></h1>
+						<h1><a href="/classInfo/home" id="logo">KH정보교육원 </a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
