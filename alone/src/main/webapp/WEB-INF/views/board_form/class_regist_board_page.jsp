@@ -20,7 +20,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<form role="form" action="/ClassBoard/run" method="post">
+			<form role="form" action="/class_board/run" method="post">
 				<div class="form-group">		 
 					<label for="class_board_userid">아이디</label>
 					<input type="text" class="form-control" id="class_board_userid" name="class_board_userid" style="width:200px;" placeholder="아이디 입력"/>

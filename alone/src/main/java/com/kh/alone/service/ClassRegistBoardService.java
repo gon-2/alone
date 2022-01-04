@@ -32,8 +32,8 @@ public class ClassRegistBoardService {
 	}
 	
 	// 게시판 글 전체 조회
-	public List<RegistBoardVo> ListBoard(){
-		List<RegistBoardVo> list = registboardDao.ListBoard();
+	public List<RegistBoardVo> listBoard(){
+		List<RegistBoardVo> list = registboardDao.listBoard();
 		return list;
 	}
 }

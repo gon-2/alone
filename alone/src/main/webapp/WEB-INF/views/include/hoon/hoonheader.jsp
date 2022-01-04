@@ -70,10 +70,10 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">질문과 답변</h6>
-                        <a class="collapse-item" href="/Customermain/faq">자주 묻는 질문</a>                        
-                        <a class="collapse-item" href="/ClassBoard/class_regist">수강신청</a>
-                        <a class="collapse-item" href="/Customermain/inquire">건의사항</a>
-                        <a class="collapse-item" href="/Customermain/notice">공지사항</a>
+                        <a class="collapse-item" href="/customermain/faq">자주 묻는 질문</a>                        
+                        <a class="collapse-item" href="/class_board/class_regist">수강신청</a>
+                        <a class="collapse-item" href="/customer_main/inquire">건의사항</a>
+                        <a class="collapse-item" href="/customer_main/notice">공지사항</a>
                        
                         
                     </div>

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/customermain")
+@RequestMapping("/customer_main")
 public class CustomerServiceMainController {
 	
 	// 고객센터 홈페이지

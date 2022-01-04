@@ -34,13 +34,13 @@ public class ClassRegistBoardController {
 	@RequestMapping(value="/run" , method=RequestMethod.POST)
 	public String classboardRun(RegistBoardVo registboardvo) {
 		registboardservice.registClassBoard(registboardvo);
-		return "redirect:/class_oard/class_regist";
+		return "redirect:/class_board/class_regist";
 	}
 	
 	// 수강신청 페이지 리스트
 	@RequestMapping(value="/class_regist" , method=RequestMethod.GET)
 	public String classRegistPage(Model model) {
-		List<RegistBoardVo> list = registboardservice.ListBoard();
+		List<RegistBoardVo> list = registboardservice.listBoard();
 		model.addAttribute("list", list);
 		return "/service_center/class_regist_page";
 	}

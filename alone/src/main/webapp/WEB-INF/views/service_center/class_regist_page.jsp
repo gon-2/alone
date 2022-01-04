@@ -20,7 +20,7 @@
 				<p>수강 신청에 한해서 내용을 작성해주세요.</p>
 				<p>제목을 클릭하면 상세보기로 이동합니다.</p>
 				<p>
-					<a class="btn btn-primary btn-large" href="/Customermain/home">홈페이지로</a>
+					<a class="btn btn-primary btn-large" href="/customermain/home">홈페이지로</a>
 				</p>
 			</div>
 			<table class="table">

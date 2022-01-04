@@ -5,16 +5,16 @@
 
 <mapper namespace="com.kh.alone.mappers.board">
 
-	<select id="countBoard" resultType="int">
-		select count(*) from TBL_CLASS_BOARD
+ 	<select id="getTime" resultType="string">
+		select sysdate from dual
 	</select>
-	
-<!-- 	<select id="listboard" resultType="RegistBoardVo">
+
+	<select id="countBoard" resultType="int">
+		select count(*) from tbl_class_board
+	</select>
+
+	<select id="listboard" resultType="RegistBoardVo">
 		select * from tbl_class_board
-	</select> -->
-	
-	<select id="listBoard" resultType="RegistBoardVo">
-		select * from TBL_CLASS_BOARD
 	</select>
 	
 	<insert id="registClassBoard">
