@@ -91,7 +91,7 @@ BODY {
 										<li><a href="/employ/lookJob">구인현황</a></li>
 										<li><a href="/employ/lookJobTestList">자격증 시험안내</a></li>
 										<li><a href="/employ/findPositionList">수료생 취업현황</a></li>
-										<li><a href="#">취업자료실</a></li>
+										<li><a href="/employ/referenceRoomList">취업자료실</a></li>
 									</ul>
 								</li>
 								<li>

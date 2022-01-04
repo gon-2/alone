@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.alone.vo.FindVo;
 import com.kh.alone.vo.JobTestVo;
 import com.kh.alone.vo.LookJobVo;
+import com.kh.alone.vo.ReferenceVo;
 
 
 @Repository
@@ -71,6 +72,24 @@ public class LookJobDao {
 		System.out.println(fno);
 		List<FindVo> imageList = sqlSession.selectList(NAMESPACE + "findImage", fno);
 		System.out.println(imageList);
+		return imageList;
+	}
+	
+	// 자료실
+	public List<ReferenceVo> referenceRoomList() {
+		List<ReferenceVo> list = sqlSession.selectList(NAMESPACE + "referenceRoomList");
+		return list;
+	}
+	
+	// 자료실 상세보기
+	public ReferenceVo getReference(int rno) {
+		ReferenceVo vo = sqlSession.selectOne(NAMESPACE + "getReference", rno);
+		return vo;
+	}
+	
+	// 자료실 파일 받아오기
+	public List<ReferenceVo> referenceImage(int rno) {
+		List<ReferenceVo> imageList = sqlSession.selectList(NAMESPACE + "referenceImage", rno);
 		return imageList;
 	}
 	
