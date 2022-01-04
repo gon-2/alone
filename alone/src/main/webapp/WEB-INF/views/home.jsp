@@ -5,12 +5,37 @@
 
 
 <!-- Banner -->
-<section id="banner">
-	<header>
-		<h2>야! 너두 할수있어!</h2>
-		<!-- 						<a href="#" class="button">쨔스</a> -->
-	</header>
-</section>
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/images/1.png" alt="1번 이미지">
+    </div>
+    <div class="carousel-item">
+      <img src="/images/2.png" alt="2번 이미지">
+    </div>
+    <div class="carousel-item">
+      <img src="/images/3.png" alt="3번 이미지">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div>
 
 <!-- Highlights -->
 <section class="wrapper style1">
@@ -19,21 +44,21 @@
 			<section class="col-4 col-12-narrower">
 				<div class="box highlight">
 					<i class="icon solid major fa-paper-plane"></i>
-					<h3>모찌</h3>
+					<h3>여긴</h3>
 					<p>뭐를 넣어야할지 고민되는구만</p>
 				</div>
 			</section>
 			<section class="col-4 col-12-narrower">
 				<div class="box highlight">
 					<i class="icon solid major fa-pencil-alt"></i>
-					<h3>공주</h3>
+					<h3>허허</h3>
 					<p>여긴 또 뭘 하지</p>
 				</div>
 			</section>
 			<section class="col-4 col-12-narrower">
 				<div class="box highlight">
 					<i class="icon solid major fa-wrench"></i>
-					<h3>귀여웡</h3>
+					<h3>으아</h3>
 					<p>여기는 뭐!</p>
 				</div>
 			</section>
@@ -64,196 +89,7 @@
 						<li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">야간반</a></li>
 						<li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">주말반</a></li>
 					</ul>
-					<div class="tab-content">
-						<div class="tab-pane active" id="tab1">
-							<p>I'm in Section 1.</p>
-							<div class="col-md-12">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>Product</th>
-											<th>Payment Taken</th>
-											<th>Status</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>TB - Monthly</td>
-											<td>01/04/2012</td>
-											<td>Default</td>
-										</tr>
-										<tr class="table-active">
-											<td>1</td>
-											<td>TB - Monthly</td>
-											<td>01/04/2012</td>
-											<td>Approved</td>
-										</tr>
-										<tr class="table-success">
-											<td>2</td>
-											<td>TB - Monthly</td>
-											<td>02/04/2012</td>
-											<td>Declined</td>
-										</tr>
-										<tr class="table-warning">
-											<td>3</td>
-											<td>TB - Monthly</td>
-											<td>03/04/2012</td>
-											<td>Pending</td>
-										</tr>
-										<tr class="table-danger">
-											<td>4</td>
-											<td>TB - Monthly</td>
-											<td>04/04/2012</td>
-											<td>Call in to confirm</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div class="tab-pane" id="tab2">
-							<p>Howdy, I'm in Section 2.</p>
-							<div class="col-md-12">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>Product</th>
-											<th>Payment Taken</th>
-											<th>Status</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>TB - Monthly</td>
-											<td>01/04/2012</td>
-											<td>Default</td>
-										</tr>
-										<tr class="table-active">
-											<td>1</td>
-											<td>TB - Monthly</td>
-											<td>01/04/2012</td>
-											<td>Approved</td>
-										</tr>
-										<tr class="table-success">
-											<td>2</td>
-											<td>TB - Monthly</td>
-											<td>02/04/2012</td>
-											<td>Declined</td>
-										</tr>
-										<tr class="table-warning">
-											<td>3</td>
-											<td>TB - Monthly</td>
-											<td>03/04/2012</td>
-											<td>Pending</td>
-										</tr>
-										<tr class="table-danger">
-											<td>4</td>
-											<td>TB - Monthly</td>
-											<td>04/04/2012</td>
-											<td>Call in to confirm</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div class="tab-pane" id="tab3">
-							<p>Howdy, I'm in Section3.</p>
-							<div class="col-md-12">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>Product</th>
-											<th>Payment Taken</th>
-											<th>Status</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>TB - Monthly</td>
-											<td>01/04/2012</td>
-											<td>Default</td>
-										</tr>
-										<tr class="table-active">
-											<td>1</td>
-											<td>TB - Monthly</td>
-											<td>01/04/2012</td>
-											<td>Approved</td>
-										</tr>
-										<tr class="table-success">
-											<td>2</td>
-											<td>TB - Monthly</td>
-											<td>02/04/2012</td>
-											<td>Declined</td>
-										</tr>
-										<tr class="table-warning">
-											<td>3</td>
-											<td>TB - Monthly</td>
-											<td>03/04/2012</td>
-											<td>Pending</td>
-										</tr>
-										<tr class="table-danger">
-											<td>4</td>
-											<td>TB - Monthly</td>
-											<td>04/04/2012</td>
-											<td>Call in to confirm</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div class="tab-pane" id="tab4">
-							<p>Howdy, I'm in Section 4.</p>
-							<div class="col-md-12">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>Product</th>
-											<th>Payment Taken</th>
-											<th>Status</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>TB - Monthly</td>
-											<td>01/04/2012</td>
-											<td>Default</td>
-										</tr>
-										<tr class="table-active">
-											<td>1</td>
-											<td>TB - Monthly</td>
-											<td>01/04/2012</td>
-											<td>Approved</td>
-										</tr>
-										<tr class="table-success">
-											<td>2</td>
-											<td>TB - Monthly</td>
-											<td>02/04/2012</td>
-											<td>Declined</td>
-										</tr>
-										<tr class="table-warning">
-											<td>3</td>
-											<td>TB - Monthly</td>
-											<td>03/04/2012</td>
-											<td>Pending</td>
-										</tr>
-										<tr class="table-danger">
-											<td>4</td>
-											<td>TB - Monthly</td>
-											<td>04/04/2012</td>
-											<td>Call in to confirm</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
+					<%@ include file="/WEB-INF/views/include/content.jsp"%>
 				</div>
 			</section>
 		</div>

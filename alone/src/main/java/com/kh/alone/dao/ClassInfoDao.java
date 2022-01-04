@@ -16,19 +16,32 @@ public class ClassInfoDao {
 	@Inject
 	private SqlSession sqlSession;
 	
+	// 전체조회
 	public List<ClassInfoVo> selectAll(){
-		System.out.println("sqlSession:" + sqlSession);
+//		System.out.println("sqlSession:" + sqlSession);
 		List<ClassInfoVo> list = sqlSession.selectList(NAMESPACE + "selectAll");
+		System.out.println("다오list : " + list);
 		return list;
 	}
 	
-	public void insertClassInfo(ClassInfoVo vo ) {
-		sqlSession.insert(NAMESPACE + "insertClassInfo", vo);
+	// 주간반 조회
+	public List<ClassInfoVo> selectWeekly(){
+		List<ClassInfoVo> weekly = sqlSession.selectList(NAMESPACE + "selectWeekly");
+		return weekly;
 	}
 	
-	public String getTime() {
-		System.out.println("sqlSession:" + sqlSession);
-		String time = sqlSession.selectOne(NAMESPACE + "getTime");
-		return time;
+	// 주말반 조회
+	public List<ClassInfoVo> selectWeekend(){
+		List<ClassInfoVo> weekend = sqlSession.selectList(NAMESPACE + "selectWeekend");
+		return weekend;
 	}
+	
+	// 야간반 조회
+	public List<ClassInfoVo> selectNight(){
+		List<ClassInfoVo> night = sqlSession.selectList(NAMESPACE + "selectNight");
+		return night;
+	}
+	
+	
 }
+	

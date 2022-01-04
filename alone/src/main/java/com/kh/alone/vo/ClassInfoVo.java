@@ -6,9 +6,9 @@ public class ClassInfoVo {
 	int c_period; // 수업기간
 	int classroom;   // 교실(몇호실인지)
 	int person;      // 인원수
+	int pay;         // 수강료
 	public ClassInfoVo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public String getC_group() {
 		return c_group;
@@ -40,11 +40,16 @@ public class ClassInfoVo {
 	public void setPerson(int person) {
 		this.person = person;
 	}
+	public int getPay() {
+		return pay;
+	}
+	public void setPay(int pay) {
+		this.pay = pay;
+	}
 	@Override
 	public String toString() {
 		return "ClassInfoVo [c_group=" + c_group + ", c_title=" + c_title + ", c_period=" + c_period + ", classroom="
-				+ classroom + ", person=" + person + "]";
+				+ classroom + ", person=" + person + ", pay=" + pay + "]";
 	}
-	
 
 }
