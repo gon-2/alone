@@ -2,7 +2,7 @@ package com.kh.alone.vo;
 
 public class ClassInfoVo {
 	String c_cate; //수업 카테고리 어떤종류의 과목인지
-	String c_name; //수업 이름
+	String c_title; //수업 이름
 	String c_term; //수업 기간
 	String c_time; //수업 시간
 	int c_room;    //강의실 호수
@@ -19,11 +19,11 @@ public class ClassInfoVo {
 	public void setC_cate(String c_cate) {
 		this.c_cate = c_cate;
 	}
-	public String getC_name() {
-		return c_name;
+	public String getC_title() {
+		return c_title;
 	}
-	public void setC_name(String c_name) {
-		this.c_name = c_name;
+	public void setC_title(String c_name) {
+		this.c_title = c_name;
 	}
 	public String getC_term() {
 		return c_term;
@@ -63,7 +63,7 @@ public class ClassInfoVo {
 	}
 	@Override
 	public String toString() {
-		return "ClassInfoVo [c_cate=" + c_cate + ", c_name=" + c_name + ", c_term=" + c_term + ", c_time=" + c_time
+		return "ClassInfoVo [c_cate=" + c_cate + ", c_title=" + c_title + ", c_term=" + c_term + ", c_time=" + c_time
 				+ ", c_room=" + c_room + ", c_total=" + c_total + ", c_pay=" + c_pay + ", c_day=" + c_day + "]";
 	}
 	
