@@ -39,4 +39,34 @@ public class ClassInfoService {
 		List<ClassInfoVo> night = dao.selectNight();
 		return night;
 	}
+	
+	// 프로그래밍 조회
+	public List<ClassInfoVo> selectPro(){
+		List<ClassInfoVo> pro = dao.selectPro();
+		return pro;
+	}
+	
+	//디자인 조회
+	public List<ClassInfoVo> selectDesign(){
+		List<ClassInfoVo> design = dao.selectDesign();
+		return design;
+	}
+	
+	//제품디자인 조회
+	public List<ClassInfoVo> selectProduct(){
+		List<ClassInfoVo> product = dao.selectProduct();
+		return product;
+	}
+	
+	//3D프린트 조회
+	public List<ClassInfoVo> selectPrint(){
+		List<ClassInfoVo> print = dao.selectPrint();
+		return print;
+	}
+	
+	//사무자동화 조회
+	public List<ClassInfoVo> selectOffice(){
+		List<ClassInfoVo> office = dao.selectOffice();
+		return office;
+	}
 }
