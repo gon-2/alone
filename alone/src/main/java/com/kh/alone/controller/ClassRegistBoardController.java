@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.kh.alone.service.ClassRegistBoardService;
 import com.kh.alone.vo.RegistBoardVo;
 
+
 @Controller
 @RequestMapping("/class_board")
 public class ClassRegistBoardController {
