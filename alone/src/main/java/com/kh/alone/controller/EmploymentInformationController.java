@@ -13,6 +13,7 @@ import com.kh.alone.service.LookJobService;
 import com.kh.alone.vo.FindVo;
 import com.kh.alone.vo.JobTestVo;
 import com.kh.alone.vo.LookJobVo;
+import com.kh.alone.vo.ReferenceVo;
 
 
 @Controller
@@ -67,5 +68,21 @@ public class EmploymentInformationController {
 		model.addAttribute("imageList", imageList);
 		model.addAttribute("findVo", findVo);
 		return "employ/findPosition";
+	}
+	
+	@RequestMapping(value="/referenceRoomList", method=RequestMethod.GET)
+	public String referenceRoomList(Model model) {
+		List<ReferenceVo> list = lookJobService.referenceRoomList();
+		model.addAttribute("list", list);
+		return "employ/referenceRoomList";
+	}
+	
+	@RequestMapping(value="/referenceRoom", method=RequestMethod.GET)
+	public String referenceRoom(Model model, int rno) {
+		ReferenceVo findVo = lookJobService.getReference(rno);
+		List<ReferenceVo> imageList = lookJobService.referenceImage(rno);
+		model.addAttribute("imageList", imageList);
+		model.addAttribute("findVo", findVo);
+		return "employ/referenceRoom";
 	}
 }

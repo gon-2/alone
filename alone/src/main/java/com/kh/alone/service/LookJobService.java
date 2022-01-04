@@ -10,7 +10,7 @@ import com.kh.alone.dao.LookJobDao;
 import com.kh.alone.vo.FindVo;
 import com.kh.alone.vo.JobTestVo;
 import com.kh.alone.vo.LookJobVo;
-
+import com.kh.alone.vo.ReferenceVo;
 
 @Service
 public class LookJobService {
@@ -63,6 +63,24 @@ public class LookJobService {
 	// 취업자 현황 이미지 파일 받아오기
 	public List<FindVo> findImage(int fno) {
 		List<FindVo> imageList = lookJobDao.findImage(fno);
+		return imageList;
+	}
+	
+	// 자료실
+	public List<ReferenceVo> referenceRoomList() {
+		List<ReferenceVo> list = lookJobDao.referenceRoomList();
+		return list;
+	}
+	
+	// 자료실 상세보기
+	public ReferenceVo getReference(int rno) {
+		ReferenceVo vo = lookJobDao.getReference(rno);
+		return vo;
+	}
+	
+	// 자료실 파일 받아오기
+	public List<ReferenceVo> referenceImage(int rno) {
+		List<ReferenceVo> imageList = lookJobDao.referenceImage(rno);
 		return imageList;
 	}
 }

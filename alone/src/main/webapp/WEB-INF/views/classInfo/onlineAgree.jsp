@@ -3,13 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <style>
-#aAgree{
-	width:100px;
-	margin:auto;
-	display:block;
-	
+.atag{
+	text-align: center;
 }
 </style>
+
 <section class="wrapper style1">
 	<div class="container">
 		<div class="row">
@@ -20,8 +18,11 @@
 			<br>
 			
 			<%@ include file="/WEB-INF/views/include/agree.jsp" %>
-				<a href="/classInfo/onlineRegist" class="btn btn-sm btn-outline-secondary" id="aAgree">동의</a> 
-				<a href="home" class="btn btn-sm btn-outline-danger" id="aAgree">취소</a>
+			
+			<div class="atag">
+				<a href="/classInfo/onlineRegist" class="btn btn-sm btn-outline-secondary">동의</a> 
+				<a href="home" class="btn btn-sm btn-outline-danger">취소</a>
+			</div>	
 			</section>
 		</div>
 	</div>

@@ -14,7 +14,7 @@ $(function() {
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-8">
-					<h2>자격증 시험안내</h2>
+					<h2>취업 자료실</h2>
 					<br>
 				</div>
 				<div class="col-md-2">
@@ -22,6 +22,7 @@ $(function() {
 			</div>
 		</div>
 	</div>
+	<hr>
 	<form name="lookJob">
 	<div class="row">
 		<div class="col-md-2">
@@ -33,16 +34,20 @@ $(function() {
 						<th>번호</th>
 						<th>제목</th>
 						<th>작성자</th>
-						<th>작성일</th>
+						<th>추천</th>
+						<th>조회수</th>
+						<th>등록일</th>
 					</tr>
 				</thead>
 				<tbody>
 				<tr>
-					<c:forEach items="${list}" var="jobTestVo">
-						<td>${jobTestVo.tno}</td>
-						<td><a href="/employ/lookJobTest?tno=${jobTestVo.tno}">${jobTestVo.title}</a></td>
-						<td>${jobTestVo.writers}</td>
-						<td>${jobTestVo.test_date}</td>
+					<c:forEach items="${list}" var="ReferenceVo">
+						<td>${ReferenceVo.rno}</td>
+						<td><a href="/employ/referenceRoom?rno=${ReferenceVo.rno}">${ReferenceVo.rtitle}</a></td>
+						<td>${ReferenceVo.rwriter}</td>
+						<td>${ReferenceVo.recommend}</td>
+						<td>${ReferenceVo.hits}</td>
+						<td>${ReferenceVo.reference_date}</td>
 					</c:forEach>		
 				</tr>
 				</tbody>

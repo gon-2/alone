@@ -49,4 +49,22 @@
 		order by fno desc
 	</select>
 	
+	<select id="referenceRoomList" resultType="ReferenceVo">
+		select rno, rtitle, rwriter, recommend, hits, to_char(sysdate, 'YYYY-MM-DD')
+		reference_date, to_char(sysdate, 'HH:MI') reference_time from tbl_reference
+		order by rno desc
+	</select>
+	
+	<select id="getReference" resultType="ReferenceVo">
+		select * from tbl_reference
+		where rno = #{rno}
+		order by rno desc
+	</select>
+	
+	<select id="referenceImage" resultType="ReferenceVo">
+		select * from r_file
+		where rno = #{rno}
+		order by rno desc
+	</select>
+	
 </mapper>
