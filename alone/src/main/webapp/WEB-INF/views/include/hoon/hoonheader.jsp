@@ -40,7 +40,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Customermain/home">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/customer_main/home">
                 <div class="sidebar-brand-text mx-3">고객센터</div>
             </a>
 
@@ -49,7 +49,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="/Customermain/home">
+                <a class="nav-link" href="/classInfo/home">
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <span>메인 홈페이지</span></a>
             </li>
@@ -62,7 +62,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="/customer_main/qna" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Q & A</span>
@@ -70,7 +70,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">질문과 답변</h6>
-                        <a class="collapse-item" href="/customermain/faq">자주 묻는 질문</a>                        
+                        <a class="collapse-item" href="/customer_main/qna">자주 묻는 질문</a>                        
                         <a class="collapse-item" href="/class_board/class_regist">수강신청</a>
                         <a class="collapse-item" href="/customer_main/inquire">건의사항</a>
                         <a class="collapse-item" href="/customer_main/notice">공지사항</a>
