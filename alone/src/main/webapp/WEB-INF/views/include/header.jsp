@@ -97,10 +97,10 @@ BODY {
 									</ul>
 								</li>
 								<li>
-									<a href="#">고객센터</a>
+									<a href="/customermain/home">고객센터</a>
 									<ul>
 										<li><a href="#">자주묻는 질문</a></li>
-										<li><a href="#">Q & A</a></li>
+										<li><a href="/customermain/qna">Q &amp; A</a></li>
 										<li><a href="#">건의사항</a></li>
 										<li><a href="#">상담</a></li>
 									</ul>

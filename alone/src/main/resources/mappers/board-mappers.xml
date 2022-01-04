@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.alone.mappers.board">
+
+	<select id="countBoard" resultType="int">
+		select count(*) from TBL_CLASS_BOARD
+	</select>
+	
+<!-- 	<select id="listboard" resultType="RegistBoardVo">
+		select * from tbl_class_board
+	</select> -->
+	
+	<select id="listBoard" resultType="RegistBoardVo">
+		select * from TBL_CLASS_BOARD
+	</select>
+	
+	<insert id="registClassBoard">
+		insert into tbl_class_board(class_board_number , class_board_enroll , class_board_title , class_board_content , class_board_userid)
+		values(seq_class_number.nextval , #{class_board_enroll} , #{class_board_title} , #{class_board_content} , #{class_board_userid})		
+	</insert> 
+	
+</mapper>
