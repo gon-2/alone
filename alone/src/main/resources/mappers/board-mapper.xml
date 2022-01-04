@@ -15,6 +15,13 @@
 		<include refid="search"></include>
 	</select> 
 	
+	<!-- 메인 홈페이지에서 3개의 최신 글만 조회 -->
+	<select id="countThree" resultType="RegistBoardVo">
+		SELECT class_board_title , class_board_content , class_board_userid
+		from tbl_class_board
+		<![CDATA[where rownum <= 3]]>
+	</select>
+	
 	<select id="listboard" resultType="RegistBoardVo">
 		select * from tbl_class_board
 		<include refid="search"></include>

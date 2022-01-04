@@ -41,4 +41,11 @@ public class ClassRegistBoardDao {
 		System.out.println("ClassRegistBoardDao, listBoard, list: " + list);
 		return list;
 	}
+	
+	// 최신 게시글 3개만 조회
+	public List<RegistBoardVo> countThree(){
+		List<RegistBoardVo> list = session.selectList(NAMESPACE + "countThree");
+		System.out.println("ClassRegistBoardDao, countThree, list: " + list);
+		return list;
+	}
 }

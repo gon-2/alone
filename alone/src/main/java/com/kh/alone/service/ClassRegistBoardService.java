@@ -36,4 +36,10 @@ public class ClassRegistBoardService {
 		List<RegistBoardVo> list = registboardDao.listBoard(dto);
 		return list;
 	}
+	
+	// 최신 게시글 3개만 조회
+	public List<RegistBoardVo> countThree(){
+		List<RegistBoardVo> list = registboardDao.countThree();
+		return list;
+	}
 }
