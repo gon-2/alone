@@ -41,7 +41,7 @@
 <section class="wrapper style1">
 	<div class="container">
 		<div class="row gtr-200">
-			<section class="col-4 col-12-narrower">
+			<section class="col-4-narrower">
 				<div class="box highlight">
 					<i class="icon solid major fa-paper-plane"></i>
 					<h3>여긴</h3>
@@ -72,7 +72,7 @@
 		<header class="major">
 			<h2>현재 모집중인 과정</h2>
 			<br>
-			<p>수업 종류마다 나눌까 아니면 근로자 실업자 이렇게 해서 나눌까 고민되는구만</p>
+			<p>야! 너두 할수있어 </p>
 		</header>
 	</div>
 </section>
@@ -81,7 +81,7 @@
 <section class="wrapper style1">
 	<div class="container">
 		<div class="row">
-			<section class="col-6 col-12-narrower">
+			<section class="col-md-12">
 				<div class="tabbable" id="tabs-214280">
 					<ul class="nav nav-tabs">
 						<li class="nav-item"><a class="nav-link active show" href="#tab1" data-toggle="tab">전체보기</a></li>
@@ -90,6 +90,7 @@
 						<li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">주말반</a></li>
 					</ul>
 					<%@ include file="/WEB-INF/views/include/content.jsp"%>
+					
 				</div>
 			</section>
 		</div>

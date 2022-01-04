@@ -13,19 +13,18 @@
 </section>
 <!-- Main -->
 <section class="wrapper style1">
-	<div class="j-rnd-tab j-rnd-tab1">
+	<div class="container">
 		<div class="clear overflow">
-			<section class="col-12-narrower">
+			<section class="col-md-12"><!-- 게시판 영역잡기 -->
 				<div class="tabbable" id="tabs-214280">
-					<ul class="nav nav-tabs">
+					<ul class="nav nav-tabs"><!--  주간반 야간반 주말반 카테고리 나누기 -->
 						<li class="nav-item"><a class="nav-link active show" href="#tab1" data-toggle="tab">전체보기</a></li>
 						<li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">주간반</a></li>
 						<li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">야간반</a></li>
 						<li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">주말반</a></li>
 					</ul>
-
-<%@ include file="/WEB-INF/views/include/content.jsp"%>
-	</div>
+					<%@ include file="/WEB-INF/views/include/content.jsp"%> <!-- 게시판 -->
+				</div>
 			</section>
 		</div>
 	</div>

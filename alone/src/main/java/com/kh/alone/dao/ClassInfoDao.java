@@ -11,7 +11,7 @@ import com.kh.alone.vo.ClassInfoVo;
 
 @Repository
 public class ClassInfoDao {
-	private static final String NAMESPACE = "com.kh.alone.mappers.board.";
+	private static final String NAMESPACE = "com.kh.alone.mappers.class.";
 	
 	@Inject
 	private SqlSession sqlSession;

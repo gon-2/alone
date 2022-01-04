@@ -15,7 +15,7 @@ public class ClassInfoService {
 	@Inject
 	private ClassInfoDao dao;
 	
-	//전체조회
+	// 모집현황 전체조회
 	public List<ClassInfoVo> selectAll(){
 		List<ClassInfoVo> list = dao.selectAll();
 		System.out.println("서비스 list" + list);

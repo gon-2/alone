@@ -35,7 +35,7 @@ BODY {
 
 
 	<body class="is-preload">
-		<div id="page-wrapper">
+	<div id="page-wrapper">
 <!-- CSS 파일 로드 (컬러셋에 따라서) -->
     <!--%import("css/common.css")-->
 
@@ -72,17 +72,17 @@ BODY {
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="home.jsp" id="logo">KH정보교육원 </a></h1>
+						<h1><a href="home" id="logo">KH정보교육원 </a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li class="current"><a href="home.jsp">Home</a></li>
+								<li class="current"><a href="home">Home</a></li>
 								<li>
 									<a href="#">수강안내</a>
 									<ul>
 										<li><a href="/classInfo/list_all">모집과정</a></li>
-										<li><a href="#">온라인 접수</a></li>
+										<li><a href="/classInfo/onlineAgree">온라인 접수</a></li>
 										<li><a href="#">접수상태 확인</a></li>
 										<li><a href="#">후기</a></li>
 									</ul>
