@@ -43,7 +43,7 @@
 										<tr>
 											<td>1</td>
 											<td>${ClassInfoVo.c_title }</td>
-											<td>${ClassInfoVo.c_period}</td>
+											<td>${ClassInfoVo.c_term}</td>
 											<td><a href="#">신청하기</a></td>
 										</tr>
 									</c:forEach>
@@ -67,7 +67,7 @@
 										<tr>
 											<td>1</td>
 											<td>${ClassInfoVo.c_title }</td>
-											<td>${ClassInfoVo.c_period}</td>
+											<td>${ClassInfoVo.c_term}</td>
 											<td><a href="#">신청하기</a></td>
 										</tr>
 									</c:forEach>
@@ -91,7 +91,7 @@
 										<tr>
 											<td>1</td>
 											<td>${ClassInfoVo.c_title }</td>
-											<td>${ClassInfoVo.c_period}</td>
+											<td>${ClassInfoVo.c_term}</td>
 											<td><a href="#">신청하기</a></td>
 										</tr>
 									</c:forEach>
