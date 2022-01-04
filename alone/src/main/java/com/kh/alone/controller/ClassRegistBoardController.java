@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.alone.service.ClassRegistBoardService;
+import com.kh.alone.vo.PagingDto;
 import com.kh.alone.vo.RegistBoardVo;
 
 
@@ -40,8 +41,12 @@ public class ClassRegistBoardController {
 	
 	// 수강신청 페이지 리스트
 	@RequestMapping(value="/class_regist" , method=RequestMethod.GET)
-	public String classRegistPage(Model model) {
-		List<RegistBoardVo> list = registboardservice.listBoard();
+	public String classRegistPage(Model model , PagingDto dto) {
+		int count = registboardservice.cntBoard(dto);
+		dto.setCount(count);
+		dto.setPageInfo();
+		List<RegistBoardVo> list = registboardservice.listBoard(dto);
+		model.addAttribute("dto" , dto);
 		model.addAttribute("list", list);
 		return "/service_center/class_regist_page";
 	}

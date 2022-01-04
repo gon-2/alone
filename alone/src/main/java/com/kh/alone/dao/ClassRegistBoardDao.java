@@ -24,11 +24,6 @@ public class ClassRegistBoardDao {
 	@Inject
 	private SqlSession session;
 	
-	public String getTime() {
-		String time = session.selectOne(NAMESPACE + "getTime");
-		return time;
-	}
-	
 	// 게시판 글 개수 확인
 	public int cntBoard(PagingDto dto) {
 		int count = session.selectOne(NAMESPACE + "countBoard" , dto);
@@ -41,9 +36,9 @@ public class ClassRegistBoardDao {
 	}
 	
 	// 게시판 글 조회
-	public List<RegistBoardVo> listBoard(){
-		/*List<RegistBoardVo> list = */session.selectList(NAMESPACE + "listboard");
-//		System.out.println("ClassRegistBoardDao, listBoard, list: " + list);
-		return null;
+	public List<RegistBoardVo> listBoard(PagingDto dto){
+		List<RegistBoardVo> list = session.selectList(NAMESPACE + "listboard" , dto);
+		System.out.println("ClassRegistBoardDao, listBoard, list: " + list);
+		return list;
 	}
 }
