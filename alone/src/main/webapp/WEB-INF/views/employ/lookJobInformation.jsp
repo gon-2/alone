@@ -4,19 +4,20 @@
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 
 <style>
-th {
+.th_information {
 	background-color: #969696;
 	width:150px;
+}
+.divBottom {
+	padding-right:50px;
+	text-align:right;
 }
 </style>
 
 <script>
 $(function() {
-	$("#lookJobList").click(function() {
-		var lookJob = document.lookJob;
-		lookJob.action = "/employ/lookJob";
-		lookJob.method = "get";
-		lookJob.submit();
+	$("#job_btnList").click(function() {
+		location.href="/employ/lookJob";
 	});
 });
 </script>
@@ -44,53 +45,53 @@ $(function() {
 			<table class="table">
 				<tbody>
 					<tr>
-						<th>회사명</th>
+						<th class="th_information">회사명</th>
 						<td>${lookJobVo.company}</td>
-						<th>고용형태</th>
+						<th class="th_information">고용형태</th>
 						<td>${lookJobVo.employForm}</td>
 					</tr>
 					<tr>
-						<th>사업자번호</th>
+						<th class="th_information">사업자번호</th>
 						<td>${lookJobVo.companyNum }</td>
-						<th>업태/종목</th>
+						<th class="th_information">업태/종목</th>
 						<td>${lookJobVo.companyForm }</td>
 					</tr>
 					<tr>
-						<th>대표자명</th>
+						<th class="th_information">대표자명</th>
 						<td>${lookJobVo.representative }</td>
-						<th>담당자</th>
+						<th class="th_information">담당자</th>
 						<td>${lookJobVo.personInCharge }</td>
 					</tr>
 					<tr>
-						<th>연락처</th>
+						<th class="th_information">연락처</th>
 						<td>${lookJobVo.contact }</td>
-						<th>팩스</th>
+						<th class="th_information">팩스</th>
 						<td>${lookJobVo.fax }</td>
 					</tr>
 					<tr>
-						<th>메일주소</th>
+						<th class="th_information">메일주소</th>
 						<td colspan="3">${lookJobVo.mail }</td>
 					</tr>
 					<tr>
-						<th>주소</th>
+						<th class="th_information">주소</th>
 						<td colspan="3">${lookJobVo.address }</td>
 					</tr>
 					<tr>
-						<th>근무부서</th>
+						<th class="th_information">근무부서</th>
 						<td>${lookJobVo.department }</td>
-						<th>담당업무</th>
+						<th class="th_information">담당업무</th>
 						<td>${lookJobVo.work }</td>
 					</tr>
 					<tr>
-						<th>근무시간</th>
+						<th class="th_information">근무시간</th>
 						<td>${lookJobVo.workTime }</td>
-						<th>급여</th>
+						<th class="th_information">급여</th>
 						<td>${lookJobVo.salary }</td>
 					</tr>
 					<tr>
-						<th>모집시작일</th>
+						<th class="th_information">모집시작일</th>
 						<td>${lookJobVo.recruitmentStart }</td>
-						<th>모집종료일</th>
+						<th class="th_information">모집종료일</th>
 						<td>${lookJobVo.recruitmentEnd }</td>
 					</tr>
 				</tbody>
@@ -110,7 +111,9 @@ $(function() {
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-8">
-					<button class="btn btn-sm btnLookJob" id="lookJobList">목록</button>
+					<div class="divBottom">
+						<input type="button" class="job_btnList btn-sm" value="목록">
+					</div>
 				</div>
 				<div class="col-md-2">
 				</div>
