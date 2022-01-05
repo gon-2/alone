@@ -19,6 +19,12 @@ public class ClassInfoController {
 	@Inject
 	private ClassInfoService service;
 	
+	//관리자 수업관리페이지
+	@RequestMapping(value="/admin_list_all", method=RequestMethod.GET)
+	public String adminSelectall(Model model) {
+		return "";
+	}
+	
 	// 모집현황 페이지에서 조회기능
 	@RequestMapping(value="/list_all", method=RequestMethod.GET)
 	public String selectAll(Model model) {
@@ -79,7 +85,7 @@ public class ClassInfoController {
 	@RequestMapping(value="/onlineRegistRun", method=RequestMethod.POST)
 	public String onlineRegistRun(Model model) {
 		
-		return "classInfo/myStatus";
+		return "/classInfo/myStatus";
 	}
 	
 	

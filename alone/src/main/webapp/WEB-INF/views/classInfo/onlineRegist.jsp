@@ -16,11 +16,51 @@
 .td_infomation {
 	width: 300px;
 }
-
-
-
 </style>
 
+<script>
+$(function(){
+	// 온라인신청 데이터 받아오기
+	$("#btnOk").click(function(){
+		var c_day = $("#c_day").val(); // 야간반인지 받아오기
+		console.log("야간반인지 받아오기: " + c_day);
+		
+		var c_cate = $("#c_cate").val(); // 교육과정분류 받아오기
+		console.log("교육과정분류: " + c_cate); 
+		
+		var c_title = $("#c_title").val();
+		console.log("과정명: " + c_title);   //과정명 받아오기\
+		
+		var c_name = $("#c_name").val();
+		console.log("신청자 이름: " + c_name); //신청자이름
+		
+		
+		var r_num1 = $("#r_num1").val();
+		var r_num2 = $("#r_num2").val();
+		var r_num = r_num1 + "-" + r_num2; // 주민번호 받아오기
+		console.log("주민번호: " + r_num);
+		if(r_num1.length < 6 || r_num.length < 7){
+			alert("주민번호 다시 입력해주세요.");
+		}
+		
+		var gender = $("#gender").val();
+		console.log("성별: " + gender);     //성별받아오기
+		
+		var foreigner = $("#foreigner").val();
+		console.log("내/외국인: " + foreigner); // 내/외국인 받아오기
+		
+		var phone_num1 = $("#phone_num1").val();
+		var phone_num2 = $("#phone_num2").val();
+		var phone_num3 = $("#phone_num3").val();
+		var phone_num = phone_num1 + "-" + phone_num2 + "-" + phone_num3;
+		console.log("휴대전화: " + phone_num);  // 휴대전화번호 받아오기
+		if(phone_num1.length < 3 || phone_num2.length < 4 || phone_num3.length < 4)
+		
+		
+	});
+	
+});
+</script>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -34,18 +74,21 @@
 <div class="container">
 <div class="row">
 	<hr>
-	<form role="form" method="post" action="" >
+<!-- 	<form role="form" method="post" action="/classInfo/onlineRegistRun" > -->
+	<form>
 		<table class="tbl-l tbl-fix" summary="온라인 수강신청을 위한 과정을 선택하세요.">
 			<colgroup><col width="110" /><col width="*" /><col width="110" /><col width="*" /></colgroup>
 			<tbody>
 				<tr>
-					<th class="c_day"><label for="c_day">요일 선택하기</label></th>
-					<td><select name="c_day" id="c_day">
+					<th class="c_day"><label for="c_day">선택하기</label></th>
+					<td class="td_infomation">
+						<select id="c_day">
 							<option value="전체">전체</option>
 							<option value="주간반">주간반</option>
 							<option value="야간반">야간반</option>
 							<option value="주말반">주말반</option>
-					</select></td>
+						</select>
+					</td>
 					<th class="j-spot">
 					<label for="c_cate">교육과정분류</label></th>
 					<td>
@@ -63,7 +106,7 @@
 					<th class="c_title"><label for="c_title">과정명</label></th>
 					<td colspan="3">
 						<select name="c_title" id="c_title" style="width: 200px;">
-							<option class="slt_option">선택하세요</option>
+							<option class="slt_option">전체</option>
 							<option class="slt_option">[재직자] 전산회계 1,2급 자격증 취득 / 주4일 / 월~목 / 30일 과정 (수시모집)</option>
 							<option class="slt_option">[재직자] 3D프린팅을 활용한 모형설계제작(주말) / 주1일(매주 토요일) / 일4시간 / 10주 과정 (2022.02.12~2022.04.16)</option>
 							<option class="slt_option">[재직자] 파이썬으로 시작하는 프로그래밍 첫걸음(주말) / 주1일 / 매주 토요일 / 일4시간(09:00~12:50) / 10주 과정 (2022.01.15~2022.03.26)</option>
@@ -106,17 +149,17 @@
 							<td class="form-group">
 								<dl>
 									<dd>
-										<input type="number" name="r_num1" id="r_num1" class="r_num1" style="width: 60px" maxlength="6" required="required" />-
-										<input type="number" name="r_num2" id="r_num2" class="r_num2" style="width: 70px" maxlength="7" required="required" />
+										<input type="text" name="r_num1" id="r_num1" class="r_num1" style="width: 90px" maxlength="6" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> -
+										<input type="password" name="r_num2" id="r_num2" class="r_num2" style="width: 90px" maxlength="7" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 									</dd>
 								</dl>
 							</td>
 						</tr>
 						<tr>
-							<th class="j-spot"><label for="gender">성별</label></th>
+							<th class="normal"><label for="gender">성별</label></th>
 							<td class="td_infomation">
-									<em><input type="radio" name="gender" id="gender" value="남자" class="hand" checked="checked"/></em> <label for="gender">남성</label>
-									<em><input type="radio" name="gender" id="gender" value="여자" class="hand" /></em> <label for="gender">여성</label>
+									<em><input type="radio" name="gender" id="gender" value="남자" checked="checked" /></em> <label for="gender">남자</label>
+									<em><input type="radio" name="gender" id="gender" value="여자"/></em> <label for="gender" >여자</label>
 							</td>
 							<th class="normal"><label for="foreigner">내/외국인</label></th>
 							<td class="td_infomation">
@@ -127,22 +170,22 @@
 						<tr>
 							<th class="j-spot"><label for="phone_num">휴대전화</label></th>
 							<td class="td_infomation">
-								<input type="text" name="phone_num1" id="phone_num1" style="width: 35px; ime-mode: disabled;" maxlength="3" required="required"/> - 
-								<input type="text" name="phone_num2" id="phone_num2" style="width: 35px; ime-mode: disabled;" maxlength="4" required="required"/> - 
-								<input type="text" name="phone_num3" id="phone_num3" style="width: 35px; ime-mode: disabled;" maxlength="4" required="required"/>
+								<input type="text" id="phone_num1" style="width: 55px; ime-mode: disabled;" maxlength="3" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
+								<input type="text" id="phone_num2" style="width: 55px; ime-mode: disabled;" maxlength="4" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
+								<input type="text" id="phone_num3" style="width: 55px; ime-mode: disabled;" maxlength="4" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 							</td>
 							<th class="normal"><label for="home_num2">일반전화</label></th>
 							<td>
-								<input type="text" name="home_num1" id="home_num1" style="width: 35px; ime-mode: disabled;" maxlength="4"/> - 
-								<input type="text" name="home_num2" id="home_num2" style="width: 35px; ime-mode: disabled;" maxlength="4"/> - 
-								<input type="text" name="home_num3" id="home_num3" style="width: 35px; ime-mode: disabled;" maxlength="4"/>
+								<input type="text" name="home_num1" id="home_num1" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
+								<input type="text" name="home_num2" id="home_num2" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
+								<input type="text" name="home_num3" id="home_num3" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 							</td>
 						</tr>
 						<tr>
 							<th class="normal"><label for="e_mail" style="text-color:red;">메일주소</label></th>
 							<td colspan="3" class="td_infomation">
-							<input type="text" name="e_mail1" id="e_mail1"style="width: 100px; ime-mode: disabled;" maxlength="120" /> @
-							<input type="text" name="e_mail2" id="e_mail2" style="width: 120px; ime-mode: disabled;" maxlength="130" /> 
+							<input type="text" name="e_mail1" id="e_mail1"style=" width: 100px; ime-mode: disabled;" maxlength="120" /> @
+							<input type="text" name="e_mail2" id="e_mail2" style=" width: 120px; ime-mode: disabled;" maxlength="130" /> 
 								<select name="tmp_email_domain" id="tmp_email_domain">
 										<option>선택하세요</option>
 										<option>gmail.com</option>
@@ -211,7 +254,7 @@
 				</tr>
 				<tr>
 					<th class="normal">참여센터</th>
-					<td><input type="text" name="employment_center" id="employment_center" style="width: 120px; ime-mode: active;" maxlength="30" disabled="disabled" /></td>
+					<td><input type="text" name="employment_center" id="employment_center" style="margin-right:20px; width: 120px; ime-mode: active;" maxlength="30" disabled="disabled" /></td>
 					
 					<th class="normal">담당자</th>
 					<td><input type="text" name="employment_counselor" id="employment_counselor" style="width: 120px; ime-mode: active;" maxlength="30" disabled="disabled" /></td>
@@ -223,9 +266,8 @@
 		</table>
 		<p></p>
 		<div>
-				<a href="/classInfo/onlineRegist" class="btn btn-sm btn-outline-secondary">동의</a> 
-				<a href="home" class="btn btn-sm btn-outline-danger">취소</a>
-			</div>	
+				<button type="submit" id="btnOk" class="btn btn-primary">신청 완료</button>
+		</div>	
 	</form>
 </div>
 </div>

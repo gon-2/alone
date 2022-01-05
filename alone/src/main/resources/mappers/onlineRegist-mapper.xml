@@ -15,12 +15,12 @@
 
 
 	<!-- 신청양식 전체보기 -->
-	<select id="selectAll" resultType="ClassInfoVo">
+	<select id="selectAll" resultType="OnlineRegistVo">
 		select * from online_regist
 	</select>
 	
 	<!-- 주민번호로 신청한거 조회하기 -->
-	<select id="selectOne" resultType="onlineRegistVo">
+	<select id="selectOne" resultType="OnlineRegistVo">
 		select * from online_regist
 		where r_num = #{r_num}
 	</select>

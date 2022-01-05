@@ -16,6 +16,11 @@ public class ClassInfoDao {
 	@Inject
 	private SqlSession sqlSession;
 	
+	// 수업추가하기
+	public void insertClassInfo(ClassInfoVo vo) {
+		sqlSession.insert(NAMESPACE + "insertClassInfo", vo);
+	}
+	
 	// 전체조회
 	public List<ClassInfoVo> selectAll(){
 //		System.out.println("sqlSession:" + sqlSession);
