@@ -15,6 +15,9 @@ td {
 .r.content { 
  	padding:30px;
 }
+.divBottom {
+	text-align:right;
+}
 </style>
 
 
@@ -40,19 +43,19 @@ td {
 				<tbody>
 					<tr>
 						<th>번호</th>
-						<td>${findVo.rno}</td>
+						<td>${referenceVo.rno}</td>
 						<th>작성자</th>
-						<td>${findVo.rwriter}</td>
+						<td>${referenceVo.rwriter}</td>
 						<th>추천</th>
-						<td>${findVo.recommend}</td>
+						<td>${referenceVo.recommend}</td>
 						<th>조회수</th>
-						<td>${findVo.hits}</td>
+						<td>${referenceVo.hits}</td>
 					</tr>
 					<tr>
 						<th>제목</th>
-						<td colspan="5">${findVo.rtitle}</td>
+						<td colspan="5">${referenceVo.rtitle}</td>
 						<th>등록일</th>
-						<td>${findVo.reference_date} ${findVo.reference_time}</td>
+						<td>${referenceVo.reference_date} ${referenceVo.reference_time}</td>
 					</tr>
 					<tr>
 						<th>링크</th>
@@ -74,6 +77,16 @@ td {
 				<c:forEach items="${data}" var="data">
 					${data.r_content}
 				</c:forEach>
+			</div>
+		</div>
+		<div class="col-md-2">
+		</div>
+		
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
+			<div class="divBottom">
+				<button>목록</button>
 			</div>
 		</div>
 		<div class="col-md-2">

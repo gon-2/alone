@@ -81,7 +81,7 @@ BODY {
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li class="current"><a href="home">Home</a></li>
+								<li class="current"><a href="/">Home</a></li>
 								<li>
 									<a href="#">수강안내</a>
 									<ul>

@@ -8,10 +8,10 @@ $(function() {
 		e.preventDefault();
 		var fno = $(this).attr("href");
 		console.log(fno);
-		var f_url = "/employ/findPostion?fno=" + fno;
+		var f_url = "/employ/findPosition?fno=" + fno;
 	    var f_name = "pop";
-	    var option = "width=1000,height=500,history=no,resizable=no,status=no,scrollbars=yes,menubar=no";
-		window.open(p_url, p_name, option);
+	    var option = "width=1300,height=800,history=no,resizable=no,status=no,scrollbars=yes,menubar=no";
+		window.open(f_url, f_name, option);
 	});
 });
 </script>
