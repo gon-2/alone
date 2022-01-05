@@ -12,14 +12,20 @@ td {
 	width:200px;
 	background-color:#F4FFFF;
 }
-.r.content { 
- 	padding:30px;
-}
 .divBottom {
+	padding-right:100px;
 	text-align:right;
 }
 </style>
 
+<script>
+$(function() {
+	$(".r_btnList").click(function() {
+		location.href="/employ/referenceRoomList";
+	});
+});
+
+</script>
 
 <div class="container-fluid">
 	<div class="row">
@@ -69,11 +75,11 @@ td {
 	
 		<div class="col-md-2">
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-8" style="text-align:center">
 			<c:forEach items="${data}" var="data">
-				<img src="/images/${data.r_images}" width="800px" height="1200px"/><br>
+				<img src="/images/${data.r_images}" width="500px" height="700px"/><br>
 			</c:forEach>
-			<div class="r.content">
+			<div style="text-align:left">
 				<c:forEach items="${data}" var="data">
 					${data.r_content}
 				</c:forEach>
@@ -86,7 +92,7 @@ td {
 		</div>
 		<div class="col-md-8">
 			<div class="divBottom">
-				<button>목록</button>
+				<input type="button" class="r_btnList btn-sm" value="목록">
 			</div>
 		</div>
 		<div class="col-md-2">

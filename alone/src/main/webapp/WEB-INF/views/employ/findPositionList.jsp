@@ -16,6 +16,16 @@ $(function() {
 });
 </script>
 
+<style>
+.th_find {
+	background-color:#F4FFFF;
+	text-align:center;
+}
+.td_find {
+	text-align:center;
+}
+</style>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -40,21 +50,21 @@ $(function() {
 			<table class="table">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>회사명</th>
-						<th>취업자</th>
-						<th>취업한 날짜</th>
-						<th>과정명</th>
+						<th class="th_find">번호</th>
+						<th class="th_find">회사명</th>
+						<th class="th_find">취업자</th>
+						<th class="th_find">취업한 날짜</th>
+						<th class="th_find">과정명</th>
 					</tr>
 				</thead>
 				<tbody>
 				<tr>
 					<c:forEach items="${list}" var="findVo">
-						<td>${findVo.fno}</td>
-						<td>${findVo.company}</td>
-						<td>${findVo.fname}</td>
-						<td>${findVo.fday}</td>
-						<td><a class="f_course" href="${findVo.fno}">${findVo.course_name}</a></td>
+						<td class="td_find">${findVo.fno}</td>
+						<td class="td_find">${findVo.company}</td>
+						<td class="td_find">${findVo.fname}</td>
+						<td class="td_find">${findVo.fday}</td>
+						<td class="td_find"><a class="f_course" href="${findVo.fno}">${findVo.course_name}</a></td>
 					</c:forEach>		
 				</tr>
 				</tbody>
