@@ -15,10 +15,6 @@ td {
 .r.content { 
  	padding:30px;
 }
-
-img {
-	text-align:center;
-}
 </style>
 
 

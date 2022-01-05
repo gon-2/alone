@@ -6,14 +6,6 @@
 <script>
 $(function() {
 	
-	$(".a_title").click(function(e) {
-		e.preventDefault();
-		var jobno = $(this).attr("href");
-		var lookJob = document.lookJob;
-		lookJob.action = "/employ/lookJobInformation?jobno=" + jonb;
-		lookJob.method = "get";
-		lookJob.submit();
-	});
 });
 </script>
 

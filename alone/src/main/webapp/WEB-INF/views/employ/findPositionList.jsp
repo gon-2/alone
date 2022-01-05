@@ -1,9 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <script>
 $(function() {
+	$(".f_course").click(function(e) {
+		e.preventDefault();
+		var fno = $(this).attr("href");
+		console.log(fno);
+		var f_url = "/employ/findPostion?fno=" + fno;
+	    var f_name = "pop";
+	    var option = "width=1000,height=500,history=no,resizable=no,status=no,scrollbars=yes,menubar=no";
+		window.open(p_url, p_name, option);
+	});
 });
 </script>
 
@@ -45,7 +53,7 @@ $(function() {
 						<td>${findVo.company}</td>
 						<td>${findVo.fname}</td>
 						<td>${findVo.fday}</td>
-						<td><a href="/employ/findPosition?fno=${findVo.fno}">${findVo.course_name}</a></td>
+						<td><a class="f_course" href="${findVo.fno}">${findVo.course_name}</a></td>
 					</c:forEach>		
 				</tr>
 				</tbody>
@@ -81,4 +89,3 @@ $(function() {
 	</div>
 	</form>
 </div>
-<%@ include file="/WEB-INF/views/include/footer.jsp" %>
