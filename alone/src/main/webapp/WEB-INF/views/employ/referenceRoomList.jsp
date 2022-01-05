@@ -7,6 +7,20 @@ $(function() {
 });
 </script>
 
+<style>
+.r_th {
+	text-align:center;
+	background-color:#F4FFFF;
+}
+.r_td {
+	text-align:center;
+}
+#t_td {
+	text-align:left;
+	padding-left: 50px;
+}
+
+</style>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -31,23 +45,23 @@ $(function() {
 			<table class="table">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>추천</th>
-						<th>조회수</th>
-						<th>등록일</th>
+						<th class="r_th">번호</th>
+						<th class="r_th" width="600px">제목</th>
+						<th class="r_th">작성자</th>
+						<th class="r_th">추천</th>
+						<th class="r_th">조회수</th>
+						<th class="r_th">등록일</th>
 					</tr>
 				</thead>
 				<tbody>
 				<tr>
 					<c:forEach items="${list}" var="ReferenceVo">
-						<td>${ReferenceVo.rno}</td>
-						<td><a href="/employ/referenceRoom?rno=${ReferenceVo.rno}">${ReferenceVo.rtitle}</a></td>
-						<td>${ReferenceVo.rwriter}</td>
-						<td>${ReferenceVo.recommend}</td>
-						<td>${ReferenceVo.hits}</td>
-						<td>${ReferenceVo.reference_date}</td>
+						<td class="r_td">${ReferenceVo.rno}</td>
+						<td class="r_td" id="t_td"><a href="/employ/referenceRoom?rno=${ReferenceVo.rno}">${ReferenceVo.rtitle}</a></td>
+						<td class="r_td">${ReferenceVo.rwriter}</td>
+						<td class="r_td">${ReferenceVo.recommend}</td>
+						<td class="r_td">${ReferenceVo.hits}</td>
+						<td class="r_td">${ReferenceVo.reference_date}</td>
 					</c:forEach>		
 				</tr>
 				</tbody>

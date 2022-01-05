@@ -79,10 +79,10 @@ public class EmploymentInformationController {
 	
 	@RequestMapping(value="/referenceRoom", method=RequestMethod.GET)
 	public String referenceRoom(Model model, int rno) {
-		ReferenceVo findVo = lookJobService.getReference(rno);
+		ReferenceVo referenceVo = lookJobService.getReference(rno);
 		List<ReferenceVo> data = lookJobService.referenceImage(rno);
 		model.addAttribute("data", data);
-		model.addAttribute("findVo", findVo);
+		model.addAttribute("referenceVo", referenceVo);
 		return "employ/referenceRoom";
 	}
 }

@@ -4,6 +4,15 @@
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <script>
 $(function() {
+	$(".f_course").click(function(e) {
+		e.preventDefault();
+		var fno = $(this).attr("href");
+		console.log(fno);
+		var f_url = "/employ/findPosition?fno=" + fno;
+	    var f_name = "pop";
+	    var option = "width=1300,height=800,history=no,resizable=no,status=no,scrollbars=yes,menubar=no";
+		window.open(f_url, f_name, option);
+	});
 });
 </script>
 
@@ -45,7 +54,7 @@ $(function() {
 						<td>${findVo.company}</td>
 						<td>${findVo.fname}</td>
 						<td>${findVo.fday}</td>
-						<td><a href="/employ/findPosition?fno=${findVo.fno}">${findVo.course_name}</a></td>
+						<td><a class="f_course" href="${findVo.fno}">${findVo.course_name}</a></td>
 					</c:forEach>		
 				</tr>
 				</tbody>
