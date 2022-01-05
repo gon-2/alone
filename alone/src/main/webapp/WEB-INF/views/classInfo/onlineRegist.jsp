@@ -20,7 +20,7 @@
 
 <script>
 $(function(){
-	// 온라인신청 데이터 받아오기
+	// 온라인신청 데이터 받아오기 및 제약조건걸기
 	$("#btnOk").click(function(){
 		var c_day = $("#c_day").val(); // 야간반인지 받아오기
 		console.log("야간반인지 받아오기: " + c_day);
@@ -29,32 +29,94 @@ $(function(){
 		console.log("교육과정분류: " + c_cate); 
 		
 		var c_title = $("#c_title").val();
-		console.log("과정명: " + c_title);   //과정명 받아오기\
+		console.log("과정명: " + c_title);   //과정명 받아오기
 		
 		var c_name = $("#c_name").val();
 		console.log("신청자 이름: " + c_name); //신청자이름
+		if(c_name.langth == 0){
+			alert("이름을 입력해주세요.");
+		}
+		
 		
 		
 		var r_num1 = $("#r_num1").val();
 		var r_num2 = $("#r_num2").val();
-		var r_num = r_num1 + "-" + r_num2; // 주민번호 받아오기
-		console.log("주민번호: " + r_num);
-		if(r_num1.length < 6 || r_num.length < 7){
-			alert("주민번호 다시 입력해주세요.");
-		}
+		var r_num = ""; // 주민번호 받아오기
+// 		if(r_num1.length < 6 || r_num.length < 7){
+// 			alert("주민번호 다시 입력해주세요.");
+// 		}else{
+//			r_num = r_num1 + "-" + r_num2;	
+// 		}
+// 		console.log("주민번호: " + r_num);
 		
-		var gender = $("#gender").val();
+		var gender = $("input:radio[name=gender]:checked").val();
 		console.log("성별: " + gender);     //성별받아오기
 		
-		var foreigner = $("#foreigner").val();
+		var foreigner = $("input:radio[name=foreigner]:checked").val();
 		console.log("내/외국인: " + foreigner); // 내/외국인 받아오기
 		
 		var phone_num1 = $("#phone_num1").val();
 		var phone_num2 = $("#phone_num2").val();
 		var phone_num3 = $("#phone_num3").val();
-		var phone_num = phone_num1 + "-" + phone_num2 + "-" + phone_num3;
-		console.log("휴대전화: " + phone_num);  // 휴대전화번호 받아오기
-		if(phone_num1.length < 3 || phone_num2.length < 4 || phone_num3.length < 4)
+		var phone_num = ""; // 휴대전화받아오기
+// 		if(phone_num1.length < 3 || phone_num2.length < 4 || phone_num3.length < 4){
+// 			alert("휴대폰전화 확인해주세요.");
+// 		}else if(phone_num1 == "" || phone_num2 == "" || phone_num3 == "" ){
+//			alert("휴대전화를 입력해주세요.");
+//		}else{
+// 			phone_num = phone_num1 + "-" + phone_num2 + "-" + phone_num3;
+// 		}
+		
+		
+		var home_num1 = $("#home_num1").val();
+		var home_num2 = $("#home_num2").val();
+		var home_num3 = $("#home_num3").val();
+		var home_num = ""; //일반전화 받아오기
+		
+		if((home_num1 != "") && (home_num2 == "") && (home_num3 == "")){
+			alert("일반전화를 확인해주세요.");
+		}else if((home_num == "") && (home_num2 != "") && (home_num3 == "")){
+			alert("일반전화를 확인해주세요.");
+		}else if((home_num1 == "") && (home_num == "") && (home_num3 != "")){
+			alert("일반전화를 확인해주세요.");
+		}else if((home_num1.length == 0) && (home_num2.length == 0) && (home_num3.length == 0)){
+			home_num = "미등록";
+			console.log("일반전화: " + home_num);
+		}else{
+			home_num = home_num1 + "-" + home_num2 + "-" + home_num3;
+			console.log("123일반전화: " + home_num);
+		}
+		
+		
+		var e_mail1 = $("#e_mail1").val();
+		console.log("e_mail1: " + e_mail1);
+		
+		var e_mail2 = $("#e_mail2").val();
+		console.log("e_mail2: " + e_mail2);
+		
+		var email_domain = $("#email_domain").val();
+		console.log("email_domain" + email_domain);
+		
+		var e_mail = "";
+		
+		if( (e_mail1 != "") && (e_mail2 == "") && (email_domain == "선택하세요")){
+			alert("이메일도메인을 선택해주세요.");
+		}else if( (e_mail1 == "") && (e_mail2 != "") && (email_domain == "선택하세요")){
+			alert("이메일을 확인해주세요.")
+		}else if((e_mail1 == "") && (e_mail2 == "") && (email_domain != "선택하세요")){
+			alert("이메일을 확인해주세요.");
+		}else if((e_mail1 == "") && (e_mail == "") && (email_domain == "선택하세요")){
+			email = "미등록";
+		}else{
+			e_mail = e_mail1 + "@" + e_mail2;
+		}
+
+		var regist_path = $(":input:radio[name=regist_path]:checked").val();
+		console.log("지원경로: " + regist_path);
+// 		if(regist_path == undefined){
+// 			alert("지원경로를 선택해주세요.");
+// 		}
+		
 		
 		
 	});
@@ -145,7 +207,7 @@ $(function(){
 							<td class="td_infomation">
 								<input type="text" name="c_name" id="c_name" style="width: 120px; ime-mode: active;" maxlength="50" required="required"/>
 							</td>
-							<th class="j-spot"><label for="r_num">주민번호</label></th>
+							<th class="j-spot"><label>주민번호</label></th>
 							<td class="form-group">
 								<dl>
 									<dd>
@@ -156,37 +218,37 @@ $(function(){
 							</td>
 						</tr>
 						<tr>
-							<th class="normal"><label for="gender">성별</label></th>
+							<th class="normal"><label>성별</label></th>
 							<td class="td_infomation">
-									<em><input type="radio" name="gender" id="gender" value="남자" checked="checked" /></em> <label for="gender">남자</label>
+									<em><input type="radio" name="gender" id="gender" checked="checked" value="남자"/></em> <label for="gender">남자</label>
 									<em><input type="radio" name="gender" id="gender" value="여자"/></em> <label for="gender" >여자</label>
 							</td>
-							<th class="normal"><label for="foreigner">내/외국인</label></th>
+							<th class="normal"><label>내/외국인</label></th>
 							<td class="td_infomation">
 									<em><input type="radio" name="foreigner" id="foreigner" value="KOREAN" class="hand" checked="checked" /></em> <label for="foreigner" class="hand">내국인</label>
 									<em><input type="radio" name="foreigner" id="foreigner" value="FOREIGNER" class="hand" /></em> <label for="foreigner" class="hand">외국인</label>
 							</td>
 						</tr>
 						<tr>
-							<th class="j-spot"><label for="phone_num">휴대전화</label></th>
+							<th class="j-spot"><label>휴대전화</label></th>
 							<td class="td_infomation">
 								<input type="text" id="phone_num1" style="width: 55px; ime-mode: disabled;" maxlength="3" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
 								<input type="text" id="phone_num2" style="width: 55px; ime-mode: disabled;" maxlength="4" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
 								<input type="text" id="phone_num3" style="width: 55px; ime-mode: disabled;" maxlength="4" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 							</td>
-							<th class="normal"><label for="home_num2">일반전화</label></th>
+							<th class="normal"><label>일반전화</label></th>
 							<td>
-								<input type="text" name="home_num1" id="home_num1" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
-								<input type="text" name="home_num2" id="home_num2" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
-								<input type="text" name="home_num3" id="home_num3" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+								<input type="text" id="home_num1" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
+								<input type="text" id="home_num2" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
+								<input type="text" id="home_num3" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 							</td>
 						</tr>
 						<tr>
 							<th class="normal"><label for="e_mail" style="text-color:red;">메일주소</label></th>
 							<td colspan="3" class="td_infomation">
-							<input type="text" name="e_mail1" id="e_mail1"style=" width: 100px; ime-mode: disabled;" maxlength="120" /> @
-							<input type="text" name="e_mail2" id="e_mail2" style=" width: 120px; ime-mode: disabled;" maxlength="130" /> 
-								<select name="tmp_email_domain" id="tmp_email_domain">
+							<input type="text" id="e_mail1" style=" width: 100px; ime-mode: disabled;" maxlength="120" /> @
+							<input type="text" id="e_mail2" style=" width: 120px; ime-mode: disabled;" maxlength="130" /> 
+								<select name="tmp_email_domain" id="email_domain">
 										<option>선택하세요</option>
 										<option>gmail.com</option>
 										<option>naver.com</option>
@@ -213,25 +275,25 @@ $(function(){
 			<colgroup><col width="110" /><col width="*" /><col width="110" /><col width="*" /></colgroup>
 			<tbody>
 				<tr>
-					<th class="j-spot"><label for="regist_path">지원경로</label></th>
+					<th class="j-spot"><label>지원경로</label></th>
 					<td colspan="3" id="regist_path">
 						<div class="overflow">
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">유튜브</label>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">블로그</label>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">인스타그램</label>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">페이스북</label>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">HRD-Net</label>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">네이버 검색</label>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">구글검색</label>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">다음검색</label>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">본원 홈페이지</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="유튜브"/></em> <label>유튜브</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="블로그"/></em> <label>블로그</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="인스타그램"/></em> <label>인스타그램</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="페이스북"/></em> <label>페이스북</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="HRD-Net"/></em> <label>HRD-Net</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="네이버 검색"/></em> <label>네이버 검색</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="구글 검색"/></em> <label>구글 검색</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="다음 검색"/></em> <label>다음 검색</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="본원 홈페이지"/></em> <label>본원 홈페이지</label>
 								<br>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">전단지</label>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">본원 수료생 소개</label>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">지인소개</label>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">국민내일배움카드 상담기관</label>
-								<em><input type="radio" name="regist_path" class="stu_td"/></em> <label for="regist_path">고용센터 전단지</label>
-								<em><input type="radio" name="regist_path" class="stu_td" checked="checked"/></em> <label for="regist_path">기타</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="전단지"/></em> <label for="regist_path">전단지</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="본원 수료생 소개"/></em> <label for="regist_path">본원 수료생 소개</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="지인소개"/></em> <label for="regist_path">지인소개</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="국민내일배움카드 상담기관"/></em> <label for="regist_path">국민내일배움카드 상담기관</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="고용센터 전단지"/></em> <label for="regist_path">고용센터 전단지</label>
+								<em><input type="radio" name="regist_path" class="regist_path" value="기타"/></em> <label for="regist_path">기타</label>
 						</div>
 					</td>
 				</tr>
@@ -254,13 +316,13 @@ $(function(){
 				</tr>
 				<tr>
 					<th class="normal">참여센터</th>
-					<td><input type="text" name="employment_center" id="employment_center" style="margin-right:20px; width: 120px; ime-mode: active;" maxlength="30" disabled="disabled" /></td>
+					<td><input type="text" name="employment_center" id="employment_center" style="margin-right:20px; width: 120px;" maxlength="30" disabled="disabled" /></td>
 					
 					<th class="normal">담당자</th>
-					<td><input type="text" name="employment_counselor" id="employment_counselor" style="width: 120px; ime-mode: active;" maxlength="30" disabled="disabled" /></td>
+					<td><input type="text" name="employment_counselor" id="employment_counselor" style="width: 120px;" maxlength="30" disabled="disabled" /></td>
 					
 					<th class="normal">연락처</th>
-					<td><input type="text" name="employment_num" id="employment_num" style="width: 120px; ime-mode: disabled;" maxlength="20" disabled="disabled" /></td>
+					<td><input type="text" name="employment_num" id="employment_num" style="width: 120px;" maxlength="20" disabled="disabled" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/></td>
 				</tr>
 			</tbody>
 		</table>
