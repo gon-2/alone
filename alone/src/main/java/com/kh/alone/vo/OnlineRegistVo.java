@@ -1,6 +1,6 @@
 package com.kh.alone.vo;
 
-public class OnlineRegist {
+public class OnlineRegistVo {
 	String r_num; 				//주민번호
 	String c_day;				//훈련직종분류(주간, 야간, 주말)
 	String c_cate;				//교육과정분류(디자인, 프로그램 이런거)
@@ -16,7 +16,7 @@ public class OnlineRegist {
 	String employment_center;	//참여센터
 	String employment_counselor;//담당자
 	String employment_num;		//연락처
-	public OnlineRegist() {
+	public OnlineRegistVo() {
 		super();
 	}
 	public String getR_num() {

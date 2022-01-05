@@ -1,12 +1,18 @@
 --
 CREATE TABLE TBL_CLASS(
     C_CATE VARCHAR2(50) NOT NULL,
-    C_NAME VARCHAR2(4000) NOT NULL,
+    C_TITLE VARCHAR2(4000) NOT NULL,
     C_TERM VARCHAR2(50) NOT NULL,
     C_TIME VARCHAR2(50) NOT NULL,
     C_ROOM NUMBER(3) NOT NULL,
     C_TOTAL NUMBER(2) NOT NULL
+    C_PAY VARCHAR2(50) NOT NULL,
+    C_DAY VARCHAR2(50) NOT NULL,
 );
+
+-- 수업 추가하기
+insert into tbl_class
+values(c_cate, c_title, c_term, c_title, c_room, c_total, c_pay, c_day);
 
 -- 전체보기 --
 <select>
@@ -83,4 +89,9 @@ create table online_regist(
     employment_center varchar2(4000),    -- 참여센터
     employment_counselor varchar2(300), -- 담당자
     employment_num varchar2(13)         --연락처
+);
+
+insert into online_regist
+values(
+	?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
 );
