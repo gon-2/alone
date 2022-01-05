@@ -75,6 +75,13 @@ public class ClassInfoController {
 		return "classInfo/onlineRegist";
 	}
 	
+	// 온라인 접수 동의 후 입력양식
+	@RequestMapping(value="/onlineRegistRun", method=RequestMethod.POST)
+	public String onlineRegistRun(Model model) {
+		
+		return "classInfo/myStatus";
+	}
+	
 	
 	
 }
