@@ -49,11 +49,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr align="center">
-						<td>1</td>
-						<td><a href="">TB - Monthly</a></td>
-						<td>01/04/2012</td>
-					</tr>
+
 				</tbody>
 			</table>
 		</div>
@@ -71,11 +67,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr align="center">
-						<td>1</td>
-						<td><a href="">TB - Monthly</a></td>
-						<td>01/04/2012</td>
-					</tr>
+					<c:forEach items="${list}" var="RegistBoardVo">
+						<tr align="center">
+							<td>${RegistBoardVo.class_board_title}</td>
+							<td><a href="">${RegistBoardVo.class_board_content}</a></td>
+							<td>${RegistBoardVo.class_board_userid}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

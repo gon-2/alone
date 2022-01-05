@@ -19,15 +19,15 @@ public class ClassRegistBoardDaoTest {
 	@Inject
 	private ClassRegistBoardDao classRegistBoardDao;
 
-	@Test
+/*	@Test
 	public void testSelectAll() {
 		System.out.println("classRegistBoardDao:" + classRegistBoardDao);
 		
 		String time = classRegistBoardDao.getTime();
 		System.out.println("list: " + time);
-	}
+	}*/
 	
-	@Test
+/*	@Test
 	public void testrRegistClassBoard() {
 		RegistBoardVo vo = new RegistBoardVo();
 		vo.setClass_board_enroll("1");
@@ -35,5 +35,5 @@ public class ClassRegistBoardDaoTest {
 		vo.setClass_board_content("3");
 		vo.setClass_board_userid("user01");
 		classRegistBoardDao.registClassBoard(vo);
-	}
+	}*/
 }

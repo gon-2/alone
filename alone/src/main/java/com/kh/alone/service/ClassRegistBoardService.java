@@ -32,8 +32,14 @@ public class ClassRegistBoardService {
 	}
 	
 	// 게시판 글 전체 조회
-	public List<RegistBoardVo> listBoard(){
-		List<RegistBoardVo> list = registboardDao.listBoard();
+	public List<RegistBoardVo> listBoard(PagingDto dto){
+		List<RegistBoardVo> list = registboardDao.listBoard(dto);
+		return list;
+	}
+	
+	// 최신 게시글 3개만 조회
+	public List<RegistBoardVo> countThree(){
+		List<RegistBoardVo> list = registboardDao.countThree();
 		return list;
 	}
 }

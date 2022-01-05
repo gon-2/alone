@@ -8,18 +8,49 @@
  	<select id="getTime" resultType="string">
 		select sysdate from dual
 	</select>
-
+	
+	<!-- 게시글 개수 조회 -->
 	<select id="countBoard" resultType="int">
 		select count(*) from tbl_class_board
+		<include refid="search"></include>
+	</select> 
+	
+	<!-- 메인 홈페이지에서 3개의 최신 글만 조회 -->
+	<select id="countThree" resultType="RegistBoardVo">
+		SELECT class_board_title , class_board_content , class_board_userid
+		from tbl_class_board
+		<![CDATA[where rownum <= 3]]>
 	</select>
-
+	
 	<select id="listboard" resultType="RegistBoardVo">
 		select * from tbl_class_board
+		<include refid="search"></include>
+		order by class_board_number desc
 	</select>
 	
 	<insert id="registClassBoard">
 		insert into tbl_class_board(class_board_number , class_board_enroll , class_board_title , class_board_content , class_board_userid)
 		values(seq_class_number.nextval , #{class_board_enroll} , #{class_board_title} , #{class_board_content} , #{class_board_userid})		
-	</insert> 
+	</insert>
+	
+
+	   <sql id="search">
+   		<if test="searchType != null and keyword != null">
+			<choose>
+				<when test=' searchType == "n" '> 
+					where class_board_number like '%' || #{keyword} || '%' 
+				</when>
+				<when test=' searchType == "w" '> 
+					where class_board_userid like '%' || #{keyword} || '%' 
+				</when>
+				<when test=' searchType == "t" '> 
+					where class_board_title like '%' || #{keyword} || '%'
+				</when>
+				<when test=' searchType == "c" '>
+					where class_board_content like '%' || #{keyword} || '%'
+				</when> 
+			</choose>
+		</if> 
+   </sql>
 	
 </mapper>

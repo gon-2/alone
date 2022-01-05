@@ -26,15 +26,21 @@ public class ClassInfoController {
 		List<ClassInfoVo> weekly = service.selectWeekly();
 		List<ClassInfoVo> weekend = service.selectWeekend();
 		List<ClassInfoVo> night = service.selectNight();
+		List<ClassInfoVo> pro = service.selectPro();
+		List<ClassInfoVo> design = service.selectDesign();
+		List<ClassInfoVo> product = service.selectProduct();
+		List<ClassInfoVo> print = service.selectPrint();
+		List<ClassInfoVo> office = service.selectOffice();
 		
 		model.addAttribute("list", list);
 		model.addAttribute("weekly", weekly);
 		model.addAttribute("weekend", weekend);
 		model.addAttribute("night", night);
-		System.out.println("컨트롤러list: " + list);
-		System.out.println("컨트롤러weekly: " + weekly);
-		System.out.println("컨트롤러weekend: " + weekend);
-		System.out.println("컨트롤러night: " + night);
+		model.addAttribute("pro", pro);
+		model.addAttribute("design", design);
+		model.addAttribute("product", product);
+		model.addAttribute("print", print);
+		model.addAttribute("office", office);
 		return "classInfo/list_all";
 	}
 	
@@ -63,10 +69,12 @@ public class ClassInfoController {
 		return "classInfo/onlineAgree";
 	}
 	
-	// 온라인 접수 동의 후 가입양식
+	// 온라인 접수 동의 후 입력양식
 	@RequestMapping(value="/onlineRegist", method=RequestMethod.GET)
-	public String onlineRegist() {
+	public String onlineRegist(Model model) {
 		return "classInfo/onlineRegist";
 	}
+	
+	
 	
 }

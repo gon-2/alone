@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kh.alone.mappers.class">
 	
-	
+	<!-- 전체보기 -->
 	<select id="selectAll" resultType="ClassInfoVo">
 		select * from tbl_class
 	</select>
@@ -26,5 +26,36 @@
 		where c_day = '야간반'
 	</select>
 	
+	<!-- 수업 과정별 나누기 -->
+	
+	<!-- 프로그래밍 -->
+	<select id="selectPro" resultType="ClassInfoVo">
+		select * from tbl_class
+		where c_cate = '프로그래밍'
+	</select>
+	
+	<!-- 디자인 -->
+	<select id="selectDesign" resultType="ClassInfoVo">
+		select * from tbl_class
+		where c_cate = '디자인'
+	</select>
+	
+	<!-- 제품디자인 -->
+	<select id="selectProduct" resultType="ClassInfoVo">
+		select * from tbl_class
+		where c_cate = '제품디자인'
+	</select>
+	
+	<!-- 3D프린트 -->
+	<select id="selectPrint" resultType="ClassInfoVo">
+		select * from tbl_class
+		where c_cate = '3D프린트'
+	</select>
+	
+	<!-- 사무자동화 -->
+	<select id="selectOffice" resultType="ClassInfoVo">
+		select * from tbl_class
+		where c_cate = '사무자동화'
+	</select>
 	
 </mapper>
