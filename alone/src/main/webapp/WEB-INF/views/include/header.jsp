@@ -9,7 +9,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-
+			
 <style>
 BODY {
 	FONT-FAMILY: arial; FONT-SIZE: 10px; 
@@ -28,6 +28,12 @@ BODY {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/assets/css/main.css" />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">													
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">													
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>													
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>													
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	</head>
 	
 
@@ -75,13 +81,13 @@ BODY {
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li class="current"><a href="home">Home</a></li>
+								<li class="current"><a href="/">Home</a></li>
 								<li>
 									<a href="#">수강안내</a>
 									<ul>
 										<li><a href="/classInfo/list_all">모집과정</a></li>
 										<li><a href="/classInfo/onlineAgree">온라인 접수</a></li>
-										<li><a href="#">접수상태 확인</a></li>
+										<li><a href="/classInfo/myStatus">접수상태 확인</a></li>
 										<li><a href="#">후기</a></li>
 									</ul>
 								</li>

@@ -4,8 +4,27 @@
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <script>
 $(function() {
+	$(".f_course").click(function(e) {
+		e.preventDefault();
+		var fno = $(this).attr("href");
+		console.log(fno);
+		var f_url = "/employ/findPosition?fno=" + fno;
+	    var f_name = "pop";
+	    var option = "width=1300,height=800,history=no,resizable=no,status=no,scrollbars=yes,menubar=no";
+		window.open(f_url, f_name, option);
+	});
 });
 </script>
+
+<style>
+.th_find {
+	background-color:#F4FFFF;
+	text-align:center;
+}
+.td_find {
+	text-align:center;
+}
+</style>
 
 <div class="container-fluid">
 	<div class="row">
@@ -31,21 +50,21 @@ $(function() {
 			<table class="table">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>회사명</th>
-						<th>취업자</th>
-						<th>취업한 날짜</th>
-						<th>과정명</th>
+						<th class="th_find">번호</th>
+						<th class="th_find">회사명</th>
+						<th class="th_find">취업자</th>
+						<th class="th_find">취업한 날짜</th>
+						<th class="th_find">과정명</th>
 					</tr>
 				</thead>
 				<tbody>
 				<tr>
 					<c:forEach items="${list}" var="findVo">
-						<td>${findVo.fno}</td>
-						<td>${findVo.company}</td>
-						<td>${findVo.fname}</td>
-						<td>${findVo.fday}</td>
-						<td><a href="/employ/findPosition?fno=${findVo.fno}">${findVo.course_name}</a></td>
+						<td class="td_find">${findVo.fno}</td>
+						<td class="td_find">${findVo.company}</td>
+						<td class="td_find">${findVo.fname}</td>
+						<td class="td_find">${findVo.fday}</td>
+						<td class="td_find"><a class="f_course" href="${findVo.fno}">${findVo.course_name}</a></td>
 					</c:forEach>		
 				</tr>
 				</tbody>

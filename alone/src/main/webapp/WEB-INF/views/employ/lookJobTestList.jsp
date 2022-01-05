@@ -7,6 +7,16 @@ $(function() {
 });
 </script>
 
+<style>
+.th_test {
+	background-color:#F4FFFF;
+	text-align:center;
+}
+.td_test {
+	text-align:center;
+}
+</style>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -30,19 +40,19 @@ $(function() {
 			<table class="table">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성일</th>
+						<th class="th_test">번호</th>
+						<th class="th_test">제목</th>
+						<th class="th_test">작성자</th>
+						<th class="th_test">작성일</th>
 					</tr>
 				</thead>
 				<tbody>
 				<tr>
 					<c:forEach items="${list}" var="jobTestVo">
-						<td>${jobTestVo.tno}</td>
-						<td><a href="/employ/lookJobTest?tno=${jobTestVo.tno}">${jobTestVo.title}</a></td>
-						<td>${jobTestVo.writers}</td>
-						<td>${jobTestVo.test_date}</td>
+						<td class="td_test">${jobTestVo.tno}</td>
+						<td class="td_test"><a href="/employ/lookJobTest?tno=${jobTestVo.tno}">${jobTestVo.title}</a></td>
+						<td class="td_test">${jobTestVo.writers}</td>
+						<td class="td_test">${jobTestVo.test_date}</td>
 					</c:forEach>		
 				</tr>
 				</tbody>

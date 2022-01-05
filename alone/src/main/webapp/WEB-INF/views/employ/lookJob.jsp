@@ -6,16 +6,18 @@
 <script>
 $(function() {
 	
-	$(".a_title").click(function(e) {
-		e.preventDefault();
-		var jobno = $(this).attr("href");
-		var lookJob = document.lookJob;
-		lookJob.action = "/employ/lookJobInformation?jobno=" + jonb;
-		lookJob.method = "get";
-		lookJob.submit();
-	});
 });
 </script>
+
+<style>
+.th_lookJob {
+	background-color:#F4FFFF;
+	text-align:center;
+}
+.td_lookJob {
+	text-align:center;
+}
+</style>
 
 <div class="container-fluid">
 	<div class="row">
@@ -45,18 +47,17 @@ $(function() {
 			<table class="table">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>업체명</th>
-						<th>모집기간</th>
+						<th class="th_lookJob">번호</th>
+						<th class="th_lookJob">업체명</th>
+						<th class="th_lookJob">모집기간</th>
 					</tr>
 				</thead>
 				<tbody>
 				<tr>
 					<c:forEach items="${employList}" var="LookJobVo">
-						<td>${LookJobVo.jobno}</td>
-						<td><a href="/employ/lookJobInformation?jobno=${LookJobVo.jobno}">${LookJobVo.company}</a></td>
-						<td>${LookJobVo.recruitmentStart}<br>
-						 ~ ${LookJobVo.recruitmentEnd}</td>
+						<td class="td_lookJob">${LookJobVo.jobno}</td>
+						<td class="td_lookJob" width="600px"><a href="/employ/lookJobInformation?jobno=${LookJobVo.jobno}">${LookJobVo.company}</a></td>
+						<td class="td_lookJob">${LookJobVo.recruitmentStart} ~ ${LookJobVo.recruitmentEnd}</td>
 					</c:forEach>		
 				</tr>
 				</tbody>
