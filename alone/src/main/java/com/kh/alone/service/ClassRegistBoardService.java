@@ -38,8 +38,14 @@ public class ClassRegistBoardService {
 	}
 	
 	// 최신 게시글 3개만 조회
-	public List<RegistBoardVo> countThree(){
-		List<RegistBoardVo> list = registboardDao.countThree();
+	public List<RegistBoardVo> countThird(){
+		List<RegistBoardVo> list = registboardDao.countThird();
 		return list;
+	}
+	
+	// 제목 클릭시 내용 보이기
+	public RegistBoardVo getBoard(String class_board_title) {
+		RegistBoardVo registBoardvo = registboardDao.getBoard(class_board_title);
+		return registBoardvo;
 	}
 }

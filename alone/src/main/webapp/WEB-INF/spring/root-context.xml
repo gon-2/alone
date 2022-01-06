@@ -5,16 +5,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-	<!--  bean : 객체 -->
-	<!-- jsp:userBean 와 형태가 비슷하다 -->
-	<!-- 
-		DriverManagerDataSource dataSource = new dricerManagerDataSource();
-		dataSource.setDriverClassname("oracle.jdbc.driver.OracleDriver");
-		dataSource.setUrl("org.springframework.jdbc.datasource.DriverManagerDataSource");
-		dataSource.setUsername("javaweb");
-		dataSource.setPassword("1234");
-	 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="url" value="jdbc:oracle:thin:@192.168.0.68:1521:xe"></property>
@@ -36,7 +26,7 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
-	<!--  commit, rollback, setAutoCommit(true) 이런 작업 을 해주는 기능 왜 ㅅㅂ 새롭냐;; -->
+	<!--  commit, rollback, setAutoCommit(true)-->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	<property name="dataSource" ref="dataSource"></property>
 	</bean>

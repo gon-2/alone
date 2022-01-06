@@ -67,7 +67,7 @@ BODY {
         <!-- 로그인 되어 있지 않고 레이아웃이 없으면 -->
         <!--@elseif(!$is_logged && $module_info->display_login_info != 'N')-->
             <li> | </li>
-            <li><a href="/member/login_form" target=_top>LOGIN</a></li>
+            <li><a href="/login_form" target=_top>LOGIN</a></li>
         <!--@end-->
         </ul>
     </div>
@@ -76,7 +76,7 @@ BODY {
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="/classInfo/home" id="logo">KH정보교육원 </a></h1>
+						<h1><a href="/" id="logo">KH정보교육원 </a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
@@ -103,10 +103,10 @@ BODY {
 								<li>
 									<a href="/customer_main/home">고객센터</a>
 									<ul>
-										<li><a href="#">자주묻는 질문</a></li>
-										<li><a href="/customermain/qna">Q &amp; A</a></li>
-										<li><a href="#">건의사항</a></li>
-										<li><a href="#">상담</a></li>
+										<li><a href="/customer_main/qna">자주묻는 질문</a></li>
+										<li><a href="/class_board/class_regist">수강신청</a></li>
+										<li><a href="/customer_main/inquire">건의사항</a></li>
+										<li><a href="/customer_main/consult">상담</a></li>
 									</ul>
 								</li>
 								<li>
