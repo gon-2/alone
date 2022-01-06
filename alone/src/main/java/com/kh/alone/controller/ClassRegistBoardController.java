@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -37,6 +38,14 @@ public class ClassRegistBoardController {
 	public String classboardRun(RegistBoardVo registboardvo) {
 		registboardservice.registClassBoard(registboardvo);
 		return "redirect:/class_board/class_regist";
+	}
+	
+	// 글 제목 클릭했을 때 내용 보이기
+	@RequestMapping(value="/getBoard" , method=RequestMethod.GET)
+	public String getBoard(String class_board_title, Model model) {
+		RegistBoardVo registboardvo = registboardservice.getBoard(class_board_title);
+		model.addAttribute("registboardvo" , registboardvo);
+		return "/board_form/class_regist_board_getBoard";
 	}
 	
 	// 수강신청 페이지 리스트

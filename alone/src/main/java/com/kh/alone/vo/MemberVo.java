@@ -10,14 +10,17 @@ public class MemberVo {
 	private String email;
 	private String gender;
 	private String pnumber;
+	private String c_day;
 	
 	public MemberVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	public MemberVo(String userid, String userpw, String userpwd, String username, String birthdate, String email,
-			String gender, String pnumber) {
+			String gender, String pnumber, String c_day) {
 		super();
 		this.userid = userid;
 		this.userpw = userpw;
@@ -27,7 +30,10 @@ public class MemberVo {
 		this.email = email;
 		this.gender = gender;
 		this.pnumber = pnumber;
+		this.c_day = c_day;
 	}
+
+
 
 	public String getUserid() {
 		return userid;
@@ -93,11 +99,25 @@ public class MemberVo {
 		this.pnumber = pnumber;
 	}
 
+
+
+	public String getC_day() {
+		return c_day;
+	}
+
+
+
+	public void setC_day(String c_day) {
+		this.c_day = c_day;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "BoardVo [userid=" + userid + ", userpw=" + userpw + ", userpwd=" + userpwd + ", username=" + username
-				+ ", birthdate=" + birthdate + ", email=" + email + ", gender=" + gender + ", pnumber=" + pnumber + "]";
+		return "MemberVo [userid=" + userid + ", userpw=" + userpw + ", userpwd=" + userpwd + ", username=" + username
+				+ ", birthdate=" + birthdate + ", email=" + email + ", gender=" + gender + ", pnumber=" + pnumber
+				+ ", c_day=" + c_day + "]";
 	}
-	
 	
 }

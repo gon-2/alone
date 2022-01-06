@@ -73,7 +73,7 @@
 					<c:forEach items="${list}" var="ClassRegistBoardVo">
 					<tr align="center">
 						<td>${ClassRegistBoardVo.class_board_number}</td>
-						<td><a href="">${ClassRegistBoardVo.class_board_title}</a></td>
+						<td><a href="/class_board/getBoard?class_board_title=${ClassRegistBoardVo.class_board_title}">${ClassRegistBoardVo.class_board_title}</a></td>
 						<td>${ClassRegistBoardVo.class_board_content}</td>
 						<td>${ClassRegistBoardVo.class_board_enroll}</td>
 						<td>${ClassRegistBoardVo.class_board_userid}</td>

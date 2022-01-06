@@ -69,8 +69,8 @@
 				<tbody>
 					<c:forEach items="${classregistList}" var="RegistBoardVo">
 						<tr align="center">
-							<td>${RegistBoardVo.class_board_title}</td>
-							<td><a href="">${RegistBoardVo.class_board_content}</a></td>
+							<td><a href="/class_board/getBoard?class_board_title=${RegistBoardVo.class_board_title}">${RegistBoardVo.class_board_title}</a></td>
+							<td>${RegistBoardVo.class_board_content}</td>
 							<td>${RegistBoardVo.class_board_userid}</td>
 						</tr>
 					</c:forEach>
