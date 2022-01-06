@@ -52,7 +52,9 @@ BODY {
 
         <!-- 로그인 되어 있을 경우 -->
         <!--@if($is_logged)-->
-
+			<c:choose>
+				<c:when test="${empty sessionScope.memberVo}">
+			
             <!-- 최고관리자이면 관리자 페이지 버튼 출력 -->
             <!--@if($logged_info->is_admin == 'Y' && $module_info->display_setup_button != 'N')-->
             <li><a href="{getUrl('','module','admin','act','dispBoardAdminContent')}" onclick="window.open(this.href); return false;">ADMIN</a> | </li>
@@ -69,6 +71,15 @@ BODY {
             <li> | </li>
             <li><a href="/login_form" target=_top>LOGIN</a></li>
         <!--@end-->
+        
+        		</c:when>
+        		<c:otherwise>
+        		
+        		<li>${sessionScope.memberVo.userid}(${sessionScope.memberVo.username})<li>
+        		<li><a href="/logout">LOGOUT</a></li>
+        		
+        		</c:otherwise>
+			</c:choose>
         </ul>
     </div>
 <!--@end-->
