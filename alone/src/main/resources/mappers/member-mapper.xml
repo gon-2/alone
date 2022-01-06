@@ -14,6 +14,29 @@
 		order by userid
 	</select>
 	
+	<!-- 전체보기 -->
+<!-- 	<select id="selectAll" resultType="MemberVo"> -->
+<!-- 		select * from tbl_member -->
+<!-- 	</select> -->
+	
+	<!-- 주간반 -->
+	<select id="selectWeekly" resultType="MemberVo">
+		select * from tbl_member
+		where c_day = '주간반'
+	</select>
+	
+	<!-- 주말반 -->
+	<select id="selectWeekend" resultType="MemberVo">
+		select * from tbl_member 
+		where c_day = '주말반'
+	</select>
+	
+	<!-- 야간반 -->
+	<select id="selectNight" resultType="MemberVo">
+		select * from tbl_member
+		where c_day = '야간반'
+	</select>
+	
 		<!-- 로그인 -->
 <!-- 	<select id="login" resultType="MemberVo"> -->
 <!-- 		select * from tbl_member -->
