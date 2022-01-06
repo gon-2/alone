@@ -33,12 +33,6 @@ public class CustomerServiceMainController {
 		return "/service_center/main_page";
 	}
 	
-	// 공지사항 페이지
-	@RequestMapping(value="/notice" , method=RequestMethod.GET)
-	public String NoticePage() {
-		return "/service_center/notice_page";
-	}
-	
 	// 문의사항 페이지
 	@RequestMapping(value="/inquire" , method=RequestMethod.GET)
 	public String inquirePage() {
