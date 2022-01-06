@@ -4,22 +4,31 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.alone.service.ClassInfoService;
+import com.kh.alone.service.HomeService;
 import com.kh.alone.vo.ClassInfoVo;
+import com.kh.alone.vo.LoginVo;
+import com.kh.alone.vo.MemberVo;
 
 @Controller
 public class HomeController {
 	
 	@Inject
 	private ClassInfoService service;
+	@Inject
+	private HomeService homeService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -45,8 +54,47 @@ public class HomeController {
 	
 	@RequestMapping(value="/login_form", method=RequestMethod.GET)
 	public String login_form(Model model) {
-		
-		return "/login_form";
+		return "login_form";
+	}
+	
+	@RequestMapping(value="/checkId/{userid}/{userpw}", method=RequestMethod.GET)
+	@ResponseBody
+	public String checkId(@PathVariable("userid") String userid, @PathVariable("userpw") String userpw) {
+		MemberVo loginResult = homeService.checkId(userid);
+		if (loginResult == null) {
+			return "idFail";
+		} else if (loginResult != null) {
+			String userpwResult = loginResult.getUserpw();
+			if (userpwResult.equals(userpw)) {
+				return "success";
+			} 
+		}
+		return "pwFail";
+	}
+	
+	@RequestMapping(value="/login_run/{userid}/{userpw}/{saveId}", method=RequestMethod.GET)
+	public String loginRun(RedirectAttributes rttr,	HttpSession session,
+			@PathVariable("userid") String userid, @PathVariable("userpw") String userpw, @PathVariable("saveId") String saveId) {
+		System.out.println(userid);
+		System.out.println(userpw);
+		System.out.println(saveId);
+		MemberVo memberVo = homeService.login(userid, userpw);
+		System.out.println("login_run, memberVo:" + memberVo);
+			session.setAttribute("memberVo", memberVo);
+			String targetLocation = (String) session.getAttribute("targetLocation");
+			System.out.println(targetLocation);
+			session.removeAttribute("targetLocation");
+			if(targetLocation == null) {
+				return "redirect:/";
+			} else {
+				return "redirect:" + targetLocation;
+			}
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 	
 }
