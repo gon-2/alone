@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.alone.vo.ClassInfoVo;
 import com.kh.alone.vo.MemberVo;
 import com.kh.alone.vo.PagingDto;
 
@@ -25,6 +26,23 @@ public class MemberDao {
 		Object obj = sqlSession.selectOne(NAMESPACE + "getDate");
 		System.out.println(obj);
 	}
+	// 주간반 조회
+//	public List<MemberVo> selectWeekly(){
+//		List<MemberVo> weekly = sqlSession.selectList(NAMESPACE + "selectWeekly");
+//		return weekly;
+//		}
+//		
+//		// 주말반 조회
+//	public List<MemberVo> selectWeekend(){
+//		List<MemberVo> weekend = sqlSession.selectList(NAMESPACE + "selectWeekend");
+//		return weekend;
+//		}
+//		
+//		// 야간반 조회
+//	public List<MemberVo> selectNight(){
+//		List<MemberVo> night = sqlSession.selectList(NAMESPACE + "selectNight");
+//		return night;
+//	}
 	
 	public List<MemberVo> selectAll(PagingDto pagingDto) {
 		System.out.println("BoardDao, selectAll, pagingDto:" + pagingDto);

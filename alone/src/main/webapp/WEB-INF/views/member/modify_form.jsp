@@ -3,19 +3,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
+<script>
+$(function(){
+	$("#tabbable").click(function(){
+		var c_day = $("#c_day").val();
+		console.log("정소주정 받아오기:" + c_day);
+		
+	});
+	
+});
 
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-				<form role="form" action="/member/modify_run" id="frmRegist" method="post">
-			<div class="tabbable" id="tabs-214280">
-					<ul class="nav nav-tabs"><!--   -->
-						<li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">개인정보수정</a></li>
-						<li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">비밀번호변경</a></li>
-						<li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">회원탈퇴 신청</a></li>
+
+</script>
+<section class="wrapper style1">
+	<div class="container">
+		<div class="clear overflow">
+			<section class="col-md-12"><!-- 게시판 영역잡기 -->
+				<div class="tabbable" id="tabbable">
+					<ul class="nav nav-tabs"><!--  주간반 야간반 주말반 카테고리 나누기 -->
+						<li class="nav-item"><a class="nav-link active show" href="#tab1" data-toggle="tab">전체보기</a></li>
+						<li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">개인정보 수정</a></li>
+						<li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">비밀번호 변경</a></li>
+						<li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">회원탈퇴 </a></li>
 					</ul>
-			
+					
+				</div>
+			</section>
 				<div class="form-group">
 					<label>아이디</label> <br>
 					<span>${memberVo.userid}</span>

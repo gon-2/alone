@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.alone.service.MemberService;
+import com.kh.alone.vo.ClassInfoVo;
 import com.kh.alone.vo.MemberVo;
 import com.kh.alone.vo.PagingDto;
 
@@ -24,6 +25,23 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 	
+	// 모집현황 페이지에서 조회기능
+//		@RequestMapping(value="modify_form", method=RequestMethod.GET)
+//		public String selectAll(Model model) {
+////			List<MemberVo> list = memberService.selectAll();
+//			List<MemberVo> weekly = memberService.selectWeekly();
+//			List<MemberVo> weekend = memberService.selectWeekend();
+//			List<MemberVo> night = memberService.selectNight();
+//		
+////			model.addAttribute("list", list);
+//			model.addAttribute("weekly", weekly);
+//			model.addAttribute("weekend", weekend);
+//			model.addAttribute("night", night);
+//			
+//			return "member/modify_form";
+//		}
+//		
+//		
 //	@RequestMapping(value="/list_all", method=RequestMethod.GET)
 //	public String memberListAll(Model model, PagingDto pagingDto) {
 //		System.out.println("MemberController, memberListAll, pagingDto:" + pagingDto);
