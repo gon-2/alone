@@ -21,6 +21,9 @@ BODY {
 .accountNavigation { margin:0; padding:0; float:right;}
 .accountNavigation li { float:left; margin-left:7px; list-style:none;}
 .accountNavigation li a { white-space:nowrap; color:#000000; text-decoration:none;}
+#homeAction {
+	padding-right:50px;
+}
 </style>
 
 	<head>
@@ -48,7 +51,7 @@ BODY {
 <!--@if($module_info->display_login_info != 'N' || $module_info->display_setup_button != 'N')-->
     <div class="boardInformation">
         <!-- 로그인 정보 -->
-        <ul class="accountNavigation">
+        <ul class="accountNavigation" id="homeAction">
 
         <!-- 로그인 되어 있을 경우 -->
         <!--@if($is_logged)-->
@@ -57,18 +60,16 @@ BODY {
 			
             <!-- 최고관리자이면 관리자 페이지 버튼 출력 -->
             <!--@if($logged_info->is_admin == 'Y' && $module_info->display_setup_button != 'N')-->
-            <li><a href="{getUrl('','module','admin','act','dispBoardAdminContent')}" onclick="window.open(this.href); return false;">ADMIN</a> | </li>
+            <li><a href="{getUrl('','module','admin','act','dispBoardAdminContent')}" onclick="window.open(this.href); return false;">ADMIN&nbsp;</a> | </li>
             <!--@end-->
 
             <!-- 회원정보 버튼 출력 -->
             <!--@if($module_info->display_login_info != 'N')-->
-            <li><a href="{getUrl('act','dispMemberInfo')}"target=blank>MY INFO</a> | </li>
-            <li><a href="{getUrl('act','dispMemberLogout')}">LOGOUT</a></li>
+            <li><a href="{getUrl('act','dispMemberInfo')}"target=blank>MY INFO&nbsp;</a> | </li>
             <!--@end-->
 
         <!-- 로그인 되어 있지 않고 레이아웃이 없으면 -->
         <!--@elseif(!$is_logged && $module_info->display_login_info != 'N')-->
-            <li> | </li>
             <li><a href="/login_form" target=_top>LOGIN</a></li>
         <!--@end-->
         
