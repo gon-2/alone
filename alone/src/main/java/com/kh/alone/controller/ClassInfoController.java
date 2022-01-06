@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -16,7 +17,7 @@ import com.kh.alone.service.ClassInfoService;
 import com.kh.alone.vo.ClassInfoVo;
 import com.kh.alone.vo.OnlineRegistVo;
 
-@RestController
+@Controller
 @RequestMapping("/classInfo")
 public class ClassInfoController {
 	
@@ -70,11 +71,16 @@ public class ClassInfoController {
 	
 	// 온라인 접수 동의 후 입력양식
 	@RequestMapping(value="/onlineRegistRun", method=RequestMethod.POST)
+	@ResponseBody
 	public String onlineRegistRun(OnlineRegistVo vo, RedirectAttributes rttr ) {
 		System.out.println("컨트롤러 입력 값 받아오기: " + vo);
-		return "/redirect:/classInfo/myStatus";
+		return "success";
 	}
 	
-	
+	// 온라인 접수 동의 후 입력양식
+	@RequestMapping(value="/myStatus", method=RequestMethod.GET)
+	public String myStatus(Model model) {
+		return "/classInfo/myStatus";
+	}
 	
 }
