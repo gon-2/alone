@@ -74,15 +74,17 @@ public class MemberController {
 	
 	// 내 게시판
 	@RequestMapping(value="/board_form", method = RequestMethod.GET)
-	public String memberBoardForm() {
+	public String memberBoardForm(Model model) {
 		List<MemberBoardVo> list = memberService.memberBoardForm();
-		return "member/board_form";
+		model.addAttribute("list", list);
+		System.out.println(list);
+		return "/member/board_form";
 	}
 	
 	// 내 게시판 답글
 	@RequestMapping(value="/board_form_reply", method=RequestMethod.GET)
 	public String replyForm(MemberBoardVo memberBoardVo) {
-		return "member/reply_form";
+		return "/member/board_form_reply";
 	}
 
 }

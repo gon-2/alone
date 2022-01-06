@@ -29,6 +29,7 @@ public class MemberService {
 		List<MemberBoardVo> list = memberDao.memberBoardForm();
 		return list;
 	}
+	
 //	// 주간반 조회
 //	public List<MemberVo> selectWeekly(){
 //		List<MemberVo> weekly = memberDao.selectWeekly();
@@ -58,7 +59,7 @@ public class MemberService {
 		return memberVo;
 	}
 	
-	
+	// 회원답글
 	public void insertReply(MemberBoardVo memberboardVo) {
 		memberDao.insertReply(memberboardVo);
 		System.out.println("MemberService, insertReply, insert....");

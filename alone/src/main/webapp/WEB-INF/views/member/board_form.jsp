@@ -8,7 +8,6 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<form method="get" action="board_form_reply">
 				<label for="board_form">분류</label> 
 				<select id="board_form" name="board" size="1">
 					<option value="">선택하세요.</option>
@@ -24,6 +23,7 @@
 					<option value="">진행중</option>
 					<option value="">답변대기</option>
 				</select>
+			<form method="get" action="board_form_reply">
 			<table class="table">
 				<thead>
 					<tr>
@@ -35,13 +35,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>강의내용</td>
-						<td>다른계정으로 회원가입을 희망합니다. </td>
-						<td>user</td>
-						<td>2022-01-13</td>
-					</tr>
+					<c:forEach items="${list}" var="MemberBoardVo">
+						<tr>
+							<td>${MemberBoardVo.bno}</td>
+							<td>${MemberBoardVo.title}</td>
+							<td>${MemberBoardVo.content}</td>
+							<td>${MemberBoardVo.userid}</td>
+							<td>${MemberBoardVo.regdate}</td>
+						</tr>
+					</c:forEach>
 			
 				</tbody>
 			</table>

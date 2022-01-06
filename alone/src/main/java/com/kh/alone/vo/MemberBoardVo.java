@@ -8,7 +8,7 @@ public class MemberBoardVo {
 	private String title;
 	private String content;
 	private String userid;
-	private Timestamp regdate;
+	private String regdate;
 	private int re_group;
 	private int re_seq;
 	private int re_level;
@@ -17,7 +17,7 @@ public class MemberBoardVo {
 		super();
 	}
 
-	public MemberBoardVo(int bno, String title, String content, String userid, Timestamp regdate, int re_group,
+	public MemberBoardVo(int bno, String title, String content, String userid, String regdate, int re_group,
 			int re_seq, int re_level) {
 		super();
 		this.bno = bno;
@@ -62,11 +62,11 @@ public class MemberBoardVo {
 		this.userid = userid;
 	}
 
-	public Timestamp getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Timestamp regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 
