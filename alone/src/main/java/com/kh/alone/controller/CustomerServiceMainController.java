@@ -8,6 +8,7 @@ package com.kh.alone.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +27,9 @@ public class CustomerServiceMainController {
 	
 	// 고객센터 홈페이지
 	@RequestMapping(value="/home" , method=RequestMethod.GET)
-	public String MainPage(Model model) {
-		List<RegistBoardVo> list = registBoardService.countThree();
-		model.addAttribute("list" , list);
+	public String MainPage(Model model , HttpSession session) {
+		List<RegistBoardVo> classregistList = registBoardService.countThird();
+		model.addAttribute("classregistList" , classregistList);
 		return "/service_center/main_page";
 	}
 	

@@ -16,18 +16,20 @@
 	</select> 
 	
 	<!-- 메인 홈페이지에서 3개의 최신 글만 조회 -->
-	<select id="countThree" resultType="RegistBoardVo">
-		SELECT class_board_title , class_board_content , class_board_userid
-		from tbl_class_board
+  	<select id="countThird" resultType="RegistBoardVo">
+		select class_board_title , class_board_content , class_board_userid
+		from (select * from tbl_class_board order by class_board_postdate desc)
 		<![CDATA[where rownum <= 3]]>
 	</select>
 	
+	<!-- 마지막에 올린글이 맨밑으로 보이게 하기 -->
 	<select id="listboard" resultType="RegistBoardVo">
 		select * from tbl_class_board
 		<include refid="search"></include>
 		order by class_board_number desc
 	</select>
 	
+	<!-- 수강신청 게시판 게시물 등록 -->
 	<insert id="registClassBoard">
 		insert into tbl_class_board(class_board_number , class_board_enroll , class_board_title , class_board_content , class_board_userid)
 		values(seq_class_number.nextval , #{class_board_enroll} , #{class_board_title} , #{class_board_content} , #{class_board_userid})		
