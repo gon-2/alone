@@ -217,7 +217,8 @@ $(function(){
 	    $.get (url, sData, function(rData) {
 	    	console.log(rData);
 	    	if (rData == "success") {
-	    		location.href = "/classInfo/mystatus"
+	    		method="post";
+	    		location.href = "/classInfo/myStatus";
 	    	}
 	    });
 	    
