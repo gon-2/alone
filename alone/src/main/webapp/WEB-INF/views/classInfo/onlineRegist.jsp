@@ -20,15 +20,51 @@
 
 <script>
 $(function(){
+	$(".sy").change(function() {
+		if ($(this).attr("id") == "employment3") {
+			$(".sy1").attr("disabled", true);
+			console.log("막기");
+			$("#employment_center").val("");
+			$("#employment_counselor").val("");
+			$("#employment_num").val("");
+		} else {
+			$(".sy1").attr("disabled", false);
+			console.log("사용가능");
+		}
+		
+	});
+	
 	// 온라인신청 데이터 받아오기 및 제약조건걸기
 	$("#btnOk").click(function(){
-		var c_day = $("#c_day").val(); // 야간반인지 받아오기
+		var r_num1 = $("#r_num1").val();
+		var r_num2 = $("#r_num2").val();
+		var r_num = ""; // 주민번호 받아오기
+		if(r_num1.length < 6 || r_num2.length < 7){
+			alert("주민번호 다시 입력해주세요.");
+		}else{
+			r_num = r_num1 + "-" + r_num2;	
+		}
+		console.log("주민번호: " + r_num);
+		
+		var c_day1 = $("#c_day").val(); // 야간반인지 받아오기
+		var c_day = "";
+		if(c_day1 == "전체"){
+			c_day = "전체";
+		}
 		console.log("야간반인지 받아오기: " + c_day);
 		
-		var c_cate = $("#c_cate").val(); // 교육과정분류 받아오기
+		var c_cate1 = $("#c_cate").val(); // 교육과정분류 받아오기
+		var c_cate = "";
+		if(c_cate1 == "전체"){
+			c_cate = "전체";
+		}
 		console.log("교육과정분류: " + c_cate); 
 		
-		var c_title = $("#c_title").val();
+		var c_title1 = $("#c_title").val();
+		var c_title = "";
+		if(c_title1 == "전체"){
+			c_title = "전체";
+		}
 		console.log("과정명: " + c_title);   //과정명 받아오기
 		
 		var c_name = $("#c_name").val();
@@ -39,15 +75,7 @@ $(function(){
 		
 		
 		
-		var r_num1 = $("#r_num1").val();
-		var r_num2 = $("#r_num2").val();
-		var r_num = ""; // 주민번호 받아오기
-// 		if(r_num1.length < 6 || r_num.length < 7){
-// 			alert("주민번호 다시 입력해주세요.");
-// 		}else{
-//			r_num = r_num1 + "-" + r_num2;	
-// 		}
-// 		console.log("주민번호: " + r_num);
+		
 		
 		var gender = $("input:radio[name=gender]:checked").val();
 		console.log("성별: " + gender);     //성별받아오기
@@ -59,13 +87,13 @@ $(function(){
 		var phone_num2 = $("#phone_num2").val();
 		var phone_num3 = $("#phone_num3").val();
 		var phone_num = ""; // 휴대전화받아오기
-// 		if(phone_num1.length < 3 || phone_num2.length < 4 || phone_num3.length < 4){
-// 			alert("휴대폰전화 확인해주세요.");
-// 		}else if(phone_num1 == "" || phone_num2 == "" || phone_num3 == "" ){
-//			alert("휴대전화를 입력해주세요.");
-//		}else{
-// 			phone_num = phone_num1 + "-" + phone_num2 + "-" + phone_num3;
-// 		}
+		if(phone_num1.length < 3 || phone_num2.length < 4 || phone_num3.length < 4){
+			alert("휴대폰전화 확인해주세요.");
+		}else if(phone_num1 == "" || phone_num2 == "" || phone_num3 == "" ){
+			alert("휴대전화를 입력해주세요.");
+		}else{
+			phone_num = phone_num1 + "-" + phone_num2 + "-" + phone_num3;
+		}
 		
 		
 		var home_num1 = $("#home_num1").val();
@@ -73,13 +101,13 @@ $(function(){
 		var home_num3 = $("#home_num3").val();
 		var home_num = ""; //일반전화 받아오기
 		
-		if((home_num1 != "") && (home_num2 == "") && (home_num3 == "")){
+		if( (home_num1 != "") && (home_num2 == "") && (home_num3 == "") ){
 			alert("일반전화를 확인해주세요.");
-		}else if((home_num == "") && (home_num2 != "") && (home_num3 == "")){
+		}else if( (home_num == "") && (home_num2 != "") && (home_num3 == "") ){
 			alert("일반전화를 확인해주세요.");
-		}else if((home_num1 == "") && (home_num == "") && (home_num3 != "")){
+		}else if( (home_num1 == "") && (home_num == "") && (home_num3 != "") ){
 			alert("일반전화를 확인해주세요.");
-		}else if((home_num1.length == 0) && (home_num2.length == 0) && (home_num3.length == 0)){
+		}else if( (home_num1.length == 0) && (home_num2.length == 0) && (home_num3.length == 0) ){
 			home_num = "미등록";
 			console.log("일반전화: " + home_num);
 		}else{
@@ -107,19 +135,97 @@ $(function(){
 			alert("이메일을 확인해주세요.");
 		}else if((e_mail1 == "") && (e_mail == "") && (email_domain == "선택하세요")){
 			email = "미등록";
+			console.log("이메일: " + email);
 		}else{
 			e_mail = e_mail1 + "@" + e_mail2;
 		}
 
-		var regist_path = $(":input:radio[name=regist_path]:checked").val();
+		var regist_path = $("input:radio[name=regist_path]:checked").val();
 		console.log("지원경로: " + regist_path);
-// 		if(regist_path == undefined){
-// 			alert("지원경로를 선택해주세요.");
-// 		}
-		
-		
-		
-	});
+		if(regist_path == undefined){
+			alert("지원경로를 선택해주세요.");
+		}
+
+
+
+		var employment1 = $("input:radio[name=employment]:checked").val(); // 1유형
+	    var employment = "";
+	    
+	    if( employment1 == "Ⅰ유형" ){
+	    	employment = "1유형";
+	    	console.log("1유형 확인하기: " + employment);
+	    }else if( employment1 == "Ⅱ유형" ){
+	    	employment = "2유형";
+	    	console.log("2유형 확인하기: " + employment);
+	    }else{
+	    	employment = "미참여";
+	    	console.log("미참여 확인하기: " + employment);
+	    }
+	    
+	    var employment_center1 = $("#employment_center").val();
+	    var employment_center = "";
+	    if(employment_center1 == ""){
+	    	employment_center ="미참여";
+	    	console.log("참여센터: " + employment_center);
+	    }else{
+	    	employment_center = $("#employment_center").val();
+	    	console.log("참여센터: " + employment_center);
+	    }
+	    var employment_counselor1 = $("#employment_counselor").val();
+	    var employment_counselor = "";
+	    
+	    if(employment_counselor1 == ""){
+	    	employment_counselor = "미참여";
+	    	console.log("담당자: " + employment_counselor);
+	    }else{
+	    	employment_counselor = $("#employment_counselor").val();
+	    	console.log("담당자: " + employment_counselor);
+	    }
+	    
+	    var employment_num1 = $("#employment_num").val();
+	    var employment_num = "";
+	    if(employment_num1 == ""){
+	    	employment_num = "미참여";
+	    	console.log("연락처: " + employment_num);
+	    }else{
+	    	employment_num = $("#employment_num").val();
+	    	console.log("연락처: " + employment_num);
+	    }
+	    
+	    var sData = {
+	    	"r_num" : r_num,
+	    	"c_day" : c_day,
+	    	"c_cate" : c_cate,
+	    	"c_title" : c_title,
+	    	"c_name" : c_name,
+	    	"gender" : gender,
+	    	"foreigner" : foreigner,
+	    	"phone_num" : phone_num,
+	    	"home_num" : home_num,
+	    	"e_mail" : e_mail,
+	    	"regist_path" : regist_path,
+	    	"employment" : employment,
+	    	"employment_center" : employment_center,
+	    	"employment_counselor" : employment_counselor,
+	    	"employment_num" : employment_num
+	    };
+	    
+	    console.log("제발 넘어와라 sData : " + sData );
+	    
+	    var url = "/classInfo/onlineRegistRun";
+	    
+	    $.get (url, sData, function(rData) {
+	    	console.log(rData);
+	    	if (rData == "success") {
+	    		location.href = "/classInfo/mystatus"
+	    	}
+	    });
+	    
+	    
+// 	    location.href = location;
+	    
+	}); // 전송버튼 클릭
+	
 	
 });
 </script>
@@ -136,15 +242,14 @@ $(function(){
 <div class="container">
 <div class="row">
 	<hr>
-<!-- 	<form role="form" method="post" action="/classInfo/onlineRegistRun" > -->
-	<form>
+	<form role="form" name="onlineForm" method="post" action="/classInfo/onlineRegistRun" >
 		<table class="tbl-l tbl-fix" summary="온라인 수강신청을 위한 과정을 선택하세요.">
 			<colgroup><col width="110" /><col width="*" /><col width="110" /><col width="*" /></colgroup>
 			<tbody>
 				<tr>
 					<th class="c_day"><label for="c_day">선택하기</label></th>
 					<td class="td_infomation">
-						<select id="c_day">
+						<select id="c_day" name="c_day">
 							<option value="전체">전체</option>
 							<option value="주간반">주간반</option>
 							<option value="야간반">야간반</option>
@@ -195,7 +300,7 @@ $(function(){
 			</tbody>
 		</table>
 		<div class="clear tpad20">
-			<p></p>
+			<hr>
 			<h3 class="hidden">기본정보</h3>
 			<div>
 				<!-- <div class="ej-conts"> 2019-03-10 00:26:32-->
@@ -207,12 +312,12 @@ $(function(){
 							<td class="td_infomation">
 								<input type="text" name="c_name" id="c_name" style="width: 120px; ime-mode: active;" maxlength="50" required="required"/>
 							</td>
-							<th class="j-spot"><label>주민번호</label></th>
+							<th class="j-spot"><label for="r_num">주민번호</label></th>
 							<td class="form-group">
 								<dl>
 									<dd>
-										<input type="text" name="r_num1" id="r_num1" class="r_num1" style="width: 90px" maxlength="6" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> -
-										<input type="password" name="r_num2" id="r_num2" class="r_num2" style="width: 90px" maxlength="7" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+										<input type="text" name="r_num" id="r_num1" class="r_num1" style="width: 90px" maxlength="6" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> -
+										<input type="password" name="r_num" id="r_num2" class="r_num2" style="width: 90px" maxlength="7" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 									</dd>
 								</dl>
 							</td>
@@ -220,27 +325,27 @@ $(function(){
 						<tr>
 							<th class="normal"><label>성별</label></th>
 							<td class="td_infomation">
-									<em><input type="radio" name="gender" id="gender" checked="checked" value="남자"/></em> <label for="gender">남자</label>
-									<em><input type="radio" name="gender" id="gender" value="여자"/></em> <label for="gender" >여자</label>
+									<em><input type="radio" name="gender" id="gender" checked="checked" value="남자"/></em><label for="gender">남자</label>
+									<em><input type="radio" name="gender" id="gender" value="여자"/></em> <label for="gender">여자</label>
 							</td>
 							<th class="normal"><label>내/외국인</label></th>
 							<td class="td_infomation">
-									<em><input type="radio" name="foreigner" id="foreigner" value="KOREAN" class="hand" checked="checked" /></em> <label for="foreigner" class="hand">내국인</label>
-									<em><input type="radio" name="foreigner" id="foreigner" value="FOREIGNER" class="hand" /></em> <label for="foreigner" class="hand">외국인</label>
+									<em><input type="radio" name="foreigner" id="foreigner" value="내국인" class="hand" checked="checked" /></em> <label for="foreigner" class="hand">내국인</label>
+									<em><input type="radio" name="foreigner" id="foreigner" value="외국인" class="hand" /></em> <label for="foreigner" class="hand">외국인</label>
 							</td>
 						</tr>
 						<tr>
 							<th class="j-spot"><label>휴대전화</label></th>
 							<td class="td_infomation">
-								<input type="text" id="phone_num1" style="width: 55px; ime-mode: disabled;" maxlength="3" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
-								<input type="text" id="phone_num2" style="width: 55px; ime-mode: disabled;" maxlength="4" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
-								<input type="text" id="phone_num3" style="width: 55px; ime-mode: disabled;" maxlength="4" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+								<input type="text" id="phone_num1" name="phone_num"style="width: 55px; ime-mode: disabled;" maxlength="3" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
+								<input type="text" id="phone_num2" name="phone_num"style="width: 55px; ime-mode: disabled;" maxlength="4" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
+								<input type="text" id="phone_num3" name="phone_num"style="width: 55px; ime-mode: disabled;" maxlength="4" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 							</td>
 							<th class="normal"><label>일반전화</label></th>
 							<td>
-								<input type="text" id="home_num1" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
-								<input type="text" id="home_num2" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
-								<input type="text" id="home_num3" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+								<input type="text" id="home_num1" name="home_num" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
+								<input type="text" id="home_num2" name="home_num" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> - 
+								<input type="text" id="home_num3" name="home_num" style="width: 55px; ime-mode: disabled;" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
 							</td>
 						</tr>
 						<tr>
@@ -269,7 +374,7 @@ $(function(){
 				</table>
 			</div>
 		</div>
-		<p></p>
+		<hr>
 		<h3 class="tpad20 bpad5 font14 bold dark-gray">추가정보</h3>
 		<table class="tbl-l tbl-fix" summary="온라인 수강신청을 위한 추가정보를 입력하세요.">
 			<colgroup><col width="110" /><col width="*" /><col width="110" /><col width="*" /></colgroup>
@@ -299,7 +404,7 @@ $(function(){
 				</tr>
 			</tbody>
 		</table>
-		<p></p>
+		<hr>
 		<h3 class="tpad20 bpad5 font14 bold dark-gray">국민취업지원제도</h3>
 		<table class="tbl-l tbl-fix" summary="온라인 수강신청을 위한 국민취업지원제도 정보를 입력하세요.">
 			<colgroup><col width="110" /><col width="*" /><col width="110" /><col width="*" /><col width="110" /><col width="*" /></colgroup>
@@ -307,28 +412,26 @@ $(function(){
 				<tr>
 					<th class="normal">참여여부</th>
 					<td colspan="5">
-							<em><input type="radio" name="employment" id="employment"/></em>
-							<label for="employment" class="hand">Ⅰ유형</label>
-							<em><input type="radio" name="employment" id="employment"/></em>
-							<label for="employment" class="hand">Ⅱ유형</label>
-							<em><input type="radio" name="employment" id="employment" checked="checked" /></em> <label for="employment">미참여</label>
+						<em><input type="radio" name="employment" id="employment1" class="sy" value="Ⅰ유형"/></em><label for="employment">Ⅰ유형</label>
+						<em><input type="radio" name="employment" id="employment2" class="sy" value="Ⅱ유형"/></em><label for="employment" >Ⅱ유형</label>
+						<em><input type="radio" name="employment" id="employment3" class="sy" value="미참여" checked="checked"/></em><label for="employment">미참여</label>
 					</td>
 				</tr>
 				<tr>
-					<th class="normal">참여센터</th>
-					<td><input type="text" name="employment_center" id="employment_center" style="margin-right:20px; width: 120px;" maxlength="30" disabled="disabled" /></td>
+					<th>참여센터</th>
+					<td><input type="text" class="sy1" name="employment_center" id="employment_center" style="margin-right:20px; width: 120px;" maxlength="30" disabled/></td>
 					
-					<th class="normal">담당자</th>
-					<td><input type="text" name="employment_counselor" id="employment_counselor" style="width: 120px;" maxlength="30" disabled="disabled" /></td>
+					<th>담당자</th>
+					<td><input type="text" class="sy1" name="employment_counselor" id="employment_counselor" style="width: 120px;" maxlength="30" disabled/></td>
 					
-					<th class="normal">연락처</th>
-					<td><input type="text" name="employment_num" id="employment_num" style="width: 120px;" maxlength="20" disabled="disabled" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/></td>
+					<th>연락처</th>
+					<td><input type="text" class="sy1" name="employment_num" id="employment_num" style="width: 120px;" maxlength="20" disabled oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/></td>
 				</tr>
 			</tbody>
 		</table>
 		<p></p>
 		<div>
-				<button type="submit" id="btnOk" class="btn btn-primary">신청 완료</button>
+				<button type="button" id="btnOk" class="btn btn-primary">신청 완료</button>
 		</div>	
 	</form>
 </div>
