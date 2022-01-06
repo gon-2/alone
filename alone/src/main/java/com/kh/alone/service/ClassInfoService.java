@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.alone.dao.ClassInfoDao;
 import com.kh.alone.vo.ClassInfoVo;
+import com.kh.alone.vo.OnlineRegistVo;
 
 @Service
 public class ClassInfoService {
@@ -73,5 +74,16 @@ public class ClassInfoService {
 	public List<ClassInfoVo> selectOffice(){
 		List<ClassInfoVo> office = dao.selectOffice();
 		return office;
+	}
+	
+	// 수강신청하기
+	public void insertOnlineRegist(OnlineRegistVo vo) {
+		dao.insertOnlineRegist(vo);
+	}
+	
+	// 주민번호로 나의 온라인 신청현황 확인하기
+	public List<OnlineRegistVo> selectMine(){
+		List<OnlineRegistVo> mine = dao.selectMine();
+		return mine;
 	}
 }
