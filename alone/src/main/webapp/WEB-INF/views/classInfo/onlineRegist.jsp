@@ -50,6 +50,8 @@ $(function(){
 		var c_day = "";
 		if(c_day1 == "전체"){
 			c_day = "전체";
+		} else {
+			c_day = c_day1;
 		}
 		console.log("야간반인지 받아오기: " + c_day);
 		
@@ -57,6 +59,8 @@ $(function(){
 		var c_cate = "";
 		if(c_cate1 == "전체"){
 			c_cate = "전체";
+		} else {
+			c_cate = c_cate1;
 		}
 		console.log("교육과정분류: " + c_cate); 
 		
@@ -64,6 +68,8 @@ $(function(){
 		var c_title = "";
 		if(c_title1 == "전체"){
 			c_title = "전체";
+		} else {
+			c_title = c_title1;
 		}
 		console.log("과정명: " + c_title);   //과정명 받아오기
 		
@@ -127,18 +133,12 @@ $(function(){
 		
 		var e_mail = "";
 		
-		if( (e_mail1 != "") && (e_mail2 == "") && (email_domain == "선택하세요")){
-			alert("이메일도메인을 선택해주세요.");
-		}else if( (e_mail1 == "") && (e_mail2 != "") && (email_domain == "선택하세요")){
-			alert("이메일을 확인해주세요.")
-		}else if((e_mail1 == "") && (e_mail2 == "") && (email_domain != "선택하세요")){
+		if ((e_mail1 == "") || (e_mail2 == "")) {
 			alert("이메일을 확인해주세요.");
-		}else if((e_mail1 == "") && (e_mail == "") && (email_domain == "선택하세요")){
-			email = "미등록";
-			console.log("이메일: " + email);
-		}else{
-			e_mail = e_mail1 + "@" + e_mail2;
+			return false;
 		}
+		e_mail = e_mail1 + "@" + e_mail2;
+		
 
 		var regist_path = $("input:radio[name=regist_path]:checked").val();
 		console.log("지원경로: " + regist_path);
@@ -210,23 +210,30 @@ $(function(){
 	    	"employment_num" : employment_num
 	    };
 	    
-	    console.log("제발 넘어와라 sData : " + sData );
+	    console.log("제발 넘어와라 진심으로 간절하게 부탁할게 제발 sData : " + sData );
 	    
 	    var url = "/classInfo/onlineRegistRun";
 	    
-	    $.get (url, sData, function(rData) {
+	    $.post (url, sData, function(rData) {
 	    	console.log(rData);
 	    	if (rData == "success") {
-	    		method="post";
-	    		location.href = "/classInfo/myStatus";
+	    		
+	    		location.href = "/classInfo/myStatusView";
 	    	}
 	    });
-	    
-	    
-// 	    location.href = location;
-	    
 	}); // 전송버튼 클릭
 	
+	$("#btnNok").click(function(){
+		var url = "/";
+		$.get(url, function(){
+			location.href = "/";
+		});
+	});
+	
+	$("#email_domain").change(function() {
+		var val = $(this).val();
+		$("#e_mail2").val(val);
+	});
 	
 });
 </script>
@@ -356,18 +363,18 @@ $(function(){
 							<input type="text" id="e_mail2" style=" width: 120px; ime-mode: disabled;" maxlength="130" /> 
 								<select name="tmp_email_domain" id="email_domain">
 										<option>선택하세요</option>
-										<option>gmail.com</option>
-										<option>naver.com</option>
-										<option>daum.net</option>
-										<option>nate.com</option>
-										<option>paran.com</option>
-										<option>korea.com</option>
-										<option>hitel.net</option>
-										<option>unitel.co.kr</option>
-										<option>kornet.net</option>
-										<option>dreamwiz.com</option>
-										<option>chollian.net</option>
-										<option>hotmail.com</option>
+										<option value="gmail.com">gmail.com</option>
+										<option value="naver.com">naver.com</option>
+										<option value="daum.net">daum.net</option>
+										<option value="nate.com">nate.com</option>
+										<option value="paran.com">paran.com</option>
+										<option value="korea.com">korea.com</option>
+										<option value="hitel.net">hitel.net</option>
+										<option value="unitel.co.kr">unitel.co.kr</option>
+										<option value="kornet.net">kornet.net</option>
+										<option value="dreamwiz.com">dreamwiz.com</option>
+										<option value="chollian.net">chollian.net</option>
+										<option value="hotmail.com">hotmail.com</option>
 								</select>
 							</td>
 						</tr>
@@ -430,9 +437,10 @@ $(function(){
 				</tr>
 			</tbody>
 		</table>
-		<p></p>
+		<hr>
 		<div>
-				<button type="button" id="btnOk" class="btn btn-primary">신청 완료</button>
+			<button type="button" id="btnOk" class="btn btn-primary">신청 완료</button>
+			<button type="button" id="btnNok" class="btn btn-primary">홈으로 가기</button>
 		</div>	
 	</form>
 </div>

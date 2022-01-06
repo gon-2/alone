@@ -4,15 +4,14 @@
 
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <script>
-$(function(){
-	$("#tabbable").click(function(){
-		var c_day = $("#c_day").val();
-		console.log("정소주정 받아오기:" + c_day);
+// $(function(){
+// 	$("#tabbable").click(function(){
+// 		var c_day = $("#c_day").val();
+// 		console.log("정소주정 받아오기:" + c_day);
 		
-	});
+// 	});
 	
-});
-
+// });
 
 
 </script>
