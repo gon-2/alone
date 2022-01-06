@@ -1,16 +1,14 @@
 package com.kh.alone.dao;
 
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.kh.alone.vo.ClassInfoVo;
+import com.kh.alone.vo.MemberBoardVo;
 import com.kh.alone.vo.MemberVo;
 import com.kh.alone.vo.PagingDto;
 
@@ -44,9 +42,14 @@ public class MemberDao {
 //		return night;
 //	}
 	
-	public List<MemberVo> selectAll(PagingDto pagingDto) {
-		System.out.println("BoardDao, selectAll, pagingDto:" + pagingDto);
-		List<MemberVo> list = sqlSession.selectList(NAMESPACE + "selectAll", pagingDto);
+	public List<MemberVo> selectAll() {
+		List<MemberVo> list = sqlSession.selectList(NAMESPACE + "selectAll");
+		return list;
+	}
+	
+	// 맴버 브로드 리스트 조회
+	public List<MemberBoardVo> memberBoardForm() {
+		List<MemberBoardVo> list = sqlSession.selectList(NAMESPACE + "memberBoardForm");
 		return list;
 	}
 	// 회원등록
@@ -60,9 +63,9 @@ public class MemberDao {
 		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "memberModify", userid);
 		return memberVo;
 	}
-//	// 로그인
-//	public void login(MemberVo memberVo) {
-//		 sqlSession.selectOne(NAMESPACE + "login", memberVo);
-//	}
+	// 답글추가 
+	public void insertReply(MemberBoardVo memberboardVo) {
+		sqlSession.insert(NAMESPACE + "insertReply", memberboardVo);
+	}
 		
 	}
