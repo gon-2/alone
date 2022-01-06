@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kh.alone.dao.ClassRegistBoardDao;
 import com.kh.alone.vo.PagingDto;
 import com.kh.alone.vo.RegistBoardVo;
+import com.kh.alone.vo.RegistCommentVo;
 
 @Service
 public class ClassRegistBoardService {

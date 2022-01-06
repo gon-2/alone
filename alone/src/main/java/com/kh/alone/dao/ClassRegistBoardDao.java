@@ -55,8 +55,8 @@ public class ClassRegistBoardDao {
 		return registBoardvo;
 	}
 	
+	// 게시글 조회수 
 	public void viewcnt(String class_board_title) {
 		session.update(NAMESPACE + "viewcnt" , class_board_title); 
 	}
-	
 }

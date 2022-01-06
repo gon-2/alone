@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.alone.vo.FindVo;
 import com.kh.alone.vo.JobTestVo;
 import com.kh.alone.vo.LookJobVo;
+import com.kh.alone.vo.MemberBoardVo;
 import com.kh.alone.vo.ReferenceVo;
 
 

@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.kh.alone.dao.MemberDao;
-import com.kh.alone.vo.ClassInfoVo;
+import com.kh.alone.vo.MemberBoardVo;
 import com.kh.alone.vo.MemberVo;
 import com.kh.alone.vo.PagingDto;
 
@@ -18,10 +18,18 @@ public class MemberService {
 	@Inject
 	private MemberDao memberDao;
 	
-	public List<MemberVo> selectAll(PagingDto pagingDto) {
-		List<MemberVo> list = memberDao.selectAll(pagingDto);
+	public List<MemberVo> selectAll() {
+		List<MemberVo> list = memberDao.selectAll();
 		return list;
 	}
+	
+	
+	// 맴버 브로드 리스트 조회
+	public List<MemberBoardVo> memberBoardForm() {
+		List<MemberBoardVo> list = memberDao.memberBoardForm();
+		return list;
+	}
+	
 //	// 주간반 조회
 //	public List<MemberVo> selectWeekly(){
 //		List<MemberVo> weekly = memberDao.selectWeekly();
@@ -51,12 +59,9 @@ public class MemberService {
 		return memberVo;
 	}
 	
-//	// 로그인처리
-//	public void login(MemberVo memberVo) {
-//		memberDao.login(memberVo);
-//	}
-	
+	// 회원답글
+	public void insertReply(MemberBoardVo memberboardVo) {
+		memberDao.insertReply(memberboardVo);
+		System.out.println("MemberService, insertReply, insert....");
 	}
-
-			
-
+}
