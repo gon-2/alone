@@ -38,8 +38,8 @@ public class ClassRegistBoardService {
 	}
 	
 	// 최신 게시글 3개만 조회
-	public List<RegistBoardVo> countThree(){
-		List<RegistBoardVo> list = registboardDao.countThree();
+	public List<RegistBoardVo> countThird(){
+		List<RegistBoardVo> list = registboardDao.countThird();
 		return list;
 	}
 }

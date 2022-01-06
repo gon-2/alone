@@ -67,7 +67,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${list}" var="RegistBoardVo">
+					<c:forEach items="${classregistList}" var="RegistBoardVo">
 						<tr align="center">
 							<td>${RegistBoardVo.class_board_title}</td>
 							<td><a href="">${RegistBoardVo.class_board_content}</a></td>
