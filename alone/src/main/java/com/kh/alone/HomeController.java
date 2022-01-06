@@ -75,20 +75,21 @@ public class HomeController {
 	@RequestMapping(value="/login_run/{userid}/{userpw}/{saveId}", method=RequestMethod.GET)
 	public String loginRun(RedirectAttributes rttr,	HttpSession session,
 			@PathVariable("userid") String userid, @PathVariable("userpw") String userpw, @PathVariable("saveId") String saveId) {
-		System.out.println(userid);
-		System.out.println(userpw);
-		System.out.println(saveId);
 		MemberVo memberVo = homeService.login(userid, userpw);
+		
 		System.out.println("login_run, memberVo:" + memberVo);
-			session.setAttribute("memberVo", memberVo);
-			String targetLocation = (String) session.getAttribute("targetLocation");
-			System.out.println(targetLocation);
-			session.removeAttribute("targetLocation");
-			if(targetLocation == null) {
-				return "redirect:/";
-			} else {
-				return "redirect:" + targetLocation;
-			}
+		
+		session.setAttribute("memberVo", memberVo);
+		String targetLocation = (String) session.getAttribute("targetLocation");
+		
+		System.out.println(targetLocation);
+		
+		session.removeAttribute("targetLocation");
+		if(targetLocation == null) {
+			return "redirect:/";
+		} else {
+			return "redirect:" + targetLocation;
+		}
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
