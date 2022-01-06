@@ -103,10 +103,10 @@ BODY {
 								<li>
 									<a href="/customer_main/home">고객센터</a>
 									<ul>
-										<li><a href="#">자주묻는 질문</a></li>
-										<li><a href="/customermain/qna">Q &amp; A</a></li>
-										<li><a href="#">건의사항</a></li>
-										<li><a href="#">상담</a></li>
+										<li><a href="/customer_main/qna">자주묻는 질문</a></li>
+										<li><a href="/customer_main/class_regist">수강신청</a></li>
+										<li><a href="/customer_main/inquire">건의사항</a></li>
+										<li><a href="/customer_main/consult">상담</a></li>
 									</ul>
 								</li>
 								<li>
