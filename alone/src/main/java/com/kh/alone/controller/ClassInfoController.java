@@ -50,24 +50,7 @@ public class ClassInfoController {
 		return "classInfo/list_all";
 	}
 	
-	// 메인페이지에서 모집현황보여주기
-	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String mainSelectAll(Model model) {
-		List<ClassInfoVo> list = service.selectAll();
-		List<ClassInfoVo> weekly = service.selectWeekly();
-		List<ClassInfoVo> weekend = service.selectWeekend();
-		List<ClassInfoVo> night = service.selectNight();
-		
-		model.addAttribute("list", list);
-		model.addAttribute("weekly", weekly);
-		model.addAttribute("weekend", weekend);
-		model.addAttribute("night", night);
-		System.out.println("컨트롤러list: " + list);
-		System.out.println("컨트롤러weekly: " + weekly);
-		System.out.println("컨트롤러weekend: " + weekend);
-		System.out.println("컨트롤러night: " + night);
-		return "home";
-	}
+	
 	
 	//온라인 접수 동의
 	@RequestMapping(value="/onlineAgree", method=RequestMethod.GET)

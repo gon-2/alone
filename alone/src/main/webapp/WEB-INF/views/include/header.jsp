@@ -67,7 +67,7 @@ BODY {
         <!-- 로그인 되어 있지 않고 레이아웃이 없으면 -->
         <!--@elseif(!$is_logged && $module_info->display_login_info != 'N')-->
             <li> | </li>
-            <li><a href="/member/login_form" target=_top>LOGIN</a></li>
+            <li><a href="/login_form" target=_top>LOGIN</a></li>
         <!--@end-->
         </ul>
     </div>
@@ -76,7 +76,7 @@ BODY {
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="/classInfo/home" id="logo">KH정보교육원 </a></h1>
+						<h1><a href="/" id="logo">KH정보교육원 </a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
