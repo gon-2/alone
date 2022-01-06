@@ -1,3 +1,9 @@
+/*
+ * 2021-01-06
+ * Author : 이정훈
+ * code Explanation : 고객센터 수강신청 댓글 테스트
+ */
+
 package com.kh.alone;
 
 import java.util.List;
@@ -22,10 +28,17 @@ public class ClassRegistBoardDaoTest {
 	private RegistCommentDao registCommentDao;
 
 	@Test
-	public void insertcomment() {
+	public void insertcommentTest() {
 		RegistCommentVo vo = new RegistCommentVo();
 		vo.setClass_board_comment_userid("user02");
 		vo.setClass_board_comment_content("하이2");
 		registCommentDao.insertcomment(vo);
 	}
+	
+	@Test
+	public void getcommentTest() {
+		List<RegistCommentVo> list = registCommentDao.getcomment();
+		System.out.println("list >> " + list);
+	}
+
 }

@@ -5,33 +5,45 @@
     
 <%@ include file="/WEB-INF/views/include/hoon/hoonheader.jsp" %>
 <head>
-	<title>수강신청 특정 게시판 페이지</title>
-	<script>
-		$(function(){
-			$("#inComment").click(function(e){
-				e.preventDefault();
-				$("#modal-247369").trigger("click");
-			});
-			
-			$("#btncommentSave").click(function(e){
-				e.preventDefault();
-				
-				var class_board_comment_userid = $("#class_board_comment_userid").val();
-				var class_board_comment_content = $("#class_board_comment_content").val();
-				
-				var sendData = {
-						"class_board_comment_userid" : class_board_comment_userid,
-						"class_board_comment_content" : class_board_comment_content,
-				};
-				
-				var url = "/comment/insertcomment";
-				
-				$.post(url , sendData , function(rData){
-					console.log(rData);
-				});
-			});
+<title>수강신청 특정 게시판 페이지</title>
+<script>
+	$(function(){
+		$("#inComment").click(function(e){
+			e.preventDefault();
+			$("#modal-247369").trigger("click");
 		});
-	</script>
+		
+ 		$("#btncommentSave").click(function(e){
+			e.preventDefault();
+			var class_board_comment_userid = $("#class_board_comment_userid").val();
+			var class_board_comment_content = $("#class_board_comment_content").val();
+ 			var class_board_comment_no = $("#class_board_comment_no").val(); 
+		
+			console.log("class_board_comment_userid >> " + class_board_comment_userid);
+			console.log("class_board_comment_content >> " + class_board_comment_content);
+ 			console.log("class_board_comment_no >> " + class_board_comment_no); 
+			
+			var sendData = {
+ 					"class_board_comment_no" : class_board_comment_no,
+					"class_board_comment_userid" : class_board_comment_userid,
+					"class_board_comment_content" : class_board_comment_content
+			};
+			
+			var url = "/comment/insertcomment";
+			$.post(url , sendData , function(rData){
+				console.log(rData);
+				if(rData == "success"){
+					alert("댓글이 입력되었습니다");	
+				}
+			});
+		}); 
+		
+		$("#showComment").click(function(e){
+			e.preventDefault();
+			$("#commentTable").show(1000);
+		});
+	});
+</script>
 </head>
 <div class="container-fluid">
 	<div class="row">
@@ -51,11 +63,12 @@
 							<input type="text" name="class_board_comment_userid" id="class_board_comment_userid" placeholder="아이디를 입력하세요." value="${class_board_comment_userid}"><br>
 							<label for="class_board_comment_content">댓글 입력</label><br>
 							<textarea name="class_board_comment_content" id="class_board_comment_content" placeholder="댓글을 입력하세요." value="${class_board_comment_content}"></textarea>
+							<input type="number" name="class_board_comment_no" id="class_board_comment_no" >
 							<input type="hidden" name="class_board_comment_date" id="class_board_comment_date">
 						</div>
 						<div class="modal-footer"> 
 							<button type="button" class="btn btn-primary" id="btncommentSave">댓글 저장</button> 
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+							<button type="button" class="btn btn-secondary" id="btnCancel" data-dismiss="modal">취소</button>
 						</div>
 					</div>
 				</div>
@@ -67,7 +80,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="jumbotron" align="center">
-				<h2>${registboardvo.class_board_userid}님의 수강 신청 상담글입니다.</h2>
+				<h2>${registboardvo.class_board_userid}님의   글번호 ${registboardvo.class_board_number}번 수강 신청 상담글입니다.</h2>
 				<p>
 					<a class="btn btn-primary btn-large" href="/class_board/class_regist">목록으로</a>
 				</p>
@@ -92,6 +105,7 @@
 				<button type="submit" class="btn btn-primary">수정</button>
 				<button type="reset" class="btn btn-success">삭제</button>
 				<button type="button" class="btn btn-warning" id="inComment">댓글달기</button>
+				<button type="button" class="btn btn-warning" id="showComment">댓글보기</button>
 			</form> 
 		</div>
 	</div>
@@ -99,90 +113,25 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<h3>댓글 내용</h3>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Product</th>
-						<th>Payment Taken</th>
-						<th>Status
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							1
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							Default
-						</td>
-					</tr>
-					<tr class="table-active">
-						<td>
-							1
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							Approved
-						</td>
-					</tr>
-					<tr class="table-success">
-						<td>
-							2
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							02/04/2012
-						</td>
-						<td>
-							Declined
-						</td>
-					</tr>
-					<tr class="table-warning">
-						<td>
-							3
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							03/04/2012
-						</td>
-						<td>
-							Pending
-						</td>
-					</tr>
-					<tr class="table-danger">
-						<td>
-							4
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							04/04/2012
-						</td>
-						<td>
-							Call in to confirm
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<h3 align="center">댓글 내용</h3>
+			<form>
+				<table class="table" align="center" id="commentTable" style="display: none;">
+					<thead>
+						<tr align="center">
+							<th>아이디</th>
+							<th>작성내용</th>
+							<th>작성일자</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${list}" var="commentvo">
+							<tr align="center">
+								<td>${commentvo}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</form>
 		</div>
 	</div>
 </div> 

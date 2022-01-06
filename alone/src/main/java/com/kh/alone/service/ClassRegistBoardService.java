@@ -39,7 +39,7 @@ public class ClassRegistBoardService {
 		return list;
 	}
 	
-	// 최신 게시글 3개만 조회
+	// 최신 게시글 3개만 조회 ( 메인 페이지 화면만! ) 
 	public List<RegistBoardVo> countThird(){
 		List<RegistBoardVo> list = registboardDao.countThird();
 		return list;

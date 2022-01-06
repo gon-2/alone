@@ -7,12 +7,16 @@
 	
 	<!-- 댓글 입력 -->
 	<insert id="insertcomment">
-		insert into tbl_class_board_comment(class_board_comment_content , class_board_comment_userid , class_board_comment_date)
-		values(#{class_board_comment_content} , #{class_board_comment_userid} , sysdate)
+		insert into tbl_class_board_comment(class_board_comment_no , class_board_comment_content , class_board_comment_userid , class_board_comment_date)
+		values(class_board_comment_no , #{class_board_comment_content} , #{class_board_comment_userid} , sysdate)
    	</insert>
-   	<!-- 댓글 조회 -->
-   	<select id="selectcomment" resultType="RegistCommentVo">
-   		select * from tbl_class_board_comment
-   	</select>	
+   	
+   	<!-- 
+   		아이디를 가지고있는 게시글의 댓글 정보 조회 
+   		ex) user01의 게시글에 댓글은 누가 달았고 , 내용은 무엇
+   	-->
+   	<select id="getcomment" resultType="RegistCommentVo">
+		select * from tbl_class_board_comment	
+     </select>	
 	
 </mapper>

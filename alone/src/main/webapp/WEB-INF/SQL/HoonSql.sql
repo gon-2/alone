@@ -38,7 +38,8 @@ create table tbl_class_board(
 
 -- 댓글 테이블
 create table tbl_class_board_comment(
-    class_board_comment_content varchar2(300) primary key,
+    class_board_comment_no number primary key,
+    class_board_comment_content varchar2(300) not null,
     class_board_comment_userid varchar(50) references tbl_member(userid) not null,
     class_board_comment_date timestamp default sysdate,
     class_board_comment_cnt number default 0 not null
@@ -78,6 +79,13 @@ values(? , ? , sysdate)
 
 -- 댓글 조회 
 select * from tbl_class_board_comment
+
+-- 해당하는 아이디 게시글에 댓글단 정보
+select * 
+from tbl_class_board_comment
+where class_board_comment_userid = (select class_board_userid 
+                                    from tbl_class_board 
+                                    where class_board_userid='user02');
 
 
 
