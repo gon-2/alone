@@ -13,7 +13,7 @@
 			<div class="jumbotron" align="center">
 				<h2>수강신청 게시판 글 올리기</h2>
 				<p>
-					<a class="btn btn-primary btn-large" href="/ClassBoard/class_regist">목록으로</a>
+					<a class="btn btn-primary btn-large" href="/class_board/class_regist">목록으로</a>
 				</p>
 			</div>
 		</div>

@@ -48,4 +48,11 @@ public class ClassRegistBoardDao {
 		System.out.println("ClassRegistBoardDao, countThree, list: " + list);
 		return list;
 	}
+	
+	// 제목 클릭시 내용 보이기
+	public RegistBoardVo getBoard(String class_board_title) {
+		RegistBoardVo registBoardvo = session.selectOne(NAMESPACE + "getBoard" , class_board_title);
+		return registBoardvo;
+	}
+	
 }

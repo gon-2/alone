@@ -42,4 +42,10 @@ public class ClassRegistBoardService {
 		List<RegistBoardVo> list = registboardDao.countThird();
 		return list;
 	}
+	
+	// 제목 클릭시 내용 보이기
+	public RegistBoardVo getBoard(String class_board_title) {
+		RegistBoardVo registBoardvo = registboardDao.getBoard(class_board_title);
+		return registBoardvo;
+	}
 }
