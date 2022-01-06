@@ -15,6 +15,11 @@ public class ClassInfoService {
 	@Inject
 	private ClassInfoDao dao;
 	
+	// 수업추가하기
+	public void insertClassInfo(ClassInfoVo vo) {
+		dao.insertClassInfo(vo);
+	}
+	
 	// 모집현황 전체조회
 	public List<ClassInfoVo> selectAll(){
 		List<ClassInfoVo> list = dao.selectAll();

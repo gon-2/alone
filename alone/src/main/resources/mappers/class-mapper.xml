@@ -4,8 +4,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kh.alone.mappers.class">
 
-	<!-- 수업 추가하기 -->
-	<insert id="">
+	<!-- 관리자 수업 추가하기 -->
+	<insert id="insertClassInfo">
 		insert into tbl_class(c_cate, c_title, c_term, c_time, c_room, c_total, c_pay, c_day)
 		values(#{c_cate}, #{c_title}, #{c_term}, #{c_time}, #{c_room}, #{c_total}, #{c_pay}, #{c_day})
 	</insert>
