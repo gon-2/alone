@@ -55,4 +55,8 @@ public class ClassRegistBoardDao {
 		return registBoardvo;
 	}
 	
+	public void viewcnt(String class_board_title) {
+		session.update(NAMESPACE + "viewcnt" , class_board_title); 
+	}
+	
 }

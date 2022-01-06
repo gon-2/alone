@@ -27,7 +27,7 @@
 		select * from tbl_class_board
 		where class_board_title = #{class_board_title}
 	</select>
-	
+		
 	<!-- 마지막에 올린글이 맨밑으로 보이게 하기 -->
 	<select id="listboard" resultType="RegistBoardVo">
 		select * from tbl_class_board
@@ -60,5 +60,12 @@
 			</choose>
 		</if> 
    </sql>
+	<!-- 게시글 제목 클릭 시 조회수 증가 -->   
+  	<update id="viewcnt">
+		update tbl_class_board
+		set class_board_viewcnt = class_board_viewcnt + 1
+		where class_board_title = #{class_board_title}
+	</update>
+   
 	
 </mapper>

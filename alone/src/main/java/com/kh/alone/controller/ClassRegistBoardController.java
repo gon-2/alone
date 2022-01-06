@@ -45,7 +45,6 @@ public class ClassRegistBoardController {
 	public String getBoard(String class_board_title, Model model) {
 		RegistBoardVo registboardvo = registboardservice.getBoard(class_board_title);
 		model.addAttribute("registboardvo" , registboardvo);
-		System.out.println("ClassRegistBoardController , getBoard , registboardvo >> " + registboardvo);
 		return "/board_form/class_regist_board_getBoard";
 	}
 	

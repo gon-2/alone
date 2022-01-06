@@ -11,6 +11,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.alone.dao.ClassRegistBoardDao;
 import com.kh.alone.vo.PagingDto;
@@ -44,8 +45,10 @@ public class ClassRegistBoardService {
 	}
 	
 	// 제목 클릭시 내용 보이기
+	@Transactional
 	public RegistBoardVo getBoard(String class_board_title) {
 		RegistBoardVo registBoardvo = registboardDao.getBoard(class_board_title);
+		registboardDao.viewcnt(class_board_title);
 		return registBoardvo;
 	}
 }
