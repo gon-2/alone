@@ -11,7 +11,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="jumbotron" align="center">
-				<h2>${registboardvo.class_board_userid}님의 글입니다.</h2>
+				<h2>${registboardvo.class_board_userid}님의 수강 신청 상담글입니다.</h2>
 				<p>
 					<a class="btn btn-primary btn-large" href="/class_board/class_regist">목록으로</a>
 				</p>
@@ -33,8 +33,8 @@
 					<label for="class_board_content">상담 내용</label><br>
 					<textarea style="width:300px; height:100px;"  id="class_board_content" name="class_board_content" readonly="readonly">${registboardvo.class_board_content}</textarea>
 				</div>
-				<button type="submit" class="btn btn-primary">게시</button>
-				<button type="reset" class="btn btn-success">다시 입력</button>
+				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="reset" class="btn btn-success">삭제</button>
 			</form> 
 		</div>
 	</div>
