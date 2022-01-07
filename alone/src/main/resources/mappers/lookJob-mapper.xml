@@ -2,7 +2,9 @@
 <!DOCTYPE mapper         
    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"         
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kh.test02.mappers.lookJob">
+<mapper namespace="com.kh.alone.mappers.lookJob">
+	
+
 	<select id="selectAll" resultType="LookJobVo">
 		select * from lookJob
 		order by jobno desc
@@ -52,7 +54,6 @@
 	<select id="referenceRoomList" resultType="ReferenceVo">
 		select rno, rtitle, rwriter, recommend, hits, to_char(sysdate, 'YYYY-MM-DD')
 		reference_date, to_char(sysdate, 'HH:MI') reference_time from tbl_reference
-		order by rno desc
 	</select>
 	
 	<select id="getReference" resultType="ReferenceVo">
@@ -66,5 +67,11 @@
 		where rno = #{rno}
 		order by rno desc
 	</select>
+	
+	<!-- 글 갯수 -->
+<!-- 	<select id="r_getCount" resultType="int"> -->
+<!-- 		select count(*) from tbl_reference -->
+<!-- 		<include refid="search"></include> -->
+<!-- 	</select> -->
 	
 </mapper>

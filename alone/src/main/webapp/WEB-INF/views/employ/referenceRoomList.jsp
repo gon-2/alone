@@ -2,8 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/paging_form.jsp" %>
 <script>
 $(function() {
+	$(".page-link").click(function(e) {
+		e.preventDefault(); // 브라우저의 기본기능 막기
+		console.log($(this));
+		var page =	$(this).attr("href");
+		$("#frmPaging > input[name=page]").val(page);
+		$("#frmPaging > input[name=searchType]").val("${pagingDto.searchType}");
+		$("#frmPaging > input[name=keyword]").val("${pagingDto.keyword}");
+		$("#frmPaging").submit();
+	});
 });
 </script>
 
@@ -62,28 +72,32 @@ $(function() {
 				</tbody>
 			</table>
 			<nav>
-				<ul class="pagination">
+				<ul class="pagination justify-content-center">
+					<c:if test="${pagingDto.startPage != 1}">
 					<li class="page-item">
-						<a class="page-link" href="#">Previous</a>
+						<a class="page-link" href="${pagingDto.startPage - 1}">이전</a>
 					</li>
+					</c:if>
+					<c:forEach var="v" begin="${pagingDto.startPage}" 
+									   end="${pagingDto.endPage}">
+					<li 
+						<c:choose>
+							<c:when test="${pagingDto.page == v}">
+								class="page-item active"
+							</c:when>
+							<c:otherwise>
+								class="page-item"
+							</c:otherwise>
+						</c:choose>
+					>
+						<a class="page-link" href="${v}">${v}</a>
+					</li>
+					</c:forEach>
+					<c:if test="${pagingDto.endPage < pagingDto.totalPage}">
 					<li class="page-item">
-						<a class="page-link" href="#">1</a>
+						<a class="page-link" href="${pagingDto.endPage + 1}">다음</a>
 					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">2</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">3</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">4</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">5</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">Next</a>
-					</li>
+					</c:if>
 				</ul>
 			</nav>
 		</div>

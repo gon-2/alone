@@ -83,4 +83,10 @@ public class LookJobService {
 		List<ReferenceVo> imageList = lookJobDao.referenceImage(rno);
 		return imageList;
 	}
+	
+//	// 자료실 페이지 카운터 확인하기
+//	public int r_getCount(PagingVo pagingVo) {
+//		int count = lookJobDao.r_getCount(pagingVo);
+//		return count;
+//	}
 }

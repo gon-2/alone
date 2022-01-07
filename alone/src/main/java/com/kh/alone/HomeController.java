@@ -32,6 +32,7 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	//메인화면에서 수업 목록 띄워주기
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -45,10 +46,6 @@ public class HomeController {
 		model.addAttribute("weekly", weekly);
 		model.addAttribute("weekend", weekend);
 		model.addAttribute("night", night);
-		System.out.println("컨트롤러list: " + list);
-		System.out.println("컨트롤러weekly: " + weekly);
-		System.out.println("컨트롤러weekend: " + weekend);
-		System.out.println("컨트롤러night: " + night);
 		return "home";
 	}
 	

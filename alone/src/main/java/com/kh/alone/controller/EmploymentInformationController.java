@@ -72,6 +72,10 @@ public class EmploymentInformationController {
 	
 	@RequestMapping(value="/referenceRoomList", method=RequestMethod.GET)
 	public String referenceRoomList(Model model) {
+//		int count = lookJobService.r_getCount(pagingVo);
+//		pagingVo.setCount(count);
+//		pagingVo.setPageInfo();
+//	    System.out.println("BoardController, boardListAll, pagingDto:" + pagingVo);
 		List<ReferenceVo> list = lookJobService.referenceRoomList();
 		model.addAttribute("list", list);
 		return "employ/referenceRoomList";
@@ -81,8 +85,10 @@ public class EmploymentInformationController {
 	public String referenceRoom(Model model, int rno) {
 		ReferenceVo referenceVo = lookJobService.getReference(rno);
 		List<ReferenceVo> data = lookJobService.referenceImage(rno);
+//		List<ReferenceVo> list = lookJobService.referenceRoomList(pagingVo);
 		model.addAttribute("data", data);
 		model.addAttribute("referenceVo", referenceVo);
+//		model.addAttribute("list", list);
 		return "employ/referenceRoom";
 	}
 }
