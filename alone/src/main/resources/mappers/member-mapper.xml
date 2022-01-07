@@ -13,6 +13,11 @@
 		select * from tbl_member
 		order by userid
 	</select>
+	<!-- 답글 -->
+	<select id="memberBoardForm" resultType="MemberBoardVo">
+		select bno, title, content, userid, to_char(sysdate, 'YYYY-MM-DD')
+		regdate from tbl_memberboard
+	</select>
 	
 	<!-- 전체보기 -->
 <!-- 	<select id="selectAll" resultType="MemberVo"> -->
@@ -20,28 +25,21 @@
 <!-- 	</select> -->
 	
 	<!-- 주간반 -->
-	<select id="selectWeekly" resultType="MemberVo">
-		select * from tbl_member
-		where c_day = '주간반'
-	</select>
+<!-- 	<select id="selectWeekly" resultType="MemberVo"> -->
+<!-- 		select * from tbl_member -->
+<!-- 		where c_day = '주간반' -->
+<!-- 	</select> -->
 	
 	<!-- 주말반 -->
-	<select id="selectWeekend" resultType="MemberVo">
-		select * from tbl_member 
-		where c_day = '주말반'
-	</select>
+<!-- 	<select id="selectWeekend" resultType="MemberVo"> -->
+<!-- 		select * from tbl_member  -->
+<!-- 		where c_day = '주말반' -->
+<!-- 	</select> -->
 	
 	<!-- 야간반 -->
-	<select id="selectNight" resultType="MemberVo">
-		select * from tbl_member
-		where c_day = '야간반'
-	</select>
-	
-		<!-- 로그인 -->
-<!-- 	<select id="login" resultType="MemberVo"> -->
+<!-- 	<select id="selectNight" resultType="MemberVo"> -->
 <!-- 		select * from tbl_member -->
-<!-- 		where userid = #{userid} -->
-<!-- 		and userpw = #{userpw} -->
+<!-- 		where c_day = '야간반' -->
 <!-- 	</select> -->
 			
 	<!--  회원정보 수정 -->
@@ -49,5 +47,6 @@
 		select * from tbl_member
 		where userid = #{userid}
 	</select>
+	
 	
 </mapper>

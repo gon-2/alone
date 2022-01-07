@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.alone.service.MemberService;
 import com.kh.alone.vo.ClassInfoVo;
+import com.kh.alone.vo.MemberBoardVo;
 import com.kh.alone.vo.MemberVo;
 import com.kh.alone.vo.PagingDto;
 
@@ -62,19 +63,6 @@ public class MemberController {
 		memberService.insertTeam(memberVo);
 		return "redirect:/member/list_all";
 	}
-	// 로그인
-	@RequestMapping(value="/login_form", method=RequestMethod.GET)
-	public String login() {
-		return "member/login_form";
-	}
-
-//	// 로그인처리 
-//	@RequestMapping(value="/login_run", method=RequestMethod.POST)
-//	public String memberLogin(MemberVo memberVo) {
-//		System.out.println(memberVo);
-//		memberService.login(memberVo);
-//		return "redirect:/member/login_run";
-//	}
 	
 	// 회원정보 수정
 	@RequestMapping(value="/modify_form", method = RequestMethod.GET)
@@ -84,6 +72,26 @@ public class MemberController {
 		return "member/modify_form";
 	}
 	
-
-
+	// 내 게시판
+	@RequestMapping(value="/board_form", method = RequestMethod.GET)
+	public String memberBoardForm(Model model) {
+		List<MemberBoardVo> list = memberService.memberBoardForm();
+		model.addAttribute("list", list);
+//		System.out.println(list);
+		return "/member/board_form";
+	}
+	
+	// 내 게시판 답글
+	@RequestMapping(value="/board_form_reply", method=RequestMethod.GET)
+	public String replyForm(MemberBoardVo memberBoardVo) {
+		return "/member/board_form_reply";
+	}
+	// 답글처리 
+	@RequestMapping(value="/board_form_reply_run", method=RequestMethod.POST)
+	public String replyRun(MemberBoardVo memberboardVo) {
+//		System.out.println("MemberController, replyRun, memberboardVo:" + memberboardVo);
+		memberService.memberBoardForm(memberboardVo);
+		return "redirect:/member/board_form";
+	}
+	
 }

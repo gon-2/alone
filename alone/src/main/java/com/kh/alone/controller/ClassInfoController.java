@@ -6,12 +6,9 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.alone.service.ClassInfoService;
 import com.kh.alone.vo.ClassInfoVo;
@@ -69,18 +66,45 @@ public class ClassInfoController {
 		return "/classInfo/onlineRegist";
 	}
 	
-	// 온라인 접수 동의 후 입력양식
+	// 온라인 접수 동의 후 입력양식처리
 	@RequestMapping(value="/onlineRegistRun", method=RequestMethod.POST)
 	@ResponseBody
-	public String onlineRegistRun(OnlineRegistVo vo, RedirectAttributes rttr ) {
+	public String onlineRegistRun(OnlineRegistVo vo) {
+		System.out.println("onlineRegistRun");
 		System.out.println("컨트롤러 입력 값 받아오기: " + vo);
+		service.insertOnlineRegist(vo);
 		return "success";
 	}
 	
-	// 온라인 접수 동의 후 입력양식
-	@RequestMapping(value="/myStatus", method=RequestMethod.GET)
-	public String myStatus(Model model) {
-		return "/classInfo/myStatus";
+	
+	
+	
+	// 주민번호로 확인하는 진행현황확인 폼
+	@RequestMapping(value="/myStatusForm", method=RequestMethod.GET)
+	public String myStatusForm() {
+		
+		return "/classInfo/myStatusForm";
 	}
+	
+	// 주민번호로 확인하는 진행현황확인 처리
+	@RequestMapping(value="/myStatusRun", method=RequestMethod.POST)
+	@ResponseBody
+	public String myStatus(OnlineRegistVo vo) {
+		String r_num = vo.getR_num();
+		int mine = service.selectMine(r_num);
+		if (mine == 0) {
+			return "false";
+		}
+//		model.addAttribute("mine", mine);
+		return "success";
+	}
+	
+	@RequestMapping(value="/myStatusView", method=RequestMethod.GET)
+	public String myStatusView(Model model, String r_num) {
+		List<OnlineRegistVo> mine = service.selectMineList(r_num);
+		model.addAttribute("mine", mine);
+		return "/classInfo/myStatusView";
+	}
+	
 	
 }

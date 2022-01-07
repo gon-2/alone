@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.alone.vo.ClassInfoVo;
+import com.kh.alone.vo.OnlineRegistVo;
 
 @Repository
 public class ClassInfoDao {
@@ -75,6 +76,24 @@ public class ClassInfoDao {
 	public List<ClassInfoVo> selectOffice(){
 		List<ClassInfoVo> office = sqlSession.selectList(NAMESPACE + "selectOffice");
 		return office;
+	}
+	
+	// 수강신청하기
+	public void insertOnlineRegist(OnlineRegistVo vo) {
+		System.out.println("dao, OnlineRegistVo:" +  vo);
+		sqlSession.insert(NAMESPACE + "insertOnlineRegist", vo);
+	}
+	
+	
+	// 주민번호로 나의 신청현황 확인하기
+	public int selectMine(String r_num){
+		int mine = sqlSession.selectOne(NAMESPACE + "selectMine", r_num);
+		return mine;
+	}
+	
+	public List<OnlineRegistVo> selectMineList(String r_num){
+		List<OnlineRegistVo> mineList = sqlSession.selectList(NAMESPACE + "selectMineList", r_num);
+		return mineList;
 	}
 	
 }

@@ -49,7 +49,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="/classInfo/home">
+                <a class="nav-link" href="/">
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <span>메인 홈페이지</span></a>
             </li>

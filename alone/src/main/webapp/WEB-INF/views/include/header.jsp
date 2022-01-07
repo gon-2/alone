@@ -99,7 +99,7 @@ BODY {
 									<ul>
 										<li><a href="/classInfo/list_all">모집과정</a></li>
 										<li><a href="/classInfo/onlineAgree">온라인 접수</a></li>
-										<li><a href="/classInfo/myStatus">접수상태 확인</a></li>
+										<li><a href="/classInfo/myStatusForm">접수상태 확인</a></li>
 										<li><a href="#">후기</a></li>
 									</ul>
 								</li>
@@ -126,7 +126,7 @@ BODY {
 									<ul>
 										<li><a href="/member/modify_form?userid=user01">회원정보</a></li>
 										<li><a href="#">내 강의실</a></li>
-										<li><a href="#">내 게시판</a></li>
+										<li><a href="/member/board_form">내 게시판</a></li>
 									</ul>
 								</li>
 							</ul>

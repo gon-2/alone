@@ -12,13 +12,17 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.alone.service.ClassRegistBoardService;
+import com.kh.alone.service.RegistCommentService;
 import com.kh.alone.vo.PagingDto;
 import com.kh.alone.vo.RegistBoardVo;
+import com.kh.alone.vo.RegistCommentVo;
 
 
 @Controller
@@ -27,6 +31,7 @@ public class ClassRegistBoardController {
 	
 	@Inject
 	private ClassRegistBoardService registboardservice;
+	
 	
 	// 글 올리기 폼 이동
 	@RequestMapping(value="/form" , method=RequestMethod.GET)
@@ -58,7 +63,5 @@ public class ClassRegistBoardController {
 		model.addAttribute("dto" , dto);
 		model.addAttribute("list", list);
 		return "/service_center/class_regist_page";
-	}
-	
-	
+	}	
 }

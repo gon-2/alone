@@ -2,7 +2,7 @@
  * 2021-01-04
  * Author : 이정훈
  * code Explanation : 수강신청 상담 게시판 VO
- * 상담 게시글 번호 , 제목 , 내용 , 게시자 , 게시일 , 조회수 , 댓글내용 순서
+ * 상담 게시글 번호 , 제목 , 내용 , 게시자 , 게시일 , 조회수 순서
  */
 
 package com.kh.alone.vo;
@@ -10,21 +10,18 @@ package com.kh.alone.vo;
 import java.sql.Timestamp;
 
 public class RegistBoardVo {
-	private int class_board_number;
-	private String class_board_enroll;
-	private String class_board_title;
-	private String class_board_content;
-	private String class_board_userid;
-	private Timestamp class_board_postdate;
-	private int class_board_viewcnt;
-	private String class_board_comment;
+	private int class_board_number; 				// 글번호
+	private String class_board_enroll;				// 수강과정
+	private String class_board_title;				// 글 제목
+	private String class_board_content;				// 글 내용
+	private String class_board_userid;				// 아이디
+	private Timestamp class_board_postdate;			// 게시일
+	private int class_board_viewcnt;				// 조회수
 	
 	public RegistBoardVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	
 
 	public int getClass_board_number() {
 		return class_board_number;
@@ -82,23 +79,14 @@ public class RegistBoardVo {
 		this.class_board_viewcnt = class_board_viewcnt;
 	}
 
-	public String getClass_board_comment() {
-		return class_board_comment;
-	}
-
-	public void setClass_board_comment(String class_board_comment) {
-		this.class_board_comment = class_board_comment;
-	}
-
 	@Override
 	public String toString() {
-		return "ClassRegistBoardVo [class_board_number=" + class_board_number + ", class_board_enroll="
-				+ class_board_enroll + ", class_board_title=" + class_board_title + ", class_board_content="
-				+ class_board_content + ", class_board_userid=" + class_board_userid + ", class_board_postdate="
-				+ class_board_postdate + ", class_board_viewcnt=" + class_board_viewcnt + ", class_board_comment="
-				+ class_board_comment + "]";
+		return "RegistBoardVo [class_board_number=" + class_board_number + ", class_board_enroll=" + class_board_enroll
+				+ ", class_board_title=" + class_board_title + ", class_board_content=" + class_board_content
+				+ ", class_board_userid=" + class_board_userid + ", class_board_postdate=" + class_board_postdate
+				+ ", class_board_viewcnt=" + class_board_viewcnt + "]";
 	}
-	
 	
 	
 }
+

@@ -65,4 +65,32 @@
 		where c_cate = '사무자동화'
 	</select>
 	
+	
+	<!-- 신청양식 추가하기 -->
+	<insert id="insertOnlineRegist">
+		insert into online_regist(r_num, c_day, c_cate, c_title, c_name, gender, foreigner, phone_num, home_num, e_mail, 
+								  regist_path, employment, employment_center, employment_counselor, employment_num)
+								  
+		values(#{r_num}, #{c_day}, #{c_cate}, #{c_title}, #{c_name}, #{gender}, #{foreigner}, #{phone_num}, #{home_num, jdbcType=VARCHAR}, #{e_mail, jdbcType=VARCHAR}, 
+		       #{regist_path, jdbcType=VARCHAR}, #{employment, jdbcType=VARCHAR}, #{employment_center, jdbcType=VARCHAR}, #{employment_counselor, jdbcType=VARCHAR}, #{employment_num, jdbcType=VARCHAR})
+	</insert>
+
+
+	<!-- 신청양식 전체보기 -->
+	<select id="selectOnline_regist" resultType="OnlineRegistVo">
+		select * from online_regist
+	</select>
+	
+	<!-- 주민번호로 신청한거 조회하기 -->
+	<select id="selectMine" resultType="int">
+		select count(*) from online_regist
+		where r_num = #{r_num} 
+		
+	</select>
+	
+	<select id="selectMineList" resultType="OnlineRegistVo">
+		select * from online_regist
+		where r_num =  #{r_num}
+	</select>
+	
 </mapper>
