@@ -73,9 +73,6 @@
                         <a class="collapse-item" href="/customer_main/qna">자주 묻는 질문</a>                        
                         <a class="collapse-item" href="/class_board/class_regist">수강신청</a>
                         <a class="collapse-item" href="/customer_main/inquire">건의사항</a>
-                        <a class="collapse-item" href="/customer_main/notice">공지사항</a>
-                       
-                        
                     </div>
                 </div>
             </li>
@@ -91,7 +88,7 @@
             </li> -->
             
             <li class="nav-item">
-                <a class="nav-link" href="/Customermain/consult">
+                <a class="nav-link" href="/customer_main/consult">
                     <i class="fas fa-coffee"></i>
                     <span>수강생 상담</span></a>
             </li>
@@ -99,11 +96,11 @@
             <li class="nav-item" style="padding-top:18px;">
         		<c:choose>
                  	<c:when test="${empty sessionScope.employeeVo}">
-                 		<a class="nav-link" href="/login/login_form">로그인</a>
+                 		<a class="nav-link" href="/login_form">로그인</a>
                  		<a href="/Regist/form" class="nav-link">회원가입</a>
                  	</c:when>
                  	<c:otherwise>
-                 		<a class="nav-link" href="/login/logout" align="center">로그아웃</a>
+                 		<a class="nav-link" href="/logout" align="center">로그아웃</a>
                  	</c:otherwise>
                 </c:choose> 
            	</li> 
@@ -326,18 +323,18 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/login/logout" data-toggle="modal" data-target="#logoutModal">로그아웃
+                                <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">로그아웃
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 </a>
                             </div>
                         </li>
                          <li class="nav-item" style="padding-top:18px;">
 	                  		<c:choose>
-	                           	<c:when test="${empty sessionScope.employeeVo}">
-	                           		<a href="/login/login_form" class="btn btn-success">로그인</a>
+	                           <c:when test="${empty sessionScope.memberVo}">
+	                           		<a href="/login_form" class="btn btn-success">로그인</a>
 	                           		<a href="/Regist/form" class="btn btn-warning">회원가입</a>
 	                           	</c:when>
-	                           	<c:otherwise>${sessionScope.employeeVo.emp_name} - ${sessionScope.employeeVo.emp_dep}</c:otherwise>
+	                           	<c:otherwise>${sessionScope.memberVo.userid}(${sessionScope.memberVo.username})</c:otherwise>
                            </c:choose> 
                        	</li>
                     </ul>
