@@ -39,6 +39,7 @@ public class ClassRegistBoardController {
 	public String classboardForm() {
 		return "/board_form/class_regist_board_page";
 	}
+	
 	// 글 올리기 실행 후 수강신청 페이지로 이동해서 보여줌.
 	@RequestMapping(value="/run" , method=RequestMethod.POST)
 	public String classboardRun(RegistBoardVo registboardvo) {
@@ -66,6 +67,7 @@ public class ClassRegistBoardController {
 		return "/service_center/class_regist_page";
 	}
 	
+	// 게시판 삭제 , (댓글 삭제는 나중에 추가)
 	@RequestMapping(value="/deleteBoard" , method=RequestMethod.POST)
 	public String deleteBoard(String class_board_content) {
 		registboardservice.deleteBoard(class_board_content);

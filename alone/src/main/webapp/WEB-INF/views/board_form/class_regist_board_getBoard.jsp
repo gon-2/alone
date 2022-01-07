@@ -33,6 +33,7 @@
 				}
 			});
 			$("#btnCancel").trigger("click");
+			$("#showComment").trigger("click");
 		});
  		// 댓글 보기버튼 클릭 시 이벤트
  		$("#showComment").click(function(e){
@@ -62,6 +63,12 @@
  			
  			$.post(url , sendData , function(rData){
  				console.log(rData);
+ 				if(rData == "success"){
+ 					$("#first_userid").val("");
+ 					$("#first_content").val("");
+ 					$("#first_date").val("");
+ 					$("#showAni").fadeOut(1000);
+ 				}
  			});
  			
  		});
@@ -127,7 +134,6 @@
 				</div>
 				<button type="button" class="btn btn-primary">수정</button>
 				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button>
-				<button type="reset" class="btn btn-info">다시입력</button>
 				<button type="button" class="btn btn-warning" id="inComment">상담자 댓글달기</button>
 				<button type="button" class="btn btn-secondary" id="showComment">댓글보기</button>
 			</form> 

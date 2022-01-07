@@ -38,7 +38,7 @@
 		</div>
 		
 		<div class="col-md-6">
-			<h4 align="center" style="margin-right: 100px;"><a href="/customer_main/notice">공지 사항</a></h4>
+			<h4 align="center" style="margin-right: 100px;"><a href="/customer_main/consult">수강생 상담</a></h4>
 			<br>
 			<table class="table" align="center" style="width:500px; margin-right:100px;">
 				<thead>
