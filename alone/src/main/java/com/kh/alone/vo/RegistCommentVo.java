@@ -10,6 +10,7 @@ package com.kh.alone.vo;
 import java.sql.Timestamp;
 
 public class RegistCommentVo {
+	private int class_board_comment_no;
 	private String class_board_comment_content;
 	private String class_board_comment_userid;
 	private Timestamp class_board_comment_date;
@@ -19,6 +20,20 @@ public class RegistCommentVo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public int getClass_board_comment_no() {
+		return class_board_comment_no;
+	}
+
+
+
+	public void setClass_board_comment_no(int class_board_comment_no) {
+		this.class_board_comment_no = class_board_comment_no;
+	}
+
+
 
 	public String getClass_board_comment_content() {
 		return class_board_comment_content;
@@ -52,10 +67,15 @@ public class RegistCommentVo {
 		this.class_board_comment_cnt = class_board_comment_cnt;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "RegistCommentVo [class_board_comment_content=" + class_board_comment_content
-				+ ", class_board_comment_userid=" + class_board_comment_userid + ", class_board_comment_date="
-				+ class_board_comment_date + ", class_board_comment_cnt=" + class_board_comment_cnt + "]";
+		return "RegistCommentVo [class_board_comment_no=" + class_board_comment_no + ", class_board_comment_content="
+				+ class_board_comment_content + ", class_board_comment_userid=" + class_board_comment_userid
+				+ ", class_board_comment_date=" + class_board_comment_date + ", class_board_comment_cnt="
+				+ class_board_comment_cnt + "]";
 	}
+
+	
 }

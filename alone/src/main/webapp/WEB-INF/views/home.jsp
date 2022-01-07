@@ -89,7 +89,97 @@
 						<li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">야간반</a></li>
 						<li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">주말반</a></li>
 					</ul>
-					<%@ include file="/WEB-INF/views/include/content.jsp"%>
+					
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab1">
+							<div class="col-md-12" style="overflow:auto; width:1500px; height:500px;">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>과정명</th>
+											<th>교육기간</th>
+											<th>신청</th>
+										</tr>
+									</thead>
+									<tbody>
+									<c:forEach items="${list}" var="ClassInfoVo">
+										<tr>
+											<td>${ClassInfoVo.c_title}</td>
+											<td>${ClassInfoVo.c_term}</td>
+											<td><a class="btn btn-sm btn-outline-danger" href="#">신청</a></td>
+										</tr>
+									</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab2">
+							<div class="col-md-12" style="overflow:auto; width:1500px; height:500px;">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>과정명</th>  
+											<th>교육기간</th>
+											<th>신청</th>
+										</tr>
+									</thead>
+									<tbody>
+									<c:forEach items="${weekly}" var="ClassInfoVo">
+										<tr>
+											<td>${ClassInfoVo.c_title }</td>
+											<td>${ClassInfoVo.c_term}</td>
+											<td><a class="btn btn-sm btn-outline-danger" href="#">신청</a></td>
+										</tr>
+									</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab3">
+							<div class="col-md-12" style="overflow:auto; width:1500px; height:500px;">
+								<table class="table">
+								<thead>
+										<tr>
+											<th>과정명</th>
+											<th>교육기간</th>
+											<th>신청</th>
+										</tr>
+									</thead>
+									<tbody>
+									<c:forEach items="${weekend}" var="ClassInfoVo">
+										<tr>
+											<td>${ClassInfoVo.c_title }</td>
+											<td>${ClassInfoVo.c_term}</td>
+											<td><a class="btn btn-sm btn-outline-danger" href="#">신청</a></td>
+										</tr>
+									</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab4">
+							<div class="col-md-12" style="overflow:auto; width:1500px; height:500px;">
+								<table class="table">
+								<thead>
+										<tr>
+											<th>과정명</th>
+											<th>교육기간</th>
+											<th>신청</th>
+										</tr>
+									</thead>
+									<tbody>
+									<c:forEach items="${night}" var="ClassInfoVo">
+										<tr>
+											<td>${ClassInfoVo.c_title }</td>
+											<td>${ClassInfoVo.c_term}</td>
+											<td><a class="btn btn-sm btn-outline-danger" href="#">신청</a></td>
+										</tr>
+									</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 					
 				</div>
 			</section>

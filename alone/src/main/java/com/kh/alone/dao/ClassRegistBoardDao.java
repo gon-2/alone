@@ -1,5 +1,5 @@
 /*
- * 2021-01-04
+ * 2021-01-07
  * Author : 이정훈
  * code Explanation : 수강신청 게시판 Dao
  */
@@ -42,7 +42,7 @@ public class ClassRegistBoardDao {
 		return list;
 	}
 	
-	// 최신 게시글 3개만 조회
+	// 최신 게시글 3개만 조회 ( 고객센터 메인 홈페이지에 보일 것! ) 
 	public List<RegistBoardVo> countThird(){
 		List<RegistBoardVo> list = session.selectList(NAMESPACE + "countThird");
 		System.out.println("ClassRegistBoardDao, countThree, list: " + list);
@@ -58,5 +58,10 @@ public class ClassRegistBoardDao {
 	// 게시글 조회수 
 	public void viewcnt(String class_board_title) {
 		session.update(NAMESPACE + "viewcnt" , class_board_title); 
+	}
+	
+	// 게시글 삭제
+	public void deleteBoard(String class_board_content) {
+		session.delete(NAMESPACE + "deleteBoard" , class_board_content);
 	}
 }
