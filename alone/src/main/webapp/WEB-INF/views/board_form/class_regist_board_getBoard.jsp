@@ -8,39 +8,46 @@
 <title>수강신청 특정 게시판 페이지</title>
 <script>
 	$(function(){
+		// 댓글 입력하기 버튼 클릭하면 모달 버튼 show
 		$("#inComment").click(function(e){
 			e.preventDefault();
 			$("#modal-247369").trigger("click");
 		});
-		
+		// 댓글 저장 버튼 입력시 이벤트
  		$("#btncommentSave").click(function(e){
 			e.preventDefault();
 			var class_board_comment_userid = $("#class_board_comment_userid").val();
 			var class_board_comment_content = $("#class_board_comment_content").val();
  			var class_board_comment_no = $("#class_board_comment_no").val(); 
-		
-			console.log("class_board_comment_userid >> " + class_board_comment_userid);
-			console.log("class_board_comment_content >> " + class_board_comment_content);
- 			console.log("class_board_comment_no >> " + class_board_comment_no); 
-			
+			var url = "/comment/insertcomment";				
 			var sendData = {
  					"class_board_comment_no" : class_board_comment_no,
 					"class_board_comment_userid" : class_board_comment_userid,
 					"class_board_comment_content" : class_board_comment_content
-			};
+			};	
 			
-			var url = "/comment/insertcomment";
 			$.post(url , sendData , function(rData){
 				console.log(rData);
 				if(rData == "success"){
 					alert("댓글이 입력되었습니다");	
 				}
 			});
-		}); 
-		
-		$("#showComment").click(function(e){
-			e.preventDefault();
-			$("#commentTable").show(1000);
+			$("#btnCancel").trigger("click");
+		});
+ 		// 댓글 보기버튼 클릭 시 이벤트
+ 		$("#showComment").click(function(e){
+ 			e.preventDefault();
+ 			var url = "/comment/listComment";
+ 			
+ 			$.get(url , function(rData){
+ 				console.log(rData);
+ 				$.each(rData, function(){
+					$(".first_userid").html("<h3>상담자 아이디 : " + this.class_board_comment_userid + "</h3>").show(1000);
+					$(".first_content").html("<h3>상담 내용 : "  + this.class_board_comment_content + "</h3>").show(1000);
+					$(".first_date").html("<h3> 상담 일자 : " + this.class_board_comment_date + "</h3>").show(1000);
+					$("#showAni").show(1000);
+ 				});
+ 			});
 		});
 	});
 </script>
@@ -63,7 +70,7 @@
 							<input type="text" name="class_board_comment_userid" id="class_board_comment_userid" placeholder="아이디를 입력하세요." value="${class_board_comment_userid}"><br>
 							<label for="class_board_comment_content">댓글 입력</label><br>
 							<textarea name="class_board_comment_content" id="class_board_comment_content" placeholder="댓글을 입력하세요." value="${class_board_comment_content}"></textarea>
-							<input type="number" name="class_board_comment_no" id="class_board_comment_no" >
+							<input type="number" name="class_board_comment_no" id="class_board_comment_no" placeholder="현재 글번호를 입력하세요." >
 							<input type="hidden" name="class_board_comment_date" id="class_board_comment_date">
 						</div>
 						<div class="modal-footer"> 
@@ -104,33 +111,21 @@
 				</div>
 				<button type="submit" class="btn btn-primary">수정</button>
 				<button type="reset" class="btn btn-success">삭제</button>
-				<button type="button" class="btn btn-warning" id="inComment">댓글달기</button>
-				<button type="button" class="btn btn-warning" id="showComment">댓글보기</button>
+				<button type="button" class="btn btn-warning" id="inComment">상담자 댓글달기</button>
+				<button type="button" class="btn btn-secondary" id="showComment">댓글보기</button>
 			</form> 
 		</div>
 	</div>
-</div>
+</div><br><br>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<h3 align="center">댓글 내용</h3>
 			<form>
-				<table class="table" align="center" id="commentTable" style="display: none;">
-					<thead>
-						<tr align="center">
-							<th>아이디</th>
-							<th>작성내용</th>
-							<th>작성일자</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${list}" var="commentvo">
-							<tr align="center">
-								<td>${commentvo}</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+				<div id="showAni" style="display: none;">
+					<p id="first_userid" class="first_userid"></p>
+					<p id="first_content" class="first_content"></p>
+					<p id="first_date" class="first_date"></p>
+				</div>
 			</form>
 		</div>
 	</div>

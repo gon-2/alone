@@ -66,7 +66,6 @@
 						<th>작성자</th>
 						<th>게시일</th>
 						<th>조회수</th>
-						<th>댓글수</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -79,7 +78,6 @@
 						<td>${ClassRegistBoardVo.class_board_userid}</td>
 						<td>${ClassRegistBoardVo.class_board_postdate}</td>
 						<td>${ClassRegistBoardVo.class_board_viewcnt}</td>
-						<td></td>
 					</tr>
 					</c:forEach>
 				</tbody>

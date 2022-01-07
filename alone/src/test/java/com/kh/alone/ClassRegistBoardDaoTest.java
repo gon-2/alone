@@ -35,10 +35,10 @@ public class ClassRegistBoardDaoTest {
 		registCommentDao.insertcomment(vo);
 	}
 	
-	@Test
-	public void getcommentTest() {
-		List<RegistCommentVo> list = registCommentDao.getcomment();
+/*	@Test
+	public void getcomment() {
+		int class_board_comment_no = 65;
+		List<RegistCommentVo> list = registCommentDao.listcomment(class_board_comment_no);
 		System.out.println("list >> " + list);
-	}
-
+	}*/
 }

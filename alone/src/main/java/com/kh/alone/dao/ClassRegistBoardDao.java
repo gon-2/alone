@@ -1,5 +1,5 @@
 /*
- * 2021-01-04
+ * 2021-01-07
  * Author : 이정훈
  * code Explanation : 수강신청 게시판 Dao
  */
@@ -59,4 +59,6 @@ public class ClassRegistBoardDao {
 	public void viewcnt(String class_board_title) {
 		session.update(NAMESPACE + "viewcnt" , class_board_title); 
 	}
+	
+	// 게시글 삭제
 }

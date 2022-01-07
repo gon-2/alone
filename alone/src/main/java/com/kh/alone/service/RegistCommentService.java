@@ -11,6 +11,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
+
+import com.kh.alone.dao.ClassRegistBoardDao;
 import com.kh.alone.dao.RegistCommentDao;
 import com.kh.alone.vo.RegistCommentVo;
 
@@ -24,10 +26,9 @@ public class RegistCommentService {
 	public void insertcomment(RegistCommentVo commentvo) {
 		commentDao.insertcomment(commentvo);
 	}
-	
-	// 해당 글 제목의 댓글 조회
-	public List<RegistCommentVo> getcomment(){
-		List<RegistCommentVo> list = commentDao.getcomment();
+	// 상담자 댓글 보기
+	public List<RegistCommentVo> listcomment(){
+		List<RegistCommentVo> list = commentDao.listcomment();
 		return list;
 	}
 }

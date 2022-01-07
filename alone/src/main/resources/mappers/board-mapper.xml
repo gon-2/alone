@@ -67,5 +67,10 @@
 		set class_board_viewcnt = class_board_viewcnt + 1
 		where class_board_title = #{class_board_title}
 	</update>
-
+	
+	<!-- 상담 게시글 삭제 -->
+	<delete id="deleteBoard">
+		delete from tbl_class_board
+		class_board_title = #{class_board_title}
+	</delete>
 </mapper>

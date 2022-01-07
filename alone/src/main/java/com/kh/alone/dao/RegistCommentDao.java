@@ -1,7 +1,7 @@
 /*
- * 2021-01-06
+ * 2021-01-07
  * Author : 이정훈
- * code Explanation : 고객센터 수강신청 댓글 DAO
+ * code Explanation : 고객센터 수강신청 댓글 DAO ( 상담자 댓글 입력 , 보기 ) 
  */
 
 package com.kh.alone.dao;
@@ -28,11 +28,9 @@ public class RegistCommentDao {
 		session.insert(NAMESPACE + "insertcomment" , commentvo);
 	}
 
-	// 해당글의 댓글 조회
-	public List<RegistCommentVo> getcomment() {
-		List<RegistCommentVo> list = session.selectList(NAMESPACE + "getcomment");
+	// 해당글의 상담자 댓글정보 조회
+	public List<RegistCommentVo> listcomment(){
+		List<RegistCommentVo> list = session.selectList(NAMESPACE + "commentList");
 		return list;
 	}
-	
-
 }
