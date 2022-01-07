@@ -77,7 +77,7 @@ public class MemberController {
 	public String memberBoardForm(Model model) {
 		List<MemberBoardVo> list = memberService.memberBoardForm();
 		model.addAttribute("list", list);
-		System.out.println(list);
+//		System.out.println(list);
 		return "/member/board_form";
 	}
 	
@@ -86,5 +86,12 @@ public class MemberController {
 	public String replyForm(MemberBoardVo memberBoardVo) {
 		return "/member/board_form_reply";
 	}
-
+	// 답글처리 
+	@RequestMapping(value="/board_form_reply_run", method=RequestMethod.POST)
+	public String replyRun(MemberBoardVo memberboardVo) {
+//		System.out.println("MemberController, replyRun, memberboardVo:" + memberboardVo);
+		memberService.memberBoardForm(memberboardVo);
+		return "redirect:/member/board_form";
+	}
+	
 }
