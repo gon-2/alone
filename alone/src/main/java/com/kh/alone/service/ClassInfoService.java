@@ -82,8 +82,13 @@ public class ClassInfoService {
 	}
 	
 	// 주민번호로 나의 온라인 신청현황 확인하기
-	public List<OnlineRegistVo> selectMine(){
-		List<OnlineRegistVo> mine = dao.selectMine();
+	public int selectMine(String r_num){
+		int mine = dao.selectMine(r_num);
 		return mine;
+	}
+	
+	public List<OnlineRegistVo> selectMineList(String r_num){
+		List<OnlineRegistVo> mineList = dao.selectMineList(r_num);
+		return mineList;
 	}
 }

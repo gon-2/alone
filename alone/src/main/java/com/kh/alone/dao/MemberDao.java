@@ -13,6 +13,7 @@ import com.kh.alone.vo.MemberVo;
 import com.kh.alone.vo.PagingDto;
 
 
+
 @Repository
 public class MemberDao {
 	private static final String NAMESPACE = "com.kh.ex01.mappers.member.";
@@ -63,9 +64,11 @@ public class MemberDao {
 		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "memberModify", userid);
 		return memberVo;
 	}
-	// 답글추가 
-	public void insertReply(MemberBoardVo memberboardVo) {
-		sqlSession.insert(NAMESPACE + "insertReply", memberboardVo);
+	// 답글확인 
+	public void memberBoardForm(MemberBoardVo memberboardVo) {
+		System.out.println("memberDao");
+		sqlSession.insert(NAMESPACE + "memberBoardForm", memberboardVo);
 	}
+	
 		
 	}

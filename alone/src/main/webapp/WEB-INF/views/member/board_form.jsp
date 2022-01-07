@@ -16,14 +16,8 @@
 					<option value="">취업문의</option>
 					<option value="">콘텐츠오류</option>
 				</select> <br>
-				<label for="board_form">답변상태</label> 
-				<select id="state" name="state">
-					<option value="">- 전체 -</option>
-					<option value="">답변완료</option>
-					<option value="">진행중</option>
-					<option value="">답변대기</option>
-				</select>
-			<form method="get" action="board_form_reply">
+			
+			<form method="get" action="/member/board_form_reply">
 			<table class="table">
 				<thead>
 					<tr>

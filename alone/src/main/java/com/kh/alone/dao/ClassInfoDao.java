@@ -86,9 +86,14 @@ public class ClassInfoDao {
 	
 	
 	// 주민번호로 나의 신청현황 확인하기
-	public List<OnlineRegistVo> selectMine(){
-		List<OnlineRegistVo> mine = sqlSession.selectOne(NAMESPACE + "selectMine");
+	public int selectMine(String r_num){
+		int mine = sqlSession.selectOne(NAMESPACE + "selectMine", r_num);
 		return mine;
+	}
+	
+	public List<OnlineRegistVo> selectMineList(String r_num){
+		List<OnlineRegistVo> mineList = sqlSession.selectList(NAMESPACE + "selectMineList", r_num);
+		return mineList;
 	}
 	
 }

@@ -82,9 +82,15 @@
 	</select>
 	
 	<!-- 주민번호로 신청한거 조회하기 -->
-	<select id="selectMine" resultType="OnlineRegistVo">
-<!-- 		select * from online_regist -->
-<!-- 		where r_num = #{r_num} -->
+	<select id="selectMine" resultType="int">
+		select count(*) from online_regist
+		where r_num = #{r_num} 
 		
 	</select>
+	
+	<select id="selectMineList" resultType="OnlineRegistVo">
+		select * from online_regist
+		where r_num =  #{r_num}
+	</select>
+	
 </mapper>
