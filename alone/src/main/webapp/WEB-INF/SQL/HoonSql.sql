@@ -36,13 +36,14 @@ create table tbl_class_board(
     class_board_viewcnt number default 0 not null
 );
 
--- 댓글 테이블
+-- 댓글 테이블 (아이디와 게시판 번호를 참조할 수 있게 수정 , 기본 키는 아이디 , 상담자 일회성 댓글만 보임.) 
 create table tbl_class_board_comment(
-    class_board_comment_content varchar2(300) primary key,
-    class_board_comment_userid varchar(50) references tbl_member(userid) not null,
-    class_board_comment_date timestamp default sysdate,
-    class_board_comment_cnt number default 0 not null
+    class_board_comment_no number references tbl_class_board(class_board_number),
+    class_board_comment_content varchar2(300) not null,
+    class_board_comment_userid varchar(50) references tbl_member(userid) not null primary key,
+    class_board_comment_date timestamp default sysdate
 );
+
 
 -- 댓글 올린 시간 추가
 alter table tbl_class_board
@@ -78,6 +79,13 @@ values(? , ? , sysdate)
 
 -- 댓글 조회 
 select * from tbl_class_board_comment
+
+-- 해당하는 아이디 게시글에 댓글단 정보
+select * 
+from tbl_class_board_comment
+where class_board_comment_userid = (select class_board_userid 
+                                    from tbl_class_board 
+                                    where class_board_userid='user02');
 
 
 
