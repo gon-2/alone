@@ -96,4 +96,3 @@ create table r_file (
 -- 취업 자료실 테이블 시퀀스
 create sequence seq_rno;
 
-나는 귀요미 동동이

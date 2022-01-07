@@ -81,17 +81,29 @@ public class ClassInfoController {
 	
 	// 주민번호로 확인하는 진행현황확인 폼
 	@RequestMapping(value="/myStatusForm", method=RequestMethod.GET)
-	public String myStatusForm(Model model) {
+	public String myStatusForm() {
 		
 		return "/classInfo/myStatusForm";
 	}
 	
 	// 주민번호로 확인하는 진행현황확인 처리
-	@RequestMapping(value="/myStatusRun", method=RequestMethod.GET)
-	public String myStatus(Model model) {
-		List<OnlineRegistVo> mine = service.selectMine();
-		model.addAttribute("mine", mine);
+	@RequestMapping(value="/myStatusRun", method=RequestMethod.POST)
+	@ResponseBody
+	public String myStatus(OnlineRegistVo vo) {
+		String r_num = vo.getR_num();
+		int mine = service.selectMine(r_num);
+		if (mine == 0) {
+			return "false";
+		}
+//		model.addAttribute("mine", mine);
 		return "success";
+	}
+	
+	@RequestMapping(value="/myStatusView", method=RequestMethod.GET)
+	public String myStatusView(Model model, String r_num) {
+		List<OnlineRegistVo> mine = service.selectMineList(r_num);
+		model.addAttribute("mine", mine);
+		return "/classInfo/myStatusView";
 	}
 	
 	

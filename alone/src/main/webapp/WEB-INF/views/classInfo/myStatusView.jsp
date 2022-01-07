@@ -10,7 +10,7 @@
 <!-- Banner -->
 <section id="banner">
 	<header>
-		<h2>현재 모집중인과정</h2>
+		<h2>나의 신청상태 보기</h2>
 		<a href="#">상담신청하기</a>
 	</header>
 </section>
@@ -19,14 +19,35 @@
 	<div class="container">
 		<div class="clear overflow">
 			<section class="col-md-12"><!-- 게시판 영역잡기 -->
-				<div class="tabbable" id="tabs-214280">
-					<ul class="nav nav-tabs"><!--  주간반 야간반 주말반 카테고리 나누기 -->
-						<li class="nav-item"><a class="nav-link active show" href="#tab1" data-toggle="tab">전체보기</a></li>
-						<li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">주간반</a></li>
-						<li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">야간반</a></li>
-						<li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">주말반</a></li>
-					</ul>
-					<%@ include file="/WEB-INF/views/include/content.jsp"%> <!-- 게시판 -->
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<table class="table table-hover table-striped">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>훈련직종 분류</th>
+										<th>교육과정 분류</th>
+										<th>과정 제목</th>
+										<th>이름</th>
+										<th>신청현황</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${mine}" var="OnlineRegistVo">
+										<tr>
+											<td>1</td>
+											<td>${OnlineRegistVo.c_day}</td>
+											<td>${OnlineRegistVo.c_cate}</td>
+											<td>${OnlineRegistVo.c_title}</td>
+											<td>${OnlineRegistVo.c_name}</td>
+											<td>신청완료</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</section>
 		</div>
