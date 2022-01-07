@@ -8,7 +8,6 @@
 								<table class="table" >
 									<thead>
 										<tr>
-											<th>#</th>
 											<th>과정명</th>
 											<th>교육기간</th>
 											<th>신청하기</th>
@@ -17,10 +16,9 @@
 									<tbody>
 									<c:forEach items="${list}" var="ClassInfoVo">
 										<tr>
-											<td>1</td>
 											<td>${ClassInfoVo.c_title}</td>
 											<td>${ClassInfoVo.c_term}</td>
-											<td><a href="#">신청하기</a></td>
+											<td><a href="#" class="btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -32,7 +30,6 @@
 								<table class="table">
 									<thead>
 										<tr>
-											<th>#</th>
 											<th>과정명</th>
 											<th>교육기간</th>
 											<th>신청하기</th>
@@ -41,10 +38,9 @@
 									<tbody>
 									<c:forEach items="${weekly}" var="ClassInfoVo">
 										<tr>
-											<td>1</td>
 											<td>${ClassInfoVo.c_title }</td>
 											<td>${ClassInfoVo.c_term}</td>
-											<td><a href="#">신청하기</a></td>
+											<td><a href="#" class="btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -56,7 +52,6 @@
 								<table class="table">
 								<thead>
 										<tr>
-											<th>#</th>
 											<th>과정명</th>
 											<th>교육기간</th>
 											<th>신청하기</th>
@@ -65,10 +60,9 @@
 									<tbody>
 									<c:forEach items="${weekend}" var="ClassInfoVo">
 										<tr>
-											<td>1</td>
 											<td>${ClassInfoVo.c_title }</td>
 											<td>${ClassInfoVo.c_term}</td>
-											<td><a href="#">신청하기</a></td>
+											<td><a href="#" class="btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -80,7 +74,6 @@
 								<table class="table">
 								<thead>
 										<tr>
-											<th>#</th>
 											<th>과정명</th>
 											<th>교육기간</th>
 											<th>신청하기</th>
@@ -89,10 +82,9 @@
 									<tbody>
 									<c:forEach items="${night}" var="ClassInfoVo">
 										<tr>
-											<td>1</td>
 											<td>${ClassInfoVo.c_title }</td>
 											<td>${ClassInfoVo.c_term}</td>
-											<td><a href="#">신청하기</a></td>
+											<td><a href="#" class="btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
