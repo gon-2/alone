@@ -124,7 +124,7 @@ BODY {
 								<li>
 									<a href="#">마이페이지</a>
 									<ul>
-										<li><a href="/member/modify_form?userid=user01">회원정보</a></li>
+										<li><a href="/member/modify_form?userid">회원정보</a></li>
 										<li><a href="#">내 강의실</a></li>
 										<li><a href="/member/board_form">내 게시판</a></li>
 									</ul>

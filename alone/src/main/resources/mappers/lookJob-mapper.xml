@@ -53,7 +53,11 @@
 	
 	<select id="referenceRoomList" resultType="ReferenceVo">
 		select rno, rtitle, rwriter, recommend, hits, to_char(sysdate, 'YYYY-MM-DD')
-		reference_date, to_char(sysdate, 'HH:MI') reference_time from tbl_reference
+		reference_date, to_char(sysdate, 'HH:MI') reference_time, re_group, re_seq, re_level from 
+		(select rownum rnum, a.* from 
+      			 		 (select * from tbl_reference
+       						 order by re_group desc, re_seq asc) a)
+		where rnum between #{startRow} and #{endRow}
 	</select>
 	
 	<select id="getReference" resultType="ReferenceVo">
@@ -69,9 +73,8 @@
 	</select>
 	
 	<!-- 글 갯수 -->
-<!-- 	<select id="r_getCount" resultType="int"> -->
-<!-- 		select count(*) from tbl_reference -->
-<!-- 		<include refid="search"></include> -->
-<!-- 	</select> -->
+	<select id="r_getCount" resultType="int">
+		select count(*) from tbl_reference
+	</select>
 	
 </mapper>

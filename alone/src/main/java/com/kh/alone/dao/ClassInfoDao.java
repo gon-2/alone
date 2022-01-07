@@ -26,7 +26,6 @@ public class ClassInfoDao {
 	public List<ClassInfoVo> selectAll(){
 //		System.out.println("sqlSession:" + sqlSession);
 		List<ClassInfoVo> list = sqlSession.selectList(NAMESPACE + "selectAll");
-		System.out.println("다오list : " + list);
 		return list;
 	}
 	

@@ -5,6 +5,7 @@
 
 
 <h2>내 게시판</h2><br>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -17,7 +18,11 @@
 					<option value="">콘텐츠오류</option>
 				</select> <br>
 			
-			<form method="get" action="/member/board_form_reply">
+			
+			
+			
+			<form role="form" action="/member/board_form_reply" method="get">
+		
 			<table class="table">
 				<thead>
 					<tr>
@@ -46,7 +51,6 @@
 		</div>
 	</div>
 </div>
-
 
 
 

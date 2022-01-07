@@ -3,10 +3,22 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <script>
-
-
+//답글
+$(function() {
+	$("#btnReply").click(function() {
+	var re_group = "${memberBoardVo.re_group}";
+	var re_seq = "${memberBoardVo.re_seq}";
+	var re_level = "${memberBoardVo.re_level}";
+	var loc = "/member/board_form_reply?";
+	loc += "re_group=" + re_group;
+	loc += "&re_seq=" + re_seq;
+	loc += "&re_level=" + re_level;
+	location.href = loc;
+	});
+});
 
 	</script>
+	
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -22,12 +34,12 @@
 				
 	<div class="row">
 		<div class="col-md-12">
-				<input type="hidden" name="re_group" value="${memberBoardVo.re_group}">
-				<input type="hidden" name="re_seq" value="${memberboardVo.re_seq}">
-				<input type="hidden" name="re_level" value="${membervoboardVo.re_level}">
-				
 		<form role="form" action="/member/board_form_reply_run" 
 				method="post">
+				<input type="hidden" name="re_group" value="${memberBoardVo.re_group}">
+				<input type="hidden" name="re_seq" value="${memberBoardVo.re_seq}">
+				<input type="hidden" name="re_level" value="${memberBoardVo.re_level}">
+				
 			
 				<div class="form-group">
 					<label for="userid">아이디</label>
@@ -46,7 +58,8 @@
 						id="content" name="content"></textarea>
 				</div>
 				
-				<button type="submit" class="btn btn-primary">
+				
+				<button type="submit" class="btn btn-primary" id="btnReply">
 					작성 완료
 				</button>
 			</form>

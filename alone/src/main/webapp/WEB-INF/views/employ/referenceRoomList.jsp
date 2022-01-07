@@ -10,8 +10,6 @@ $(function() {
 		console.log($(this));
 		var page =	$(this).attr("href");
 		$("#frmPaging > input[name=page]").val(page);
-		$("#frmPaging > input[name=searchType]").val("${pagingDto.searchType}");
-		$("#frmPaging > input[name=keyword]").val("${pagingDto.keyword}");
 		$("#frmPaging").submit();
 	});
 });
@@ -59,30 +57,30 @@ $(function() {
 					</tr>
 				</thead>
 				<tbody>
-				<tr>
 					<c:forEach items="${list}" var="ReferenceVo">
-						<td class="td_reference">${ReferenceVo.rno}</td>
-						<td class="td_reference"><a href="/employ/referenceRoom?rno=${ReferenceVo.rno}">${ReferenceVo.rtitle}</a></td>
-						<td class="td_reference">${ReferenceVo.rwriter}</td>
-						<td class="td_reference">${ReferenceVo.recommend}</td>
-						<td class="td_reference">${ReferenceVo.hits}</td>
-						<td class="td_reference">${ReferenceVo.reference_date}</td>
+						<tr>
+							<td class="td_reference">${ReferenceVo.rno}</td>
+							<td class="td_reference"><a href="/employ/referenceRoom?rno=${ReferenceVo.rno}">${ReferenceVo.rtitle}</a></td>
+							<td class="td_reference">${ReferenceVo.rwriter}</td>
+							<td class="td_reference">${ReferenceVo.recommend}</td>
+							<td class="td_reference">${ReferenceVo.hits}</td>
+							<td class="td_reference">${ReferenceVo.reference_date}</td>
+						</tr>
 					</c:forEach>		
-				</tr>
 				</tbody>
 			</table>
 			<nav>
 				<ul class="pagination justify-content-center">
-					<c:if test="${pagingDto.startPage != 1}">
+					<c:if test="${pagingVo.startPage != 1}">
 					<li class="page-item">
-						<a class="page-link" href="${pagingDto.startPage - 1}">이전</a>
+						<a class="page-link" href="${pagingVo.startPage - 1}">이전</a>
 					</li>
 					</c:if>
-					<c:forEach var="v" begin="${pagingDto.startPage}" 
-									   end="${pagingDto.endPage}">
+					<c:forEach var="v" begin="${pagingVo.startPage}" 
+									   end="${pagingVo.endPage}">
 					<li 
 						<c:choose>
-							<c:when test="${pagingDto.page == v}">
+							<c:when test="${pagingVo.page == v}">
 								class="page-item active"
 							</c:when>
 							<c:otherwise>
@@ -93,9 +91,9 @@ $(function() {
 						<a class="page-link" href="${v}">${v}</a>
 					</li>
 					</c:forEach>
-					<c:if test="${pagingDto.endPage < pagingDto.totalPage}">
+					<c:if test="${pagingVo.endPage < pagingVo.totalPage}">
 					<li class="page-item">
-						<a class="page-link" href="${pagingDto.endPage + 1}">다음</a>
+						<a class="page-link" href="${pagingVo.endPage + 1}">다음</a>
 					</li>
 					</c:if>
 				</ul>
