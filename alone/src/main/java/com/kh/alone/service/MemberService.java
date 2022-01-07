@@ -5,11 +5,13 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.alone.dao.MemberDao;
 import com.kh.alone.vo.MemberBoardVo;
 import com.kh.alone.vo.MemberVo;
 import com.kh.alone.vo.PagingDto;
+
 
 
 @Service
@@ -60,10 +62,12 @@ public class MemberService {
 	}
 
 	// 답글확인
-	public void memberBoardForm(MemberBoardVo memberboardVo) {
-		memberDao.memberBoardForm(memberboardVo);
+	public void insertReply(MemberBoardVo memberBoardVo) {
+		memberDao.insertReply(memberBoardVo);
 		
 	}
-	
-	
+
 }
+	
+	
+

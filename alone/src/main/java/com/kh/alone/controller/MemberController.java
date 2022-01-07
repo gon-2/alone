@@ -19,6 +19,7 @@ import com.kh.alone.vo.MemberBoardVo;
 import com.kh.alone.vo.MemberVo;
 import com.kh.alone.vo.PagingDto;
 
+
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -86,12 +87,14 @@ public class MemberController {
 	public String replyForm(MemberBoardVo memberBoardVo) {
 		return "/member/board_form_reply";
 	}
+	
 	// 답글처리 
 	@RequestMapping(value="/board_form_reply_run", method=RequestMethod.POST)
-	public String replyRun(MemberBoardVo memberboardVo) {
-//		System.out.println("MemberController, replyRun, memberboardVo:" + memberboardVo);
-		memberService.memberBoardForm(memberboardVo);
+	public String replyRun(MemberBoardVo memberBoardVo) {
+		System.out.println("MemberController, replyRun, memberBoardVo:" + memberBoardVo);
+		memberService.insertReply(memberBoardVo);
 		return "redirect:/member/board_form";
 	}
 	
+		
 }
