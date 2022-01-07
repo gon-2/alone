@@ -61,4 +61,7 @@ public class ClassRegistBoardDao {
 	}
 	
 	// 게시글 삭제
+	public void deleteBoard(String class_board_content) {
+		session.delete(NAMESPACE + "deleteBoard" , class_board_content);
+	}
 }

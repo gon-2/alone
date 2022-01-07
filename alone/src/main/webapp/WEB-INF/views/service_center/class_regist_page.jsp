@@ -66,6 +66,7 @@
 						<th>작성자</th>
 						<th>게시일</th>
 						<th>조회수</th>
+						<th>삭제</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -78,6 +79,9 @@
 						<td>${ClassRegistBoardVo.class_board_userid}</td>
 						<td>${ClassRegistBoardVo.class_board_postdate}</td>
 						<td>${ClassRegistBoardVo.class_board_viewcnt}</td>
+						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
+							<td><button type="submit" class="btn btn-primary">삭제</button></td>
+						</form>
 					</tr>
 					</c:forEach>
 				</tbody>

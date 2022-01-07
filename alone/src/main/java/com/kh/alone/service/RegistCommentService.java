@@ -31,4 +31,9 @@ public class RegistCommentService {
 		List<RegistCommentVo> list = commentDao.listcomment();
 		return list;
 	}
+	
+	// 댓글 삭제
+	public void deletecomment() {
+		commentDao.deletecomment();
+	}
 }

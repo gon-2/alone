@@ -49,6 +49,22 @@
  				});
  			});
 		});
+ 		
+ 		$("#deleteComment").click(function(e){
+ 			e.preventDefault();
+ 			
+ 			var url = "/comment/deleteComment";
+ 			var first_content = $("#first_content").val();
+ 			
+ 			var sendData = {
+ 				"first_contnet" : first_content	
+ 			};
+ 			
+ 			$.post(url , sendData , function(rData){
+ 				console.log(rData);
+ 			});
+ 			
+ 		});
 	});
 </script>
 </head>
@@ -96,7 +112,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<form role="form">
+			<form role="form" action="/class_board/deleteBoard" method="post">
 				<div class="form-group">
 					<label for="class_board_title">상담 제목</label>
 					<input type="text" class="form-control" id="class_board_title" name="class_board_title" style="width:300px;" readonly="readonly" value="${registboardvo.class_board_title}"/>
@@ -109,8 +125,9 @@
 					<label for="class_board_content">상담 내용</label><br>
 					<textarea style="width:300px; height:100px;"  id="class_board_content" name="class_board_content" readonly="readonly">${registboardvo.class_board_content}</textarea>
 				</div>
-				<button type="submit" class="btn btn-primary">수정</button>
-				<button type="reset" class="btn btn-success">삭제</button>
+				<button type="button" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button>
+				<button type="reset" class="btn btn-info">다시입력</button>
 				<button type="button" class="btn btn-warning" id="inComment">상담자 댓글달기</button>
 				<button type="button" class="btn btn-secondary" id="showComment">댓글보기</button>
 			</form> 
@@ -125,6 +142,7 @@
 					<p id="first_userid" class="first_userid"></p>
 					<p id="first_content" class="first_content"></p>
 					<p id="first_date" class="first_date"></p>
+					<button type="button" id="deleteComment" class="btn btn-warning">댓글 삭제</button>
 				</div>
 			</form>
 		</div>

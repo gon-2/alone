@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.kh.alone.service.ClassRegistBoardService;
 import com.kh.alone.service.RegistCommentService;
@@ -63,5 +64,12 @@ public class ClassRegistBoardController {
 		model.addAttribute("dto" , dto);
 		model.addAttribute("list", list);
 		return "/service_center/class_regist_page";
-	}	
+	}
+	
+	@RequestMapping(value="/deleteBoard" , method=RequestMethod.POST)
+	public String deleteBoard(String class_board_content) {
+		registboardservice.deleteBoard(class_board_content);
+		System.out.println("ClassRegistBoardController , deleteBoard , class_board_title >> " + class_board_content);
+		return "redirect:/class_board/class_regist";
+	}
 }

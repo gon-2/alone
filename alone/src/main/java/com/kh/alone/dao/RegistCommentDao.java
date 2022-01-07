@@ -33,4 +33,10 @@ public class RegistCommentDao {
 		List<RegistCommentVo> list = session.selectList(NAMESPACE + "commentList");
 		return list;
 	}
+	
+	// 댓글 삭제
+	public void deletecomment() {
+		session.delete(NAMESPACE + "deletecomment");
+	}
+	
 }

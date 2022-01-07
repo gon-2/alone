@@ -14,14 +14,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.alone.dao.ClassRegistBoardDao;
+import com.kh.alone.dao.RegistCommentDao;
 import com.kh.alone.vo.PagingDto;
 import com.kh.alone.vo.RegistBoardVo;
 import com.kh.alone.vo.RegistCommentVo;
 
 @Service
 public class ClassRegistBoardService {
+	
 	@Inject
 	private ClassRegistBoardDao registboardDao;
+	
+	@Inject
+	private RegistCommentDao registCommentDao;
 	
 	public int cntBoard(PagingDto dto) {
 		int count = registboardDao.cntBoard(dto);
@@ -51,5 +56,10 @@ public class ClassRegistBoardService {
 		RegistBoardVo registBoardvo = registboardDao.getBoard(class_board_title);
 		registboardDao.viewcnt(class_board_title);
 		return registBoardvo;
+	}
+	
+	// 게시글과 댓글 삭제  ( 삭제 못하는 이유는 게시판 테이블 안에 댓글이 남아있어서 삭제 못함.. 나중에 추가)
+	public void deleteBoard(String class_board_content) {
+		registboardDao.deleteBoard(class_board_content);
 	}
 }

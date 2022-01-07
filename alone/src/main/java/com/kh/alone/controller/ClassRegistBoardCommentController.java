@@ -45,4 +45,10 @@ public class ClassRegistBoardCommentController {
 		model.addAttribute("list" , list);
 		return list;
 	}
+	
+	@RequestMapping(value="/deleteComment" , method=RequestMethod.POST)
+	public String deletecomment() {
+		registcommentservice.deletecomment();
+		return "success";
+	}
 }

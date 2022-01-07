@@ -71,6 +71,6 @@
 	<!-- 상담 게시글 삭제 -->
 	<delete id="deleteBoard">
 		delete from tbl_class_board
-		class_board_title = #{class_board_title}
+		where class_board_content = #{class_board_content}
 	</delete>
 </mapper>

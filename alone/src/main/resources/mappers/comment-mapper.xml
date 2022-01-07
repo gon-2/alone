@@ -20,5 +20,8 @@
 	</select>
 	
 	<!-- 댓글  -->
+	<delete id="deletecomment">
+		delete from tbl_class_board_comment
+	</delete>
 	
 </mapper>
