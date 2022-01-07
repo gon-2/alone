@@ -58,10 +58,12 @@ public class MemberService {
 		MemberVo memberVo = memberDao.memberModify(userid);
 		return memberVo;
 	}
-	
-	// 회원답글
-	public void insertReply(MemberBoardVo memberboardVo) {
-		memberDao.insertReply(memberboardVo);
-		System.out.println("MemberService, insertReply, insert....");
+
+	// 답글확인
+	public void memberBoardForm(MemberBoardVo memberboardVo) {
+		memberDao.memberBoardForm(memberboardVo);
+		
 	}
+	
+	
 }
