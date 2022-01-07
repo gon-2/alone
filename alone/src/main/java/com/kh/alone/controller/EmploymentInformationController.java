@@ -13,7 +13,6 @@ import com.kh.alone.service.LookJobService;
 import com.kh.alone.vo.FindVo;
 import com.kh.alone.vo.JobTestVo;
 import com.kh.alone.vo.LookJobVo;
-import com.kh.alone.vo.PagingVo;
 import com.kh.alone.vo.ReferenceVo;
 
 
@@ -72,12 +71,12 @@ public class EmploymentInformationController {
 	}
 	
 	@RequestMapping(value="/referenceRoomList", method=RequestMethod.GET)
-	public String referenceRoomList(Model model, PagingVo pagingVo) {
-		int count = lookJobService.r_getCount(pagingVo);
-		pagingVo.setCount(count);
-		pagingVo.setPageInfo();
-	    System.out.println("BoardController, boardListAll, pagingDto:" + pagingVo);
-		List<ReferenceVo> list = lookJobService.referenceRoomList(pagingVo);
+	public String referenceRoomList(Model model) {
+//		int count = lookJobService.r_getCount(pagingVo);
+//		pagingVo.setCount(count);
+//		pagingVo.setPageInfo();
+//	    System.out.println("BoardController, boardListAll, pagingDto:" + pagingVo);
+		List<ReferenceVo> list = lookJobService.referenceRoomList();
 		model.addAttribute("list", list);
 		return "employ/referenceRoomList";
 	}

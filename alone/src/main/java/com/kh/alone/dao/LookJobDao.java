@@ -10,23 +10,22 @@ import org.springframework.stereotype.Repository;
 import com.kh.alone.vo.FindVo;
 import com.kh.alone.vo.JobTestVo;
 import com.kh.alone.vo.LookJobVo;
-import com.kh.alone.vo.PagingVo;
 import com.kh.alone.vo.ReferenceVo;
 
 
 @Repository
 public class LookJobDao {
 	
-	private static final String NAMESPACE = "com.kh.test02.mappers.lookJob.";
+	private static final String NAMESPACE = "com.kh.alone.mappers.lookJob.";
 	
 	@Inject
 	private SqlSession sqlSession;
 	
 	// 페이지 카운터 확인하기
-	public int r_getCount(PagingVo pagingVo) {
-		int count = sqlSession.selectOne(NAMESPACE + "r_getCount", pagingVo);
-		return count;
-	}
+//	public int r_getCount(PagingVo pagingVo) {
+//		int count = sqlSession.selectOne(NAMESPACE + "r_getCount", pagingVo);
+//		return count;
+//	}
 	
 	// 구인정보 확인
 	public List<LookJobVo> selectAll() {
@@ -83,8 +82,8 @@ public class LookJobDao {
 	}
 	
 	// 자료실
-	public List<ReferenceVo> referenceRoomList(PagingVo pagingVo) {
-		List<ReferenceVo> list = sqlSession.selectList(NAMESPACE + "referenceRoomList", pagingVo);
+	public List<ReferenceVo> referenceRoomList() {
+		List<ReferenceVo> list = sqlSession.selectList(NAMESPACE + "referenceRoomList");
 		return list;
 	}
 	

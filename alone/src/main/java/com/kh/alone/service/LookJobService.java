@@ -10,7 +10,6 @@ import com.kh.alone.dao.LookJobDao;
 import com.kh.alone.vo.FindVo;
 import com.kh.alone.vo.JobTestVo;
 import com.kh.alone.vo.LookJobVo;
-import com.kh.alone.vo.PagingVo;
 import com.kh.alone.vo.ReferenceVo;
 
 @Service
@@ -68,8 +67,8 @@ public class LookJobService {
 	}
 	
 	// 자료실
-	public List<ReferenceVo> referenceRoomList(PagingVo pagingVo) {
-		List<ReferenceVo> list = lookJobDao.referenceRoomList(pagingVo);
+	public List<ReferenceVo> referenceRoomList() {
+		List<ReferenceVo> list = lookJobDao.referenceRoomList();
 		return list;
 	}
 	
@@ -85,9 +84,9 @@ public class LookJobService {
 		return imageList;
 	}
 	
-	// 자료실 페이지 카운터 확인하기
-	public int r_getCount(PagingVo pagingVo) {
-		int count = lookJobDao.r_getCount(pagingVo);
-		return count;
-	}
+//	// 자료실 페이지 카운터 확인하기
+//	public int r_getCount(PagingVo pagingVo) {
+//		int count = lookJobDao.r_getCount(pagingVo);
+//		return count;
+//	}
 }
