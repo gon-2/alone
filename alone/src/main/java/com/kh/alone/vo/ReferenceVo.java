@@ -11,13 +11,17 @@ public class ReferenceVo {
 	private String r_fail;
 	private String r_images;
 	private String r_content;
+	private int re_group;
+	private int re_seq;
+	private int re_level;
 	
 	public ReferenceVo() {
 		super();
 	}
 
 	public ReferenceVo(int rno, String rtitle, String rwriter, int recommend, int hits, String reference_date,
-			String reference_time, String r_fail, String r_images, String r_content) {
+			String reference_time, String r_fail, String r_images, String r_content, int re_group, int re_seq,
+			int re_level) {
 		super();
 		this.rno = rno;
 		this.rtitle = rtitle;
@@ -29,6 +33,9 @@ public class ReferenceVo {
 		this.r_fail = r_fail;
 		this.r_images = r_images;
 		this.r_content = r_content;
+		this.re_group = re_group;
+		this.re_seq = re_seq;
+		this.re_level = re_level;
 	}
 
 	public int getRno() {
@@ -111,10 +118,35 @@ public class ReferenceVo {
 		this.r_content = r_content;
 	}
 
+	public int getRe_group() {
+		return re_group;
+	}
+
+	public void setRe_group(int re_group) {
+		this.re_group = re_group;
+	}
+
+	public int getRe_seq() {
+		return re_seq;
+	}
+
+	public void setRe_seq(int re_seq) {
+		this.re_seq = re_seq;
+	}
+
+	public int getRe_level() {
+		return re_level;
+	}
+
+	public void setRe_level(int re_level) {
+		this.re_level = re_level;
+	}
+
 	@Override
 	public String toString() {
 		return "ReferenceVo [rno=" + rno + ", rtitle=" + rtitle + ", rwriter=" + rwriter + ", recommend=" + recommend
 				+ ", hits=" + hits + ", reference_date=" + reference_date + ", reference_time=" + reference_time
-				+ ", r_fail=" + r_fail + ", r_images=" + r_images + ", r_content=" + r_content + "]";
+				+ ", r_fail=" + r_fail + ", r_images=" + r_images + ", r_content=" + r_content + ", re_group="
+				+ re_group + ", re_seq=" + re_seq + ", re_level=" + re_level + "]";
 	}
 }
