@@ -5,10 +5,10 @@
 
 <mapper namespace="com.kh.alone.mappers.faq">
 
-	<!-- 자주 묻는 질문에서 조회수가 50 이상인 수강신청 목록만 출력-->
+	<!-- 자주 묻는 질문에서 조회수가 10 이상인 수강신청 목록만 출력-->
 	<select id="classBoardSetViewcnt" resultType="RegistBoardVo">
 		select * from tbl_class_board
-		<![CDATA[where class_board_viewcnt >= 50]]>
+		<![CDATA[where class_board_viewcnt >= 10]]>
 		order by class_board_viewcnt desc
 	</select>
 	

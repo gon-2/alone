@@ -57,7 +57,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h3 class="text-center" id="success">조회수에 따라서 질문 내역을 확인 할 수 있습니다.</h3>
-					<h3 class="text-center">조회수 50 이상 질문 내역 확인 가능</h3>
+					<h3 class="text-center">조회수 10부터 질문 내역 확인 가능</h3>
 					<br>
 					<div class="dropdown">
 						<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">분류</button>
