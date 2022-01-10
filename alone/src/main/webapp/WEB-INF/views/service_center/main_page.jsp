@@ -28,11 +28,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr align="center">
-						<td>1</td>
-						<td><a href="">TB - Monthly</a></td>
-						<td>01/04/2012</td>
-					</tr>
+					<c:forEach items="${thirdlist}" var="RegistBoardVo">
+						<tr align="center">
+							<td><a href="/class_board/getBoard?class_board_title=${RegistBoardVo.class_board_title}">${RegistBoardVo.class_board_title}</a></td>
+							<td>${RegistBoardVo.class_board_content}</td>
+							<td>${RegistBoardVo.class_board_userid}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

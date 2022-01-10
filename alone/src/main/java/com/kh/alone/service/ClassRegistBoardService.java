@@ -44,11 +44,19 @@ public class ClassRegistBoardService {
 		return list;
 	}
 	
-	// 최신 게시글 3개만 조회 ( 메인 페이지 화면만! ) 
+	// 최신 수강신청 게시글 3개만 조회 ( 메인 페이지 화면만! ) 
 	public List<RegistBoardVo> countThird(){
-		List<RegistBoardVo> list = registboardDao.countThird();
-		return list;
+		List<RegistBoardVo> countlist = registboardDao.countThird();
+		return countlist;
 	}
+	
+	//3개의 최신 자주묻는 질문 글만 조회
+	public List<RegistBoardVo> faqThird(){
+		List<RegistBoardVo> thirdlist = registboardDao.faqThird();
+		System.out.println("ClassRegistBoardDao , faqThird, thirdlist: " + thirdlist);
+		return thirdlist;
+	}
+	
 	
 	// 제목 클릭시 내용 보이기
 	@Transactional

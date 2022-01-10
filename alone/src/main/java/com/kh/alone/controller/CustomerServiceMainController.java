@@ -28,8 +28,10 @@ public class CustomerServiceMainController {
 	// 고객센터 홈페이지
 	@RequestMapping(value="/home" , method=RequestMethod.GET)
 	public String MainPage(Model model , HttpSession session) {
-		List<RegistBoardVo> classregistList = registBoardService.countThird();
+		List<RegistBoardVo> classregistList = registBoardService.countThird();		// 수강신청에 보일 최신글 3개
+		List<RegistBoardVo> thirdlist = registBoardService.faqThird();				// 자주묻는 질문에 보일 최신글 3개
 		model.addAttribute("classregistList" , classregistList);
+		model.addAttribute("thirdlist" , thirdlist);
 		return "/service_center/main_page";
 	}
 	

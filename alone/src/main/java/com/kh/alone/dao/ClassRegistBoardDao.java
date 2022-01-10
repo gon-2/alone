@@ -44,10 +44,18 @@ public class ClassRegistBoardDao {
 	
 	// 최신 게시글 3개만 조회 ( 고객센터 메인 홈페이지에 보일 것! ) 
 	public List<RegistBoardVo> countThird(){
-		List<RegistBoardVo> list = session.selectList(NAMESPACE + "countThird");
-		System.out.println("ClassRegistBoardDao, countThree, list: " + list);
-		return list;
+		List<RegistBoardVo> countlist = session.selectList(NAMESPACE + "countThird");
+		System.out.println("ClassRegistBoardDao, countThree, list: " + countlist);
+		return countlist;
 	}
+	
+	//3개의 최신 자주묻는 질문 글만 조회
+	public List<RegistBoardVo> faqThird(){
+		List<RegistBoardVo> thirdlist = session.selectList(NAMESPACE + "faqThird");
+		System.out.println("ClassRegistBoardDao , faqThird, list: " + thirdlist);
+		return thirdlist;
+	}
+	
 	
 	// 제목 클릭시 내용 보이기
 	public RegistBoardVo getBoard(String class_board_title) {
