@@ -19,11 +19,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.kh.alone.service.ClassInfoService;
 import com.kh.alone.service.HomeService;
 import com.kh.alone.vo.ClassInfoVo;
-import com.kh.alone.vo.LoginVo;
 import com.kh.alone.vo.MemberVo;
 
 @Controller
 public class HomeController {
+	
+	private static final int WEEKLY = 1;
+	private static final int WEEKEND = 2;
+	private static final int NIGHT = 3;
+	
+	
 	
 	@Inject
 	private ClassInfoService service;
@@ -38,18 +43,19 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		List<ClassInfoVo> list = service.selectAll();
-		List<ClassInfoVo> weekly = service.selectWeekly();
-		List<ClassInfoVo> weekend = service.selectWeekend();
-		List<ClassInfoVo> night = service.selectNight();
+		List<ClassInfoVo> weekly = service.classListByTimeCode(WEEKLY);
+		List<ClassInfoVo> weekend = service.classListByTimeCode(WEEKEND);
+		List<ClassInfoVo> night = service.classListByTimeCode(NIGHT);
+		
 		
 		model.addAttribute("list", list);
 		model.addAttribute("weekly", weekly);
 		model.addAttribute("weekend", weekend);
 		model.addAttribute("night", night);
-		System.out.println("컨트롤러list: " + list);
-		System.out.println("컨트롤러weekly: " + weekly);
-		System.out.println("컨트롤러weekend: " + weekend);
-		System.out.println("컨트롤러night: " + night);
+		System.out.println("홈ㅍ컨트롤러list: " + list);
+		System.out.println("홈ㅍ컨트롤러weekly: " + weekly);
+		System.out.println("호뮤컨트롤러weekend: " + weekend);
+		System.out.println("호뮤컨트롤러night: " + night);
 		return "home";
 	}
 	

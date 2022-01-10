@@ -28,53 +28,25 @@ public class ClassInfoService {
 		return list;
 	}
 	
-	// 주간반 조회
-	public List<ClassInfoVo> selectWeekly(){
-		List<ClassInfoVo> weekly = dao.selectWeekly();
-		return weekly;
+	// title로 조회
+	public ClassInfoVo selectByCno(int c_no){
+		ClassInfoVo classInfoVo = dao.selectByCno(c_no);
+		return classInfoVo;
 	}
 	
-	// 주말반 조회
-	public List<ClassInfoVo> selectWeekend(){
-		List<ClassInfoVo> weekend = dao.selectWeekend();
-		return weekend;
+	
+	// 타임코드로 조회
+	public List<ClassInfoVo> classListByTimeCode(int time_code){
+		List<ClassInfoVo> timeList = dao.classListByTimeCode(time_code);
+		return timeList;
+	}
+		
+	// 수업과정별 나누기
+	public List<ClassInfoVo> classListByCateCode(int cate_code){
+		List<ClassInfoVo> cate_list = dao.classListByCateCode(cate_code);
+		return cate_list;
 	}
 	
-	// 야간반 조회
-	public List<ClassInfoVo> selectNight(){
-		List<ClassInfoVo> night = dao.selectNight();
-		return night;
-	}
-	
-	// 프로그래밍 조회
-	public List<ClassInfoVo> selectPro(){
-		List<ClassInfoVo> pro = dao.selectPro();
-		return pro;
-	}
-	
-	//디자인 조회
-	public List<ClassInfoVo> selectDesign(){
-		List<ClassInfoVo> design = dao.selectDesign();
-		return design;
-	}
-	
-	//제품디자인 조회
-	public List<ClassInfoVo> selectProduct(){
-		List<ClassInfoVo> product = dao.selectProduct();
-		return product;
-	}
-	
-	//3D프린트 조회
-	public List<ClassInfoVo> selectPrint(){
-		List<ClassInfoVo> print = dao.selectPrint();
-		return print;
-	}
-	
-	//사무자동화 조회
-	public List<ClassInfoVo> selectOffice(){
-		List<ClassInfoVo> office = dao.selectOffice();
-		return office;
-	}
 	
 	// 수강신청하기
 	public void insertOnlineRegist(OnlineRegistVo vo) {

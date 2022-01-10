@@ -8,7 +8,6 @@
 <section id="banner">
 	<header>
 		<h2>현재 모집중인과정</h2>
-		<a href="#">상담신청하기</a>
 	</header>
 </section>
 <!-- Main -->

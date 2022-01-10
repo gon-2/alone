@@ -17,7 +17,7 @@
 									<c:forEach items="${list}" var="ClassInfoVo">
 										<tr>
 											<td>${ClassInfoVo.c_title}</td>
-											<td>${ClassInfoVo.c_term}</td>
+											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
 											<td><a href="#" class="btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
@@ -39,7 +39,7 @@
 									<c:forEach items="${weekly}" var="ClassInfoVo">
 										<tr>
 											<td>${ClassInfoVo.c_title }</td>
-											<td>${ClassInfoVo.c_term}</td>
+											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
 											<td><a href="#" class="btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
@@ -61,7 +61,7 @@
 									<c:forEach items="${weekend}" var="ClassInfoVo">
 										<tr>
 											<td>${ClassInfoVo.c_title }</td>
-											<td>${ClassInfoVo.c_term}</td>
+											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
 											<td><a href="#" class="btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
@@ -83,7 +83,7 @@
 									<c:forEach items="${night}" var="ClassInfoVo">
 										<tr>
 											<td>${ClassInfoVo.c_title }</td>
-											<td>${ClassInfoVo.c_term}</td>
+											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
 											<td><a href="#" class="btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>

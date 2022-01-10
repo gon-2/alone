@@ -3,6 +3,7 @@ package com.kh.alone.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,16 @@ import com.kh.alone.vo.OnlineRegistVo;
 @RequestMapping("/classInfo")
 public class ClassInfoController {
 	
+	private static final int WEEKLY = 1;
+	private static final int WEEKEND = 2;
+	private static final int NIGHT = 3;
+	
+	private static final int PROGRAM = 1;
+	private static final int OFFICE = 2;
+	private static final int PRODUCT = 3;
+	private static final int PRINT = 4;
+	private static final int DESIGN = 5;
+	
 	@Inject
 	private ClassInfoService service;
 	
@@ -31,14 +42,16 @@ public class ClassInfoController {
 	@RequestMapping(value="/list_all", method=RequestMethod.GET)
 	public String selectAll(Model model) {
 		List<ClassInfoVo> list = service.selectAll();
-		List<ClassInfoVo> weekly = service.selectWeekly();
-		List<ClassInfoVo> weekend = service.selectWeekend();
-		List<ClassInfoVo> night = service.selectNight();
-		List<ClassInfoVo> pro = service.selectPro();
-		List<ClassInfoVo> design = service.selectDesign();
-		List<ClassInfoVo> product = service.selectProduct();
-		List<ClassInfoVo> print = service.selectPrint();
-		List<ClassInfoVo> office = service.selectOffice();
+		
+		List<ClassInfoVo> weekly = service.classListByTimeCode(WEEKLY);
+		List<ClassInfoVo> weekend = service.classListByTimeCode(WEEKEND);
+		List<ClassInfoVo> night = service.classListByTimeCode(NIGHT);
+		
+		List<ClassInfoVo> pro = service.classListByCateCode(PROGRAM);
+		List<ClassInfoVo> design = service.classListByCateCode(OFFICE);
+		List<ClassInfoVo> product = service.classListByCateCode(PRODUCT);
+		List<ClassInfoVo> print = service.classListByCateCode(PRINT);
+		List<ClassInfoVo> office = service.classListByCateCode(DESIGN);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("weekly", weekly);
@@ -57,12 +70,21 @@ public class ClassInfoController {
 	//온라인 접수 동의
 	@RequestMapping(value="/onlineAgree", method=RequestMethod.GET)
 	public String onlineAgree() {
-		return "/classInfo/onlineAgree";
+		
+		return "classInfo/onlineAgree";
+	}
+	
+	//메인페이지에서 수강 신청 하기 눌렀을때 데이터 넘겨주기
+	@RequestMapping(value="/homeRegist", method=RequestMethod.GET)
+	public String selectTitle(Model model, int c_no, HttpSession session) {
+		ClassInfoVo classInfoVo = service.selectByCno(c_no);
+		session.setAttribute("classInfoVo", classInfoVo);
+		return"redirect:/classInfo/onlineAgree";
 	}
 	
 	// 온라인 접수 동의 후 입력양식
 	@RequestMapping(value="/onlineRegist", method=RequestMethod.GET)
-	public String onlineRegist(Model model) {
+	public String onlineRegist(Model model, HttpSession session) {
 		return "/classInfo/onlineRegist";
 	}
 	
@@ -95,10 +117,10 @@ public class ClassInfoController {
 		if (mine == 0) {
 			return "false";
 		}
-//		model.addAttribute("mine", mine);
 		return "success";
 	}
 	
+	// 주민번호로 확인하는 진행현황 보여주기
 	@RequestMapping(value="/myStatusView", method=RequestMethod.GET)
 	public String myStatusView(Model model, String r_num) {
 		List<OnlineRegistVo> mine = service.selectMineList(r_num);
@@ -106,5 +128,5 @@ public class ClassInfoController {
 		return "/classInfo/myStatusView";
 	}
 	
-	
+//
 }

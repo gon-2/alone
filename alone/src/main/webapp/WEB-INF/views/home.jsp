@@ -3,6 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 
+<script>
+$(function(){
+	$(".homeRegist").click(function(e){
+		e.preventDefault();
+		var info_code = $(this).attr("href");
+		console.log(c_no);
+		location.href = "/classInfo/homeRegist?c_no=" + c_no;
+	});
+	
+	
+});
+</script>
 
 <!-- Banner -->
 <div id="demo" class="carousel slide" data-ride="carousel">
@@ -98,15 +110,17 @@
 										<tr>
 											<th>과정명</th>
 											<th>교육기간</th>
-											<th>신청</th>
+											<th>신청하기</th>
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${list}" var="ClassInfoVo">
+									<c:forEach items="${list}" var="classInfoVo">
+										<input type="hidden" id="time_code" value="${classInfoVo.time_code}">
+										<input type="hidden" id="cate_code" value="${classInfoVo.cate_code}">
 										<tr>
-											<td>${ClassInfoVo.c_title}</td>
-											<td>${ClassInfoVo.c_term}</td>
-											<td><a class="btn btn-sm btn-outline-danger" href="#">신청</a></td>
+											<td>${classInfoVo.c_title}</td>
+											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
+											<td><a class="homeRegist btn btn-sm btn-outline-danger" href="${classInfoVo.info_code}">신청</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -120,15 +134,17 @@
 										<tr>
 											<th>과정명</th>  
 											<th>교육기간</th>
-											<th>신청</th>
+											<th>신청하기</th>
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${weekly}" var="ClassInfoVo">
+									<c:forEach items="${weekly}" var="classInfoVo">
+										<input type="hidden" id="time_code" value="${classInfoVo.time_code}">
+										<input type="hidden" id="cate_code" value="${classInfoVo.cate_code}">
 										<tr>
-											<td>${ClassInfoVo.c_title }</td>
-											<td>${ClassInfoVo.c_term}</td>
-											<td><a class="btn btn-sm btn-outline-danger" href="#">신청</a></td>
+											<td>${classInfoVo.c_title}</td>
+											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
+											<td><a class="homeRegist btn btn-sm btn-outline-danger"  id="homeRegist" href="/classInfo/onlineAgree">신청</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -142,15 +158,17 @@
 										<tr>
 											<th>과정명</th>
 											<th>교육기간</th>
-											<th>신청</th>
+											<th>신청하기</th>
 										</tr>
 									</thead>
 									<tbody>
 									<c:forEach items="${weekend}" var="ClassInfoVo">
+										<input type="hidden" id="c_day" value="${classInfoVo.time_code}">
+										<input type="hidden" id="c_cate" value="${classInfoVo.cate_code}">
 										<tr>
 											<td>${ClassInfoVo.c_title }</td>
-											<td>${ClassInfoVo.c_term}</td>
-											<td><a class="btn btn-sm btn-outline-danger" href="#">신청</a></td>
+											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
+											<td><a class="homeRegist btn btn-sm btn-outline-danger"  id="homeRegist" href="/classInfo/onlineAgree">신청</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -164,15 +182,17 @@
 										<tr>
 											<th>과정명</th>
 											<th>교육기간</th>
-											<th>신청</th>
+											<th>신청하기</th>
 										</tr>
 									</thead>
 									<tbody>
 									<c:forEach items="${night}" var="ClassInfoVo">
+										<input type="hidden" id="c_day" value="${classInfoVo.time_code}">
+										<input type="hidden" id="c_cate" value="${classInfoVo.cate_code}">
 										<tr>
 											<td>${ClassInfoVo.c_title }</td>
-											<td>${ClassInfoVo.c_term}</td>
-											<td><a class="btn btn-sm btn-outline-danger" href="#">신청</a></td>
+											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
+											<td><a class="homeRegist btn btn-sm btn-outline-danger"  href="/classInfo/onlineAgree">신청</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>

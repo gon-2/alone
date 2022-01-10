@@ -1,71 +1,106 @@
 package com.kh.alone.vo;
 
 public class ClassInfoVo {
-	String c_cate; //수업 카테고리 어떤종류의 과목인지
-	String c_title; //수업 이름
-	String c_term; //수업 기간
-	String c_time; //수업 시간
-	int c_room;    //강의실 호수
-	int c_total;   //총원
-	String c_pay;  //수강료
-	String c_day;  // 주간 주말 야간반 
+	private int info_code; // 시퀀스 줄거얌
+	private String c_title; //수업 이름
+	private int c_time; //수업 기간
+	private String start_date; //수업 기간
+	private String end_date; //수업 시간
+	private int price;    //강의실 호수
+	private int class_room;   //총원
+	private int class_total;  //수강료
+	private int cate_code;  // 주간 주말 야간반 
+	private int time_code;  
 	
 	public ClassInfoVo() {
 		super();
 	}
-	public String getC_cate() {
-		return c_cate;
+
+	public int getInfo_code() {
+		return info_code;
 	}
-	public void setC_cate(String c_cate) {
-		this.c_cate = c_cate;
+
+	public void setInfo_code(int info_code) {
+		this.info_code = info_code;
 	}
+
 	public String getC_title() {
 		return c_title;
 	}
-	public void setC_title(String c_name) {
-		this.c_title = c_name;
+
+	public void setC_title(String c_title) {
+		this.c_title = c_title;
 	}
-	public String getC_term() {
-		return c_term;
-	}
-	public void setC_term(String c_term) {
-		this.c_term = c_term;
-	}
-	public String getC_time() {
+
+	public int getC_time() {
 		return c_time;
 	}
-	public void setC_time(String c_time) {
+
+	public void setC_time(int c_time) {
 		this.c_time = c_time;
 	}
-	public int getC_room() {
-		return c_room;
+
+	public String getStart_date() {
+		return start_date;
 	}
-	public void setC_room(int c_room) {
-		this.c_room = c_room;
+
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
 	}
-	public int getC_total() {
-		return c_total;
+
+	public String getEnd_date() {
+		return end_date;
 	}
-	public void setC_total(int c_total) {
-		this.c_total = c_total;
+
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
 	}
-	public String getC_pay() {
-		return c_pay;
+
+	public int getPrice() {
+		return price;
 	}
-	public void setC_pay(String c_pay) {
-		this.c_pay = c_pay;
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
-	public String getC_day() {
-		return c_day;
+
+	public int getClass_room() {
+		return class_room;
 	}
-	public void setC_day(String c_day) {
-		this.c_day = c_day;
+
+	public void setClass_room(int class_room) {
+		this.class_room = class_room;
 	}
+
+	public int getClass_total() {
+		return class_total;
+	}
+
+	public void setClass_total(int class_total) {
+		this.class_total = class_total;
+	}
+
+	public int getCate_code() {
+		return cate_code;
+	}
+
+	public void setCate_code(int cate_code) {
+		this.cate_code = cate_code;
+	}
+
+	public int getTime_code() {
+		return time_code;
+	}
+
+	public void setTime_code(int time_code) {
+		this.time_code = time_code;
+	}
+
 	@Override
 	public String toString() {
-		return "ClassInfoVo [c_cate=" + c_cate + ", c_title=" + c_title + ", c_term=" + c_term + ", c_time=" + c_time
-				+ ", c_room=" + c_room + ", c_total=" + c_total + ", c_pay=" + c_pay + ", c_day=" + c_day + "]";
+		return "ClassInfoVo [info_code=" + info_code + ", c_title=" + c_title + ", c_time=" + c_time + ", start_date="
+				+ start_date + ", end_date=" + end_date + ", price=" + price + ", class_room=" + class_room
+				+ ", class_total=" + class_total + ", cate_code=" + cate_code + ", time_code=" + time_code + "]";
 	}
-	
 	
 }

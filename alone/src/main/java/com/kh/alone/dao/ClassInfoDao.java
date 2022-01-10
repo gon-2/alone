@@ -30,53 +30,28 @@ public class ClassInfoDao {
 		return list;
 	}
 	
-	// 주간반 조회
-	public List<ClassInfoVo> selectWeekly(){
-		List<ClassInfoVo> weekly = sqlSession.selectList(NAMESPACE + "selectWeekly");
-		return weekly;
+	// title로 조회
+	public ClassInfoVo selectByCno(int c_no){
+		System.out.println(c_no);
+		ClassInfoVo classInfoVo = sqlSession.selectOne(NAMESPACE + "selectByCno", c_no);
+		return classInfoVo;
 	}
 	
-	// 주말반 조회
-	public List<ClassInfoVo> selectWeekend(){
-		List<ClassInfoVo> weekend = sqlSession.selectList(NAMESPACE + "selectWeekend");
-		return weekend;
+	
+	// 타임코드로 주말 주간 야간 조회
+	public List<ClassInfoVo> classListByTimeCode(int time_code){
+		List<ClassInfoVo> timeList = sqlSession.selectList(NAMESPACE + "classListByTimeCode", time_code);
+		return timeList;
 	}
 	
-	// 야간반 조회
-	public List<ClassInfoVo> selectNight(){
-		List<ClassInfoVo> night = sqlSession.selectList(NAMESPACE + "selectNight");
-		return night;
+	
+	
+	// 수업과정별 나누기
+	public List<ClassInfoVo> classListByCateCode(int cate_code){
+		List<ClassInfoVo> cate_list = sqlSession.selectList(NAMESPACE + "classListByCateCode", cate_code);
+		return cate_list;
 	}
 	
-	//프로그래밍 조회
-	public List<ClassInfoVo> selectPro(){
-		List<ClassInfoVo> pro = sqlSession.selectList(NAMESPACE + "selectPro");
-		return pro;
-	}
-	
-	//디자인 조회
-	public List<ClassInfoVo> selectDesign(){
-		List<ClassInfoVo> design = sqlSession.selectList(NAMESPACE + "selectDesign");
-		return design;
-	}
-	
-	//제품디자인 조회
-	public List<ClassInfoVo> selectProduct(){
-		List<ClassInfoVo> product = sqlSession.selectList(NAMESPACE + "selectProduct");
-		return product;
-	}
-	
-	//3D프린트 조회
-	public List<ClassInfoVo> selectPrint(){
-		List<ClassInfoVo> print = sqlSession.selectList(NAMESPACE + "selectPrint");
-		return print;
-	}
-	
-	//사무자동화 조회
-	public List<ClassInfoVo> selectOffice(){
-		List<ClassInfoVo> office = sqlSession.selectList(NAMESPACE + "selectOffice");
-		return office;
-	}
 	
 	// 수강신청하기
 	public void insertOnlineRegist(OnlineRegistVo vo) {

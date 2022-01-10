@@ -10,59 +10,30 @@
 		values(#{c_cate}, #{c_title}, #{c_term}, #{c_time}, #{c_room}, #{c_total}, #{c_pay}, #{c_day})
 	</insert>
 	
+	<!-- 제목으로 찾기 -->	
+		<select id="selectByCno" resultType="ClassInfoVo">
+			select * from c_class_info
+			where c_title = #{c_title}
+		</select>
 		
 	<!-- 전체보기 -->
 	<select id="selectAll" resultType="ClassInfoVo">
-		select * from tbl_class
+		select * from c_class_info
 	</select>
 	
-	<!-- 주간반 -->
-	<select id="selectWeekly" resultType="ClassInfoVo">
-		select * from tbl_class
-		where c_day = '주간반'
+
+	<!-- 주말 주간 야간 구하기 -->
+	<select id="classListByTimeCode" resultType="ClassInfoVo">
+		select * from c_class_info 
+		where time_code = #{time_code}
 	</select>
 	
-	<!-- 주말반 -->
-	<select id="selectWeekend" resultType="ClassInfoVo">
-		select * from tbl_class where c_day = '주말반'
-	</select>
 	
-	<!-- 야간반 -->
-	<select id="selectNight" resultType="ClassInfoVo">
-		select * from tbl_class
-		where c_day = '야간반'
-	</select>
 	
 	<!-- 수업 과정별 나누기 -->
-	
-	<!-- 프로그래밍 -->
-	<select id="selectPro" resultType="ClassInfoVo">
-		select * from tbl_class
-		where c_cate = '프로그래밍'
-	</select>
-	
-	<!-- 디자인 -->
-	<select id="selectDesign" resultType="ClassInfoVo">
-		select * from tbl_class
-		where c_cate = '디자인'
-	</select>
-	
-	<!-- 제품디자인 -->
-	<select id="selectProduct" resultType="ClassInfoVo">
-		select * from tbl_class
-		where c_cate = '제품디자인'
-	</select>
-	
-	<!-- 3D프린트 -->
-	<select id="selectPrint" resultType="ClassInfoVo">
-		select * from tbl_class
-		where c_cate = '3D프린트'
-	</select>
-	
-	<!-- 사무자동화 -->
-	<select id="selectOffice" resultType="ClassInfoVo">
-		select * from tbl_class
-		where c_cate = '사무자동화'
+	<select id="classListByCateCode" resultType="ClassInfoVo">
+		select * from c_class_info
+		where cate_code = #{cate_code}
 	</select>
 	
 	
@@ -83,14 +54,14 @@
 	
 	<!-- 주민번호로 신청한거 조회하기 -->
 	<select id="selectMine" resultType="int">
-		select count(*) from online_regist
-		where r_num = #{r_num} 
+<!-- 		select count(*) from online_regist -->
+<!-- 		where r_num = #{r_num}  -->
 		
 	</select>
 	
 	<select id="selectMineList" resultType="OnlineRegistVo">
-		select * from online_regist
-		where r_num =  #{r_num}
+<!-- 		select * from online_regist -->
+<!-- 		where r_num =  #{r_num} -->
 	</select>
 	
 </mapper>
