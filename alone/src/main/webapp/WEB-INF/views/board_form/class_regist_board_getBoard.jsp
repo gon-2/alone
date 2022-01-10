@@ -43,7 +43,7 @@
  				$.each(rData, function(){
 					$(".first_userid").html("<h3>상담자 아이디 : " + this.class_board_comment_userid + "</h3>").show(1000);
 					$(".first_content").html("<h3>상담 내용 : "  + this.class_board_comment_content + "</h3>").show(1000);
-					$(".first_date").html("<h3> 상담 일자 : " + this.class_board_comment_date + "</h3>").show(1000);
+					$(".first_date").html("<h3> 상담 일자 : " + changeDateString(this.class_board_comment_date) + "</h3>").show(1000);
 					$("#showAni").show(1000);
  				});
  			});

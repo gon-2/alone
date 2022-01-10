@@ -22,13 +22,33 @@
 						tr.find("td").eq(2).text(this.class_board_content);
 						tr.find("td").eq(3).text(this.class_board_userid);
 						tr.find("td").eq(4).text(this.class_board_enroll);
-						tr.find("td").eq(5).text(this.class_board_postdate);
+						tr.find("td").eq(5).text(changeDateString(this.class_board_postdate));
 						tr.find("td").eq(6).text(this.class_board_viewcnt);
 						$("#classboardlist").fadeIn(1000).append(tr);
 					});
 				});
 			});
 		});
+		
+		function changeDateString(timestamp){
+			var dateF = new Date(timestamp);
+			
+			var year = dateF.getFullYear();
+			var month = make2digits(dateF.getMonth() + 1);
+			var date = make2digits(dateF.getDate());
+			var hour = make2digits(dateF.getHours());
+			var minute = make2digits(dateF.getMinutes());
+			var second = make2digits(dateF.getSeconds());
+			var dateString = year + "-" + month + "-" + date + "-" + hour + ":" + minute + ":" + second;
+			return dateString;
+		}
+		
+		function make2digits(num){
+			if(num < 10){
+				num = "0" + num;
+			}
+			return num;
+		}
 	</script>
 </head>
 <div class="container-fluid">
