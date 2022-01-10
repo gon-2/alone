@@ -27,7 +27,6 @@
 			};	
 			
 			$.post(url , sendData , function(rData){
-				console.log(rData);
 				if(rData == "success"){
 					alert("댓글이 입력되었습니다");	
 				}
@@ -41,7 +40,6 @@
  			var url = "/comment/listComment";
  			
  			$.get(url , function(rData){
- 				console.log(rData);
  				$.each(rData, function(){
 					$(".first_userid").html("<h3>상담자 아이디 : " + this.class_board_comment_userid + "</h3>").show(1000);
 					$(".first_content").html("<h3>상담 내용 : "  + this.class_board_comment_content + "</h3>").show(1000);
@@ -50,7 +48,7 @@
  				});
  			});
 		});
- 		
+ 		// 댓글 삭제 버튼 클릭시 이벤트
  		$("#deleteComment").click(function(e){
  			e.preventDefault();
  			
@@ -62,7 +60,6 @@
  			};
  			
  			$.post(url , sendData , function(rData){
- 				console.log(rData);
  				if(rData == "success"){
  					$("#first_userid").val("");
  					$("#first_content").val("");
@@ -72,6 +69,34 @@
  			});
  			
  		});
+ 		// 게시글 수정 버튼 클릭 시 이벤트
+ 		$("#modcontent").click(function(e){
+ 			e.preventDefault();
+ 			console.log("수정버튼 클릭됨");
+ 			
+ 			$("#modal-258563").trigger("click"); 			
+ 		});
+ 		// 수정 저장 버튼 클릭 시 이벤트
+ 		$("#btnModInfoSave").click(function(e){
+ 			e.preventDefault();
+ 			var class_board_content = $("#class_board_content").val();
+ 			var class_board_title = $("#class_board_title").val();
+ 			var class_board_userid = $("#class_board_userid").val();
+ 			var url = "/class_board/modcontent";
+ 		
+ 			var sendData = {
+ 				"class_board_content" : class_board_content,
+ 				"class_board_title" : class_board_title,
+ 				"class_board_userid" : class_board_userid
+ 			};
+ 			
+ 			// 수정 후 리스트 페이지로 이동
+ 			$.post(url , sendData , function(rData){
+ 				console.log(rData);
+ 				location.href = "/class_board/class_regist";
+ 			});
+ 		});
+ 		
 	});
 </script>
 </head>
@@ -109,6 +134,38 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
+			 <a id="modal-258563" href="#modal-container-258563" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+			
+			<div class="modal fade" id="modal-container-258563" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="myModalLabel">상담제목과 상담 내용을 수정하세요.</h5> 
+							<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<label for="class_board_userid">아이디</label>
+							<input type="text" id="class_board_userid" name="class_board_userid" value="${registboardvo.class_board_userid}" readonly="readonly"><br>
+							<label for="class_board_title">상담글 제목 입력</label>
+							<input type="text" name="class_board_title" id="class_board_title" placeholder="글 제목을 입력하세요." value="${registboardvo.class_board_title}"><br>
+							<label for="class_board_content">상담글 내용 입력</label><br>
+							<textarea name="class_board_content" id="class_board_content" placeholder="댓글을 입력하세요."></textarea>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" id="btnModInfoSave">수정 저장</button> 
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
 			<div class="jumbotron" align="center">
 				<h2>${registboardvo.class_board_userid}님의   글번호 ${registboardvo.class_board_number}번 수강 신청 상담글입니다.</h2>
 				<p>
@@ -132,7 +189,7 @@
 					<label for="class_board_content">상담 내용</label><br>
 					<textarea style="width:300px; height:100px;"  id="class_board_content" name="class_board_content" readonly="readonly">${registboardvo.class_board_content}</textarea>
 				</div>
-				<button type="button" class="btn btn-primary">수정</button>
+				<button type="button" class="btn btn-primary" id="modcontent">수정</button>
 				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button>
 				<button type="button" class="btn btn-warning" id="inComment">상담자 댓글달기</button>
 				<button type="button" class="btn btn-secondary" id="showComment">댓글보기</button>

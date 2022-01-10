@@ -58,8 +58,13 @@ public class ClassRegistBoardService {
 		return registBoardvo;
 	}
 	
-	// 게시글과 댓글 삭제  ( 삭제 못하는 이유는 게시판 테이블 안에 댓글이 남아있어서 삭제 못함.. 나중에 추가)
+	// 게시글과 댓글 삭제  ( 삭제 못하는 이유는 게시판 테이블 안에 댓글이 남아있어서 삭제 못함.. 댓글이 삭제되면 게시글도 삭제되는 것으로 대체)
 	public void deleteBoard(String class_board_content) {
 		registboardDao.deleteBoard(class_board_content);
+	}
+	
+	// 게시글 수정
+	public void modcontent(RegistBoardVo registboardvo) {
+		registboardDao.modcontent(registboardvo);
 	}
 }
