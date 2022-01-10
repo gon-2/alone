@@ -5,13 +5,11 @@
 <script>
 $(function(){
 	$("#btnEnter").click(function(){
-		$(this).val();
+		location.href="/member/class_form_run";
 	});
 });
 
 </script>
-
-
 
 <div class="container-fluid">
 	<div class="row">
@@ -45,6 +43,7 @@ $(function(){
 			<table class="table">
 				<thead>
 					<tr>
+						<th>순서</th>
 						<th></th>
 						<th>과정명</th>
 						<th>교육기간</th>
@@ -54,7 +53,7 @@ $(function(){
 				</thead>
 				<tbody>
 					<tr>
-
+						<td>1</td>
 							<td class="imgBox">
 								<div class="cropBox" style="background-image: url(&quot;https://cms.step.or.kr/api/file/get?path=/Polaris/course_content/2018/03/AD9B9301-24A5-2D8F-7A9C-C6EE86470AEE.png&quot;); background-size: cover; background-repeat: no-repeat; background-position: 75% 100%; height: 200px; width:250px"></div>
 								<img src="https://cms.step.or.kr/api/file/get?path=/Polaris/course_content/2018/03/AD9B9301-24A5-2D8F-7A9C-C6EE86470AEE.png"

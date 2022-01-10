@@ -99,6 +99,13 @@ public class MemberController {
 	// 내 강의실
 	@RequestMapping(value="/class_form", method=RequestMethod.GET)
 	public String ClassForm() {
-		return "member/class_form";
+		return "/member/class_form";
 	}
+	
+	// 내 강의실 처리 	
+	@RequestMapping(value="/class_form_run", method=RequestMethod.GET)
+	public String ClassFormRun() {
+		return "/member/class_form_run";
+	}
+	
 }
