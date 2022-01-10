@@ -8,7 +8,7 @@
 	<title>자주 묻는 질문 페이지</title>
 	<script>
 		$(function(){
-			$("#classRegist").click(function(e){
+			$("#classRegist").one("click" , function(e){
 				$("#classboard").html("수강신청 조회");
 				e.preventDefault();
 				var url = "/classboard";
@@ -16,16 +16,17 @@
 				$.get(url , function(rData){
 					console.log(rData);
 					$.each(rData , function(i){
-						$("#class_board_number").html(this.class_board_number);
- 						$("#class_board_title").html(this.class_board_title);
- 						$("#class_board_content").html(this.class_board_content);
-						$("#class_board_enroll").html(this.class_board_enroll);
-						$("#class_board_postdate").html(this.class_board_postdate);
-						$("#class_board_userid").html(this.class_board_userid);
-						$("#class_board_viewcnt").html(this.class_board_viewcnt);
+		 				var tr = $("#copyTable tr").clone();			
+		 				tr.find("td").eq(0).text(this.class_board_number);
+		 				tr.find("td").eq(1).text(this.class_board_title);
+						tr.find("td").eq(2).text(this.class_board_content);
+						tr.find("td").eq(3).text(this.class_board_userid);
+						tr.find("td").eq(4).text(this.class_board_enroll);
+						tr.find("td").eq(5).text(this.class_board_postdate);
+						tr.find("td").eq(6).text(this.class_board_viewcnt);
+						$("#classboardlist").fadeIn(1000).append(tr);
 					});
 				});
-				$("#classboardlist").fadeIn(1000);
 			});
 		});
 	</script>
@@ -49,30 +50,36 @@
 			</div><br><br><br><br><br>
 
 			<h3 class="text-center" id="classboard"></h3><br><br><br>
-			<table class="table" id="classboardlist" style="display:none;">
-				<thead>
-					<tr align="center">
-						<th>글 번호</th>
-						<th>글 제목</th>
-						<th>글 내용</th>
-						<th>수강과정</th>
-						<th>게시일</th>
-						<th>작성자</th>
-						<th>조회수</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr align="center" class="table-primary" id="clonetr">
-						<td id="class_board_number"></td>
-						<td id="class_board_title"></td>
-						<td id="class_board_content"></td>
-						<td id="class_board_enroll"></td>
-						<td id="class_board_postdate"></td>
-						<td id="class_board_userid"></td>
-						<td id="class_board_viewcnt"></td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="row" align="center">
+				<div class="col-md-12">
+					<table style="display:none" id="copyTable" align="center">
+						<tr align="center">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				
+					<table class="table" id="commentTable">
+						<thead align="center">
+							<th>글번호</th>
+							<th>글제목</th>
+							<th>글내용</th>
+							<th>아이디</th>
+							<th>수강과정</th>
+							<th>작성일자</th>
+							<th>조회수</th>
+						</thead>
+						<tbody id="classboardlist" align="center"> 
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -134,7 +134,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			 <a id="modal-258563" href="#modal-container-258563" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+			 <a id="modal-258563" href="#modal-container-258563" role="button" class="btn" data-toggle="modal" style="display:none;">Launch demo modal</a>
 			
 			<div class="modal fade" id="modal-container-258563" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
