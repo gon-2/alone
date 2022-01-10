@@ -1,7 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<script>
+$(function(){
+	$(".homeRegist").click(function(e){
+		e.preventDefault();
+		var info_code = $(this).attr("href");
+		console.log(info_code);
+		location.href = "/classInfo/homeRegist?info_code=" + info_code;
+	});
+	
+	
+});
+</script>
 					<div class="tab-content">
 						<div class="tab-pane active" id="tab1">
 							<div class="col-md-12">
@@ -18,7 +29,7 @@
 										<tr>
 											<td>${ClassInfoVo.c_title}</td>
 											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
-											<td><a href="#" class="btn btn-sm btn-outline-danger">신청하기</a></td>
+											<td><a href="${classInfoVo.info_code}" class="homeRegist btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -40,7 +51,7 @@
 										<tr>
 											<td>${ClassInfoVo.c_title }</td>
 											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
-											<td><a href="#" class="btn btn-sm btn-outline-danger">신청하기</a></td>
+											<td><a href="${classInfoVo.info_code}" class="homeRegist btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -62,7 +73,7 @@
 										<tr>
 											<td>${ClassInfoVo.c_title }</td>
 											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
-											<td><a href="#" class="btn btn-sm btn-outline-danger">신청하기</a></td>
+											<td><a href="${classInfoVo.info_code}" class="homeRegist btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -84,7 +95,7 @@
 										<tr>
 											<td>${ClassInfoVo.c_title }</td>
 											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
-											<td><a href="#" class="btn btn-sm btn-outline-danger">신청하기</a></td>
+											<td><a href="${classInfoVo.info_code}" class="homeRegist btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>

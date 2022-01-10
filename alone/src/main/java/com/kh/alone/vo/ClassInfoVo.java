@@ -1,7 +1,7 @@
 package com.kh.alone.vo;
 
 public class ClassInfoVo {
-	private int info_code; // 시퀀스 줄거얌
+	private int info_code; // 시퀀스랑 연결
 	private String c_title; //수업 이름
 	private int c_time; //수업 기간
 	private String start_date; //수업 기간
@@ -9,8 +9,8 @@ public class ClassInfoVo {
 	private int price;    //강의실 호수
 	private int class_room;   //총원
 	private int class_total;  //수강료
-	private int cate_code;  // 주간 주말 야간반 
-	private int time_code;  
+	private int cate_code;  // (프로그램, 디자인) 각각 수업종류
+	private int time_code;  // (주간반 야간반 주말반)수업 타임 분류
 	
 	public ClassInfoVo() {
 		super();

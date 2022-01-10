@@ -30,9 +30,9 @@ public class ClassInfoDao {
 	}
 	
 	// title로 조회
-	public ClassInfoVo selectByCno(int c_no){
-		System.out.println(c_no);
-		ClassInfoVo classInfoVo = sqlSession.selectOne(NAMESPACE + "selectByCno", c_no);
+	public ClassInfoVo selectByCno(int info_code){
+//		System.out.println("다오다오 : " + info_code);
+		ClassInfoVo classInfoVo = sqlSession.selectOne(NAMESPACE + "selectByCno", info_code);
 		return classInfoVo;
 	}
 	
@@ -60,12 +60,12 @@ public class ClassInfoDao {
 	
 	
 	// 주민번호로 나의 신청현황 확인하기
-	public int selectMine(String r_num){
+	public int selectMine(int r_num){
 		int mine = sqlSession.selectOne(NAMESPACE + "selectMine", r_num);
 		return mine;
 	}
 	
-	public List<OnlineRegistVo> selectMineList(String r_num){
+	public List<OnlineRegistVo> selectMineList(int r_num){
 		List<OnlineRegistVo> mineList = sqlSession.selectList(NAMESPACE + "selectMineList", r_num);
 		return mineList;
 	}

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta name="viewport" content="width=device-width, initial-scale=1">													
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">													
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>													
@@ -25,7 +25,7 @@ $(function(){
 			$(".sy1").attr("disabled", true);
 			console.log("막기");
 			$("#employment_center").val("");
-			$("#employment_counselor").val("");
+			$("#employment_staff").val("");
 			$("#employment_num").val("");
 		} else {
 			$(".sy1").attr("disabled", false);
@@ -42,18 +42,18 @@ $(function(){
 		if(r_num1.length < 6 || r_num2.length < 7){
 			alert("주민번호 다시 입력해주세요.");
 		}else{
-			r_num = r_num1 + "-" + r_num2;	
+			r_num = r_num1 + r_num2;	
 		}
 		console.log("주민번호: " + r_num);
 		
-		var c_day1 = $("#c_day").val(); // 야간반인지 받아오기
-		var c_day = "";
-		if(c_day1 == "전체"){
-			c_day = "전체";
+		var c_time1 = $("#c_time").val(); // 야간반인지 받아오기
+		var c_time = "";
+		if(c_time1 == "전체"){
+			c_time = "전체";
 		} else {
-			c_day = c_day1;
+			c_time = c_time1;
 		}
-		console.log("야간반인지 받아오기: " + c_day);
+		console.log("야간반인지 받아오기: " + c_time);
 		
 		var c_cate1 = $("#c_cate").val(); // 교육과정분류 받아오기
 		var c_cate = "";
@@ -171,15 +171,15 @@ $(function(){
 	    	employment_center = $("#employment_center").val();
 	    	console.log("참여센터: " + employment_center);
 	    }
-	    var employment_counselor1 = $("#employment_counselor").val();
-	    var employment_counselor = "";
+	    var employment_staff1 = $("#employment_staff").val();
+	    var employment_staff = "";
 	    
-	    if(employment_counselor1 == ""){
-	    	employment_counselor = "미참여";
-	    	console.log("담당자: " + employment_counselor);
+	    if(employment_staff == ""){
+	    	employment_staff = "미참여";
+	    	console.log("담당자: " + employment_staff);
 	    }else{
-	    	employment_counselor = $("#employment_counselor").val();
-	    	console.log("담당자: " + employment_counselor);
+	    	employment_staff = $("#employment_staff").val();
+	    	console.log("담당자: " + employment_staff);
 	    }
 	    
 	    var employment_num1 = $("#employment_num").val();
@@ -194,7 +194,7 @@ $(function(){
 	    
 	    var sData = {
 	    	"r_num" : r_num,
-	    	"c_day" : c_day,
+	    	"c_day" : c_time,
 	    	"c_cate" : c_cate,
 	    	"c_title" : c_title,
 	    	"c_name" : c_name,
@@ -206,11 +206,11 @@ $(function(){
 	    	"regist_path" : regist_path,
 	    	"employment" : employment,
 	    	"employment_center" : employment_center,
-	    	"employment_counselor" : employment_counselor,
+	    	"employment_counselor" : employment_staff,
 	    	"employment_num" : employment_num
 	    };
 	    
-	    console.log("제발 넘어와라 진심으로 간절하게 부탁할게 제발 sData : " + sData );
+	    console.log(" sData 제발 넘어와라 진심으로 간절하게 부탁할게 제발 : " + sData );
 	    
 	    var url = "/classInfo/onlineRegistRun";
 	    
@@ -255,25 +255,25 @@ $(function(){
 			<colgroup><col width="110" /><col width="*" /><col width="110" /><col width="*" /></colgroup>
 			<tbody>
 				<tr>
-					<th class="c_day"><label for="c_day">선택하기</label></th>
+					<th class="c_time"><label for="c_time">선택하기</label></th>
 					<td class="td_infomation">
-						<select id="c_day" name="c_day">
-							<option value="전체">전체</option>
-							<option value="주간반">주간반</option>
-							<option value="야간반">야간반</option>
-							<option value="주말반">주말반</option>
+						<select id="c_time" name="c_time">
+							<option>선택해주세요</option>
+							<option value="1">주간반</option>
+							<option value="2">야간반</option>
+							<option value="3">주말반</option>
 						</select>
 					</td>
 					<th class="j-spot">
 					<label for="c_cate">교육과정분류</label></th>
 					<td>
 						<select name="c_cate" id="c_cate">
-							<option>전체</option>
-							<option>디자인</option>
-							<option>제품디자인</option>
-							<option>프로그램</option>
-							<option>사무자동화</option>
-							<option>3D프린트</option>
+							<option>선택해주세요</option>
+							<option value="1">프로그램</option>
+							<option value="2">사무자동화</option>
+							<option value="3">제품디자인</option>
+							<option value="4">3D프린트</option>
+							<option value="5">디자인</option>
 						</select>
 					</td>
 				</tr>
@@ -281,28 +281,12 @@ $(function(){
 					<th class="c_title"><label for="c_title">과정명</label></th>
 					<td colspan="3">
 						<select name="c_title" id="c_title" style="width: 200px;">
-							<option class="slt_option">전체</option>
-							<option class="slt_option">[재직자] 전산회계 1,2급 자격증 취득 / 주4일 / 월~목 / 30일 과정 (수시모집)</option>
-							<option class="slt_option">[재직자] 3D프린팅을 활용한 모형설계제작(주말) / 주1일(매주 토요일) / 일4시간 / 10주 과정 (2022.02.12~2022.04.16)</option>
-							<option class="slt_option">[재직자] 파이썬으로 시작하는 프로그래밍 첫걸음(주말) / 주1일 / 매주 토요일 / 일4시간(09:00~12:50) / 10주 과정 (2022.01.15~2022.03.26)</option>
-							<option class="slt_option">[재직자] ITQ 자격증 (한글,파워포인트,엑셀)자격증 주3일 / 월.수.금 (2022.01.10~2022.03.02)</option>
-							<option class="slt_option">직업상담사2급 자격증 취득 (필기+실기) / 2022년 1회차 시험대비 / (3.6일 필기 5.8 실기) (2022.01.10~2022.04.08)</option>
-							<option class="slt_option">[재직자] 컴퓨터활용능력2급(필기+실기)자격증 / 주2일 / 화.목 / 20일 / 일3시간 (2022.01.18~2022.03.31)</option>
-							<option class="slt_option">[재직자] 캐드(CAD)기초 &amp; 활용(도면작성&amp;CAT2급) / 주4일 / 월.화.수.목 / 20일과정 (2022.01.17~2022.02.23)</option>
-							<option class="slt_option">[재직자] 포토샵을 활용한 디자인(GTQ2급) 주말과정 / 주1일(매주 토요일) / 일4시간 / 11주 과정 (2022.03.05~2022.05.14)</option>
-							<option class="slt_option">사무자동화(컴활2급(필기+실기),ITQ(한글,엑셀,파워포인트)자격증 취득 / 주5일(월~금) / 7주 과정 / 오전반 (2022.01.17~2022.03.16)</option>
-							<option class="slt_option">(제품디자인)3D프린팅 제품설계제작(캐드,CAD,인벤터,MAX,포토샵) / 2022년 1월 개강 준비과정 / 스마트교육 (오프라인 + 온라인) (별도문의)</option>
-							<option class="slt_option">[재직자] 프리미어와 에펙을 활용한 동영상편집과정(주말) / 주1일(매주 토요일) / 일4시간 / 10주 과정 (2022.03.12~2022.05.14)</option>
-							<option class="slt_option">(디지털컨버전스)멀티 디바이스 융합 자바(Java) 디지털 컨버전스 과정 / 2022년 2월 개강 준비과정 / (별도문의)</option>
-							<option class="slt_option">전산세무회계(회계경리사무원) / 주5일(월~금) / 10주 과정 / 오후반 (2022.02.09~2022.04.27)</option>
-							<option class="slt_option">사무자동화(컴활2급(필기+실기),ITQ(한글,엑셀,파워포인트)자격증 취득 / 주5일(월~금) / 7주 과정 / 오후반 (2022.02.21~2022.04.14)</option>
-							<option class="slt_option">(내선공사)전기 및 소방 내선공사 실무자과정(전기기능사(필기+실기)취득) 스마트훈련 (온라인 90시간) / 2022년 2월 개강 준비과정 / (별도문의)</option>
-							<option class="slt_option">(과정평가형 자격)웹디자인기능사 취득과정 / 2022년 2월 개강 준비과정 / (별도문의)</option>
-							<option class="slt_option">[재직자] OA기초 (한글,파워포인트,엑셀) / 15일과정 / 주2일 / 화.목 / 일3시간 (2022.02.15~2022.04.07)</option>
-							<option class="slt_option">[재직자] 컴퓨터활용능력1급(필기+실기)자격증 주3일 / 월.수.금 / 25일 과정 (2022.02.28~2022.04.27)</option>
-							<option class="slt_option">[재직자] 직업상담사2급 1차대비 (필기) /주2일 / 월,수 / 2022년 3차 필기시험 7.2~7.22 CBT (2022.04.25~2022.06.29)</option>
-							<option class="slt_option">[재직자] 직업상담사2급 2차(실기) 대비 /주2일 / 월,수 / 5월 8일 2차(실기) 시험 대비 (2022.03.14~2022.04.27)</option>
-						</select>
+								<option class="slt_option">선택해주세요</option>
+							<c:forEach items="${list}" var="classInfoVo">
+								<option class="slt_option" value="${classInfoVo.info_code}">${classInfoVo.c_title}</option>
+								
+							</c:forEach>
+							</select>
 					</td>
 				</tr>
 			</tbody>
@@ -430,7 +414,7 @@ $(function(){
 					<td><input type="text" class="sy1" name="employment_center" id="employment_center" style="margin-right:20px; width: 120px;" maxlength="30" disabled/></td>
 					
 					<th>담당자</th>
-					<td><input type="text" class="sy1" name="employment_counselor" id="employment_counselor" style="width: 120px;" maxlength="30" disabled/></td>
+					<td><input type="text" class="sy1" name="employment_staff" id="employment_staff" style="width: 120px;" maxlength="30" disabled/></td>
 					
 					<th>연락처</th>
 					<td><input type="text" class="sy1" name="employment_num" id="employment_num" style="width: 120px;" maxlength="20" disabled oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/></td>

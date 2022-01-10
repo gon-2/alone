@@ -1,46 +1,47 @@
 package com.kh.alone.vo;
 
 public class OnlineRegistVo {
-	String r_num; 				//주민번호
-	String c_day;				//훈련직종분류(주간, 야간, 주말)
-	String c_cate;				//교육과정분류(디자인, 프로그램 이런거)
-	String c_title;				//과정명
-	String c_name;				//신청자 이름
-	String gender;				//성별
-	String foreigner;			//내/외국인
-	String phone_num;			//휴대전화
-	String home_num;			//일반전화
-	String e_mail;				//이메일
-	String regist_path;			//지원경로
-	String employment;			//국민취업지원제도(1유형, 2유형, 미참여)
-	String employment_center;	//참여센터
-	String employment_counselor;//담당자
-	String employment_num;		//연락처
+	private int r_num;
+	private int c_time;
+	private int c_cate;
+	private int c_title;
+	private String c_name;
+	private String gender;
+	private String foreigner;
+	private String phone_num;
+	private String home_num;
+	private String e_mail;
+	private String regist_path;
+	private String employment;
+	private String employment_center;
+	private String employment_staff;
+	private String employment_num;
+	
 	public OnlineRegistVo() {
 		super();
 	}
-	public String getR_num() {
+	public int getR_num() {
 		return r_num;
 	}
-	public void setR_num(String r_num) {
+	public void setR_num(int r_num) {
 		this.r_num = r_num;
 	}
-	public String getC_day() {
-		return c_day;
+	public int getC_time() {
+		return c_time;
 	}
-	public void setC_day(String c_day) {
-		this.c_day = c_day;
+	public void setC_time(int c_time) {
+		this.c_time = c_time;
 	}
-	public String getC_cate() {
+	public int getC_cate() {
 		return c_cate;
 	}
-	public void setC_cate(String c_cate) {
+	public void setC_cate(int c_cate) {
 		this.c_cate = c_cate;
 	}
-	public String getC_title() {
+	public int getC_title() {
 		return c_title;
 	}
-	public void setC_title(String c_title) {
+	public void setC_title(int c_title) {
 		this.c_title = c_title;
 	}
 	public String getC_name() {
@@ -97,11 +98,11 @@ public class OnlineRegistVo {
 	public void setEmployment_center(String employment_center) {
 		this.employment_center = employment_center;
 	}
-	public String getEmployment_counselor() {
-		return employment_counselor;
+	public String getEmployment_staff() {
+		return employment_staff;
 	}
-	public void setEmployment_counselor(String employment_counselor) {
-		this.employment_counselor = employment_counselor;
+	public void setEmployment_staff(String employment_staff) {
+		this.employment_staff = employment_staff;
 	}
 	public String getEmployment_num() {
 		return employment_num;
@@ -111,11 +112,10 @@ public class OnlineRegistVo {
 	}
 	@Override
 	public String toString() {
-		return "OnlineRegist [r_num=" + r_num + ", c_day=" + c_day + ", c_cate=" + c_cate + ", c_title=" + c_title
+		return "OnlineRegistVo [r_num=" + r_num + ", c_time=" + c_time + ", c_cate=" + c_cate + ", c_title=" + c_title
 				+ ", c_name=" + c_name + ", gender=" + gender + ", foreigner=" + foreigner + ", phone_num=" + phone_num
 				+ ", home_num=" + home_num + ", e_mail=" + e_mail + ", regist_path=" + regist_path + ", employment="
-				+ employment + ", employment_center=" + employment_center + ", employment_counselor="
-				+ employment_counselor + ", employment_num=" + employment_num + "]";
+				+ employment + ", employment_center=" + employment_center + ", employment_staff=" + employment_staff
+				+ ", employment_num=" + employment_num + "]";
 	}
-	
 }

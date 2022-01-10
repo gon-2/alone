@@ -9,12 +9,7 @@
 }
 </style>
 
-<script>
-// $(function(){
-// 	$("#homeRegist").submit();
-// });
 
-</script>
 ${classInfoVo}
 <section class="wrapper style1">
 	<div class="container">

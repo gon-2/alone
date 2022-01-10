@@ -13,7 +13,7 @@
 	<!-- 제목으로 찾기 -->	
 		<select id="selectByCno" resultType="ClassInfoVo">
 			select * from c_class_info
-			where c_title = #{c_title}
+			where info_code = #{info_code}
 		</select>
 		
 	<!-- 전체보기 -->
@@ -39,11 +39,11 @@
 	
 	<!-- 신청양식 추가하기 -->
 	<insert id="insertOnlineRegist">
-		insert into online_regist(r_num, c_day, c_cate, c_title, c_name, gender, foreigner, phone_num, home_num, e_mail, 
-								  regist_path, employment, employment_center, employment_counselor, employment_num)
+		insert into online_regist(r_num, c_time, c_cate, c_title, c_name, gender, foreigner, phone_num, home_num, e_mail, 
+								  regist_path, employment, employment_center, employment_staff, employment_num)
 								  
-		values(#{r_num}, #{c_day}, #{c_cate}, #{c_title}, #{c_name}, #{gender}, #{foreigner}, #{phone_num}, #{home_num, jdbcType=VARCHAR}, #{e_mail, jdbcType=VARCHAR}, 
-		       #{regist_path, jdbcType=VARCHAR}, #{employment, jdbcType=VARCHAR}, #{employment_center, jdbcType=VARCHAR}, #{employment_counselor, jdbcType=VARCHAR}, #{employment_num, jdbcType=VARCHAR})
+		values(#{r_num}, #{c_time}, #{c_cate}, #{c_title}, #{c_name}, #{gender}, #{foreigner}, #{phone_num}, #{home_num, jdbcType=VARCHAR}, #{e_mail, jdbcType=VARCHAR}, 
+		       #{regist_path, jdbcType=VARCHAR}, #{employment, jdbcType=VARCHAR}, #{employment_center, jdbcType=VARCHAR}, #{employment_staff, jdbcType=VARCHAR}, #{employment_num, jdbcType=VARCHAR})
 	</insert>
 
 
@@ -54,14 +54,14 @@
 	
 	<!-- 주민번호로 신청한거 조회하기 -->
 	<select id="selectMine" resultType="int">
-<!-- 		select count(*) from online_regist -->
-<!-- 		where r_num = #{r_num}  -->
+		select count(*) from online_regist
+		where r_num = #{r_num} 
 		
 	</select>
 	
 	<select id="selectMineList" resultType="OnlineRegistVo">
-<!-- 		select * from online_regist -->
-<!-- 		where r_num =  #{r_num} -->
+		select * from online_regist
+		where r_num =  #{r_num}
 	</select>
 	
 </mapper>

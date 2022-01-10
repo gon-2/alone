@@ -29,8 +29,9 @@ public class ClassInfoService {
 	}
 	
 	// title로 조회
-	public ClassInfoVo selectByCno(int c_no){
-		ClassInfoVo classInfoVo = dao.selectByCno(c_no);
+	public ClassInfoVo selectByCno(int info_code){
+		System.out.println("서비스서비스: " + info_code);
+		ClassInfoVo classInfoVo = dao.selectByCno(info_code);
 		return classInfoVo;
 	}
 	
@@ -54,12 +55,12 @@ public class ClassInfoService {
 	}
 	
 	// 주민번호로 나의 온라인 신청현황 확인하기
-	public int selectMine(String r_num){
+	public int selectMine(int r_num){
 		int mine = dao.selectMine(r_num);
 		return mine;
 	}
 	
-	public List<OnlineRegistVo> selectMineList(String r_num){
+	public List<OnlineRegistVo> selectMineList(int r_num){
 		List<OnlineRegistVo> mineList = dao.selectMineList(r_num);
 		return mineList;
 	}

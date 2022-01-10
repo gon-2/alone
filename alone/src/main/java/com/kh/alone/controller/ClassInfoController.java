@@ -76,8 +76,9 @@ public class ClassInfoController {
 	
 	//메인페이지에서 수강 신청 하기 눌렀을때 데이터 넘겨주기
 	@RequestMapping(value="/homeRegist", method=RequestMethod.GET)
-	public String selectTitle(Model model, int c_no, HttpSession session) {
-		ClassInfoVo classInfoVo = service.selectByCno(c_no);
+	public String selectTitle(Model model, int info_code, HttpSession session) {
+		System.out.println("ㅇㅇㅇㅇㅇㅇ" + info_code);
+		ClassInfoVo classInfoVo = service.selectByCno(info_code);
 		session.setAttribute("classInfoVo", classInfoVo);
 		return"redirect:/classInfo/onlineAgree";
 	}
@@ -112,7 +113,7 @@ public class ClassInfoController {
 	@RequestMapping(value="/myStatusRun", method=RequestMethod.POST)
 	@ResponseBody
 	public String myStatus(OnlineRegistVo vo) {
-		String r_num = vo.getR_num();
+		int r_num = vo.getR_num();
 		int mine = service.selectMine(r_num);
 		if (mine == 0) {
 			return "false";
@@ -122,11 +123,11 @@ public class ClassInfoController {
 	
 	// 주민번호로 확인하는 진행현황 보여주기
 	@RequestMapping(value="/myStatusView", method=RequestMethod.GET)
-	public String myStatusView(Model model, String r_num) {
+	public String myStatusView(Model model, int r_num) {
 		List<OnlineRegistVo> mine = service.selectMineList(r_num);
 		model.addAttribute("mine", mine);
 		return "/classInfo/myStatusView";
 	}
 	
-//
+
 }

@@ -8,8 +8,8 @@ $(function(){
 	$(".homeRegist").click(function(e){
 		e.preventDefault();
 		var info_code = $(this).attr("href");
-		console.log(c_no);
-		location.href = "/classInfo/homeRegist?c_no=" + c_no;
+		console.log(info_code);
+		location.href = "/classInfo/homeRegist?info_code=" + info_code;
 	});
 	
 	
@@ -120,7 +120,7 @@ $(function(){
 										<tr>
 											<td>${classInfoVo.c_title}</td>
 											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
-											<td><a class="homeRegist btn btn-sm btn-outline-danger" href="${classInfoVo.info_code}">신청</a></td>
+											<td><a class="homeRegist btn btn-sm btn-outline-danger" id="homeRegist" href="${classInfoVo.info_code}">신청</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -144,7 +144,7 @@ $(function(){
 										<tr>
 											<td>${classInfoVo.c_title}</td>
 											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
-											<td><a class="homeRegist btn btn-sm btn-outline-danger"  id="homeRegist" href="/classInfo/onlineAgree">신청</a></td>
+											<td><a class="homeRegist btn btn-sm btn-outline-danger"  id="homeRegist" href="${classInfoVo.info_code}">신청</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -166,9 +166,9 @@ $(function(){
 										<input type="hidden" id="c_day" value="${classInfoVo.time_code}">
 										<input type="hidden" id="c_cate" value="${classInfoVo.cate_code}">
 										<tr>
-											<td>${ClassInfoVo.c_title }</td>
+											<td>${ClassInfoVo.c_title}</td>
 											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
-											<td><a class="homeRegist btn btn-sm btn-outline-danger"  id="homeRegist" href="/classInfo/onlineAgree">신청</a></td>
+											<td><a class="homeRegist btn btn-sm btn-outline-danger"  id="homeRegist" href="${classInfoVo.info_code}">신청</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -190,9 +190,9 @@ $(function(){
 										<input type="hidden" id="c_day" value="${classInfoVo.time_code}">
 										<input type="hidden" id="c_cate" value="${classInfoVo.cate_code}">
 										<tr>
-											<td>${ClassInfoVo.c_title }</td>
+											<td>${ClassInfoVo.c_title}</td>
 											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
-											<td><a class="homeRegist btn btn-sm btn-outline-danger"  href="/classInfo/onlineAgree">신청</a></td>
+											<td><a class="homeRegist btn btn-sm btn-outline-danger" id="homeRegist" href="${classInfoVo.info_code}">신청</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>
