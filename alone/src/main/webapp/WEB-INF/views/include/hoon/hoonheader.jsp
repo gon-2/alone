@@ -146,9 +146,9 @@
                             <input type="text" class="form-control bg-light border-0 small" placeholder="검색하세요."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
+                            	<a href="" class="btn btn-primary">
+                            		<i class="fas fa-search fa-sm"></i>
+                            	</a>
                             </div>
                         </div>
                     </form>
