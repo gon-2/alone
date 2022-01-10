@@ -8,9 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="/js/digitClock.js"></script>
 </head>
 <body>
-	
 	   <!--  Footer -->
 	   <div>
        <footer class="sticky-footer bg-white">

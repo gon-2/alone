@@ -67,11 +67,19 @@ public class ClassRegistBoardController {
 		return "/service_center/class_regist_page";
 	}
 	
-	// 게시판 삭제 , (댓글 삭제는 나중에 추가)
+	// 게시판 삭제 , (댓글 삭제 이후 게시글 삭제)
 	@RequestMapping(value="/deleteBoard" , method=RequestMethod.POST)
 	public String deleteBoard(String class_board_content) {
 		registboardservice.deleteBoard(class_board_content);
 		System.out.println("ClassRegistBoardController , deleteBoard , class_board_title >> " + class_board_content);
 		return "redirect:/class_board/class_regist";
+	}
+	
+	// 게시글 수정 , ( 아이디 기준 업데이트 ) 
+	@RequestMapping(value="/modcontent" , method=RequestMethod.POST)
+	@ResponseBody
+	public String modcontent(RegistBoardVo registBoardVo) {
+		registboardservice.modcontent(registBoardVo);
+		return "success";
 	}
 }

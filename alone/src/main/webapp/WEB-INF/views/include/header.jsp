@@ -115,7 +115,7 @@ BODY {
 								<li>
 									<a href="/customer_main/home">고객센터</a>
 									<ul>
-										<li><a href="/customer_main/qna">자주묻는 질문</a></li>
+										<li><a href="/customer_main/faq">자주묻는 질문</a></li>
 										<li><a href="/class_board/class_regist">수강신청</a></li>
 										<li><a href="/customer_main/inquire">건의사항</a></li>
 										<li><a href="/customer_main/consult">상담</a></li>
@@ -125,7 +125,7 @@ BODY {
 									<a href="#">마이페이지</a>
 									<ul>
 										<li><a href="/member/modify_form?userid=user01">회원정보</a></li>
-										<li><a href="#">내 강의실</a></li>
+										<li><a href="/member/class_form">내 강의실</a></li>
 										<li><a href="/member/board_form">내 게시판</a></li>
 									</ul>
 								</li>

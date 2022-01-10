@@ -45,7 +45,7 @@ public class ClassRegistBoardCommentController {
 		model.addAttribute("list" , list);
 		return list;
 	}
-	
+	// 상담자 댓글 삭제
 	@RequestMapping(value="/deleteComment" , method=RequestMethod.POST)
 	public String deletecomment() {
 		registcommentservice.deletecomment();

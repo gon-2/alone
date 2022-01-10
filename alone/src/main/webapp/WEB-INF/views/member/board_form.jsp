@@ -9,6 +9,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
+		
 				<label for="board_form">분류</label> 
 				<select id="board_form" name="board" size="1">
 					<option value="">선택하세요.</option>

@@ -14,13 +14,15 @@ function changeDateString(timestamp){
 	var dateString = year + "-" + month + "-" + date + "-" + hour + ":" + minute + ":" + second;
 	return dateString;
 }
-/*// 날짜와 시계메소드인데 , 10 이하면 0n으로 나타내기 위한 메소드
+
+// 날짜와 시계메소드인데 , 10 이하면 0n으로 나타내기 위한 메소드
 function make2digits(num){
 	if(num < 10){
 		num = "0" + num;
 	}
 	return num;
 }
+
 // 이미지인지 아닌지 판별하는 메소드 ( .JPG , .PNG , .GIF ) 
 function isImage(fileName){
 	var dotIndex = fileName.lastIndexOf(".");
@@ -33,4 +35,4 @@ function isImage(fileName){
 		alert("사진업로드 불가");
 		return false;
 	}
-}*/
+}

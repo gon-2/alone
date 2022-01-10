@@ -44,11 +44,19 @@ public class ClassRegistBoardService {
 		return list;
 	}
 	
-	// 최신 게시글 3개만 조회 ( 메인 페이지 화면만! ) 
+	// 최신 수강신청 게시글 3개만 조회 ( 메인 페이지 화면만! ) 
 	public List<RegistBoardVo> countThird(){
-		List<RegistBoardVo> list = registboardDao.countThird();
-		return list;
+		List<RegistBoardVo> countlist = registboardDao.countThird();
+		return countlist;
 	}
+	
+	//3개의 최신 자주묻는 질문 글만 조회
+	public List<RegistBoardVo> faqThird(){
+		List<RegistBoardVo> thirdlist = registboardDao.faqThird();
+		System.out.println("ClassRegistBoardDao , faqThird, thirdlist: " + thirdlist);
+		return thirdlist;
+	}
+	
 	
 	// 제목 클릭시 내용 보이기
 	@Transactional
@@ -58,8 +66,13 @@ public class ClassRegistBoardService {
 		return registBoardvo;
 	}
 	
-	// 게시글과 댓글 삭제  ( 삭제 못하는 이유는 게시판 테이블 안에 댓글이 남아있어서 삭제 못함.. 나중에 추가)
+	// 게시글과 댓글 삭제  ( 삭제 못하는 이유는 게시판 테이블 안에 댓글이 남아있어서 삭제 못함.. 댓글이 삭제되면 게시글도 삭제되는 것으로 대체)
 	public void deleteBoard(String class_board_content) {
 		registboardDao.deleteBoard(class_board_content);
+	}
+	
+	// 게시글 수정
+	public void modcontent(RegistBoardVo registboardvo) {
+		registboardDao.modcontent(registboardvo);
 	}
 }
