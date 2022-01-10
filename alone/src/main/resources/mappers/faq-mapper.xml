@@ -9,6 +9,7 @@
 	<select id="classBoardSetViewcnt" resultType="RegistBoardVo">
 		select * from tbl_class_board
 		<![CDATA[where class_board_viewcnt >= 50]]>
+		order by class_board_viewcnt desc
 	</select>
 	
 	<!-- 자주묻는 게시판에서 링크 클릭하면 해당 내용으로 이동 -->

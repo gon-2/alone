@@ -64,8 +64,8 @@
    <!-- 아이디 기준 게시글 제목과 내용 수정 -->
    <update id="modcontent">
    		update tbl_class_board
-   		set class_board_content , class_board_title
-   		where class_board_userid = ${class_board_userid}
+   		set class_board_content = #{class_board_content} , class_board_title = #{class_board_title}
+   		where class_board_userid = #{class_board_userid}
    </update>
 	
 	<!-- 게시글 제목 클릭 시 조회수 증가 -->   
