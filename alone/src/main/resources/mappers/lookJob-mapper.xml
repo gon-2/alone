@@ -2,7 +2,9 @@
 <!DOCTYPE mapper         
    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"         
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kh.test02.mappers.lookJob">
+<mapper namespace="com.kh.alone.mappers.lookJob">
+	
+
 	<select id="selectAll" resultType="LookJobVo">
 		select * from lookJob
 		order by jobno desc
@@ -51,8 +53,11 @@
 	
 	<select id="referenceRoomList" resultType="ReferenceVo">
 		select rno, rtitle, rwriter, recommend, hits, to_char(sysdate, 'YYYY-MM-DD')
-		reference_date, to_char(sysdate, 'HH:MI') reference_time from tbl_reference
-		order by rno desc
+		reference_date, to_char(sysdate, 'HH:MI') reference_time, re_group, re_seq, re_level from 
+		(select rownum rnum, a.* from 
+      			 		 (select * from tbl_reference
+       						 order by re_group desc, re_seq asc) a)
+		where rnum between #{startRow} and #{endRow}
 	</select>
 	
 	<select id="getReference" resultType="ReferenceVo">
@@ -62,9 +67,39 @@
 	</select>
 	
 	<select id="referenceImage" resultType="ReferenceVo">
-		select * from r_file
+		select r_images r_image, rno from r_file
 		where rno = #{rno}
 		order by rno desc
 	</select>
+	
+	<!-- 글 갯수 -->
+	<select id="r_getCount" resultType="int">
+		select count(*) from tbl_reference
+	</select>
+	
+	<select id="pageMove" resultType="ReferenceVo">
+		select next,prev 
+			from (
+			    select rno, 
+			    lead(rno,1) over(order by rno) as next, 
+			    lag(rno,1) over(order by rno) as prev from tbl_reference
+			)
+		where rno = #{rno}
+	</select>
+	
+	<select id="getRnoNextVal" resultType="int">
+		select seq_rno.nextval
+		from dual
+	</select>
+	
+	<insert id="insertReferenceRoom">
+	   	insert into tbl_reference(rno, rtitle, rwriter, recommend, hits, re_group, re_seq, re_level, r_content)
+		values(#{rno}, #{rtitle}, #{rwriter}, #{recommend}, #{hits}, #{rno}, #{re_seq}, #{re_level}, #{r_content})
+    </insert>
+    
+	<insert id="insertReferenceRoomImages">
+	   	insert into r_file(r_images, rno)
+		values(#{r_images}, #{rno})
+    </insert>
 	
 </mapper>

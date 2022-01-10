@@ -16,7 +16,7 @@
 
 <script>
 $(function() {
-	$("#job_btnList").click(function() {
+	$(".job_btnList").click(function() {
 		location.href="/employ/lookJob";
 	});
 });
@@ -92,12 +92,12 @@ $(function() {
 						<th class="th_information">모집시작일</th>
 						<td>${lookJobVo.recruitmentStart }</td>
 						<th class="th_information">모집종료일</th>
-						<td>${lookJobVo.recruitmentEnd }</td>
+						<td>${lookJobVo.recruitmentEnd}</td>
 					</tr>
 				</tbody>
 			</table>
 			<div>
-				${lookJobVo.content}
+				<img src="/images/${lookJobVo.content}" width="1200px"/><br>
 			</div>
 		</form>
 		</div>

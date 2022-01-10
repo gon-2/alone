@@ -23,6 +23,11 @@ $(function() {
 	$(".r_btnList").click(function() {
 		location.href="/employ/referenceRoomList";
 	});
+	$(".r_btnMove").click(function(e) {
+		e.preventDefault();
+		var pageMove = $(this).attr("href");
+		location.href="/employ/referenceRoom?rno=" + pageMove;
+	});
 });
 
 </script>
@@ -77,12 +82,10 @@ $(function() {
 		</div>
 		<div class="col-md-8" style="text-align:center">
 			<c:forEach items="${data}" var="data">
-				<img src="/images/${data.r_images}" width="500px" height="700px"/><br>
+				<img src="/images/${data.r_image}" width="500px" height="700px"/><br>
 			</c:forEach>
 			<div style="text-align:left">
-				<c:forEach items="${data}" var="data">
-					${data.r_content}
-				</c:forEach>
+					${referenceVo.r_content}
 			</div>
 		</div>
 		<div class="col-md-2">
@@ -93,9 +96,74 @@ $(function() {
 		<div class="col-md-8">
 			<div class="divBottom">
 				<input type="button" class="r_btnList btn-sm" value="목록">
+				<div class="move">
+	               <a class="r_btnMove btn btn-outline-primary" id="r_btnPrev" href="${pageVo.prev}">이전</a>
+	               <a class="r_btnMove btn btn-outline-primary" id="r_btnNext" href="${pageVo.next}">다음</a>
+            	</div>
 			</div>
 		</div>
 		<div class="col-md-2">
+		</div>
+		
+		<br>
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-6">
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="th_reference">번호</th>
+						<th class="th_reference" width="600px">제목</th>
+						<th class="th_reference">작성자</th>
+						<th class="th_reference">추천</th>
+						<th class="th_reference">조회수</th>
+						<th class="th_reference">등록일</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<c:forEach items="${list}" var="ReferenceVo">
+						<td class="td_reference">${ReferenceVo.rno}</td>
+						<td class="td_reference"><a href="/employ/referenceRoom?rno=${ReferenceVo.rno}">${ReferenceVo.rtitle}</a></td>
+						<td class="td_reference">${ReferenceVo.rwriter}</td>
+						<td class="td_reference">${ReferenceVo.recommend}</td>
+						<td class="td_reference">${ReferenceVo.hits}</td>
+						<td class="td_reference">${ReferenceVo.reference_date}</td>
+					</c:forEach>		
+				</tr>
+				</tbody>
+			</table>
+			<nav>
+				<ul class="pagination justify-content-center">
+					<c:if test="${pagingDto.startPage != 1}">
+					<li class="page-item">
+						<a class="page-link" href="${pagingDto.startPage - 1}">이전</a>
+					</li>
+					</c:if>
+					<c:forEach var="v" begin="${pagingDto.startPage}" 
+									   end="${pagingDto.endPage}">
+					<li 
+						<c:choose>
+							<c:when test="${pagingDto.page == v}">
+								class="page-item active"
+							</c:when>
+							<c:otherwise>
+								class="page-item"
+							</c:otherwise>
+						</c:choose>
+					>
+						<a class="page-link" href="${v}">${v}</a>
+					</li>
+					</c:forEach>
+					<c:if test="${pagingDto.endPage < pagingDto.totalPage}">
+					<li class="page-item">
+						<a class="page-link" href="${pagingDto.endPage + 1}">다음</a>
+					</li>
+					</c:if>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md-3">
 		</div>
 	</div>
 </div>

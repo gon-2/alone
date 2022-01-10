@@ -13,12 +13,22 @@
 		select * from tbl_member
 		order by userid
 	</select>
+	
 	<!-- 답글 -->
 	<select id="memberBoardForm" resultType="MemberBoardVo">
 		select bno, title, content, userid, to_char(sysdate, 'YYYY-MM-DD')
 		regdate from tbl_memberboard
 	</select>
 	
+	<!-- 답글 추가 -->
+	<insert id="insertReply">
+		insert into tbl_memberboard 
+			(bno, title, content, userid, 
+			 re_group, re_seq, re_level)
+		values
+			(seq_bno.nextval, #{title}, #{content}, #{userid}, 
+			#{re_group}, #{re_seq} + 1, #{re_level} + 1)
+	</insert>		
 	<!-- 전체보기 -->
 <!-- 	<select id="selectAll" resultType="MemberVo"> -->
 <!-- 		select * from tbl_member -->
@@ -47,6 +57,4 @@
 		select * from tbl_member
 		where userid = #{userid}
 	</select>
-	
-	
 </mapper>

@@ -70,12 +70,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">질문과 답변</h6>
-                        <a class="collapse-item" href="/customer_main/qna">자주 묻는 질문</a>                        
+                        <a class="collapse-item" href="/customer_main/faq">자주 묻는 질문</a>                        
                         <a class="collapse-item" href="/class_board/class_regist">수강신청</a>
                         <a class="collapse-item" href="/customer_main/inquire">건의사항</a>
-                        <a class="collapse-item" href="/customer_main/notice">공지사항</a>
-                       
-                        
                     </div>
                 </div>
             </li>
@@ -91,7 +88,7 @@
             </li> -->
             
             <li class="nav-item">
-                <a class="nav-link" href="/Customermain/consult">
+                <a class="nav-link" href="/customer_main/consult">
                     <i class="fas fa-coffee"></i>
                     <span>수강생 상담</span></a>
             </li>
@@ -99,11 +96,11 @@
             <li class="nav-item" style="padding-top:18px;">
         		<c:choose>
                  	<c:when test="${empty sessionScope.employeeVo}">
-                 		<a class="nav-link" href="/login/login_form">로그인</a>
+                 		<a class="nav-link" href="/login_form">로그인</a>
                  		<a href="/Regist/form" class="nav-link">회원가입</a>
                  	</c:when>
                  	<c:otherwise>
-                 		<a class="nav-link" href="/login/logout" align="center">로그아웃</a>
+                 		<a class="nav-link" href="/logout" align="center">로그아웃</a>
                  	</c:otherwise>
                 </c:choose> 
            	</li> 
@@ -145,16 +142,20 @@
                     <!-- Topbar Search -->
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
+                        <div class="input-group" style="float:right;">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="검색하세요."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                                aria-label="Search" aria-describedby="basic-addon2" style="width: 350px;">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
+                            	<a href="" class="btn btn-primary">
+                            		<i class="fas fa-search fa-sm"></i>
+                            	</a>
                             </div>
                         </div>
                     </form>
+                    
+                    <!-- 디지털 시계 -->
+                    <div id="date"></div>
+              		<div id="time"></div>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -184,12 +185,12 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+<!--                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
+                                Counter - Alerts
                                 <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
+                            </a> -->
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
@@ -234,14 +235,14 @@
                         </li>
 
                         <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
+<!--                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
+                                Counter - Messages
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
-                            <!-- Dropdown - Messages -->
+ --><!--                             Dropdown - Messages
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
@@ -298,7 +299,7 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
                         </li>
-
+ -->
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -317,27 +318,19 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     	내 정보
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/login/logout" data-toggle="modal" data-target="#logoutModal">로그아웃
+                                <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">로그아웃
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 </a>
                             </div>
                         </li>
                          <li class="nav-item" style="padding-top:18px;">
 	                  		<c:choose>
-	                           	<c:when test="${empty sessionScope.employeeVo}">
-	                           		<a href="/login/login_form" class="btn btn-success">로그인</a>
+	                           <c:when test="${empty sessionScope.memberVo}">
+	                           		<a href="/login_form" class="btn btn-success">로그인</a>
 	                           		<a href="/Regist/form" class="btn btn-warning">회원가입</a>
 	                           	</c:when>
-	                           	<c:otherwise>${sessionScope.employeeVo.emp_name} - ${sessionScope.employeeVo.emp_dep}</c:otherwise>
+	                           	<c:otherwise>${sessionScope.memberVo.userid}(${sessionScope.memberVo.username})</c:otherwise>
                            </c:choose> 
                        	</li>
                     </ul>

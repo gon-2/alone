@@ -78,8 +78,7 @@ $(function() {
 					<br>
 					<span id="checkPw"></span>
 				</div>
-				<br>
-				<button type="button" id="loginBtn" class="btn btn-sm btn-primary">
+				<button type="button" id="loginBtn" class="btn btn btn-primary">
 					로그인
 				</button>
 			</form>

@@ -52,10 +52,6 @@ public class HomeController {
 		model.addAttribute("weekly", weekly);
 		model.addAttribute("weekend", weekend);
 		model.addAttribute("night", night);
-		System.out.println("홈ㅍ컨트롤러list: " + list);
-		System.out.println("홈ㅍ컨트롤러weekly: " + weekly);
-		System.out.println("호뮤컨트롤러weekend: " + weekend);
-		System.out.println("호뮤컨트롤러night: " + night);
 		return "home";
 	}
 	

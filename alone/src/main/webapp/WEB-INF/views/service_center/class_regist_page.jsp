@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ include file="/WEB-INF/views/include/hoon/hoonheader.jsp" %>
 <head>
 	<title>수강신청 페이지</title>
@@ -30,6 +30,9 @@
 			 $("#frmPaging > input[name=perPage]").val(perPage);
 			 $("#frmPaging").submit();
 		});
+		
+		var date = "${ClassRegistBoardVo.class_board_postdate}";
+		$("testdate").val(changeDateString(date));
 
 		$("#btnSearch").click(function(){
 			var searchType = $("#searchType").val();
@@ -41,7 +44,7 @@
 			$("#frmPaging > input[name=keyword]").val(keyword);
 			$("#frmPaging").submit();
 		});
-	})
+	});
 </script>
 </head>
 <%@ include file="/WEB-INF/views/board_form/paging_form.jsp" %>
@@ -66,7 +69,7 @@
 						<th>작성자</th>
 						<th>게시일</th>
 						<th>조회수</th>
-						<th>댓글수</th>
+						<th>삭제</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -77,9 +80,11 @@
 						<td>${ClassRegistBoardVo.class_board_content}</td>
 						<td>${ClassRegistBoardVo.class_board_enroll}</td>
 						<td>${ClassRegistBoardVo.class_board_userid}</td>
-						<td>${ClassRegistBoardVo.class_board_postdate}</td>
+						<td><fmt:formatDate value="${ClassRegistBoardVo.class_board_postdate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
 						<td>${ClassRegistBoardVo.class_board_viewcnt}</td>
-						<td></td>
+						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
+							<td><button type="submit" class="btn btn-primary">삭제</button></td>
+						</form>
 					</tr>
 					</c:forEach>
 				</tbody>

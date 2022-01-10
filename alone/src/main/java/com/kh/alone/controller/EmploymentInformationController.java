@@ -1,6 +1,8 @@
 package com.kh.alone.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -13,6 +15,7 @@ import com.kh.alone.service.LookJobService;
 import com.kh.alone.vo.FindVo;
 import com.kh.alone.vo.JobTestVo;
 import com.kh.alone.vo.LookJobVo;
+import com.kh.alone.vo.PagingVo;
 import com.kh.alone.vo.ReferenceVo;
 
 
@@ -71,8 +74,13 @@ public class EmploymentInformationController {
 	}
 	
 	@RequestMapping(value="/referenceRoomList", method=RequestMethod.GET)
-	public String referenceRoomList(Model model) {
-		List<ReferenceVo> list = lookJobService.referenceRoomList();
+	public String referenceRoomList(Model model, PagingVo pagingVo) {
+		int count = lookJobService.r_getCount(pagingVo);
+		pagingVo.setCount(count);
+		pagingVo.setPageInfo();
+	    System.out.println("BoardController, boardListAll, pagingVo:" + pagingVo);
+		List<ReferenceVo> list = lookJobService.referenceRoomList(pagingVo);
+		model.addAttribute("pagingVo", pagingVo);
 		model.addAttribute("list", list);
 		return "employ/referenceRoomList";
 	}
@@ -80,9 +88,26 @@ public class EmploymentInformationController {
 	@RequestMapping(value="/referenceRoom", method=RequestMethod.GET)
 	public String referenceRoom(Model model, int rno) {
 		ReferenceVo referenceVo = lookJobService.getReference(rno);
+		ReferenceVo pageVo = lookJobService.pageMove(rno);
 		List<ReferenceVo> data = lookJobService.referenceImage(rno);
+//		List<ReferenceVo> list = lookJobService.referenceRoomList(pagingVo);
+		System.out.println(pageVo);
+		System.out.println(data);
 		model.addAttribute("data", data);
+		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("referenceVo", referenceVo);
+//		model.addAttribute("list", list);
 		return "employ/referenceRoom";
+	}
+	
+	@RequestMapping(value="/referenceRoomRegist", method=RequestMethod.GET)
+	public String referenceRoomRegist() {
+		return "employ/referenceRoomRegist";
+	}
+	
+	@RequestMapping(value="/referenceRoomRegist_run", method=RequestMethod.POST)
+	public String referenceRoomRegist_run(ReferenceVo referenceVo) {
+		lookJobService.insertReferenceRoom(referenceVo);
+		return "null";
 	}
 }

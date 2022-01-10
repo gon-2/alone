@@ -13,7 +13,7 @@ import com.kh.alone.vo.MemberVo;
 @Repository
 public class HomeDao {
 	
-	private static final String NAMESPACE = "com.kh.test02.mappers.home.";
+	private static final String NAMESPACE = "com.kh.alone.mappers.home.";
 	
 	@Inject
 	private SqlSession sqlSession;

@@ -65,10 +65,8 @@ public class MemberDao {
 		return memberVo;
 	}
 	// 답글확인 
-	public void memberBoardForm(MemberBoardVo memberboardVo) {
-		System.out.println("memberDao");
-		sqlSession.insert(NAMESPACE + "memberBoardForm", memberboardVo);
+	public void insertReply(MemberBoardVo memberBoardVo) {
+		sqlSession.insert(NAMESPACE + "insertReply", memberBoardVo);
 	}
-	
-		
-	}
+
+}

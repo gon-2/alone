@@ -71,9 +71,8 @@
 				</div>
 				
 				<button type="submit" class="btn btn-primary">수정완료</button>		
-			</form>
+			
 		</div>
 	</div>
-</div>
-
+</section>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

@@ -1,15 +1,18 @@
 package com.kh.alone.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.alone.dao.LookJobDao;
 import com.kh.alone.vo.FindVo;
 import com.kh.alone.vo.JobTestVo;
 import com.kh.alone.vo.LookJobVo;
+import com.kh.alone.vo.PagingVo;
 import com.kh.alone.vo.ReferenceVo;
 
 @Service
@@ -67,8 +70,8 @@ public class LookJobService {
 	}
 	
 	// 자료실
-	public List<ReferenceVo> referenceRoomList() {
-		List<ReferenceVo> list = lookJobDao.referenceRoomList();
+	public List<ReferenceVo> referenceRoomList(PagingVo pagingVo) {
+		List<ReferenceVo> list = lookJobDao.referenceRoomList(pagingVo);
 		return list;
 	}
 	
@@ -82,5 +85,39 @@ public class LookJobService {
 	public List<ReferenceVo> referenceImage(int rno) {
 		List<ReferenceVo> imageList = lookJobDao.referenceImage(rno);
 		return imageList;
+	}
+	
+	// 자료실 페이지 카운터 확인하기
+	public int r_getCount(PagingVo pagingVo) {
+		int count = lookJobDao.r_getCount(pagingVo);
+		return count;
+	}
+	
+	// 자료실 페이지 번호 얻기
+	public ReferenceVo pageMove(int rno) {
+		ReferenceVo referenceVo = lookJobDao.pageMove(rno);
+		return referenceVo;
+	}
+	
+	// 자료실 rno 얻기
+	public int getRnoNextVal() {
+		int rno = lookJobDao.getRnoNextVal();
+		return rno;
+	}
+	
+	// 자료실 글쓰기
+	public void insertReferenceRoom(ReferenceVo referenceVo) {
+		int rno = lookJobDao.getRnoNextVal();
+		referenceVo.setRno(rno);
+		System.out.println(referenceVo);
+		lookJobDao.insertReferenceRoom(referenceVo);
+		String[] r_images = referenceVo.getR_images();
+		System.out.println(r_images);
+		if (r_images != null && r_images.length > 0) {
+			for (String images_name : r_images) {
+				System.out.println(images_name);
+				lookJobDao.insertReferenceRoomImages(images_name, rno);
+			}
+		}
 	}
 }
