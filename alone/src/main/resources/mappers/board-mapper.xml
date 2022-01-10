@@ -15,7 +15,7 @@
 		<include refid="search"></include>
 	</select> 
 	
-	<!-- 메인 홈페이지에서 3개의 최신 글만 조회 -->
+	<!-- 메인 홈페이지에서 3개의 최신 수강신청 글만 조회 -->
   	<select id="countThird" resultType="RegistBoardVo">
 		select class_board_title , class_board_content , class_board_userid
 		from (select * from tbl_class_board order by class_board_postdate desc)
@@ -60,6 +60,13 @@
 			</choose>
 		</if> 
    </sql>
+   
+   <!-- 아이디 기준 게시글 제목과 내용 수정 -->
+   <update id="modcontent">
+   		update tbl_class_board
+   		set class_board_content , class_board_title
+   		where class_board_userid = ${class_board_userid}
+   </update>
 	
 	<!-- 게시글 제목 클릭 시 조회수 증가 -->   
   	<update id="viewcnt">
@@ -73,4 +80,5 @@
 		delete from tbl_class_board
 		where class_board_content = #{class_board_content}
 	</delete>
+	
 </mapper>

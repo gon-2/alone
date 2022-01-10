@@ -40,7 +40,7 @@ public class CustomerServiceMainController {
 	}
 	
 	// FAQ 페이지
-	@RequestMapping(value="/qna" , method=RequestMethod.GET)
+	@RequestMapping(value="/faq" , method=RequestMethod.GET)
 	public String FaqPage() {
 		return "/service_center/faq_page";
 	}

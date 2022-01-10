@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.alone.mappers.faq">
+
+	<!-- 자주 묻는 질문에서 조회수가 50 이상인 수강신청 목록만 출력-->
+	<select id="classBoardSetViewcnt" resultType="RegistBoardVo">
+		select * from tbl_class_board
+		<![CDATA[where class_board_viewcnt >= 50]]>
+	</select>
+	
+	<!-- 자주묻는 게시판에서 링크 클릭하면 해당 내용으로 이동 -->
+	<select id="faqgetBoard" resultType="RegistBoardVo">
+		select * from tbl_class_board
+		where class_board_title = #{class_board_title}
+	</select>
+	
+</mapper>
