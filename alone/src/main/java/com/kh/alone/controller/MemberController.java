@@ -96,5 +96,9 @@ public class MemberController {
 		return "redirect:/member/board_form";
 	}
 	
-		
+	// 내 강의실
+	@RequestMapping(value="/class_form", method=RequestMethod.GET)
+	public String ClassForm() {
+		return "member/class_form";
+	}
 }

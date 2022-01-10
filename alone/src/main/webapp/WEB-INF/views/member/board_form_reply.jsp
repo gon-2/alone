@@ -34,11 +34,12 @@ $(function() {
 				
 	<div class="row">
 		<div class="col-md-12">
-		<form role="form" action="/member/board_form_reply_run" 
-				method="post">
 				<input type="hidden" name="re_group" value="${memberBoardVo.re_group}">
 				<input type="hidden" name="re_seq" value="${memberBoardVo.re_seq}">
 				<input type="hidden" name="re_level" value="${memberBoardVo.re_level}">
+				
+		<form role="form" action="/member/board_form_reply_run" 
+				method="post">
 				
 			
 				<div class="form-group">
@@ -57,8 +58,9 @@ $(function() {
 					<textarea class="form-control" 
 						id="content" name="content"></textarea>
 				</div>
+				&rdsh;
 				
-				
+					& # x21B3;
 				<button type="submit" class="btn btn-primary" id="btnReply">
 					작성 완료
 				</button>
