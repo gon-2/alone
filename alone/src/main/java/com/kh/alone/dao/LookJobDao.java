@@ -1,6 +1,8 @@
 package com.kh.alone.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -89,6 +91,12 @@ public class LookJobDao {
 		return vo;
 	}
 	
+	// 자료실 번호 무브
+	public ReferenceVo pageMove(int rno) {
+		ReferenceVo referenceVo = sqlSession.selectOne(NAMESPACE + "pageMove", rno);
+		return referenceVo;
+	}
+	
 	// 자료실 파일 받아오기
 	public List<ReferenceVo> referenceImage(int rno) {
 		List<ReferenceVo> imageList = sqlSession.selectList(NAMESPACE + "referenceImage", rno);
@@ -99,6 +107,29 @@ public class LookJobDao {
 	public int r_getCount(PagingVo pagingVo) {
 		int count = sqlSession.selectOne(NAMESPACE + "r_getCount", pagingVo);
 		return count;
+	}
+	
+	// 자료실 rno 얻기
+	public int getRnoNextVal() {
+		int rno = sqlSession.selectOne(NAMESPACE + "getRnoNextVal");
+		return rno;
+	}
+	
+	// 자료실 게시판 추가
+	public void insertReferenceRoom(ReferenceVo referenceVo) {
+		System.out.println(referenceVo);
+		sqlSession.insert(NAMESPACE + "insertReferenceRoom", referenceVo);
+		
+	}
+	
+	// 자료실 이미지 추가하기
+	public void insertReferenceRoomImages(String images_name, int rno) {
+		if (!images_name.equals("")) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("r_images", images_name);
+			map.put("rno", rno);
+			sqlSession.insert(NAMESPACE + "insertReferenceRoomImages", map);			
+		}
 	}
 	
 }

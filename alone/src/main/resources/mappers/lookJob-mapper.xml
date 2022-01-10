@@ -67,7 +67,7 @@
 	</select>
 	
 	<select id="referenceImage" resultType="ReferenceVo">
-		select * from r_file
+		select r_images r_image, rno from r_file
 		where rno = #{rno}
 		order by rno desc
 	</select>
@@ -76,5 +76,30 @@
 	<select id="r_getCount" resultType="int">
 		select count(*) from tbl_reference
 	</select>
+	
+	<select id="pageMove" resultType="ReferenceVo">
+		select next,prev 
+			from (
+			    select rno, 
+			    lead(rno,1) over(order by rno) as next, 
+			    lag(rno,1) over(order by rno) as prev from tbl_reference
+			)
+		where rno = #{rno}
+	</select>
+	
+	<select id="getRnoNextVal" resultType="int">
+		select seq_rno.nextval
+		from dual
+	</select>
+	
+	<insert id="insertReferenceRoom">
+	   	insert into tbl_reference(rno, rtitle, rwriter, recommend, hits, re_group, re_seq, re_level, r_content)
+		values(#{rno}, #{rtitle}, #{rwriter}, #{recommend}, #{hits}, #{rno}, #{re_seq}, #{re_level}, #{r_content})
+    </insert>
+    
+	<insert id="insertReferenceRoomImages">
+	   	insert into r_file(r_images, rno)
+		values(#{r_images}, #{rno})
+    </insert>
 	
 </mapper>

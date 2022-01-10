@@ -12,7 +12,11 @@ $(function() {
 		$("#frmPaging > input[name=page]").val(page);
 		$("#frmPaging").submit();
 	});
+	$("#r_boardBtn").click(function() {
+		location.href="/employ/referenceRoomRegist";
+	});
 });
+
 </script>
 
 <style>
@@ -45,6 +49,10 @@ $(function() {
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8">
+			<div style="text-align:right; margin-bottom:10px;">
+							<input type="button" class="btn btn-sm" value="글쓰기" id="r_boardBtn">
+			</div>
+			
 			<table class="table">
 				<thead>
 					<tr>

@@ -120,21 +120,5 @@ $(function() {
 			</div>
 		</div>
 	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="row">
-				<div class="col-md-2">
-				</div>
-				<div class="col-md-8">
-					<div class="divBottom">
-						<input type="button" class="job_btnList btn-sm" value="목록">
-					</div>
-				</div>
-				<div class="col-md-2">
-				</div>
-			</div>
-		</div>
-	</div>
 </div>							
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

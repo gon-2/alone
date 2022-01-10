@@ -23,6 +23,11 @@ $(function() {
 	$(".r_btnList").click(function() {
 		location.href="/employ/referenceRoomList";
 	});
+	$(".r_btnMove").click(function(e) {
+		e.preventDefault();
+		var pageMove = $(this).attr("href");
+		location.href="/employ/referenceRoom?rno=" + pageMove;
+	});
 });
 
 </script>
@@ -77,12 +82,10 @@ $(function() {
 		</div>
 		<div class="col-md-8" style="text-align:center">
 			<c:forEach items="${data}" var="data">
-				<img src="/images/${data.r_images}" width="500px" height="700px"/><br>
+				<img src="/images/${data.r_image}" width="500px" height="700px"/><br>
 			</c:forEach>
 			<div style="text-align:left">
-				<c:forEach items="${data}" var="data">
-					${data.r_content}
-				</c:forEach>
+					${referenceVo.r_content}
 			</div>
 		</div>
 		<div class="col-md-2">
@@ -93,6 +96,10 @@ $(function() {
 		<div class="col-md-8">
 			<div class="divBottom">
 				<input type="button" class="r_btnList btn-sm" value="목록">
+				<div class="move">
+	               <a class="r_btnMove btn btn-outline-primary" id="r_btnPrev" href="${pageVo.prev}">이전</a>
+	               <a class="r_btnMove btn btn-outline-primary" id="r_btnNext" href="${pageVo.next}">다음</a>
+            	</div>
 			</div>
 		</div>
 		<div class="col-md-2">
