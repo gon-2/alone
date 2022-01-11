@@ -8,6 +8,7 @@
 package com.kh.alone.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -15,6 +16,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import com.kh.alone.vo.InquiryBoardVo;
+import com.kh.alone.vo.PagingDto;
 
 @Repository
 public class InquiryBoardDao {
@@ -33,6 +35,23 @@ public class InquiryBoardDao {
 	public int getInquireNumberNextVal() {
 		int inquire_no = session.selectOne(NAMESPACE + "getInquiryNumberNextVal");
 		return inquire_no;
+	}
+	
+	// 총 게시글 갯수
+	public int countBoard(PagingDto dto) {
+		int count = session.selectOne(NAMESPACE + "countBoard" , dto);
+		return count;
+	}
+	
+	// 리스트 보기
+	public List<InquiryBoardVo> inquirylist(PagingDto dto){
+		List<InquiryBoardVo> list = session.selectList(NAMESPACE + "inquirylist" , dto);
+		return list;
+	}
+	// 제목 클릭 시 내용 조회
+	public InquiryBoardVo getBoard(String inquiry_title) {
+		InquiryBoardVo vo = session.selectOne(NAMESPACE + "getBoard" , inquiry_title);
+		return vo;
 	}
 	
 }

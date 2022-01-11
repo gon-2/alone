@@ -20,5 +20,41 @@
 		select seq_inquiry_number.nextval from dual
 	</select>
 	
+	<!-- 건의사항 게시글 몇개있는지? -->
+	<select id="countBoard" resultType="int">
+		select count(*) from tbl_inquiry_board
+		<include refid="search"></include>
+	</select>
+	
+	<!-- 건의사항 리스트 확인 -->
+	<select id="inquirylist" resultType="InquiryBoardVo">
+		select * from tbl_inquiry_board
+		<include refid="search"></include>
+		order by inquiry_number desc
+	</select>
+	
+	<select id="getBoard" resultType="InquiryBoardVo">
+		select * from tbl_inquiry_board
+		where inquiry_title = #{inquiry_title}
+	</select>
+	
+	<sql id="search">
+   		<if test="searchType != null and keyword != null">
+			<choose>
+				<when test=' searchType == "n" '> 
+					where class_board_number like '%' || #{keyword} || '%' 
+				</when>
+				<when test=' searchType == "w" '> 
+					where class_board_userid like '%' || #{keyword} || '%' 
+				</when>
+				<when test=' searchType == "t" '> 
+					where class_board_title like '%' || #{keyword} || '%'
+				</when>
+				<when test=' searchType == "c" '>
+					where class_board_content like '%' || #{keyword} || '%'
+				</when> 
+			</choose>
+		</if> 
+   </sql>
 
 </mapper>
