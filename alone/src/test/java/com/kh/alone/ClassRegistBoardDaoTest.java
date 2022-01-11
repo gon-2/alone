@@ -37,8 +37,8 @@ public class ClassRegistBoardDaoTest {
 	
 /*	@Test
 	public void getcomment() {
-		int class_board_comment_no = 65;
-		List<RegistCommentVo> list = registCommentDao.listcomment(class_board_comment_no);
-		System.out.println("list >> " + list);
-	}*/
-}
+		int class_board_number = 65;
+		RegistCommentVo registcommentvo = registCommentDao.onecomment(class_board_number);
+		System.out.println("registcommentvo >> " + registcommentvo);
+	}
+*/}

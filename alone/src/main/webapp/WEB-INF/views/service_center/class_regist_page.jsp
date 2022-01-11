@@ -45,6 +45,26 @@
 			$("#frmPaging").submit();
 		});
 	});
+	
+	function changeDateString(timestamp){
+		var dateF = new Date(timestamp);
+		
+		var year = dateF.getFullYear();
+		var month = make2digits(dateF.getMonth() + 1);
+		var date = make2digits(dateF.getDate());
+		var hour = make2digits(dateF.getHours());
+		var minute = make2digits(dateF.getMinutes());
+		var second = make2digits(dateF.getSeconds());
+		var dateString = year + "-" + month + "-" + date + "-" + hour + ":" + minute + ":" + second;
+		return dateString;
+	}
+	
+	function make2digits(num){
+		if(num < 10){
+			num = "0" + num;
+		}
+		return num;
+	}
 </script>
 </head>
 <%@ include file="/WEB-INF/views/board_form/paging_form.jsp" %>
@@ -69,7 +89,7 @@
 						<th>작성자</th>
 						<th>게시일</th>
 						<th>조회수</th>
-						<th>삭제</th>
+						<!-- <th>삭제</th> -->
 					</tr>
 				</thead>
 				<tbody>
@@ -82,10 +102,11 @@
 						<td>${ClassRegistBoardVo.class_board_userid}</td>
 						<td><fmt:formatDate value="${ClassRegistBoardVo.class_board_postdate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
 						<td>${ClassRegistBoardVo.class_board_viewcnt}</td>
-						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
+<%-- 						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
 							<td><button type="submit" class="btn btn-primary">삭제</button></td>
 						</form>
-					</tr>
+ --%>					
+ 					</tr>
 					</c:forEach>
 				</tbody>
 			</table>

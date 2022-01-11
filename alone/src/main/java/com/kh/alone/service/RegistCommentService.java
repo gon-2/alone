@@ -26,9 +26,10 @@ public class RegistCommentService {
 	public void insertcomment(RegistCommentVo commentvo) {
 		commentDao.insertcomment(commentvo);
 	}
-	// 상담자 댓글 보기
-	public List<RegistCommentVo> listcomment(){
-		List<RegistCommentVo> list = commentDao.listcomment();
+	
+	// 해당글의 상담자 댓글정보 조회
+	public List<RegistCommentVo> getcomment(int class_board_number){
+		List<RegistCommentVo> list = commentDao.getcomment(class_board_number);
 		return list;
 	}
 	
