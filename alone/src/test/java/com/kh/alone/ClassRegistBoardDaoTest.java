@@ -16,7 +16,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kh.alone.dao.ClassRegistBoardDao;
+import com.kh.alone.dao.InquiryBoardDao;
 import com.kh.alone.dao.RegistCommentDao;
+import com.kh.alone.vo.InquireBoardVo;
 import com.kh.alone.vo.RegistBoardVo;
 import com.kh.alone.vo.RegistCommentVo;
 
@@ -26,6 +28,9 @@ public class ClassRegistBoardDaoTest {
 	
 	@Inject
 	private RegistCommentDao registCommentDao;
+	
+	@Inject
+	private InquiryBoardDao dao;
 
 	@Test
 	public void insertcommentTest() {
@@ -33,6 +38,18 @@ public class ClassRegistBoardDaoTest {
 		vo.setClass_board_comment_userid("user02");
 		vo.setClass_board_comment_content("하이2");
 		registCommentDao.insertcomment(vo);
+	}
+	
+	@Test
+	public void insertinquire() {
+		InquireBoardVo vo = new InquireBoardVo();
+		vo.setInquiry_number(2);
+		vo.setInquiry_title("제목1");
+		vo.setInquiry_content("내용1");
+		vo.setInquiry_userid("user01");
+		vo.setInquiry_password("1234");
+		vo.setInquiry_photoname("C:\\fakepath\\suneung.jpg");
+		dao.insertinquire(vo);
 	}
 	
 /*	@Test
