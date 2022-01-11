@@ -72,7 +72,7 @@
                         <h6 class="collapse-header">질문과 답변</h6>
                         <a class="collapse-item" href="/customer_main/faq">자주 묻는 질문</a>                        
                         <a class="collapse-item" href="/class_board/class_regist">수강신청</a>
-                        <a class="collapse-item" href="/customer_main/inquiry">건의사항</a>
+                        <a class="collapse-item" href="/inquiry/listall">건의사항</a>
                     </div>
                 </div>
             </li>
