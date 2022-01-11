@@ -35,10 +35,10 @@ public class CustomerServiceMainController {
 		return "/service_center/main_page";
 	}
 	
-	// 문의사항 페이지
-	@RequestMapping(value="/inquiry" , method=RequestMethod.GET)
+	// 건의사항 페이지
+	@RequestMapping(value="/inquiry_list" , method=RequestMethod.GET)
 	public String inquirePage() {
-		return "/service_center/inquiry_page";
+		return "/inquiry/inquiry_list";
 	}
 	
 	// FAQ 페이지
