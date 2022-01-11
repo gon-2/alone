@@ -223,10 +223,19 @@
 					<label for="class_board_content">상담 내용</label><br>
 					<textarea style="width:300px; height:100px;"  id="class_board_content" name="class_board_content" readonly="readonly">${registboardvo.class_board_content}</textarea>
 				</div>
+				
+        <c:choose>
+            <c:when test="${empty sessionScope.memberVo}">
+       	    </c:when>    
+            <c:otherwise> 
 				<button type="button" class="btn btn-primary" id="modcontent">수정</button>
 				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button>
+			</c:otherwise>
+		</c:choose>
 				<button type="button" class="btn btn-warning" id="inComment">상담자 댓글달기</button>
+		<c:if test="${empty sessionScope.memberVo}">
 				<button type="button" class="btn btn-secondary" id="showComment">댓글보기</button>
+		</c:if>
 			</form> 
 		</div>
 	</div>
