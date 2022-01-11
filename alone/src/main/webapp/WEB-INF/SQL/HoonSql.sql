@@ -45,6 +45,24 @@ create table tbl_class_board_comment(
 );
 
 
+-- 건의사항 게시판 테이블
+CREATE TABLE TBL_INQUIRY_BOARD(
+    inquiry_number number primary key,
+    inquiry_username varchar2(50) references tbl_member(userid),
+    inquiry_title varchar2(300) not null,
+    inquiry_content varchar2(3000),
+    inquiry_password varchar2(50) not null,
+    inquiry_photo blob not null,
+    inquiry_filename varchar2(500) not null,
+    inquiry_date timestamp default sysdate
+);
+
+-- 건의사항 게시판 테이블 조회수 추가
+alter table tbl_inquiry_board
+add INQUIRY_VIEWCNT number default 0;
+
+
+
 -- 댓글 올린 시간 추가
 alter table tbl_class_board
 add class_board_comment_date timestamp default sysdate;
@@ -81,12 +99,10 @@ values(? , ? , sysdate)
 select * from tbl_class_board_comment
 
 -- 해당하는 아이디 게시글에 댓글단 정보
-select * 
-from tbl_class_board_comment
-where class_board_comment_userid = (select class_board_userid 
-                                    from tbl_class_board 
-                                    where class_board_userid='user02');
-
+select * from tbl_class_board_comment
+where class_board_comment_no = (select class_board_number 
+							    from tbl_class_board 
+							    where CLASS_BOARD_NUMBER = ?)
 
 
 
