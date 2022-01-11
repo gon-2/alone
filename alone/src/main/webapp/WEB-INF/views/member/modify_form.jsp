@@ -17,18 +17,10 @@
 </script>
 <section class="wrapper style1">
 	<div class="container">
+				<h1>회원정보 수정</h1><br>
 		<div class="clear overflow">
-			<section class="col-md-12"><!-- 게시판 영역잡기 -->
-				<div class="tabbable" id="tabbable">
-					<ul class="nav nav-tabs"><!--  주간반 야간반 주말반 카테고리 나누기 -->
-						<li class="nav-item"><a class="nav-link active show" href="#tab1" data-toggle="tab">전체보기</a></li>
-						<li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">개인정보 수정</a></li>
-						<li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">비밀번호 변경</a></li>
-						<li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">회원탈퇴 </a></li>
-					</ul>
-					
-				</div>
-			</section>
+			<section class="col-md-12">
+				</section>
 				<div class="form-group">
 					<label>아이디</label> <br>
 					<span>${memberVo.userid}</span>
@@ -69,6 +61,7 @@
 					<label>연락처</label> 
 					<input type="text" class="form-control" id="pnumber" name="pnumber"/>
 				</div>
+				
 				
 				<button type="submit" class="btn btn-primary">수정완료</button>		
 			
