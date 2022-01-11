@@ -2,24 +2,24 @@
  * 2021-01-11
  * Author : 이정훈
  * code Explanation : 건의사항 게시판 VO
- * 건의사항 ㄱ
+ * 건의사항 글 번호 , 아이디 , 글 제목 , 글 내용 , 파일 명 , 비밀번호 , 게시일자 , 조회수
  */
 
 
 package com.kh.alone.vo;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 
 import oracle.sql.BLOB;
 
 public class InquiryBoardVo {
 	private int inquiry_number;
-	private String inquiry_username;
+	private String inquiry_userid;
 	private String inquiry_title;
 	private String inquiry_content;
+	private String inquiry_photoname;
 	private String inquiry_password;
-	private BLOB inquiry_photo;
-	private String inquiry_filename;
 	private Timestamp inquiry_date;
 	private int inquiry_viewcnt;
 	
@@ -36,12 +36,12 @@ public class InquiryBoardVo {
 		this.inquiry_number = inquiry_number;
 	}
 
-	public String getInquiry_username() {
-		return inquiry_username;
+	public String getInquiry_userid() {
+		return inquiry_userid;
 	}
 
-	public void setInquiry_username(String inquiry_username) {
-		this.inquiry_username = inquiry_username;
+	public void setInquiry_userid(String inquiry_userid) {
+		this.inquiry_userid = inquiry_userid;
 	}
 
 	public String getInquiry_title() {
@@ -67,23 +67,7 @@ public class InquiryBoardVo {
 	public void setInquiry_password(String inquiry_password) {
 		this.inquiry_password = inquiry_password;
 	}
-
-	public BLOB getInquiry_photo() {
-		return inquiry_photo;
-	}
-
-	public void setInquiry_photo(BLOB inquiry_photo) {
-		this.inquiry_photo = inquiry_photo;
-	}
-
-	public String getInquiry_filename() {
-		return inquiry_filename;
-	}
-
-	public void setInquiry_filename(String inquiry_filename) {
-		this.inquiry_filename = inquiry_filename;
-	}
-
+	
 	public Timestamp getInquiry_date() {
 		return inquiry_date;
 	}
@@ -99,12 +83,21 @@ public class InquiryBoardVo {
 	public void setInquiry_viewcnt(int inquiry_viewcnt) {
 		this.inquiry_viewcnt = inquiry_viewcnt;
 	}
+	
+
+	public String getInquiry_photoname() {
+		return inquiry_photoname;
+	}
+
+	public void setInquiry_photoname(String inquiry_photoname) {
+		this.inquiry_photoname = inquiry_photoname;
+	}
 
 	@Override
 	public String toString() {
-		return "InquiryBoardVo [inquiry_number=" + inquiry_number + ", inquiry_username=" + inquiry_username
-				+ ", inquiry_title=" + inquiry_title + ", inquiry_content=" + inquiry_content + ", inquiry_password="
-				+ inquiry_password + ", inquiry_photo=" + inquiry_photo + ", inquiry_filename=" + inquiry_filename
-				+ ", inquiry_date=" + inquiry_date + ", inquiry_viewcnt=" + inquiry_viewcnt + "]";
+		return "InquireBoardVo [inquiry_number=" + inquiry_number + ", inquiry_userid=" + inquiry_userid
+				+ ", inquiry_title=" + inquiry_title + ", inquiry_content=" + inquiry_content + ", inquiry_photoname="
+				+ inquiry_photoname + ", inquiry_password=" + inquiry_password + ", inquiry_date=" + inquiry_date
+				+ ", inquiry_viewcnt=" + inquiry_viewcnt + "]";
 	}
 }

@@ -36,9 +36,9 @@ public class CustomerServiceMainController {
 	}
 	
 	// 문의사항 페이지
-	@RequestMapping(value="/inquire" , method=RequestMethod.GET)
+	@RequestMapping(value="/inquiry" , method=RequestMethod.GET)
 	public String inquirePage() {
-		return "/service_center/inquire_page";
+		return "/service_center/inquiry_page";
 	}
 	
 	// FAQ 페이지

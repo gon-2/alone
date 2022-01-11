@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper			
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"			
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.alone.mappers.inquiry">
+	<!-- 건의사항 글 삽입  , 파일은 제외 -->
+	<insert id="insertinquiry">
+		insert into tbl_inquiry_board(inquiry_number , inquiry_userid , inquiry_title , inquiry_content , inquiry_photoname , inquiry_password , inquiry_date)
+		values(seq_inquiry_number.nextval , #{inquiry_userid} , #{inquiry_title} , #{inquiry_content} , #{inquiry_photoname} , #{inquiry_password} , sysdate)
+	</insert>
+	
+	<!-- 건의사항 파일 삽입 -->
+	<insert id="insertFile">
+		insert into tbl_inquiry_board_file(inquiry_no , inquiry_filename)
+		values(#{inquire_no} , #{inquiry_filename})
+	</insert>
+	
+	<!-- 다음 글 번호 찾기 -->
+	<select id="getInquiryNumberNextVal" resultType="int">
+		select seq_inquiry_number.nextval from dual
+	</select>
+	
+
+</mapper>
