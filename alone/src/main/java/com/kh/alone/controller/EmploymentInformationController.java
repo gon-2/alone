@@ -1,15 +1,19 @@
 package com.kh.alone.controller;
 
+import java.io.File;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.alone.service.LookJobService;
 import com.kh.alone.vo.FindVo;
@@ -22,6 +26,8 @@ import com.kh.alone.vo.ReferenceVo;
 @Controller
 @RequestMapping("/employ")
 public class EmploymentInformationController {
+	
+	private static final String UPLOAD_PATH = "J:/upload";
 	
 	@Inject
 	private LookJobService lookJobService;
@@ -107,7 +113,8 @@ public class EmploymentInformationController {
 	
 	@RequestMapping(value="/referenceRoomRegist_run", method=RequestMethod.POST)
 	public String referenceRoomRegist_run(ReferenceVo referenceVo) {
+		System.out.println(referenceVo);
 		lookJobService.insertReferenceRoom(referenceVo);
-		return "null";
+		return "referenceRoomList";
 	}
 }
