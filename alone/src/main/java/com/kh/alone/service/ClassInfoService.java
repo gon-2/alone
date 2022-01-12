@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.alone.dao.ClassInfoDao;
 import com.kh.alone.vo.ClassInfoVo;
-import com.kh.alone.vo.OnlineRegistVo;
+import com.kh.alone.vo.StudentClassRegistVo;
 
 @Service
 public class ClassInfoService {
@@ -24,13 +24,13 @@ public class ClassInfoService {
 	// 모집현황 전체조회
 	public List<ClassInfoVo> selectAll(){
 		List<ClassInfoVo> list = dao.selectAll();
-		System.out.println("서비스 list" + list);
+//		System.out.println("서비스 list" + list);
 		return list;
 	}
 	
-	// title로 조회
+	// info_code로 조회
 	public ClassInfoVo selectByCno(int info_code){
-		System.out.println("서비스서비스: " + info_code);
+//		System.out.println("서비스서비스: " + info_code);
 		ClassInfoVo classInfoVo = dao.selectByCno(info_code);
 		return classInfoVo;
 	}
@@ -50,18 +50,18 @@ public class ClassInfoService {
 	
 	
 	// 수강신청하기
-	public void insertOnlineRegist(OnlineRegistVo vo) {
+	public void insertOnlineRegist(StudentClassRegistVo vo) {
 		dao.insertOnlineRegist(vo);
 	}
 	
 	// 주민번호로 나의 온라인 신청현황 확인하기
-	public int selectMine(int r_num){
-		int mine = dao.selectMine(r_num);
+	public String selectMine(String r_num){
+		String mine = dao.selectMine(r_num);
 		return mine;
 	}
 	
-	public List<OnlineRegistVo> selectMineList(int r_num){
-		List<OnlineRegistVo> mineList = dao.selectMineList(r_num);
+	public List<StudentClassRegistVo> selectMineList(String r_num){
+		List<StudentClassRegistVo> mineList = dao.selectMineList(r_num);
 		return mineList;
 	}
 }

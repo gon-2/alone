@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
-<%@ include file="/WEB-INF/views/include/homeRegist.jsp"%>
+<%@ include file="/WEB-INF/views/include/yg/homeRegist.jsp"%>
 <style>
 .atag{
 	text-align: center;
@@ -20,7 +20,7 @@ ${classInfoVo}
 			<strong>●필독사항●</strong>
 			<br>
 			
-			<%@ include file="/WEB-INF/views/include/agree.jsp" %>
+			<%@ include file="/WEB-INF/views/include/yg/agree.jsp" %>
 			
 			<div class="atag">
 				<a href="/classInfo/onlineRegist" class="btn btn-sm btn-outline-secondary">동의</a> 

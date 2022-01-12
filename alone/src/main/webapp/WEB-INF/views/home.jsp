@@ -15,7 +15,6 @@ $(function(){
 	
 });
 </script>
-
 <!-- Banner -->
 <div id="demo" class="carousel slide" data-ride="carousel">
 

@@ -25,8 +25,8 @@ import com.kh.alone.vo.MemberVo;
 public class HomeController {
 	
 	private static final int WEEKLY = 1;
-	private static final int WEEKEND = 2;
-	private static final int NIGHT = 3;
+	private static final int NIGHT = 2;
+	private static final int WEEKEND = 3;
 	
 	
 	
@@ -44,14 +44,14 @@ public class HomeController {
 		
 		List<ClassInfoVo> list = service.selectAll();
 		List<ClassInfoVo> weekly = service.classListByTimeCode(WEEKLY);
-		List<ClassInfoVo> weekend = service.classListByTimeCode(WEEKEND);
 		List<ClassInfoVo> night = service.classListByTimeCode(NIGHT);
+		List<ClassInfoVo> weekend = service.classListByTimeCode(WEEKEND);
 		
 		
 		model.addAttribute("list", list);
 		model.addAttribute("weekly", weekly);
-		model.addAttribute("weekend", weekend);
 		model.addAttribute("night", night);
+		model.addAttribute("weekend", weekend);
 		return "home";
 	}
 	

@@ -22,7 +22,7 @@
 						<li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">야간반</a></li>
 						<li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab">주말반</a></li>
 					</ul>
-					<%@ include file="/WEB-INF/views/include/content.jsp"%>
+					<%@ include file="/WEB-INF/views/include/yg/content.jsp"%>
 				</div>
 			</section>
 		</div>

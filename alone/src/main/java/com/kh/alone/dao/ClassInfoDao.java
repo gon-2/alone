@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.alone.vo.ClassInfoVo;
-import com.kh.alone.vo.OnlineRegistVo;
+import com.kh.alone.vo.StudentClassRegistVo;
 
 @Repository
 public class ClassInfoDao {
@@ -29,7 +29,7 @@ public class ClassInfoDao {
 		return list;
 	}
 	
-	// title로 조회
+	// info_code로 조회
 	public ClassInfoVo selectByCno(int info_code){
 //		System.out.println("다오다오 : " + info_code);
 		ClassInfoVo classInfoVo = sqlSession.selectOne(NAMESPACE + "selectByCno", info_code);
@@ -53,20 +53,20 @@ public class ClassInfoDao {
 	
 	
 	// 수강신청하기
-	public void insertOnlineRegist(OnlineRegistVo vo) {
+	public void insertOnlineRegist(StudentClassRegistVo vo) {
 		System.out.println("dao, OnlineRegistVo:" +  vo);
 		sqlSession.insert(NAMESPACE + "insertOnlineRegist", vo);
 	}
 	
 	
 	// 주민번호로 나의 신청현황 확인하기
-	public int selectMine(int r_num){
-		int mine = sqlSession.selectOne(NAMESPACE + "selectMine", r_num);
+	public String selectMine(String r_num){
+		String mine = sqlSession.selectOne(NAMESPACE + "selectMine", r_num);
 		return mine;
 	}
 	
-	public List<OnlineRegistVo> selectMineList(int r_num){
-		List<OnlineRegistVo> mineList = sqlSession.selectList(NAMESPACE + "selectMineList", r_num);
+	public List<StudentClassRegistVo> selectMineList(String r_num){
+		List<StudentClassRegistVo> mineList = sqlSession.selectList(NAMESPACE + "selectMineList", r_num);
 		return mineList;
 	}
 	
