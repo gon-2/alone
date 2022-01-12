@@ -5,13 +5,24 @@
 <script>
 $(function(){
 	$("#btnDrop").click(function(){
-		alert("회원탈퇴가 완료되었습니다.")
+		
+		var url = "/member/drop_run"
+		
+		$.post(url, function(rData){
+			console.log(rData);
+			
+			if(rData == "success"){
+				alert("탈퇴 되었습니다.");
+			}
+			
+			location.href = "/login_form";
+			
+		});
+
 	});
 });
 
 </script>
-				
-
 <section class="wrapper style1">
 	<div class="container">
 				<h1>회원탈퇴</h1><br>
@@ -42,5 +53,4 @@ $(function(){
 		</div>
 	</div>
 </section>
-</form>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

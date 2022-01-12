@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.alone.service.MemberService;
@@ -38,6 +39,7 @@ public class MemberController {
 	public String memberRegistForm() {
 		return "member/regist_form";
 	}
+	
 	// 등록처리
 	@RequestMapping(value="/regist_run", method=RequestMethod.POST)
 	public String memberRegistRun(MemberVo memberVo, RedirectAttributes rttr) {
@@ -90,13 +92,31 @@ public class MemberController {
 	
 	// 회원탈퇴  
 	@RequestMapping(value="/drop", method = RequestMethod.GET)
-	public String memberOut(HttpSession session, Model model) {
+	public String memberOut() {
+		//HttpSession session, Model model
 		// 로그인한 다음에 테스트
-//		MemberVo memberVo = (MemberVo) session.getAttribute("memberVo");
-//		String userid = memberVo.getUserid();
-		String userid = "user01";
-		MemberVo memberVo = memberService.memberOut(userid);
-		model.addAttribute("memberVo", memberVo);		
+//		String userid = "user01";
+//		MemberVo memberVo = memberService.memberOut(userid);
+//		model.addAttribute("memberVo", memberVo);		
 		return "member/drop"; 
+	}
+	
+	// 회원탈퇴 처리 
+	@ResponseBody
+	@RequestMapping(value="/drop_run", method = RequestMethod.POST)
+	public String memberOutRun(HttpSession session) {
+		System.out.println("/drop_run 실행 됨");
+		MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
+		String userid = memberVo.getUserid();
+		try {
+			memberService.memberOutRun(userid);
+			
+		} catch(Exception e){
+			e.printStackTrace();
 		}
+//		System.out.println("MemberController, memberOut, userid : " + userid);
+		return "success";
+	}
+	
 }
+

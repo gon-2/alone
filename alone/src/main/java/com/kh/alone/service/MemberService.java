@@ -66,13 +66,18 @@ public class MemberService {
 		memberDao.insertReply(memberBoardVo);
 		
 	}
-
-
+	
+	// 회원탈퇴폼
 	public MemberVo memberOut(String userid) {
 		MemberVo memberVo = memberDao.memberOut(userid);
 //		System.out.println("서비스에서 vo값 받아오는지 확인하기 : " + memberVo);
 		return memberVo;
+	}
 	
+	// 회원탈퇴 처리 
+	public void memberOutRun(String userid) {
+		memberDao.memberOutRun(userid);
+
 	}
 
 }

@@ -35,9 +35,16 @@
 		where userid = #{userid}
 	</select>
 	
-	<!--  회원탈퇴  -->
+	<!--  회원탈퇴폼  -->
 	<select id="memberOut" resultType="MemberVo">
 		 select * from tbl_member
 		 where userid = #{userid}
 	</select>
+	
+	<!--  회원탈퇴 처리  -->
+	<delete id="memberOutRun">
+		delete * from tbl_member
+		where userid= #{userid}
+	</delete>
+	
 </mapper>
