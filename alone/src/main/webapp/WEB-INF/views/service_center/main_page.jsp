@@ -28,7 +28,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${thirdlist}" var="RegistBoardVo">
+					<c:forEach items="${regthirdlist}" var="RegistBoardVo">
 						<tr align="center">
 							<td><a href="/class_board/getBoard?class_board_title=${RegistBoardVo.class_board_title}">${RegistBoardVo.class_board_title}</a></td>
 							<td>${RegistBoardVo.class_board_content}</td>
@@ -40,7 +40,7 @@
 		</div>
 		
 		<div class="col-md-6">
-			<h4 align="center" style="margin-right: 100px;"><a href="/customer_main/consult">자주 묻는 질문 - 건의사항</a></h4>
+			<h4 align="center" style="margin-right: 100px;"><a href="/customer_main/faq">자주 묻는 질문 - 건의사항</a></h4>
 			<br>
 			<table class="table" align="center" style="width:500px; margin-right:100px;">
 				<thead>
@@ -51,7 +51,13 @@
 					</tr>
 				</thead>
 				<tbody>
-
+ 					<c:forEach items="${inquiryRecentList}" var="InquiryBoardVo">
+						<tr align="center">
+							<td><a href="/inquiry/getBoard?inquiry_title=${InquiryBoardVo.inquiry_title}">${InquiryBoardVo.inquiry_title}</a></td>
+							<td>${InquiryBoardVo.inquiry_content}</td>
+							<td>${InquiryBoardVo.inquiry_userid}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
