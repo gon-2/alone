@@ -15,6 +15,14 @@ $(function() {
 	$("#r_boardBtn").click(function() {
 		location.href="/employ/referenceRoomRegist";
 	});
+	$(".rno_title").click(function(e) {
+		e.preventDefault();
+		var rno = $(this).attr("href");
+		console.log("rno:", rno);
+		$("#frmPaging > input[name=rno]").val(rno);
+		$("#frmPaging").attr("action", "/employ/referenceRoom")
+					   .submit();
+	});
 });
 
 </script>
@@ -68,7 +76,7 @@ $(function() {
 					<c:forEach items="${list}" var="ReferenceVo">
 						<tr>
 							<td class="td_reference">${ReferenceVo.rno}</td>
-							<td class="td_reference"><a href="/employ/referenceRoom?rno=${ReferenceVo.rno}">${ReferenceVo.rtitle}</a></td>
+							<td class="td_reference"><a class="rno_title" href="${ReferenceVo.rno}">${ReferenceVo.rtitle}</a></td>
 							<td class="td_reference">${ReferenceVo.rwriter}</td>
 							<td class="td_reference">${ReferenceVo.recommend}</td>
 							<td class="td_reference">${ReferenceVo.hits}</td>

@@ -27,8 +27,6 @@ import com.kh.alone.vo.ReferenceVo;
 @RequestMapping("/employ")
 public class EmploymentInformationController {
 	
-	private static final String UPLOAD_PATH = "J:/upload";
-	
 	@Inject
 	private LookJobService lookJobService;
 	
@@ -45,6 +43,11 @@ public class EmploymentInformationController {
 		LookJobVo lookJobVo = lookJobService.getLookJob(jobno);
 		model.addAttribute("lookJobVo", lookJobVo);
 		return "employ/lookJobInformation";
+	}
+	
+	@RequestMapping(value="/lookJobInforMationRegist", method=RequestMethod.GET)
+	public String lookJobInforMationRegist() {
+		return "employ/lookJobInforMationRegist";
 	}
 	
 	@RequestMapping(value="/lookJobTestList", method=RequestMethod.GET)
@@ -92,17 +95,20 @@ public class EmploymentInformationController {
 	}
 	
 	@RequestMapping(value="/referenceRoom", method=RequestMethod.GET)
-	public String referenceRoom(Model model, int rno) {
+	public String referenceRoom(Model model, int rno, PagingVo pagingVo) {
+		int count = lookJobService.r_getCount(pagingVo);
+		pagingVo.setCount(count);
+		pagingVo.setPageInfo();
 		ReferenceVo referenceVo = lookJobService.getReference(rno);
 		ReferenceVo pageVo = lookJobService.pageMove(rno);
 		List<ReferenceVo> data = lookJobService.referenceImage(rno);
-//		List<ReferenceVo> list = lookJobService.referenceRoomList(pagingVo);
+		List<ReferenceVo> list = lookJobService.referenceRoomList(pagingVo);
 		System.out.println(pageVo);
 		System.out.println(data);
 		model.addAttribute("data", data);
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("referenceVo", referenceVo);
-//		model.addAttribute("list", list);
+		model.addAttribute("list", list);
 		return "employ/referenceRoom";
 	}
 	
@@ -115,6 +121,6 @@ public class EmploymentInformationController {
 	public String referenceRoomRegist_run(ReferenceVo referenceVo) {
 		System.out.println(referenceVo);
 		lookJobService.insertReferenceRoom(referenceVo);
-		return "referenceRoomList";
+		return "redirect:/employ/referenceRoomList";
 	}
 }

@@ -44,6 +44,9 @@ $(function() {
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8">
+		<div style="text-align:right; margin-bottom:10px;">
+		<a href="/employ/lookJobInforMationRegist" class="btn btn-sm btn-success">글 쓰기</a>
+		</div>
 			<table class="table">
 				<thead>
 					<tr>
