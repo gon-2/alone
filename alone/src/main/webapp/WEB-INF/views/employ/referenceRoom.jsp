@@ -70,7 +70,11 @@ $(function() {
 					</tr>
 					<tr>
 						<th>링크</th>
-						<td colspan="7">다운로드</td>
+						<td colspan="7">
+						<c:forEach items="${data}" var="data">
+						<a href="/upload/download?fileName=${data.r_image}">${data.r_image}</a> &nbsp;&nbsp;
+						</c:forEach>
+						</td>
 					</tr>
 				</tbody>
 			</table>

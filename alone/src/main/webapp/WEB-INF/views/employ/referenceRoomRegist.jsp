@@ -3,6 +3,43 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <script>
+$(function() {
+	$("#r_RegistBtn").click(function() {
+		var form = $("form")[0];
+		if ($("#r_images1").val() == "" && $("#r_images2").val() == "") {
+			r_images = 0;
+		} else if ($("#r_images2").val() == "") {
+			r_imagesVal = $("#r_images1").val();
+			r_images = 1;
+		} else {
+			var r_imagesVal = [
+				$("#r_images1").val(),
+				$("#r_images2").val()
+			];
+			r_images = 2
+		}
+		
+		console.log(r_images);
+		
+		for (i = 0; i < r_images; i++) {
+		var formData = new FormData();
+			
+		formData.append("file", $("input[name=r_images]")[i].files[0]);
+		var url = "/upload/upload";
+			$.ajax({
+	                url: url,
+	                processData: false,
+	                contentType: false,
+	                data: formData,
+	                type: 'POST',
+	                success: function(rData){
+	                }
+			});
+		}
+	    form.submit();
+	});
+});
+
 </script>
 
 <div class="container-fluid">
@@ -12,18 +49,18 @@
 				<div class="col-md-3">
 				</div>
 				<div class="col-md-6">
-				<form action="/employ/referenceRoomRegist_run" method="post">
-				<input type="hidden" name="rwriter" value="김동명">
-				<input type="hidden" name="userid" value="star01">
+				<form name="insertReferenceRoom" action="/employ/referenceRoomRegist_run" method="post">
+				<input type="hidden" id="rwriter" name="rwriter" value="김동명">
+				<input type="hidden" id="userid" name="userid" value="star01">
 				<table>
 					<tbody>
 						<tr>
 							<th style="width:100px; text-align:center; background-color:#dcdcdc;">제목</th>
-							<td class="rboard_td"><input type="text" name="rtitle" style="width:672px;"></td>
+							<td class="rboard_td"><input type="text" id="rtitle" name="rtitle" style="width:672px;"></td>
 						</tr>
 						<tr>
 							<td colspan="2" class="rboard_td">
-								<textarea name="r_content" style="float: left; resize: none; width: 772px; height: 437px; margin-top:30px; margin-bottom:10px;"></textarea>
+								<textarea id="r_content" name="r_content" style="float: left; resize: none; width: 772px; height: 437px; margin-top:30px; margin-bottom:10px;"></textarea>
 							</td>
 						</tr>
 						
@@ -32,7 +69,7 @@
 							<div style="text-align:center; background-color:#dcdcdc; margin-top: 5px; margin-bottom: 5px;">첨부파일</div>
 							</th>
 							<td class="rboard_td">
-							<div><input type="file" name="r_images" placeholder="파일 선택" style="margin-left:20px;"></div>
+							<div><input class="r_images" type="file" name="r_images" id="r_images1" placeholder="파일 선택" style="margin-left:20px;"></div>
 							</td>
 						</tr>
 						<tr>
@@ -40,21 +77,13 @@
 							<div style="text-align:center; background-color:#dcdcdc; margin-top: 5px; margin-bottom: 5px;">첨부파일</div>
 							</th>
 							<td class="rboard_td">
-							<div><input type="file" name="r_images" placeholder="파일 선택" style="margin-left:20px;"></div>
-							</td>
-						</tr>
-						<tr>
-							<th style="width:100px;">
-							<div style="text-align:center; background-color:#dcdcdc; margin-top: 5px; margin-bottom: 5px;">첨부파일</div>
-							</th>
-							<td class="rboard_td">
-							<div><input type="file" name="r_images" placeholder="파일 선택" style="margin-left:20px;"></div>
+							<div><input class="r_images" type="file" name="r_images" id="r_images2" placeholder="파일 선택" style="margin-left:20px;"></div>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				<div style="text-align:right;">
-					<input type="submit" class="r_RegistBtn btn-sm" id="r_RegistBtn" value="글쓰기 완료">
+					<input type="button" class="r_RegistBtn btn-sm" id="r_RegistBtn" value="글쓰기 완료">
 				</div>
 				</form>
 				</div>
