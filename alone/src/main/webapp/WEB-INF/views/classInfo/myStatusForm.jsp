@@ -21,17 +21,17 @@
 			if (r_num1.length < 6 || r_num2.length < 7) {
 				alert("주민번호 다시 입력해주세요.");
 			} else {
-				r_num = r_num1 + "-" + r_num2;
+				r_num = r_num1 + r_num2;
 			}
 			console.log("주민번호: " + r_num);
-			var c_name = $("#c_name").val();
+			var student_name = $("#c_name").val();
 			console.log("신청자 이름: " + c_name); //신청자이름
-			if (c_name.langth == 0) {
+			if (student_name.langth == 0) {
 				alert("이름을 입력해주세요.");
 			}
 			var sData = {
 				"r_num" : r_num,
-				"c_name" : c_name
+				"student_name" : student_name
 			}
 			var url = "/classInfo/myStatusRun";
 			$.post(url, sData, function(rData) {

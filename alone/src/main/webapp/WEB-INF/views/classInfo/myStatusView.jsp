@@ -18,7 +18,7 @@
 <section class="wrapper style1">
 	<div class="container">
 		<div class="clear overflow">
-			<section class="col-md-12"><!-- 게시판 영역잡기 -->
+			<section class="col-md-12">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">
@@ -34,13 +34,11 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${mine}" var="OnlineRegistVo">
+									<c:forEach items="${mine}" var="studentClassRegistVo">
 										<tr>
 											<td>1</td>
-											<td>${OnlineRegistVo.c_day}</td>
-											<td>${OnlineRegistVo.c_cate}</td>
-											<td>${OnlineRegistVo.c_title}</td>
-											<td>${OnlineRegistVo.c_name}</td>
+											
+											<td>${StudentClassRegist.student_name}</td>
 											<td>신청완료</td>
 										</tr>
 									</c:forEach>

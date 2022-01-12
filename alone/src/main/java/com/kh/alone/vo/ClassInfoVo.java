@@ -9,8 +9,9 @@ public class ClassInfoVo {
 	private int price;    //강의실 호수
 	private int class_room;   //총원
 	private int class_total;  //수강료
-	private int cate_code;  // (프로그램, 디자인) 각각 수업종류
+	private int cate_code;  // (프로그램, 디자인) 각각 수업종류 전공이라해야하나..
 	private int time_code;  // (주간반 야간반 주말반)수업 타임 분류
+	private String cate_code_name; // 전공코드에 이름 부여하기
 	
 	public ClassInfoVo() {
 		super();
@@ -96,11 +97,21 @@ public class ClassInfoVo {
 		this.time_code = time_code;
 	}
 
+	public String getCate_code_name() {
+		return cate_code_name;
+	}
+
+	public void setCate_code_name(String cate_code_name) {
+		this.cate_code_name = cate_code_name;
+	}
+
 	@Override
 	public String toString() {
 		return "ClassInfoVo [info_code=" + info_code + ", c_title=" + c_title + ", c_time=" + c_time + ", start_date="
 				+ start_date + ", end_date=" + end_date + ", price=" + price + ", class_room=" + class_room
-				+ ", class_total=" + class_total + ", cate_code=" + cate_code + ", time_code=" + time_code + "]";
+				+ ", class_total=" + class_total + ", cate_code=" + cate_code + ", time_code=" + time_code
+				+ ", cate_code_name=" + cate_code_name + "]";
 	}
+	
 	
 }

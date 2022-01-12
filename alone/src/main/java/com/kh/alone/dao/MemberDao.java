@@ -68,13 +68,18 @@ public class MemberDao {
 	public void insertReply(MemberBoardVo memberBoardVo) {
 		sqlSession.insert(NAMESPACE + "insertReply", memberBoardVo);
 	}
-
+	// 회원탈퇴폼
 	public MemberVo memberOut(String userid) {
 		System.out.println(userid);
 		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "memberOut", userid);
 //		System.out.println(" 서비스 vo값 받아오는지 확인하기 : " + memberVo);
 		return memberVo;
-
+	}
+	
+	// 회원탈퇴 처리 
+	public void memberOutRun(String userid) {
+		sqlSession.delete(NAMESPACE +"memberOutRun", userid); 
+		
 	}
 
 }
