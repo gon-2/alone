@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.alone.vo.InquiryBoardVo;
 import com.kh.alone.vo.PagingDto;
 import com.kh.alone.vo.RegistBoardVo;
 
@@ -42,18 +43,25 @@ public class ClassRegistBoardDao {
 		return list;
 	}
 	
-	// 최신 게시글 3개만 조회 ( 고객센터 메인 홈페이지에 보일 것! ) 
+	// 수강신청 게시판의 최신 게시글 3개만 조회 ( 고객센터 메인 홈페이지에 보일 것! ) 
 	public List<RegistBoardVo> countThird(){
 		List<RegistBoardVo> countlist = session.selectList(NAMESPACE + "countThird");
-		System.out.println("ClassRegistBoardDao, countThree, list: " + countlist);
+		System.out.println("ClassRegistBoardDao, countThree, countlist: " + countlist);
 		return countlist;
 	}
 	
-	//3개의 최신 자주묻는 질문 글만 조회
+	//	자주 묻는 질문 게시판의 3개의 최신 자주묻는 질문 글만 조회
 	public List<RegistBoardVo> faqThird(){
 		List<RegistBoardVo> thirdlist = session.selectList(NAMESPACE + "faqThird");
-		System.out.println("ClassRegistBoardDao , faqThird, list: " + thirdlist);
+		System.out.println("ClassRegistBoardDao , faqThird, thirdlist: " + thirdlist);
 		return thirdlist;
+	}
+	
+	// 건의사항 게시판의 3개의 최신 게시글 3개 조회
+	public List<InquiryBoardVo> inquiryThird(){
+		List<InquiryBoardVo> inquiryThirdList = session.selectList(NAMESPACE + "inquiryThird");
+		System.out.println("ClassRegistBoardDao , inquiryThird , inquiryThirdList: " + inquiryThirdList);
+		return inquiryThirdList;
 	}
 	
 	

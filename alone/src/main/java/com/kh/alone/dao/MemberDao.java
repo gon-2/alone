@@ -69,4 +69,12 @@ public class MemberDao {
 		sqlSession.insert(NAMESPACE + "insertReply", memberBoardVo);
 	}
 
+	public MemberVo memberOut(String userid) {
+		System.out.println(userid);
+		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "memberOut", userid);
+//		System.out.println(" 서비스 vo값 받아오는지 확인하기 : " + memberVo);
+		return memberVo;
+
+	}
+
 }

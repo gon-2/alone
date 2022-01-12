@@ -72,7 +72,7 @@ public class ClassRegistBoardController {
 	public String deleteBoard(String class_board_content) {
 		registboardservice.deleteBoard(class_board_content);
 		System.out.println("ClassRegistBoardController , deleteBoard , class_board_title >> " + class_board_content);
-		return "redirect:/class_board/class_regist";
+		return "redirect:/class_board/class_regist"; 
 	}
 	
 	// 게시글 수정 , ( 아이디 기준 업데이트 ) 

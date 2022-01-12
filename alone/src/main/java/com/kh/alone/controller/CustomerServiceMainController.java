@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.alone.service.ClassRegistBoardService;
+import com.kh.alone.vo.InquiryBoardVo;
 import com.kh.alone.vo.RegistBoardVo;
 
 @Controller
@@ -28,17 +29,19 @@ public class CustomerServiceMainController {
 	// 고객센터 홈페이지
 	@RequestMapping(value="/home" , method=RequestMethod.GET)
 	public String MainPage(Model model , HttpSession session) {
+		List<InquiryBoardVo> inquiryThirdList = registBoardService.inquiryThird();
 		List<RegistBoardVo> classregistList = registBoardService.countThird();		// 수강신청에 보일 최신글 3개
 		List<RegistBoardVo> thirdlist = registBoardService.faqThird();				// 자주묻는 질문에 보일 최신글 3개
 		model.addAttribute("classregistList" , classregistList);
 		model.addAttribute("thirdlist" , thirdlist);
+		model.addAttribute("inquiryThirdList" , inquiryThirdList);
 		return "/service_center/main_page";
 	}
 	
-	// 문의사항 페이지
-	@RequestMapping(value="/inquire" , method=RequestMethod.GET)
+	// 건의사항 페이지
+	@RequestMapping(value="/inquiry_list" , method=RequestMethod.GET)
 	public String inquirePage() {
-		return "/service_center/inquire_page";
+		return "/inquiry/inquiry_list";
 	}
 	
 	// FAQ 페이지

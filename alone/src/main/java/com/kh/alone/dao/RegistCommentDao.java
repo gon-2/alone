@@ -29,8 +29,8 @@ public class RegistCommentDao {
 	}
 
 	// 해당글의 상담자 댓글정보 조회
-	public List<RegistCommentVo> listcomment(){
-		List<RegistCommentVo> list = session.selectList(NAMESPACE + "commentList");
+	public List<RegistCommentVo> getcomment(int class_board_number){
+		List<RegistCommentVo> list = session.selectList(NAMESPACE + "getcomment" , class_board_number);
 		return list;
 	}
 	

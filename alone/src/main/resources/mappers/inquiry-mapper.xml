@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper			
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"			
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.alone.mappers.inquiry">
+	<!-- 건의사항 글 삽입  , 파일은 제외 -->
+	<insert id="insertinquiry">
+		insert into tbl_inquiry_board(inquiry_number , inquiry_userid , inquiry_title , inquiry_content , inquiry_password , inquiry_date)
+		values(seq_inquiry_number.nextval , #{inquiry_userid} , #{inquiry_title} , #{inquiry_content} , #{inquiry_password} , sysdate)
+	</insert>
+	
+	<!-- 건의사항 파일 삽입 -->
+	<insert id="insertFile">
+		insert into tbl_inquiry_board_file(inquiry_no , inquiry_filename)
+		values(#{inquire_no} , #{inquiry_filename})
+	</insert>
+	
+	<!-- 다음 글 번호 찾기 -->
+	<select id="getInquiryNumberNextVal" resultType="int">
+		select seq_inquiry_number.nextval from dual
+	</select>
+	
+	<!-- 건의사항 게시글 몇개있는지? -->
+	<select id="countBoard" resultType="int">
+		select count(*) from tbl_inquiry_board
+		<include refid="search"></include>
+	</select>
+	
+	<!-- 건의사항 리스트 확인 -->
+	<select id="inquirylist" resultType="InquiryBoardVo">
+		select * from tbl_inquiry_board
+		<include refid="search"></include>
+		order by inquiry_number desc
+	</select>
+	
+	<select id="getBoard" resultType="InquiryBoardVo">
+		select * from tbl_inquiry_board
+		where inquiry_title = #{inquiry_title}
+	</select>
+	
+	<sql id="search">
+   		<if test="searchType != null and keyword != null">
+			<choose>
+				<when test=' searchType == "n" '> 
+					where inquiry_number like '%' || #{keyword} || '%' 
+				</when>
+				<when test=' searchType == "w" '> 
+					where inquiry_userid like '%' || #{keyword} || '%' 
+				</when>
+				<when test=' searchType == "t" '> 
+					where inquiry_title like '%' || #{keyword} || '%'
+				</when>
+				<when test=' searchType == "c" '>
+					where inquiry_content like '%' || #{keyword} || '%'
+				</when> 
+			</choose>
+		</if> 
+   </sql>
+   
+   <!-- 게시글 비밀번호 확인 -->
+   <select id="checkPassword" resultType="InquiryBoardVo">
+   		select * from tbl_inquiry_board
+   		where inquiry_password = #{inquiry_password}
+   </select>
+   
+   <!-- 삭제 시 글 번호와 입력 -->
+   <delete id="deleteBoard">
+   		delete from tbl_inquiry_board
+		where inquiry_number = #{inquiry_number} and inquiry_password = #{inquiry_password}
+   </delete>
+   
+   <!-- 제목 클릭 시 조회수 증가 -->
+   <update id="viewcnt">
+   		update tbl_inquiry_board
+   		set inquiry_viewcnt = inquiry_viewcnt + 1
+   		where inquiry_title = #{inquiry_title}
+   </update>
+   <!-- 제목과 내용 , 작성일자 수정 -->
+   <update id="updateBoard">
+   		update tbl_inquiry_board
+   		set inquiry_title = #{inquiry_title} , inquiry_content = #{inquiry_content} , inquiry_date = sysdate
+   		where inquiry_password = #{inquiry_password}
+   </update>
+   
+
+</mapper>

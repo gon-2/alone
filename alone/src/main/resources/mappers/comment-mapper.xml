@@ -15,8 +15,9 @@
    		아이디를 가지고있는 게시글의 댓글 정보 조회 
    		ex) user01의 게시글에 댓글은 누가 달았고 , 내용은 무엇
    	-->
-	 <select id="commentList" resultType="RegistCommentVo">
-		select * from tbl_class_board_comment  
+	 <select id="getcomment" resultType="RegistCommentVo">
+		select * from tbl_class_board_comment
+		where class_board_comment_no = (select class_board_number from tbl_class_board where CLASS_BOARD_NUMBER = #{class_board_number})
 	</select>
 	
 	<!-- 댓글  -->
