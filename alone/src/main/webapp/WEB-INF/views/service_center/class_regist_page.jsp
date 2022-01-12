@@ -172,7 +172,12 @@
 				</select>&nbsp;
 				<input type="text" id="keyword" name="keyword" placeholder="검색어 입력" style="width:300px;">&nbsp;&nbsp;&nbsp;
 				<button type="button" class="btn btn-primary" id="btnSearch">검색</button>
-				<a href="/class_board/form" class="btn btn-success" style="float:right; margin-right:100px;">글 작성</a>
+				<c:if test="${sessionScope.memberVo}">
+					<a href="/class_board/form" class="btn btn-success" style="float:right; margin-right:100px;">글 작성</a>
+				</c:if>
+				<c:if test="${empty sessionScope.memberVo}">
+				
+				</c:if>
 			</div> 		
 		</div>
 	</div>

@@ -117,7 +117,7 @@ BODY {
 									<ul>
 										<li><a href="/customer_main/faq">자주묻는 질문</a></li>
 										<li><a href="/class_board/class_regist">수강신청</a></li>
-										<li><a href="/customer_main/inquire">건의사항</a></li>
+										<li><a href="/inquiry/listall">건의사항</a></li>
 										<li><a href="/customer_main/consult">상담</a></li>
 									</ul>
 								</li>
