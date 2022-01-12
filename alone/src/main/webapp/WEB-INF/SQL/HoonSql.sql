@@ -56,6 +56,17 @@ create table tbl_inquiry_board(
     inquiry_date timestamp default sysdate,
     inquiry_viewcnt number default 0
 );
+
+-- 건의사항 게시판 댓글 테이블 ( 글번호 , 게시자 아이디 , 댓글내용 , 댓글 날짜 )
+create table tbl_inquiry_board_comment(
+    inquiry_comment_userid varchar2(50) references tbl_member(userid) not null primary key,
+    inquiry_comment_content varchar2(300) not null,
+    inquiry_comment_date timestamp default sysdate
+);
+
+-- 건의사항 게시판 댓글 글번호 시퀀스
+create sequence seq_inquiry_comment_no;
+
 -- 건의사항 게시판 테이블 조회수 추가
 alter table tbl_inquiry_board
 add INQUIRY_VIEWCNT number default 0;
