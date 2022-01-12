@@ -5,8 +5,8 @@
 <mapper namespace="com.kh.alone.mappers.inquiry">
 	<!-- 건의사항 글 삽입  , 파일은 제외 -->
 	<insert id="insertinquiry">
-		insert into tbl_inquiry_board(inquiry_number , inquiry_userid , inquiry_title , inquiry_content , inquiry_photoname , inquiry_password , inquiry_date)
-		values(seq_inquiry_number.nextval , #{inquiry_userid} , #{inquiry_title} , #{inquiry_content} , #{inquiry_photoname} , #{inquiry_password} , sysdate)
+		insert into tbl_inquiry_board(inquiry_number , inquiry_userid , inquiry_title , inquiry_content , inquiry_password , inquiry_date)
+		values(seq_inquiry_number.nextval , #{inquiry_userid} , #{inquiry_title} , #{inquiry_content} , #{inquiry_password} , sysdate)
 	</insert>
 	
 	<!-- 건의사항 파일 삽입 -->
@@ -42,19 +42,45 @@
    		<if test="searchType != null and keyword != null">
 			<choose>
 				<when test=' searchType == "n" '> 
-					where class_board_number like '%' || #{keyword} || '%' 
+					where inquiry_number like '%' || #{keyword} || '%' 
 				</when>
 				<when test=' searchType == "w" '> 
-					where class_board_userid like '%' || #{keyword} || '%' 
+					where inquiry_userid like '%' || #{keyword} || '%' 
 				</when>
 				<when test=' searchType == "t" '> 
-					where class_board_title like '%' || #{keyword} || '%'
+					where inquiry_title like '%' || #{keyword} || '%'
 				</when>
 				<when test=' searchType == "c" '>
-					where class_board_content like '%' || #{keyword} || '%'
+					where inquiry_content like '%' || #{keyword} || '%'
 				</when> 
 			</choose>
 		</if> 
    </sql>
+   
+   <!-- 게시글 비밀번호 확인 -->
+   <select id="checkPassword" resultType="InquiryBoardVo">
+   		select * from tbl_inquiry_board
+   		where inquiry_password = #{inquiry_password}
+   </select>
+   
+   <!-- 삭제 시 글 번호와 입력 -->
+   <delete id="deleteBoard">
+   		delete from tbl_inquiry_board
+		where inquiry_number = #{inquiry_number} and inquiry_password = #{inquiry_password}
+   </delete>
+   
+   <!-- 제목 클릭 시 조회수 증가 -->
+   <update id="viewcnt">
+   		update tbl_inquiry_board
+   		set inquiry_viewcnt = inquiry_viewcnt + 1
+   		where inquiry_title = #{inquiry_title}
+   </update>
+   <!-- 제목과 내용 , 작성일자 수정 -->
+   <update id="updateBoard">
+   		update tbl_inquiry_board
+   		set inquiry_title = #{inquiry_title} , inquiry_content = #{inquiry_content} , inquiry_date = sysdate
+   		where inquiry_password = #{inquiry_password}
+   </update>
+   
 
 </mapper>

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kh.alone.service.FaqService;
+import com.kh.alone.vo.InquiryBoardVo;
 import com.kh.alone.vo.RegistBoardVo;
 
 @Controller
@@ -27,7 +28,7 @@ public class FaqController {
 	private FaqService faqservice;
 	
 	
-	// 자주묻는 질문 - 조회수 50개 이상의 수강신청 게시글 출력
+	// 자주묻는 질문 - 조회수 10개 이상의 수강신청 게시글 출력
 	@RequestMapping(value="/classboard" , method=RequestMethod.GET)
 	public List<RegistBoardVo> classBoardSetViewcnt(Model model) {
 		List<RegistBoardVo> classboardlist = faqservice.classBoardSetViewcnt();
@@ -36,10 +37,18 @@ public class FaqController {
 		return classboardlist;
 	}
 	
+	@RequestMapping(value="/inquiryBoard" , method=RequestMethod.GET)
+	public List<InquiryBoardVo> inquiryBoardSetViewcnt(Model model){
+		List<InquiryBoardVo> inquiryboardlist = faqservice.inquiryBoardSetViewcnt();
+		model.addAttribute("inquiryboardlist" , inquiryboardlist);
+		System.out.println("QnaController , inquiryBoardSetViewcnt , inquiryboardlist >> " + inquiryboardlist);
+		return inquiryboardlist;
+	}
+	
 	@RequestMapping(value="/qnagetBoard" , method=RequestMethod.GET)
 	public String qnagetBoard(String class_board_title) {
 		RegistBoardVo registBoardVo = faqservice.faqgetBoard(class_board_title);
 		System.out.println("QnaController , qnagetBoard , registBoardVo >> " + registBoardVo);
-		return "/board_form/class_regist_board_getBoard";
+		return "/class_regist_form/class_regist_board_getBoard";
 	}
 }

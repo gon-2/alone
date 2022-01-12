@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.kh.alone.dao.ClassRegistBoardDao;
 import com.kh.alone.dao.FaqDao;
 import com.kh.alone.dao.RegistCommentDao;
+import com.kh.alone.vo.InquiryBoardVo;
 import com.kh.alone.vo.RegistBoardVo;
 
 @Service
@@ -26,7 +27,13 @@ public class FaqService {
 	@Inject
 	private ClassRegistBoardDao registdao;
 	
-	// 조회수 50개 이상의 수강신청 게시글 출력
+	// 조회수 10개 이상의 건의사항 게시글 출력
+	public List<InquiryBoardVo> inquiryBoardSetViewcnt(){
+		List<InquiryBoardVo> list = faqdao.inquiryBoardSetViewcnt();
+		return list;
+	}
+	
+	// 조회수 10개 이상의 수강신청 게시글 출력
 	public List<RegistBoardVo> classBoardSetViewcnt(){
 		List<RegistBoardVo> list = faqdao.classBoardSetViewcnt();
 		return list;

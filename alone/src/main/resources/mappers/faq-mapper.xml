@@ -12,6 +12,13 @@
 		order by class_board_viewcnt desc
 	</select>
 	
+	<!-- 자주 묻는 질문에서 조회수가 10 이상인 건의사항 목록만 출력 -->
+	<select id="inquiryBoardSetViewcnt" resultType="InquiryBoardVo">
+		select * from tbl_inquiry_board
+		<![CDATA[where inquiry_viewcnt >= 10]]>
+		order by inquiry_viewcnt desc
+	</select>
+	
 	<!-- 자주묻는 게시판에서 링크 클릭하면 해당 내용으로 이동 -->
 	<select id="faqgetBoard" resultType="RegistBoardVo">
 		select * from tbl_class_board

@@ -4,13 +4,9 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kh.alone.mappers.class">
 
-	<!-- 관리자 수업 추가하기 -->
-	<insert id="insertClassInfo">
-		insert into tbl_class(c_cate, c_title, c_term, c_time, c_room, c_total, c_pay, c_day)
-		values(#{c_cate}, #{c_title}, #{c_term}, #{c_time}, #{c_room}, #{c_total}, #{c_pay}, #{c_day})
-	</insert>
 	
-	<!-- 제목으로 찾기 -->	
+	
+	<!-- info_code로 찾기 -->	
 		<select id="selectByCno" resultType="ClassInfoVo">
 			select * from c_class_info
 			where info_code = #{info_code}
@@ -18,50 +14,58 @@
 		
 	<!-- 전체보기 -->
 	<select id="selectAll" resultType="ClassInfoVo">
-		select * from c_class_info
+<!-- 		select * from c_class_info -->
+		select info_code, c_title, c_time, cate_code, time_code, 
+			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name
+        from c_class_info 
 	</select>
 	
 
 	<!-- 주말 주간 야간 구하기 -->
 	<select id="classListByTimeCode" resultType="ClassInfoVo">
-		select * from c_class_info 
-		where time_code = #{time_code}
+<!-- 		select * from c_class_info  -->
+<!-- 		where time_code = #{time_code} -->
+		select info_code, c_title, c_time, cate_code, time_code, 
+			decode( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name
+        from c_class_info where time_code = #{time_code}
 	</select>
+
 	
-	
-	
-	<!-- 수업 과정별 나누기 -->
+	<!-- 수업 파트별 구하기 -->
 	<select id="classListByCateCode" resultType="ClassInfoVo">
-		select * from c_class_info
-		where cate_code = #{cate_code}
+<!-- 		select * from c_class_info -->
+<!-- 		where cate_code = #{cate_code} -->
+		select info_code, c_title, c_time, cate_code, time_code, 
+			decode( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name
+        from c_class_info where cate_code = #{cate_code}
 	</select>
 	
 	
 	<!-- 신청양식 추가하기 -->
 	<insert id="insertOnlineRegist">
-		insert into online_regist(r_num, c_time, c_cate, c_title, c_name, gender, foreigner, phone_num, home_num, e_mail, 
-								  regist_path, employment, employment_center, employment_staff, employment_num)
+		insert into student_class_regist(r_num, info_code, student_name, gender, nationality, phone_num, home_num, e_mail, 
+								  		  employment, employment_center, employment_staff, employment_num)
 								  
-		values(#{r_num}, #{c_time}, #{c_cate}, #{c_title}, #{c_name}, #{gender}, #{foreigner}, #{phone_num}, #{home_num, jdbcType=VARCHAR}, #{e_mail, jdbcType=VARCHAR}, 
-		       #{regist_path, jdbcType=VARCHAR}, #{employment, jdbcType=VARCHAR}, #{employment_center, jdbcType=VARCHAR}, #{employment_staff, jdbcType=VARCHAR}, #{employment_num, jdbcType=VARCHAR})
+		values(#{r_num}, #{info_code}, #{student_name}, #{gender}, #{nationality}, #{phone_num}, #{home_num, jdbcType=VARCHAR}, #{e_mail}, 
+		        #{employment, jdbcType=VARCHAR}, #{employment_center, jdbcType=VARCHAR}, #{employment_staff, jdbcType=VARCHAR}, #{employment_num, jdbcType=VARCHAR})
 	</insert>
 
 
 	<!-- 신청양식 전체보기 -->
-	<select id="selectOnline_regist" resultType="OnlineRegistVo">
-		select * from online_regist
+	<select id="selectOnline_regist" resultType="StudentClassRegistVo">
+		select * from student_class_regist
 	</select>
 	
 	<!-- 주민번호로 신청한거 조회하기 -->
-	<select id="selectMine" resultType="int">
-		select count(*) from online_regist
+	<select id="selectMine" resultType="string">
+		select count(*) from student_class_regist
 		where r_num = #{r_num} 
 		
 	</select>
 	
-	<select id="selectMineList" resultType="OnlineRegistVo">
-		select * from online_regist
-		where r_num =  #{r_num}
+	<select id="selectMineList" resultType="StudentClassRegistVo">
+		select * from student_class_regist
+		where r_num = #{r_num}
 	</select>
 	
 </mapper>

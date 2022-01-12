@@ -46,35 +46,12 @@ $(function(){
 		}
 		console.log("주민번호: " + r_num);
 		
-		var c_time1 = $("#c_time").val(); // 야간반인지 받아오기
-		var c_time = "";
-		if(c_time1 == "전체"){
-			c_time = "전체";
-		} else {
-			c_time = c_time1;
-		}
-		console.log("야간반인지 받아오기: " + c_time);
 		
-		var c_cate1 = $("#c_cate").val(); // 교육과정분류 받아오기
-		var c_cate = "";
-		if(c_cate1 == "전체"){
-			c_cate = "전체";
-		} else {
-			c_cate = c_cate1;
-		}
-		console.log("교육과정분류: " + c_cate); 
+		var info_code = $("#c_title").val();
+		console.log(info_code);
 		
-		var c_title1 = $("#c_title").val();
-		var c_title = "";
-		if(c_title1 == "전체"){
-			c_title = "전체";
-		} else {
-			c_title = c_title1;
-		}
-		console.log("과정명: " + c_title);   //과정명 받아오기
-		
-		var c_name = $("#c_name").val();
-		console.log("신청자 이름: " + c_name); //신청자이름
+		var student_name = $("#c_name").val();
+		console.log("신청자 이름: " + student_name); //신청자이름
 		if(c_name.langth == 0){
 			alert("이름을 입력해주세요.");
 		}
@@ -86,8 +63,8 @@ $(function(){
 		var gender = $("input:radio[name=gender]:checked").val();
 		console.log("성별: " + gender);     //성별받아오기
 		
-		var foreigner = $("input:radio[name=foreigner]:checked").val();
-		console.log("내/외국인: " + foreigner); // 내/외국인 받아오기
+		var nationality = $("input:radio[name=nationality1]:checked").val();
+		console.log("내/외국인: " + nationality); // 내/외국인 받아오기
 		
 		var phone_num1 = $("#phone_num1").val();
 		var phone_num2 = $("#phone_num2").val();
@@ -123,13 +100,13 @@ $(function(){
 		
 		
 		var e_mail1 = $("#e_mail1").val();
-		console.log("e_mail1: " + e_mail1);
+// 		console.log("e_mail1: " + e_mail1);
 		
 		var e_mail2 = $("#e_mail2").val();
-		console.log("e_mail2: " + e_mail2);
+// 		console.log("e_mail2: " + e_mail2);
 		
 		var email_domain = $("#email_domain").val();
-		console.log("email_domain" + email_domain);
+// 		console.log("email_domain" + email_domain);
 		
 		var e_mail = "";
 		
@@ -138,6 +115,7 @@ $(function(){
 			return false;
 		}
 		e_mail = e_mail1 + "@" + e_mail2;
+		console.log("e_mail: ", e_mail);
 		
 
 		var regist_path = $("input:radio[name=regist_path]:checked").val();
@@ -193,24 +171,22 @@ $(function(){
 	    }
 	    
 	    var sData = {
-	    	"r_num" : r_num,
-	    	"c_day" : c_time,
-	    	"c_cate" : c_cate,
-	    	"c_title" : c_title,
-	    	"c_name" : c_name,
-	    	"gender" : gender,
-	    	"foreigner" : foreigner,
-	    	"phone_num" : phone_num,
-	    	"home_num" : home_num,
-	    	"e_mail" : e_mail,
-	    	"regist_path" : regist_path,
-	    	"employment" : employment,
-	    	"employment_center" : employment_center,
-	    	"employment_counselor" : employment_staff,
-	    	"employment_num" : employment_num
+	    	"r_num" 				: r_num,
+	    	"info_code" 			: info_code,
+	    	"student_name"			: student_name,
+	    	"gender" 				: gender,
+	    	"nationality" 			: nationality,
+	    	"phone_num" 			: phone_num,
+	    	"home_num" 				: home_num,
+	    	"e_mail" 				: e_mail,
+	    	"regist_path" 			: regist_path,
+	    	"employment" 			: employment,
+	    	"employment_center" 	: employment_center,
+	    	"employment_staff" 		: employment_staff,
+	    	"employment_num" 		: employment_num
 	    };
 	    
-	    console.log(" sData 제발 넘어와라 진심으로 간절하게 부탁할게 제발 : " + sData );
+	    console.log(" sData : " , sData );
 	    
 	    var url = "/classInfo/onlineRegistRun";
 	    
@@ -218,7 +194,7 @@ $(function(){
 	    	console.log(rData);
 	    	if (rData == "success") {
 	    		
-	    		location.href = "/classInfo/myStatusView";
+	    		location.href = "/classInfo/myStatusForm";
 	    	}
 	    });
 	}); // 전송버튼 클릭
@@ -228,14 +204,73 @@ $(function(){
 		$.get(url, function(){
 			location.href = "/";
 		});
-	});
+	}); // 홈으로 가기 버튼클릭
 	
 	$("#email_domain").change(function() {
 		var val = $(this).val();
 		$("#e_mail2").val(val);
 	});
 	
+	
+	$(".c_time").change(function(){
+			var time_code = $(this).val();
+			if(time_code == ""){
+				alert("훈련직종분류를 선택해주세요.");
+				return false;
+			}
+// 			console.log("time_code: " + time_code);
+			var url = "/classInfo/classListByTimeCode/" + time_code;
+// 			console.log("url: " + url);
+			
+			var sendData = {
+					"time_code" : time_code
+			};
+			
+			$.get(url, sendData, function(rData) {
+				
+// 				console.log("rData: ", rData);
+				var options = "<option value=''>선택해주세요</option>";
+				$.each(rData, function(index) {
+					$("#c_cate").empty();
+					options += "<option value='" + this.cate_code + "'>" + this.cate_code_name;
+// 					console.log("위options: ", options);
+					
+				});
+				$("#c_cate").append(options);
+				
+			});
+	});
+		
+	$("#c_cate").change(function(){
+		var cate_code = $(this).val();
+// 		console.log("cate_code", cate_code);
+		if(cate_code == ""){
+			alert("과정명을 선택해주세요.");
+			return false;
+		}
+		
+		var url ="/classInfo/classListByCateCode/" + cate_code;
+		
+		var sendData = {
+				"cate_code"	:cate_code
+		};
+		
+		
+		$.get(url, sendData, function(rData){
+			var options = "<option value=''>선택해주세요</option>";
+			$.each(rData, function(index){
+				$("#c_title").empty();
+				options += "<option value='" + this.info_code + "'>" + this.c_title;
+// 				console.log("아래options: ", options);
+				
+			});
+			$("#c_title").append(options);
+			
+		});
+	});
+
 });
+
 </script>
 <div class="container-fluid">
 	<div class="row">
@@ -255,10 +290,11 @@ $(function(){
 			<colgroup><col width="110" /><col width="*" /><col width="110" /><col width="*" /></colgroup>
 			<tbody>
 				<tr>
-					<th class="c_time"><label for="c_time">선택하기</label></th>
+					<th class="c_time"><label for="c_time">훈련직종분류</label></th>
 					<td class="td_infomation">
-						<select id="c_time" name="c_time">
-							<option>선택해주세요</option>
+					
+						<select id="c_time" name="c_time" class="c_time">
+							<option value="">선택해주세요</option>
 							<option value="1">주간반</option>
 							<option value="2">야간반</option>
 							<option value="3">주말반</option>
@@ -267,13 +303,9 @@ $(function(){
 					<th class="j-spot">
 					<label for="c_cate">교육과정분류</label></th>
 					<td>
-						<select name="c_cate" id="c_cate">
-							<option>선택해주세요</option>
-							<option value="1">프로그램</option>
-							<option value="2">사무자동화</option>
-							<option value="3">제품디자인</option>
-							<option value="4">3D프린트</option>
-							<option value="5">디자인</option>
+					
+						<select name="c_cate" id="c_cate" required>
+							<option value="">선택해주세요</option>
 						</select>
 					</td>
 				</tr>
@@ -282,11 +314,7 @@ $(function(){
 					<td colspan="3">
 						<select name="c_title" id="c_title" style="width: 200px;">
 								<option class="slt_option">선택해주세요</option>
-							<c:forEach items="${list}" var="classInfoVo">
-								<option class="slt_option" value="${classInfoVo.info_code}">${classInfoVo.c_title}</option>
-								
-							</c:forEach>
-							</select>
+						</select>
 					</td>
 				</tr>
 			</tbody>
@@ -322,8 +350,8 @@ $(function(){
 							</td>
 							<th class="normal"><label>내/외국인</label></th>
 							<td class="td_infomation">
-									<em><input type="radio" name="foreigner" id="foreigner" value="내국인" class="hand" checked="checked" /></em> <label for="foreigner" class="hand">내국인</label>
-									<em><input type="radio" name="foreigner" id="foreigner" value="외국인" class="hand" /></em> <label for="foreigner" class="hand">외국인</label>
+									<em><input type="radio" name="nationality1" id="nationality" value="내국인" class="hand" checked="checked" /></em> <label for="foreigner" class="hand">내국인</label>
+									<em><input type="radio" name="nationality1" id="nationality" value="외국인" class="hand" /></em> <label for="foreigner" class="hand">외국인</label>
 							</td>
 						</tr>
 						<tr>

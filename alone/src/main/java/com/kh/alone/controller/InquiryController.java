@@ -57,4 +57,32 @@ public class InquiryController {
 		return "/inquiry/inquiry_getBoard";
 	}
 	
+	// 비밀번호 일치시 내용 보기
+/*	@RequestMapping(value="/checkPassword" , method=RequestMethod.POST)
+	@ResponseBody
+	public String checkPassword(String inquiry_password) {
+		InquiryBoardVo inquiryBoardVo = inquireboardservice.checkPassword(inquiry_password);
+		
+		System.out.println("InquiryController , checkPassword , inquiryBoardVo >> " + inquiryBoardVo);
+		
+		if(inquiryBoardVo == null) {
+			return "false";
+		}
+		return "true";
+	}*/
+	
+	@ResponseBody
+	@RequestMapping(value="/deleteBoard" , method=RequestMethod.POST)
+	public String deleteBoard(String inquiry_password , int inquiry_number) {
+		inquireboardservice.deleteBoard(inquiry_number, inquiry_password);
+		return "success";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/updateBoard" , method=RequestMethod.POST)
+	public String updateBoard(InquiryBoardVo inboardvo) {
+		inquireboardservice.updateBoard(inboardvo);
+		return "success";
+	}
+	
 }
