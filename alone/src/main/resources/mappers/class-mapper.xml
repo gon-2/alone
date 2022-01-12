@@ -15,9 +15,11 @@
 	<!-- 전체보기 -->
 	<select id="selectAll" resultType="ClassInfoVo">
 <!-- 		select * from c_class_info -->
-		select info_code, c_title, c_time, cate_code, time_code, 
-			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name
-        from c_class_info 
+	select info_code, c_title, c_time, cate_code, time_code, start_date, end_date,
+			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name,
+				decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
+        from c_class_info
+			
 	</select>
 	
 
@@ -25,9 +27,11 @@
 	<select id="classListByTimeCode" resultType="ClassInfoVo">
 <!-- 		select * from c_class_info  -->
 <!-- 		where time_code = #{time_code} -->
-		select info_code, c_title, c_time, cate_code, time_code, 
-			decode( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name
-        from c_class_info where time_code = #{time_code}
+		select info_code, c_title, c_time, cate_code, time_code, start_date, end_date,
+			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name,
+				decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
+        from c_class_info
+		where time_code = #{time_code}
 	</select>
 
 	
@@ -35,9 +39,11 @@
 	<select id="classListByCateCode" resultType="ClassInfoVo">
 <!-- 		select * from c_class_info -->
 <!-- 		where cate_code = #{cate_code} -->
-		select info_code, c_title, c_time, cate_code, time_code, 
-			decode( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name
-        from c_class_info where cate_code = #{cate_code}
+		select info_code, c_title, c_time, cate_code, time_code, start_date, end_date,
+			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name,
+			decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
+        from c_class_info
+        where cate_code = #{cate_code}
 	</select>
 	
 	

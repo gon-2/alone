@@ -14,41 +14,32 @@
 		<a href="#">상담신청하기</a>
 	</header>
 </section>
+
 <!-- Main -->
 <section class="wrapper style1">
-	<div class="container">
-		<div class="clear overflow">
-			<section class="col-md-12">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-12">
-							<table class="table table-hover table-striped">
-								<thead>
-									<tr>
-										<th>#</th>
-										<th>훈련직종 분류</th>
-										<th>교육과정 분류</th>
-										<th>과정 제목</th>
-										<th>이름</th>
-										<th>신청현황</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${mine}" var="studentClassRegistVo">
-										<tr>
-											<td>1</td>
-											
-											<td>${StudentClassRegist.student_name}</td>
-											<td>신청완료</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</section>
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>강의명</th>
+						<th>신청자</th>
+						<th>진행현황</th>
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach items="mine" var="studentClassRegistVo">
+					<tr>
+						<td>${studentClassRegistVo.student_name }</td>
+					</tr>
+				</c:forEach>
+						
+				</tbody>
+			</table>
 		</div>
 	</div>
+</div>
 </section>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

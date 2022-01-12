@@ -37,7 +37,7 @@
 			$.post(url, sData, function(rData) {
 				if (rData == "success") {
 					console.log(r_num);
-									location.href = "/classInfo/myStatusView?r_num=" + r_num;
+					location.href = "/classInfo/myStatusView?r_num=" + r_num;
 				} else {
 					alert("주민번호를 확인해 주세요.");
 				}

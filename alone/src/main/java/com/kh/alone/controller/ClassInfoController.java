@@ -78,24 +78,25 @@ public class ClassInfoController {
 	
 	//메인페이지에서 수강 신청 하기 눌렀을때 데이터 넘겨주기
 	@RequestMapping(value="/homeRegist", method=RequestMethod.GET)
-	public String selectTitle(Model model, int info_code, HttpSession session) {
+	public String selectTitle(Model model, int info_code) {
 		List<ClassInfoVo> list = service.selectAll();
 		model.addAttribute("list", list);
 		ClassInfoVo classInfoVo = service.selectByCno(info_code);
-		session.setAttribute("classInfoVo", classInfoVo);
-		return"redirect:/classInfo/onlineAgree";
+		model.addAttribute("classInfoVo", classInfoVo);
+		return "classInfo/onlineAgree";
 	}
 	
 	// 온라인 접수 동의 후 입력양식폼
 	@RequestMapping(value="/onlineRegist", method=RequestMethod.GET)
-	public String onlineRegist(HttpSession session, Model model) {
+	public String onlineRegist(HttpSession session, Model model, int info_code) {
 		List<ClassInfoVo> list = service.selectAll();
 		
 		List<ClassInfoVo> weekly = service.classListByTimeCode(WEEKLY);
 		List<ClassInfoVo> night = service.classListByTimeCode(NIGHT);
 		List<ClassInfoVo> weekend = service.classListByTimeCode(WEEKEND);
+		ClassInfoVo classInfoVo = service.selectByCno(info_code);
 		
-		
+		model.addAttribute("classInfoVo", classInfoVo);
 		model.addAttribute("list", list);
 		model.addAttribute("weekly", weekly);
 		model.addAttribute("night", night);
