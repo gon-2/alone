@@ -65,7 +65,7 @@ BODY {
 
             <!-- 회원정보 버튼 출력 -->
             <!--@if($module_info->display_login_info != 'N')-->
-            <li><a href="{getUrl('act','dispMemberInfo')}"target=blank>MY INFO&nbsp;</a> | </li>
+            <li><a href="/regist_form" target=blank>MY INFO&nbsp;</a> | </li>
             <!--@end-->
 
         <!-- 로그인 되어 있지 않고 레이아웃이 없으면 -->
@@ -117,7 +117,7 @@ BODY {
 									<ul>
 										<li><a href="/customer_main/faq">자주묻는 질문</a></li>
 										<li><a href="/class_board/class_regist">수강신청</a></li>
-										<li><a href="/customer_main/inquire">건의사항</a></li>
+										<li><a href="/inquiry/listall">건의사항</a></li>
 										<li><a href="/customer_main/consult">상담</a></li>
 									</ul>
 								</li>
@@ -127,6 +127,7 @@ BODY {
 										<li><a href="/member/modify_form?userid=user01">회원정보</a></li>
 										<li><a href="/member/class_form">내 강의실</a></li>
 										<li><a href="/member/board_form">내 게시판</a></li>
+										<li><a href="/member/drop">회원탈퇴</a></li>
 									</ul>
 								</li>
 							</ul>

@@ -55,8 +55,13 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value="/regist_form", method=RequestMethod.GET)
+	public String regist_form() {
+		return "regist_form";
+	}
+	
 	@RequestMapping(value="/login_form", method=RequestMethod.GET)
-	public String login_form(Model model) {
+	public String login_form() {
 		return "login_form";
 	}
 	

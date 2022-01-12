@@ -15,7 +15,8 @@
 				
 				$.get(url , function(rData){
 					console.log(rData);
-					$.each(rData , function(i){
+					$.each(rData , function(){
+						$("#classboardDiv").show(1000);
 		 				var tr = $("#copyTable tr").clone();			
 		 				tr.find("td").eq(0).text(this.class_board_number);
 		 				tr.find("td").eq(1).text(this.class_board_title);
@@ -25,6 +26,31 @@
 						tr.find("td").eq(5).text(changeDateString(this.class_board_postdate));
 						tr.find("td").eq(6).text(this.class_board_viewcnt);
 						$("#classboardlist").fadeIn(1000).append(tr);
+						$("#inquiryDiv").fadeOut();
+					});
+				});
+			});
+			
+			$("#inquiry").one("click" , function(e){
+				$("#inquiryboard").html("건의사항 조회");
+				e.preventDefault();
+				var url = "/inquiryBoard";
+				$.get(url , function(rData){
+					console.log(rData);
+					$.each(rData , function(){
+						$("#inquiryDiv").show(1000);
+						var trs = $("#copyTables tr").clone();
+						trs.find("td").eq(0).text(this.inquiry_number);
+						trs.find("td").eq(1).text(this.inquiry_title);
+						trs.find("td").eq(2).text(this.inquiry_content);
+						trs.find("td").eq(3).text(this.inquiry_userid);
+						trs.find("td").eq(4).text(changeDateString(this.inquiry_date));
+						trs.find("td").eq(5).text(this.inquiry_viewcnt);
+						$("#inquiryboardlist").fadeIn(1000).append(trs);
+						$("#classboard").fadeIn();
+						$("#classboardlist").fadeOut();
+						$("#classboardDiv").fadeOut();
+						$("#classboard").fadeOut();
 					});
 				});
 			});
@@ -63,14 +89,14 @@
 						<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">분류</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> 
 							 <a class="dropdown-item" href="/classboard" id="classRegist">수강신청</a> 
-							 <a class="dropdown-item" href="#" id="faq">건의사항</a>
+							 <a class="dropdown-item" href="/inquiryBoard" id="inquiry">건의사항</a>
 						</div>
 					</div>
 				</div>
 			</div><br><br><br><br><br>
 
 			<h3 class="text-center" id="classboard"></h3><br><br><br>
-			<div class="row" align="center">
+			<div class="row" align="center" style="display:none;" id="classboardDiv">
 				<div class="col-md-12">
 					<table style="display:none" id="copyTable" align="center">
 						<tr align="center">
@@ -85,7 +111,7 @@
 					</table>
 				
 					<table class="table" id="commentTable">
-						<thead align="center">
+						<thead align="center" class="thead-dark">
 							<th>글번호</th>
 							<th>글제목</th>
 							<th>글내용</th>
@@ -95,6 +121,35 @@
 							<th>조회수</th>
 						</thead>
 						<tbody id="classboardlist" align="center"> 
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<h3 class="text-center" id="inquiryboard"></h3><br><br><br>
+			<div class="row" align="center" style="display:none;" id="inquiryDiv">
+				<div class="col-md-12">
+					<table style="display:none" id="copyTables" align="center">
+						<tr align="center">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				
+					<table class="table" id="commentTables">
+						<thead align="center" class="thead-dark">
+							<th>글번호</th>
+							<th>글제목</th>
+							<th>글내용</th>
+							<th>아이디</th>
+							<th>작성일자</th>
+							<th>조회수</th>
+						</thead>
+						<tbody id="inquiryboardlist" align="center"> 
 							
 						</tbody>
 					</table>

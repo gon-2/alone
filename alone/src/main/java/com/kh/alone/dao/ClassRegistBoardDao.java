@@ -1,5 +1,5 @@
 /*
- * 2021-01-07
+ * 2021-01-12
  * Author : 이정훈
  * code Explanation : 수강신청 게시판 Dao
  */
@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.alone.vo.InquiryBoardVo;
 import com.kh.alone.vo.PagingDto;
 import com.kh.alone.vo.RegistBoardVo;
 
@@ -24,57 +25,42 @@ public class ClassRegistBoardDao {
 	@Inject
 	private SqlSession session;
 	
-	// 게시판 글 개수 확인
+	// 	수강신청 게시판 글 개수 확인
 	public int cntBoard(PagingDto dto) {
 		int count = session.selectOne(NAMESPACE + "countBoard" , dto);
 		return count;
 	}
 	
-	// 게시판 글 입력
+	// 	수강신청 게시판 글 입력
 	public void registClassBoard(RegistBoardVo registboardvo) {
 		session.insert(NAMESPACE + "registClassBoard" , registboardvo);
 	}
 	
-	// 게시판 글 조회
+	// 	수강신청 게시판 글 조회
 	public List<RegistBoardVo> listBoard(PagingDto dto){
 		List<RegistBoardVo> list = session.selectList(NAMESPACE + "listboard" , dto);
 		System.out.println("ClassRegistBoardDao, listBoard, list: " + list);
 		return list;
 	}
 	
-	// 최신 게시글 3개만 조회 ( 고객센터 메인 홈페이지에 보일 것! ) 
-	public List<RegistBoardVo> countThird(){
-		List<RegistBoardVo> countlist = session.selectList(NAMESPACE + "countThird");
-		System.out.println("ClassRegistBoardDao, countThree, list: " + countlist);
-		return countlist;
-	}
-	
-	//3개의 최신 자주묻는 질문 글만 조회
-	public List<RegistBoardVo> faqThird(){
-		List<RegistBoardVo> thirdlist = session.selectList(NAMESPACE + "faqThird");
-		System.out.println("ClassRegistBoardDao , faqThird, list: " + thirdlist);
-		return thirdlist;
-	}
-	
-	
-	// 제목 클릭시 내용 보이기
-	public RegistBoardVo getBoard(String class_board_title) {
-		RegistBoardVo registBoardvo = session.selectOne(NAMESPACE + "getBoard" , class_board_title);
-		return registBoardvo;
-	}
-	
-	// 게시글 조회수 
+	// 	수강신청 게시글 조회수 
 	public void viewcnt(String class_board_title) {
 		session.update(NAMESPACE + "viewcnt" , class_board_title); 
 	}
 	
-	// 게시글 삭제
+	// 	수강신청 게시글 삭제
 	public void deleteBoard(String class_board_content) {
 		session.delete(NAMESPACE + "deleteBoard" , class_board_content);
 	}
 	
-	// 게시글 수정
+	// 	수강신청 게시글 수정
 	public void modcontent(RegistBoardVo registboardvo) {
 		session.update(NAMESPACE + "modcontent" , registboardvo);
 	}
+	
+	// 	수강신청 제목 클릭시 내용 보이기
+	public RegistBoardVo getBoard(String class_board_title) {
+		RegistBoardVo registBoardvo = session.selectOne(NAMESPACE + "getBoard" , class_board_title);
+		return registBoardvo;
+	}	
 }

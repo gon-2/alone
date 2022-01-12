@@ -16,7 +16,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kh.alone.dao.ClassRegistBoardDao;
+import com.kh.alone.dao.InquiryBoardDao;
 import com.kh.alone.dao.RegistCommentDao;
+import com.kh.alone.vo.InquiryBoardVo;
 import com.kh.alone.vo.RegistBoardVo;
 import com.kh.alone.vo.RegistCommentVo;
 
@@ -26,6 +28,9 @@ public class ClassRegistBoardDaoTest {
 	
 	@Inject
 	private RegistCommentDao registCommentDao;
+	
+	@Inject
+	private InquiryBoardDao dao;
 
 	@Test
 	public void insertcommentTest() {
@@ -35,10 +40,29 @@ public class ClassRegistBoardDaoTest {
 		registCommentDao.insertcomment(vo);
 	}
 	
+	@Test
+	public void insertinquire() {
+		InquiryBoardVo vo = new InquiryBoardVo();
+		vo.setInquiry_number(2);
+		vo.setInquiry_title("제목1");
+		vo.setInquiry_content("내용1");
+		vo.setInquiry_userid("user01");
+		vo.setInquiry_password("1234");
+		vo.setInquiry_photoname("C:\\fakepath\\suneung.jpg");
+		dao.insertinquire(vo);
+	}
+	
+	@Test
+	public void testcheckPassword() {
+		String password = "1234";
+		InquiryBoardVo vo = dao.checkPassword(password);
+		System.out.println("vo >> " + vo);
+	}
+	
 /*	@Test
 	public void getcomment() {
-		int class_board_comment_no = 65;
-		List<RegistCommentVo> list = registCommentDao.listcomment(class_board_comment_no);
-		System.out.println("list >> " + list);
-	}*/
-}
+		int class_board_number = 65;
+		RegistCommentVo registcommentvo = registCommentDao.onecomment(class_board_number);
+		System.out.println("registcommentvo >> " + registcommentvo);
+	}
+*/}

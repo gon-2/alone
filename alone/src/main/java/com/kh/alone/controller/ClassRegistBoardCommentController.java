@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kh.alone.service.RegistCommentService;
 import com.kh.alone.vo.RegistCommentVo;
 
-@RestController
+
 @Controller
 @RequestMapping("/comment")
 public class ClassRegistBoardCommentController {
@@ -30,6 +30,7 @@ public class ClassRegistBoardCommentController {
 	private RegistCommentService registcommentservice;
 	
 	// 상담자 댓글 입력
+	@ResponseBody
 	@RequestMapping(value="/insertcomment" , method=RequestMethod.POST)
 	public String insertcomment(RegistCommentVo commentvo) {
 		System.out.println("ClassRegistBoardController , insertcomment , commentvo >> " + commentvo);
@@ -39,13 +40,16 @@ public class ClassRegistBoardCommentController {
 	
 	// 댓글 보이기
 	@RequestMapping(value="/listComment" , method=RequestMethod.GET)
-	public List<RegistCommentVo> getcomment(Model model) {
-		List<RegistCommentVo> list = registcommentservice.listcomment();
-		System.out.println("ClassRegistBoardCommentController , getcomment , list >> " + list);
+	@ResponseBody
+	public List<RegistCommentVo> getcomment(Model model , int class_board_number) {
+		List<RegistCommentVo> list = registcommentservice.getcomment(class_board_number);
+		System.out.println("ClassRegistBoardController , getcomment , list >> " + list);
 		model.addAttribute("list" , list);
 		return list;
 	}
+	
 	// 상담자 댓글 삭제
+	@ResponseBody
 	@RequestMapping(value="/deleteComment" , method=RequestMethod.POST)
 	public String deletecomment() {
 		registcommentservice.deletecomment();
