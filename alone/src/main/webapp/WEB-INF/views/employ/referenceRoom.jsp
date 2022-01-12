@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/paging_form.jsp" %>
 
 <style>
 th {
@@ -26,7 +27,26 @@ $(function() {
 	$(".r_btnMove").click(function(e) {
 		e.preventDefault();
 		var pageMove = $(this).attr("href");
-		location.href="/employ/referenceRoom?rno=" + pageMove;
+		if (pageMove == 0) {
+			alert("게시판이 존재하지 않습니다.");
+		} else {
+			location.href="/employ/referenceRoom?rno=" + pageMove;			
+		}
+	});
+	$(".page-link").click(function(e) {
+		e.preventDefault(); // 브라우저의 기본기능 막기
+		console.log($(this));
+		var page =	$(this).attr("href");
+		$("#frmPaging > input[name=page]").val(page);
+		$("#frmPaging").submit();
+	});
+	$(".rno_title").click(function(e) {
+		e.preventDefault();
+		var rno = $(this).attr("href");
+		console.log("rno:", rno);
+		$("#frmPaging > input[name=rno]").val(rno);
+		$("#frmPaging").attr("action", "/employ/referenceRoom")
+					   .submit();
 	});
 });
 
@@ -99,11 +119,9 @@ $(function() {
 		</div>
 		<div class="col-md-8">
 			<div class="divBottom">
+			<a class="r_btnMove btn btn-outline-primary" id="r_btnPrev" href="${pageVo.prev}">이전</a>
 				<input type="button" class="r_btnList btn-sm" value="목록">
-				<div class="move">
-	               <a class="r_btnMove btn btn-outline-primary" id="r_btnPrev" href="${pageVo.prev}">이전</a>
-	               <a class="r_btnMove btn btn-outline-primary" id="r_btnNext" href="${pageVo.next}">다음</a>
-            	</div>
+			<a class="r_btnMove btn btn-outline-primary" id="r_btnNext" href="${pageVo.next}">다음</a>
 			</div>
 		</div>
 		<div class="col-md-2">
@@ -125,47 +143,18 @@ $(function() {
 					</tr>
 				</thead>
 				<tbody>
-				<tr>
 					<c:forEach items="${list}" var="ReferenceVo">
+				<tr>
 						<td class="td_reference">${ReferenceVo.rno}</td>
-						<td class="td_reference"><a href="/employ/referenceRoom?rno=${ReferenceVo.rno}">${ReferenceVo.rtitle}</a></td>
+						<td class="td_reference"><a class="rno_title" href="${ReferenceVo.rno}">${ReferenceVo.rtitle}</a></td>
 						<td class="td_reference">${ReferenceVo.rwriter}</td>
 						<td class="td_reference">${ReferenceVo.recommend}</td>
 						<td class="td_reference">${ReferenceVo.hits}</td>
 						<td class="td_reference">${ReferenceVo.reference_date}</td>
-					</c:forEach>		
 				</tr>
+					</c:forEach>		
 				</tbody>
 			</table>
-			<nav>
-				<ul class="pagination justify-content-center">
-					<c:if test="${pagingDto.startPage != 1}">
-					<li class="page-item">
-						<a class="page-link" href="${pagingDto.startPage - 1}">이전</a>
-					</li>
-					</c:if>
-					<c:forEach var="v" begin="${pagingDto.startPage}" 
-									   end="${pagingDto.endPage}">
-					<li 
-						<c:choose>
-							<c:when test="${pagingDto.page == v}">
-								class="page-item active"
-							</c:when>
-							<c:otherwise>
-								class="page-item"
-							</c:otherwise>
-						</c:choose>
-					>
-						<a class="page-link" href="${v}">${v}</a>
-					</li>
-					</c:forEach>
-					<c:if test="${pagingDto.endPage < pagingDto.totalPage}">
-					<li class="page-item">
-						<a class="page-link" href="${pagingDto.endPage + 1}">다음</a>
-					</li>
-					</c:if>
-				</ul>
-			</nav>
 		</div>
 		<div class="col-md-3">
 		</div>

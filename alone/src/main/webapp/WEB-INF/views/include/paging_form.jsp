@@ -4,4 +4,5 @@
 <form id="frmPaging" action="/employ/referenceRoomList" method="get">
 	<input type="hidden" name="page" value="${pagingVo.page}">
 	<input type="hidden" name="perPage" value="${pagingVo.perPage}">
+	<input type="hidden" name="rno">
 </form>

@@ -19,8 +19,6 @@ $(function() {
 			r_images = 2
 		}
 		
-		console.log(r_images);
-		
 		for (i = 0; i < r_images; i++) {
 		var formData = new FormData();
 			
@@ -50,10 +48,16 @@ $(function() {
 				</div>
 				<div class="col-md-6">
 				<form name="insertReferenceRoom" action="/employ/referenceRoomRegist_run" method="post">
-				<input type="hidden" id="rwriter" name="rwriter" value="김동명">
-				<input type="hidden" id="userid" name="userid" value="star01">
-				<table>
+				<input type="hidden" id="rwriter" name="rwriter" value="${sessionScope.memberVo.username}">
+				<input type="hidden" id="userid" name="userid" value="${sessionScope.memberVo.userid}">
+				<table class="table">
 					<tbody>
+						<tr>
+							<th style="width:100px; text-align:center; background-color:#dcdcdc;">작성자</th>
+							<td class="rboard_td">
+							<div style="width:672px;">${sessionScope.memberVo.username}(${sessionScope.memberVo.userid})</div>
+							</td>
+						</tr>
 						<tr>
 							<th style="width:100px; text-align:center; background-color:#dcdcdc;">제목</th>
 							<td class="rboard_td"><input type="text" id="rtitle" name="rtitle" style="width:672px;"></td>
