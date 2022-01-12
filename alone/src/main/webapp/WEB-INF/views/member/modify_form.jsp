@@ -15,12 +15,14 @@
 
 
 </script>
+			
 <section class="wrapper style1">
 	<div class="container">
 				<h1>회원정보 수정</h1><br>
 		<div class="clear overflow">
 			<section class="col-md-12">
 				</section>
+					
 				<div class="form-group">
 					<label>아이디</label> <br>
 					<span>${memberVo.userid}</span>
@@ -62,9 +64,9 @@
 					<input type="text" class="form-control" id="pnumber" name="pnumber"/>
 				</div>
 				
-				
 				<button type="submit" class="btn btn-primary">수정완료</button>		
-			
+		
+				
 		</div>
 	</div>
 </section>

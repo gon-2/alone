@@ -36,8 +36,8 @@
 	</select>
 	
 	<!--  회원탈퇴  -->
-	<delete id="deleteMember">
-		delete from tbl_member
-		where userid = #{userid}
-	</delete>
+	<select id="memberOut" resultType="MemberVo">
+		 select * from tbl_member
+		 where userid = #{userid}
+	</select>
 </mapper>

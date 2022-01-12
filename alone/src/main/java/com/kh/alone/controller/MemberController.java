@@ -3,6 +3,7 @@ package com.kh.alone.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -87,10 +88,15 @@ public class MemberController {
 		return "/member/class_form_run";
 	}
 	
-	// 회원탈퇴
-	@RequestMapping(value="/delete", method=RequestMethod.GET)
-	public String DeleteMember(MemberVo memberVo) {
-		System.out.println("memberVo:" + memberVo);
-		return "/member/delete";
-	}
+	// 회원탈퇴  
+	@RequestMapping(value="/drop", method = RequestMethod.GET)
+	public String memberOut(HttpSession session, Model model) {
+		// 로그인한 다음에 테스트
+//		MemberVo memberVo = (MemberVo) session.getAttribute("memberVo");
+//		String userid = memberVo.getUserid();
+		String userid = "user01";
+		MemberVo memberVo = memberService.memberOut(userid);
+		model.addAttribute("memberVo", memberVo);		
+		return "member/drop"; 
+		}
 }

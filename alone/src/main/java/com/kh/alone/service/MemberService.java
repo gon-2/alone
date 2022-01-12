@@ -67,6 +67,14 @@ public class MemberService {
 		
 	}
 
+
+	public MemberVo memberOut(String userid) {
+		MemberVo memberVo = memberDao.memberOut(userid);
+//		System.out.println("서비스에서 vo값 받아오는지 확인하기 : " + memberVo);
+		return memberVo;
+	
+	}
+
 }
 	
 	
