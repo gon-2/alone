@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.alone.dao.ClassRegistBoardDao;
 import com.kh.alone.dao.RegistCommentDao;
+import com.kh.alone.vo.InquiryBoardVo;
 import com.kh.alone.vo.PagingDto;
 import com.kh.alone.vo.RegistBoardVo;
 import com.kh.alone.vo.RegistCommentVo;
@@ -53,8 +54,13 @@ public class ClassRegistBoardService {
 	//3개의 최신 자주묻는 질문 글만 조회
 	public List<RegistBoardVo> faqThird(){
 		List<RegistBoardVo> thirdlist = registboardDao.faqThird();
-		System.out.println("ClassRegistBoardDao , faqThird, thirdlist: " + thirdlist);
 		return thirdlist;
+	}
+	
+	// 건의사항 게시판의 3개의 최신 게시글 3개 조회
+	public List<InquiryBoardVo> inquiryThird(){
+		List<InquiryBoardVo> inquiryThirdList = registboardDao.inquiryThird();
+		return inquiryThirdList;
 	}
 	
 	
