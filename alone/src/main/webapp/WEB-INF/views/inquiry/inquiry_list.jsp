@@ -4,10 +4,96 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ include file="/WEB-INF/views/include/hoon/hoonheader.jsp" %>   
-<%@ include file="/WEB-INF/views/board_form/paging_form.jsp" %>
+<%@ include file="/WEB-INF/views/inquiry/inquiry_paging_form.jsp" %>
 <head>
 	<title>건의사항 페이지</title>
 </head>
+<script>
+$(function(){
+/* 		// 링크 걸린 제목 클릭 시 이벤트
+		$(".getBoard").click(function(e){
+			e.preventDefault();
+			console.log("클릭됨");
+			$("#modal-331097").trigger("click");
+		});
+ 		// 확인하기 버튼 클릭 시 이벤트
+		$("#checkPassword").click(function(e){
+			e.preventDefault();
+			var inquiry_password = $("#inquiry_password").val();
+			console.log("inquiry_password >> " + inquiry_password);
+ 			var url = "/inquiry/checkPassword";
+ 			
+			var sendData = {
+					"inquiry_password" : inquiry_password
+			};
+			
+			$.post(url , sendData , function(rData){
+				console.log(rData);
+				 if(rData == "false"){
+					alert("비밀번호를 다시 입력하세요.");
+					return false;
+				}else if(rData == "true"){
+					location.href="/inquiry/getBoard";	
+				}
+			});
+		});
+ 		 */
+	$(".page-link").click(function(e) {
+		e.preventDefault(); 
+		// 클릭한 링크 알아내기
+		var page =	$(this).attr("href");
+		console.log("page >> " + page);
+		var pageVal = $("#frmPaging > input[name=page]").val(page);
+		$("#frmPaging > input[name=searchType]").val("${dto.searchType}");
+		$("#frmPaging > input[name=keyword]").val("${dto.keyword}");
+		$("#frmPaging").submit();
+	});
+	
+	$("#perPage").change(function(){
+		var perPage = $(this).val();
+		console.log("perPage >> " + perPage);
+		 $("#frmPaging > input[name=perPage]").val(perPage);
+		 $("#frmPaging").submit();
+	});
+	
+	$("#btnSearch").click(function(){
+		var searchType = $("#searchType").val();
+		console.log("searchType >> " + searchType);
+		var keyword = $("#keyword").val();
+		console.log("keyword >> " + keyword);
+		$("#frmPaging > input[name=page]").val("1");
+		$("#frmPaging > input[name=searchType]").val(searchType);
+		$("#frmPaging > input[name=keyword]").val(keyword);
+		$("#frmPaging").submit();
+	});
+});
+</script>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			 <a id="modal-331097" href="#modal-container-331097" role="button" class="btn" data-toggle="modal" style="display: none;">Launch demo modal</a>
+			<div class="modal fade" id="modal-container-331097" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="myModalLabel">글 비밀번호를 입력하세요.</h5> 
+							<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<input type="password" name="inquiry_password" id="inquiry_password">
+						</div>
+						<div class="modal-footer">					 
+							<button type="button" class="btn btn-primary" id="checkPassword">확인하기</button> 
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -34,7 +120,7 @@
 					<c:forEach items="${list}" var="InquiryBoardVo">
 					<tr align="center">
 						<td>${InquiryBoardVo.inquiry_number}</td>
-						<td><a href="/inquiry/getBoard?inquiry_title=${InquiryBoardVo.inquiry_title}">${InquiryBoardVo.inquiry_title}</a></td>
+						<td><a href="/inquiry/getBoard?inquiry_title=${InquiryBoardVo.inquiry_title}" id="getBoard" class="getBoard">${InquiryBoardVo.inquiry_title}</a></td>
 						<td>${InquiryBoardVo.inquiry_content}</td>
 						<td>${InquiryBoardVo.inquiry_userid}</td>
 						<td><fmt:formatDate value="${InquiryBoardVo.inquiry_date}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
@@ -105,7 +191,7 @@
 				</select>&nbsp;
 				<input type="text" id="keyword" name="keyword" placeholder="검색어 입력" style="width:300px;">&nbsp;&nbsp;&nbsp;
 				<button type="button" class="btn btn-primary" id="btnSearch">검색</button>
-				<a href="/class_board/form" class="btn btn-success" style="float:right; margin-right:100px;">글 작성</a>
+				<a href="/inquiry/form" class="btn btn-success" style="float:right; margin-right:100px;">글 작성</a>
 			</div> 		
 		</div>
 	</div>
