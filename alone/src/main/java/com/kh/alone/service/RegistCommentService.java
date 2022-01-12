@@ -34,7 +34,7 @@ public class RegistCommentService {
 	}
 	
 	// 댓글 삭제
-	public void deletecomment() {
-		commentDao.deletecomment();
+	public void deletecomment(int class_board_number) {
+		commentDao.deletecomment(class_board_number);
 	}
 }

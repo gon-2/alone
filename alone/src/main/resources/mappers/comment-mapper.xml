@@ -20,9 +20,10 @@
 		where class_board_comment_no = (select class_board_number from tbl_class_board where CLASS_BOARD_NUMBER = #{class_board_number})
 	</select>
 	
-	<!-- 댓글  -->
+	<!-- 댓글 삭제-->
 	<delete id="deletecomment">
 		delete from tbl_class_board_comment
+		where class_board_comment_no = (select class_board_number from tbl_class_board where class_board_number = #{class_board_number})
 	</delete>
 	
 </mapper>

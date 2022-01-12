@@ -56,18 +56,9 @@ create table tbl_inquiry_board(
     inquiry_date timestamp default sysdate,
     inquiry_viewcnt number default 0
 );
--- 건의사항 게시판 파일 테이블 ( 올릴 글번호 , 파일 이름 )
-create table tbl_inquiry_board_file(
-    inquiry_no number references tbl_inquiry_board(inquiry_number), 
-    inquiry_filename varchar2(100) not null
-);
-
-
 -- 건의사항 게시판 테이블 조회수 추가
 alter table tbl_inquiry_board
 add INQUIRY_VIEWCNT number default 0;
-
-
 
 -- 댓글 올린 시간 추가
 alter table tbl_class_board
@@ -99,10 +90,12 @@ where class_board_title = ?;
 
 -- 댓글 입력
 insert into tbl_class_board_comment(class_board_comment_content , class_board_comment_userid , class_board_comment_date)
-values(? , ? , sysdate)
+values(? , ? , sysdate);
 
--- 댓글 조회 
+-- 댓글 조회 ( 해당 게시글 번호에 댓글은 누가 달았는지? ) 
 select * from tbl_class_board_comment
+where class_board_comment_no = (select class_board_number from tbl_class_board where CLASS_BOARD_NUMBER = ?);
+
 
 -- 해당하는 아이디 게시글에 댓글단 정보
 select * from tbl_class_board_comment
@@ -110,6 +103,23 @@ where class_board_comment_no = (select class_board_number
 							    from tbl_class_board 
 							    where CLASS_BOARD_NUMBER = ?)
 
+-- 건의사항 테이블 최신글 3개만 보기
+select inquiry_title , inquiry_content , inquiry_userid
+from (select * from tbl_inquiry_board order by inquiry_date desc)
+where rownum <= 3;
 
+-- 자주묻는 질문 , 건의사항 테이블 조회수 10이상의 최신글 3개만 보기
+select inquiry_title , inquiry_content , inquiry_userid
+from (select * from tbl_inquiry_board order by inquiry_viewcnt desc)
+where inquiry_viewcnt >= 10 and rownum <= 3;
 
+-- 수강신청 테이블 최신글 3개만 보기
+select class_board_title , class_board_content , class_board_userid
+from (select * from tbl_class_board order by class_board_postdate desc)
+where rownum <= 3;
+
+-- 자주묻는 질문 , 수강신청 테이블 조회수 10이상의 최신글 3개만 보기
+select class_board_title , class_board_content , class_board_userid
+from (select * from tbl_class_board order by class_board_viewcnt desc)
+where class_board_viewcnt >= 10 and rownum <= 3;
 

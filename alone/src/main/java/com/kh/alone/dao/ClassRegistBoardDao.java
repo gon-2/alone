@@ -62,5 +62,5 @@ public class ClassRegistBoardDao {
 	public RegistBoardVo getBoard(String class_board_title) {
 		RegistBoardVo registBoardvo = session.selectOne(NAMESPACE + "getBoard" , class_board_title);
 		return registBoardvo;
-	}	
+	}
 }

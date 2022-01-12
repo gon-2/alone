@@ -65,24 +65,30 @@
  		// 댓글 삭제 버튼 클릭시 이벤트
  		$("#deleteComment").click(function(e){
  			e.preventDefault();
- 			
- 			var url = "/comment/deleteComment";
- 			var first_content = $("#first_content").val();
+ 			$("#modal-162465").trigger("click");
+ 		});
+ 		
+ 		$("#deletecomments").click(function(e){
+			var url = "/comment/deleteComment";
+ 			var class_board_number = $("#class_board_number").val();
  			
  			var sendData = {
- 				"first_contnet" : first_content	
+ 					"class_board_number" : class_board_number
  			};
  			
  			$.post(url , sendData , function(rData){
+ 				console.log(rData);
  				if(rData == "success"){
  					$("#first_userid").val("");
  					$("#first_content").val("");
  					$("#first_date").val("");
  					$("#showAni").fadeOut(1000);
+ 					$("#cancel").trigger("click");
+ 					alert("삭제되었습니다!");
  				}
  			});
- 			
  		});
+  			
  		// 게시글 수정 버튼 클릭 시 이벤트
  		$("#modcontent").click(function(e){
  			e.preventDefault();
@@ -134,6 +140,33 @@
 	}
 </script>
 </head>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			 <a id="modal-162465" href="#modal-container-162465" role="button" class="btn" data-toggle="modal" style="display: none">Launch demo modal</a>
+			
+			<div class="modal fade" id="modal-container-162465" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="myModalLabel">댓글을 삭제할 번호를 입력하세요.</h5> 
+							<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<input type="number" name="class_board_number" id="class_board_number" value="${registboardvo.class_board_number}">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" id="deletecomments">댓글 삭제</button> 
+							<button type="button" class="btn btn-secondary" id="cancel" data-dismiss="modal">취소</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">

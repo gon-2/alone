@@ -51,8 +51,8 @@ public class ClassRegistBoardCommentController {
 	// 상담자 댓글 삭제
 	@ResponseBody
 	@RequestMapping(value="/deleteComment" , method=RequestMethod.POST)
-	public String deletecomment() {
-		registcommentservice.deletecomment();
+	public String deletecomment(int class_board_number) {
+		registcommentservice.deletecomment(class_board_number);
 		return "success";
 	}
 }

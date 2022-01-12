@@ -35,8 +35,8 @@ public class RegistCommentDao {
 	}
 	
 	// 댓글 삭제
-	public void deletecomment() {
-		session.delete(NAMESPACE + "deletecomment");
+	public void deletecomment(int class_board_number) {
+		session.delete(NAMESPACE + "deletecomment" , class_board_number);
 	}
 	
 }
