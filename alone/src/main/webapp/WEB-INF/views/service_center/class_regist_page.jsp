@@ -67,7 +67,7 @@
 	}
 </script>
 </head>
-<%@ include file="/WEB-INF/views/board_form/paging_form.jsp" %>
+<%@ include file="/WEB-INF/views/board_form/class_paging_form.jsp" %>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -89,7 +89,7 @@
 						<th>작성자</th>
 						<th>게시일</th>
 						<th>조회수</th>
-						<!-- <th>삭제</th> -->
+						<th>삭제</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -102,10 +102,16 @@
 						<td>${ClassRegistBoardVo.class_board_userid}</td>
 						<td><fmt:formatDate value="${ClassRegistBoardVo.class_board_postdate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
 						<td>${ClassRegistBoardVo.class_board_viewcnt}</td>
-<%-- 						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
-							<td><button type="submit" class="btn btn-primary">삭제</button></td>
-						</form>
- --%>					
+						<c:choose>
+							<c:when test="${sessionScope.memberVo}">
+		 						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
+									<td><button type="submit" class="btn btn-primary">삭제</button></td>
+								</form>
+							</c:when>
+							<c:otherwise>
+								<td>로그인하세요</td>
+							</c:otherwise>
+						</c:choose>					
  					</tr>
 					</c:forEach>
 				</tbody>
@@ -172,12 +178,7 @@
 				</select>&nbsp;
 				<input type="text" id="keyword" name="keyword" placeholder="검색어 입력" style="width:300px;">&nbsp;&nbsp;&nbsp;
 				<button type="button" class="btn btn-primary" id="btnSearch">검색</button>
-				<c:if test="${sessionScope.memberVo}">
-					<a href="/class_board/form" class="btn btn-success" style="float:right; margin-right:100px;">글 작성</a>
-				</c:if>
-				<c:if test="${empty sessionScope.memberVo}">
-				
-				</c:if>
+				<a href="/class_board/form" class="btn btn-success" style="float:right; margin-right:100px;">글 작성</a>
 			</div> 		
 		</div>
 	</div>
