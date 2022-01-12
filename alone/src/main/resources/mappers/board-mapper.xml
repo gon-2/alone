@@ -12,19 +12,7 @@
 		<include refid="search"></include>
 	</select>
 	
-	<!-- 수강신청 게시판  mapper 3. 메인 홈페이지에서 3개의 최신 수강신청 글만 조회 -->
-  	<select id="countThird" resultType="RegistBoardVo">
-		select class_board_title , class_board_content , class_board_userid
-		from (select * from tbl_class_board order by class_board_postdate desc)
-		<![CDATA[where rownum <= 3]]>
-	</select>
-	
-	<!-- 수강신청 게시판  mapper 4. 메인 홈페이지에서 3개의 최신 자주묻는 질문 글만 조회 -->
-	<select id="faqThird" resultType="RegistBoardVo">
-		select class_board_title , class_board_content , class_board_userid
-		from (select * from tbl_class_board order by class_board_viewcnt desc)
-		<![CDATA[where class_board_viewcnt >= 10 and rownum <= 3]]>
-	</select>
+
 	
 	<!-- 수강신청 게시판  mapper 5. 제목 클릭했을 때의 내용 보이기 -->
 	<select id="getBoard" resultType="RegistBoardVo">
@@ -86,13 +74,5 @@
 	</delete>
 	
 	<!-- 수강신청 게시판 mapper 끝 -->
-	
-	<!-- Main 홈페이지에 띄울 건의사항 게시판  mapper 시작  -->
-	<!-- 건의사항 게시판 mapper  1. 메인 홈페이지에서 3개의 최신 건의사항 글만 조회 -->
-	<select id="inquiryThird" resultType="InquiryBoardVo">
-		select inquiry_title , inquiry_content , inquiry_userid
-		from (select * from tbl_inquiry_board order by inquiry_date desc)
-		<![CDATA[where rownum <= 3]]>
-	</select> 
 	
 </mapper>
