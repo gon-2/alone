@@ -37,7 +37,7 @@ public class FaqController {
 		return classboardlist;
 	}
 	
-	@RequestMapping(value="InquiryBoard" , method=RequestMethod.GET)
+	@RequestMapping(value="/inquiryBoard" , method=RequestMethod.GET)
 	public List<InquiryBoardVo> inquiryBoardSetViewcnt(Model model){
 		List<InquiryBoardVo> inquiryboardlist = faqservice.inquiryBoardSetViewcnt();
 		model.addAttribute("inquiryboardlist" , inquiryboardlist);
@@ -49,6 +49,6 @@ public class FaqController {
 	public String qnagetBoard(String class_board_title) {
 		RegistBoardVo registBoardVo = faqservice.faqgetBoard(class_board_title);
 		System.out.println("QnaController , qnagetBoard , registBoardVo >> " + registBoardVo);
-		return "/board_form/class_regist_board_getBoard";
+		return "/class_regist_form/class_regist_board_getBoard";
 	}
 }

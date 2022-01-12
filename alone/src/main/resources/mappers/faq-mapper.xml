@@ -15,7 +15,7 @@
 	<!-- 자주 묻는 질문에서 조회수가 10 이상인 건의사항 목록만 출력 -->
 	<select id="inquiryBoardSetViewcnt" resultType="InquiryBoardVo">
 		select * from tbl_inquiry_board
-		<![CDATA[where class_board_viewcnt >= 10]]>
+		<![CDATA[where inquiry_viewcnt >= 10]]>
 		order by inquiry_viewcnt desc
 	</select>
 	
