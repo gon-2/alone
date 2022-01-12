@@ -17,7 +17,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6">
-			<h4 align="center" style="margin-right: 100px;"><a href="/customer_main/faq">자주 묻는 질문</a></h4>
+			<h4 align="center" style="margin-right: 100px;"><a href="/customer_main/faq">자주 묻는 질문 - 수강신청</a></h4>
 			<br>
 			<table class="table" align="center" style="width:500px; margin-right:100px;">
 				<thead>
@@ -40,7 +40,7 @@
 		</div>
 		
 		<div class="col-md-6">
-			<h4 align="center" style="margin-right: 100px;"><a href="/customer_main/consult">수강생 상담</a></h4>
+			<h4 align="center" style="margin-right: 100px;"><a href="/customer_main/consult">자주 묻는 질문 - 건의사항</a></h4>
 			<br>
 			<table class="table" align="center" style="width:500px; margin-right:100px;">
 				<thead>
@@ -80,7 +80,7 @@
 			</table>
 		</div>
 		<div class="col-md-6"><br><br>
-			<h4 align="center" style="margin-right: 100px;"><a href="/customer_main/inquire">건의 사항</a></h4>		
+			<h4 align="center" style="margin-right: 100px;"><a href="/inquiry/listall">건의 사항</a></h4>		
 			<br>
 			<table class="table" align="center" style="width:500px; margin-right:100px;">
 				<thead>
@@ -91,11 +91,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr align="center">
-						<td>1</td>
-						<td><a href="">TB - Monthly</a></td>
-						<td>01/04/2012</td>
-					</tr>
+					<c:forEach items="${inquiryThirdList}" var="InquiryBoardVo">
+						<tr align="center">
+							<td><a href="/inquiry/getBoard?inquiry_title=${InquiryBoardVo.inquiry_title}">${InquiryBoardVo.inquiry_title}</a></td>
+							<td>${InquiryBoardVo.inquiry_content}</td>
+							<td>${InquiryBoardVo.inquiry_userid}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
