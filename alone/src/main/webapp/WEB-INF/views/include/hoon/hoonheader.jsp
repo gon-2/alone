@@ -114,6 +114,10 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
+            
+ 	        <!-- 디지털 시계 -->
+ 		    <div id="date" align="center" style="color:yellow;"></div>
+            <div id="time" align="center" style="color:yellow;"></div>
 
             <!-- Sidebar Message -->
 <!--             <div class="sidebar-card d-none d-lg-flex">
@@ -133,25 +137,28 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+            		<c:choose>
+                    	 <c:when test="${empty sessionScope.memberVo}">
+                    	 	<h1>로그인 하세요.</h1>
+                     	 </c:when>
+                     	<c:otherwise><h1>${sessionScope.memberVo.userid}(${sessionScope.memberVo.username})</h1></c:otherwise>
+                    </c:choose> 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    
-                    <!-- 디지털 시계 -->
-                    <div id="date"></div>
-              		<div id="time"></div>
 
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
+                            
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
