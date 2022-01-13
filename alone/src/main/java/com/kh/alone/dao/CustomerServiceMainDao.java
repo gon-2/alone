@@ -50,5 +50,17 @@ public class CustomerServiceMainDao {
 		List<InquiryBoardVo> inquiryRecentList = session.selectList(NAMESPACE + "inquiryRecent");
 		return inquiryRecentList;
 	}
+	
+	// 수강신청의 제목으로 시작하는 모든 내용들 찾기
+	public List<RegistBoardVo> classFindTitle(String class_board_title){
+		List<RegistBoardVo> findList = session.selectList(NAMESPACE + "classFindTitle" , class_board_title);
+		return findList;
+	}
+	
+	// 건의사항의 제목으로 시작하는 모든 내용들 찾기
+	public List<InquiryBoardVo> inquiryFindTitle(String inquiry_title){
+		List<InquiryBoardVo> findList = session.selectList(NAMESPACE + "inquiryFindTitle" , inquiry_title); 
+		return findList;
+	}
 
 }

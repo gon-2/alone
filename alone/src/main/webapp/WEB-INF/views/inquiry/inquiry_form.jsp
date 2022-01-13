@@ -15,20 +15,34 @@
 			var inquiry_title = $("#inquiry_title").val();
 			var inquiry_content = $("#inquiry_content").val();
 			var inquiry_password = $("#inquiry_password").val();
-		
-			console.log("inquiry_userid >> " + inquiry_userid);
-			console.log("inquiry_title >> " + inquiry_title);
-			console.log("inquiry_content >> " + inquiry_content);
-			console.log("inquiry_password >> " + inquiry_password);
-			
  			var url = "/inquiry/insertrun";
- 
  			var sendData = {
 					"inquiry_userid" : inquiry_userid,
 					"inquiry_title" : inquiry_title,
 					"inquiry_content" : inquiry_content,
 					"inquiry_password" : inquiry_password
 			};
+ 			
+ 			// 건의 사항 폼 무결성 검사
+ 			if(inquiry_userid == "" || inquiry_userid.length == 0){
+ 				alert("아이디를 입력하세요.");
+ 				return false;
+ 			}else if(inquiry_userid.length >= 51){
+ 				alert("아이디의 길이는 50byte 까지 입니다.");
+ 				return false;
+ 			}else if(inquiry_title == "" || inquiry_title.length == 0){
+ 				alert("글 제목을 입력하세요.");
+ 				return false;
+ 			}else if(inquiry_title.length >= 301){
+ 				alert("글 제목의 길이는 300byte 까지 입니다.");
+ 				return false;
+ 			}else if(inquiry_content == "" || inquiry_content.length == 0){
+ 				alert("글 내용을 입력하세요.");
+ 				return false;
+ 			}else if(inquiry_content.length >= 3001){
+ 				alert("글 내용의 길이는 3000byte 까지 입니다.");
+ 				return false;
+ 			}
 			
 			$.post(url, sendData , function(rData){
 				console.log(rData);
@@ -40,7 +54,7 @@
 	});
 </script>
 <div class="container-fluid">
-	<div class="row">
+	<div class="row">ㄴ
 		<div class="col-md-12">
 			<div class="jumbotron">
 				<h2>건의사항 신청 페이지</h2>

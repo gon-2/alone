@@ -32,5 +32,17 @@
 		from (select * from tbl_class_board order by class_board_viewcnt desc)
 		<![CDATA[where class_board_viewcnt >= 10 and rownum <= 3]]>
 	</select>
+	
+	<!-- 수강신청의 제목으로 시작하는 모든 내용들 찾기 -->
+	<select id="classFindTitle" resultType="RegistBoardVo">
+		select * from tbl_class_board
+		where class_board_title like '%'||#{class_board_title}||'%'
+	</select>
+	
+	<!-- 건의사항의 제목으로 시작하는 모든 내용들 찾기 -->
+	<select id="inquiryFindTitle" resultType="InquiryBoardVo">
+		select * from tbl_inquiry_board
+		where inquiry_title like '%'||#{inquiry_title}||'%'
+	</select>
 
 </mapper>

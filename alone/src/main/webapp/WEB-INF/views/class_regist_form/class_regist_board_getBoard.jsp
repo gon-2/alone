@@ -18,7 +18,7 @@
 			e.preventDefault();
 			var class_board_comment_userid = $("#class_board_comment_userid").val();
 			var class_board_comment_content = $("#class_board_comment_content").val();
- 			var class_board_comment_no = $("#class_board_comment_no").val(); 
+ 			var class_board_comment_no = $("#class_board_comment_no").val();
 			var url = "/comment/insertcomment";				
 			var sendData = {
  					"class_board_comment_no" : class_board_comment_no,
@@ -26,13 +26,32 @@
 					"class_board_comment_content" : class_board_comment_content
 			};	
 			
+			
+ 			// 댓글 무결성 검사
+ 			if(class_board_comment_userid == "" || class_board_comment_userid.length == 0){
+ 				alert("아이디를 입력 하세요.");
+ 				return false;
+ 			}else if(class_board_comment_userid.length >= 51){
+ 				alert("아이디의 길이는 50byte까지 입니다.");
+ 				return false;
+ 			}else if(class_board_comment_content == "" || class_board_comment_content.length == 0){
+ 				alert("댓글을 입력하세요.");
+ 				return false;
+ 			}else if(class_board_comment_content.length >= 301){
+ 				alert("댓글의 길이는 300 byte까지 입니다.");
+ 				return false;
+ 			}else if(class_board_comment_no.length == 0){
+ 				alert("번호를 입력하세요.");
+ 				return false;
+ 			}
+ 			
 			$.post(url , sendData , function(rData){
 				if(rData == "success"){
 					alert("댓글이 입력되었습니다");	
 				}
 			});
 			$("#btnCancel").trigger("click");
-			$("#showComment").trigger("click");
+ 			
 		});
  		// 댓글 보기버튼 클릭 시 이벤트
  		$("#showComment").click(function(e){

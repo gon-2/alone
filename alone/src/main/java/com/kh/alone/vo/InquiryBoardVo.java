@@ -18,7 +18,6 @@ public class InquiryBoardVo {
 	private String inquiry_userid;
 	private String inquiry_title;
 	private String inquiry_content;
-	private String inquiry_photoname;
 	private String inquiry_password;
 	private Timestamp inquiry_date;
 	private int inquiry_viewcnt;
@@ -83,21 +82,13 @@ public class InquiryBoardVo {
 	public void setInquiry_viewcnt(int inquiry_viewcnt) {
 		this.inquiry_viewcnt = inquiry_viewcnt;
 	}
-	
-
-	public String getInquiry_photoname() {
-		return inquiry_photoname;
-	}
-
-	public void setInquiry_photoname(String inquiry_photoname) {
-		this.inquiry_photoname = inquiry_photoname;
-	}
 
 	@Override
 	public String toString() {
-		return "InquireBoardVo [inquiry_number=" + inquiry_number + ", inquiry_userid=" + inquiry_userid
-				+ ", inquiry_title=" + inquiry_title + ", inquiry_content=" + inquiry_content + ", inquiry_photoname="
-				+ inquiry_photoname + ", inquiry_password=" + inquiry_password + ", inquiry_date=" + inquiry_date
-				+ ", inquiry_viewcnt=" + inquiry_viewcnt + "]";
+		return "InquiryBoardVo [inquiry_number=" + inquiry_number + ", inquiry_userid=" + inquiry_userid
+				+ ", inquiry_title=" + inquiry_title + ", inquiry_content=" + inquiry_content + ", inquiry_password="
+				+ inquiry_password + ", inquiry_date=" + inquiry_date + ", inquiry_viewcnt=" + inquiry_viewcnt + "]";
 	}
+	
+	
 }
