@@ -71,6 +71,20 @@ $(function(){
 		var inquiry_comment_userid = $("#inquiry_comment_userid").val();
 		var inquiry_comment_content = $("#inquiry_comment_content").val();
 		
+		// 댓글 무결성 검사
+		if(inquiry_comment_userid == "" || inquiry_comment_userid.length == 0){
+			alert("아이디를 입력하세요.");
+			return false;
+		}else if(inquiry_comment_userid.length >= 51){
+			alert("아이디의 길이는 50byte 까지 입니다.");
+			return false;
+		}else if(inquiry_comment_content == "" || inquiry_comment_content.length == 0){
+			alert("댓글을 입력하세요.");
+			return false;
+		}
+		
+		
+		
 		var url = "/insertcomment";
 		var sendData = {
 			"inquiry_comment_userid" : inquiry_comment_userid,
@@ -94,6 +108,15 @@ $(function(){
 		var sendData = {
 				"inquiry_userid" : inquiry_userid
 		};
+		
+		// 댓글보기 무결성 검사
+		if(inquiry_userid == "" || inquiry_userid.length == 0){
+			alert("아이디를 입력하세요.");
+		}else if(inquiry_userid.length >= 51){
+			alert("아이디의 길이는 50byte입니다.");
+		}
+		
+		
 		$.get(url , sendData , function(rData){
 			console.log(rData);
 			$.each(rData , function(){
