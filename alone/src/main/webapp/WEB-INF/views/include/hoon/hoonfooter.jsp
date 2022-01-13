@@ -16,7 +16,26 @@
        <footer class="sticky-footer bg-white">
            <div class="container my-auto">
                <div class="copyright text-center my-auto">
-                   <span>Copyright &copy; TeamProject LJH_Website 2021</span>
+                 <!-- 수강신청 게시판 Search -->
+			     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/customer_main/classFindTitle">
+			         <div class="input-group" style="float:left;">
+			             <input type="text" name="class_board_title" class="form-control bg-light border-0 small" placeholder="수강신청 게시글 제목을 검색하세요."
+			                 aria-label="Search" aria-describedby="basic-addon2" style="width: 350px;">
+			             <div class="input-group-append">
+			             	<button type="submit" class="btn btn-sm btn-info" style="width:50px;">검색</button>
+			             </div>
+			         </div>
+			     </form>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <!-- 건의사항 게시판 Search -->
+			     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/customer_main/inquiryFindTitle">
+			         <div class="input-group" style="float:left;">
+			             <input type="text" name="inquiry_title" class="form-control bg-light border-0 small" placeholder="건의사항 게시글 제목을 검색하세요."
+			                 aria-label="Search" aria-describedby="basic-addon2" style="width: 350px;">
+			             <div class="input-group-append">
+			             	<button type="submit" class="btn btn-sm btn-info" style="width:50px;">검색</button>
+			             </div>
+			         </div>
+			     </form>
                </div>
            </div>
        </footer>
@@ -50,6 +69,10 @@
             </div>
         </div>
     </div>
+    
+    
+    
+
 
 
 

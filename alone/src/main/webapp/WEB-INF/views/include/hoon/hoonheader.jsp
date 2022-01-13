@@ -138,24 +138,11 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group" style="float:right;">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="검색하세요."
-                                aria-label="Search" aria-describedby="basic-addon2" style="width: 350px;">
-                            <div class="input-group-append">
-                            	<a href="" class="btn btn-primary">
-                            		<i class="fas fa-search fa-sm"></i>
-                            	</a>
-                            </div>
-                        </div>
-                    </form>
                     
                     <!-- 디지털 시계 -->
                     <div id="date"></div>
               		<div id="time"></div>
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
