@@ -9,6 +9,36 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="/js/digitClock.js"></script>
+<script>
+	$(function(){			
+		// 무결성 검사
+		$("#searchClassBoard").click(function(){
+			var class_board_title = $("#class_board_title").val();
+			var frmSearchClass = document.frmSearchClass;
+			
+			if(class_board_title.length == 0 || class_board_title == ""){
+				alert("수강신청 제목을 입력하세요.");
+				return false;
+			}else{
+				frmSearchClass.action = "/customer_main/classFindTitle";
+				frmSearchClass.submit();
+			}
+		});
+		
+		$("#searchInquiryBoard").click(function(){
+			var inquiry_title = $("#inquiry_title").val();
+			var frmSearchInquiry = document.frmSearchInquiry;
+			
+			if(inquiry_title.length == 0 || inquiry_title == ""){
+				alert("건의사항 제목을 입력하세요.");
+				return false;
+			}else{
+				frmSearchInquiry.action = "/customer_main/inquiryFindTitle";
+				frmSearchInquiry.submit();
+			}
+		});
+	});
+</script>
 </head>
 <body>
 	   <!--  Footer -->
@@ -17,22 +47,22 @@
            <div class="container my-auto">
                <div class="copyright text-center my-auto">
                  <!-- 수강신청 게시판 Search -->
-			     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/customer_main/classFindTitle">
+			     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" name="frmSearchClass">
 			         <div class="input-group" style="float:left;">
-			             <input type="text" name="class_board_title" class="form-control bg-light border-0 small" placeholder="수강신청 게시글 제목을 검색하세요."
+			             <input type="text" name="class_board_title" id="class_board_title" class="form-control bg-light border-0 small" placeholder="수강신청 게시글 제목을 검색하세요."
 			                 aria-label="Search" aria-describedby="basic-addon2" style="width: 350px;">
 			             <div class="input-group-append">
-			             	<button type="submit" class="btn btn-sm btn-info" style="width:50px;">검색</button>
+			             	<button type="button" id="searchClassBoard" class="btn btn-sm btn-info" style="width:50px;">검색</button>
 			             </div>
 			         </div>
 			     </form>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                  <!-- 건의사항 게시판 Search -->
-			     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/customer_main/inquiryFindTitle">
+			     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" name="frmSearchInquiry">
 			         <div class="input-group" style="float:left;">
-			             <input type="text" name="inquiry_title" class="form-control bg-light border-0 small" placeholder="건의사항 게시글 제목을 검색하세요."
+			             <input type="text" name="inquiry_title" id="inquiry_title" class="form-control bg-light border-0 small" placeholder="건의사항 게시글 제목을 검색하세요."
 			                 aria-label="Search" aria-describedby="basic-addon2" style="width: 350px;">
 			             <div class="input-group-append">
-			             	<button type="submit" class="btn btn-sm btn-info" style="width:50px;">검색</button>
+			             	<button type="button" id="searchInquiryBoard" class="btn btn-sm btn-info" style="width:50px;">검색</button>
 			             </div>
 			         </div>
 			     </form>
