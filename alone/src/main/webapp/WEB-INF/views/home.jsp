@@ -9,12 +9,17 @@ $(function(){
 		e.preventDefault();
 		var info_code = $(this).attr("href");
 		console.log(info_code);
-		location.href = "/classInfo/homeRegist?info_code=" + info_code;
+		if(info_code != ""){
+			location.href = "/classInfo/homeRegist?info_code=" + info_code;
+		}else{
+			location.href = "/classInfo/homeRegist";
+		}
 	});
 	
 	
 });
 </script>
+
 <!-- Banner -->
 <div id="demo" class="carousel slide" data-ride="carousel">
 
@@ -45,7 +50,6 @@ $(function(){
   <a class="carousel-control-next" href="#demo" data-slide="next">
     <span class="carousel-control-next-icon"></span>
   </a>
-
 </div>
 
 
@@ -56,7 +60,7 @@ $(function(){
 		<header class="major">
 			<h2>현재 모집중인 과정</h2>
 			<br>
-			<p>야! 너두 할수있어 </p>
+			<p>야! 너두 할수있어! </p>
 		</header>
 	</div>
 </section>
@@ -121,7 +125,6 @@ $(function(){
 										<tr>
 											<td>${classInfoVo.info_code}</td>
 											<td>${classInfoVo.c_title} / ${classInfoVo.c_time}시간 / ${classInfoVo.time_code_name }</td>
-											<td>${classInfoVo.time_code_name}</td>
 											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
 											<td><a class="homeRegist btn btn-sm btn-outline-danger"  id="homeRegist" href="${classInfoVo.info_code}">신청</a></td>
 										</tr>
@@ -200,7 +203,6 @@ $(function(){
 						alt="" /></a>
 					<div class="inner">
 						<h3>공지사항</h3>
-						<p>동작그만! 첫장부터 밑장빼기냐?!</p>
 					</div>
 				</div>
 			</section>
@@ -210,7 +212,6 @@ $(function(){
 						alt="" /></a>
 					<div class="inner">
 						<h3>온라인 상담</h3>
-						<p>시나리오 쓰고있네 증거있어?!</p>
 					</div>
 				</div>
 			</section>

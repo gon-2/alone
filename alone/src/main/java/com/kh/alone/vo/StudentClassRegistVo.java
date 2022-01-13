@@ -13,6 +13,11 @@ public class StudentClassRegistVo {
 	private String employment_center;
 	private String employment_staff;
 	private String employment_num;
+	private String c_title;
+	private String start_date;
+	private String end_date;
+	private String time_code_name;
+	private int c_time;
 	
 	public StudentClassRegistVo() {
 		super();
@@ -114,13 +119,57 @@ public class StudentClassRegistVo {
 		this.employment_num = employment_num;
 	}
 
+	public String getC_title() {
+		return c_title;
+	}
+
+	public void setC_title(String c_title) {
+		this.c_title = c_title;
+	}
+
+	public String getStart_date() {
+		return start_date;
+	}
+
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
+	}
+
+	public String getEnd_date() {
+		return end_date;
+	}
+
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
+	}
+
+	public String getTime_code_name() {
+		return time_code_name;
+	}
+
+	public void setTime_code_name(String time_code_name) {
+		this.time_code_name = time_code_name;
+	}
+
+	public int getC_time() {
+		return c_time;
+	}
+
+	public void setC_time(int c_time) {
+		this.c_time = c_time;
+	}
+
 	@Override
 	public String toString() {
-		return "StudentOnlineRegistVo [r_num=" + r_num + ", info_code=" + info_code + ", student_name=" + student_name
+		return "StudentClassRegistVo [r_num=" + r_num + ", info_code=" + info_code + ", student_name=" + student_name
 				+ ", gender=" + gender + ", nationality=" + nationality + ", phone_num=" + phone_num + ", home_num="
 				+ home_num + ", e_mail=" + e_mail + ", employment=" + employment + ", employment_center="
 				+ employment_center + ", employment_staff=" + employment_staff + ", employment_num=" + employment_num
-				+ "]";
+				+ ", c_title=" + c_title + ", start_date=" + start_date + ", end_date=" + end_date + ", time_code_name="
+				+ time_code_name + ", c_time=" + c_time + "]";
 	}
+
 	
+
+
 }

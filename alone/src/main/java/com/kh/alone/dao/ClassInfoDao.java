@@ -54,14 +54,13 @@ public class ClassInfoDao {
 	
 	// 수강신청하기
 	public void insertOnlineRegist(StudentClassRegistVo vo) {
-		System.out.println("dao, OnlineRegistVo:" +  vo);
 		sqlSession.insert(NAMESPACE + "insertOnlineRegist", vo);
 	}
 	
 	
 	// 주민번호로 나의 신청현황 확인하기
-	public String selectMine(String r_num){
-		String mine = sqlSession.selectOne(NAMESPACE + "selectMine", r_num);
+	public StudentClassRegistVo selectMine(String r_num){
+		StudentClassRegistVo mine = sqlSession.selectOne(NAMESPACE +  "selectMine", r_num);
 		return mine;
 	}
 	

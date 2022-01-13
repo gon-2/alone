@@ -14,7 +14,6 @@
 		
 	<!-- 전체보기 -->
 	<select id="selectAll" resultType="ClassInfoVo">
-<!-- 		select * from c_class_info -->
 	select info_code, c_title, c_time, cate_code, time_code, start_date, end_date,
 			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name,
 				decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
@@ -25,8 +24,6 @@
 
 	<!-- 주말 주간 야간 구하기 -->
 	<select id="classListByTimeCode" resultType="ClassInfoVo">
-<!-- 		select * from c_class_info  -->
-<!-- 		where time_code = #{time_code} -->
 		select info_code, c_title, c_time, cate_code, time_code, start_date, end_date,
 			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name,
 				decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
@@ -37,8 +34,6 @@
 	
 	<!-- 수업 파트별 구하기 -->
 	<select id="classListByCateCode" resultType="ClassInfoVo">
-<!-- 		select * from c_class_info -->
-<!-- 		where cate_code = #{cate_code} -->
 		select info_code, c_title, c_time, cate_code, time_code, start_date, end_date,
 			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name,
 			decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
@@ -62,16 +57,18 @@
 		select * from student_class_regist
 	</select>
 	
-	<!-- 주민번호로 신청한거 조회하기 -->
-	<select id="selectMine" resultType="string">
-		select count(*) from student_class_regist
-		where r_num = #{r_num} 
-		
-	</select>
-	
-	<select id="selectMineList" resultType="StudentClassRegistVo">
+	<!-- 주민번호로 수강신청 조회하기 -->
+	<select id="selectMine" resultType="StudentClassRegistVo">
 		select * from student_class_regist
 		where r_num = #{r_num}
 	</select>
+	
+	<select id="selectMineList" resultType="StudentClassRegistVo">
+		select s.student_name, i.c_title, i.start_date, i.end_date, i.c_time,
+			decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
+			from student_class_regist s, c_class_info i
+		where s.info_code = i.info_code AND s.r_num = #{r_num}
+	</select>
+	
 	
 </mapper>
