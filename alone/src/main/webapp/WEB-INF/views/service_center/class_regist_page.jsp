@@ -102,16 +102,19 @@
 						<td>${ClassRegistBoardVo.class_board_userid}</td>
 						<td><fmt:formatDate value="${ClassRegistBoardVo.class_board_postdate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
 						<td>${ClassRegistBoardVo.class_board_viewcnt}</td>
-						<c:choose>
-							<c:when test="${sessionScope.memberVo}">
-		 						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
-									<td><button type="submit" class="btn btn-primary">삭제</button></td>
-								</form>
-							</c:when>
-							<c:otherwise>
-								<td>로그인하세요</td>
-							</c:otherwise>
-						</c:choose>					
+				<c:choose>		
+					<c:when test="${empty sessionScope.memberVo}">
+						<td>로그인 하세요.</td>
+					</c:when>
+					<c:when test="${sessionScope.memberVo.userid == ClassRegistBoardVo.class_board_userid}">
+ 						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
+							<td><button type="submit" class="btn btn-primary">삭제</button></td>
+						</form>
+					</c:when>
+					<c:otherwise>
+						<td>로그인 하세요.</td>
+					</c:otherwise>
+				</c:choose>					
  					</tr>
 					</c:forEach>
 				</tbody>
@@ -178,7 +181,14 @@
 				</select>&nbsp;
 				<input type="text" id="keyword" name="keyword" placeholder="검색어 입력" style="width:300px;">&nbsp;&nbsp;&nbsp;
 				<button type="button" class="btn btn-primary" id="btnSearch">검색</button>
+		<c:choose>
+			<c:when test="${empty sessionScope.memberVo}">
+				<h6>글 작성을 위해 로그인 하세요.</h6>	
+			</c:when>
+			<c:otherwise>
 				<a href="/class_board/form" class="btn btn-success" style="float:right; margin-right:100px;">글 작성</a>
+			</c:otherwise>
+		</c:choose>
 			</div> 		
 		</div>
 	</div>
