@@ -80,22 +80,23 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-<!--             Nav Item - Charts
+            <!--  Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="/main/notice">
+                <a class="nav-link" href="/customer_main/notice">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <span>공지 사항</span></a>
-            </li> -->
+            </li>
             
             <li class="nav-item">
                 <a class="nav-link" href="/customer_main/consult">
                     <i class="fas fa-coffee"></i>
                     <span>수강생 상담</span></a>
             </li>
-            
+           
+     
             <li class="nav-item" style="padding-top:18px;">
-        		<c:choose>
-                 	<c:when test="${empty sessionScope.employeeVo}">
+     		    <c:choose>
+                 	<c:when test="${empty sessionScope.memberVo}">
                  		<a class="nav-link" href="/login_form">로그인</a>
                  		<a href="/Regist/form" class="nav-link">회원가입</a>
                  	</c:when>
