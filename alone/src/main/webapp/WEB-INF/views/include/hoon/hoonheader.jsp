@@ -186,7 +186,7 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
             		<c:choose>
                     	 <c:when test="${empty sessionScope.memberVo}">
-                    	 	<h1>로그인 하세요.</h1>
+
                      	 </c:when>
                      	<c:otherwise><h1 id="userid">${sessionScope.memberVo.userid}</h1></c:otherwise>
                     </c:choose> 
