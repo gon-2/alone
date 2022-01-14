@@ -49,6 +49,6 @@ public class FaqController {
 	public String qnagetBoard(String class_board_title) {
 		RegistBoardVo registBoardVo = faqservice.faqgetBoard(class_board_title);
 		System.out.println("QnaController , qnagetBoard , registBoardVo >> " + registBoardVo);
-		return "/class_regist_form/class_regist_board_getBoard";
+		return "/class_regist/class_regist_board_getBoard";
 	}
 }
