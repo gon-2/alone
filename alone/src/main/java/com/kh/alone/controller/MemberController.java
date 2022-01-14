@@ -41,19 +41,22 @@ public class MemberController {
 	
 	// 등록처리
 	@RequestMapping(value="/regist_run", method=RequestMethod.POST)
-	public String memberRegistRun(MemberVo memberVo, RedirectAttributes rttr) {
-		memberService.insertTeam(memberVo);
+	public String memberRegistRun(MemberVo memberVo) {
+		memberService.insertMember(memberVo);
 		return "redirect:/member/list_all";
 	}
 	
 	// 회원정보 수정
-	@RequestMapping(value="/modify_form", method = RequestMethod.GET)
-	public String memberModify(String userid, Model model) {
-		MemberVo memberVo = memberService.memberModify(userid);
-		model.addAttribute("memberVo", memberVo);
+	@RequestMapping(value="/modify_form", method=RequestMethod.GET)
+	public String memberModify() {
 		return "member/modify_form";
 	}
-	
+	// 수정처리 
+	@RequestMapping(value="/modify_run", method=RequestMethod.POST)
+	public String modifyRun(MemberVo memberVo) {
+		memberService.modifyRun(memberVo);
+		return "redirect:/member/modify_form";
+	}
 	// 내 게시판
 	@RequestMapping(value="/board_form", method = RequestMethod.GET)
 	public String memberBoardForm(Model model) {

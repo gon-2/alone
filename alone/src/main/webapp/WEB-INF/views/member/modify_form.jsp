@@ -22,6 +22,8 @@
 		<div class="clear overflow">
 			<section class="col-md-12">
 				</section>
+			<form role="form" action="/member/modify_run" id="frmRegist"
+				method="post">
 					
 				<div class="form-group">
 					<label>아이디</label> <br>
@@ -65,7 +67,7 @@
 				</div>
 				
 				<button type="submit" class="btn btn-primary">수정완료</button>		
-		
+			</form>
 				
 		</div>
 	</div>
