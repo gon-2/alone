@@ -4,6 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%@ include file="/WEB-INF/views/include/hoon/hoonheader.jsp" %>
+<head>
+<title>건의사항 상세 페이지</title>
 <script>
 $(function(){
 	
@@ -32,10 +34,12 @@ $(function(){
 			}
 		});
 	});
+	// 수정 버튼 클릭 시 이벤트
 	$("#updateBoard").click(function(e){
 		e.preventDefault();
 		$("#modal-338142").trigger("click");
 	});
+	// 수정 저장 버튼 클릭 시 이벤트
 	$("#updateSave").click(function(e){
 		e.preventDefault();
 		var inquiry_password = $("#inquiry_passwords").val();
@@ -57,8 +61,124 @@ $(function(){
 			}
 		});
 	});
+	// 댓글 버튼 클릭 시 이벤트
+	$("#commentBoard").click(function(e){
+		e.preventDefault();
+		$("#modal-162465").trigger("click");
+	});
+	$("#saveComment").click(function(e){
+		e.preventDefault();
+		var inquiry_comment_userid = $("#inquiry_comment_userid").val();
+		var inquiry_comment_content = $("#inquiry_comment_content").val();
+		
+		// 댓글 무결성 검사
+		if(inquiry_comment_userid == "" || inquiry_comment_userid.length == 0){
+			alert("아이디를 입력하세요.");
+			return false;
+		}else if(inquiry_comment_userid.length >= 51){
+			alert("아이디의 길이는 50byte 까지 입니다.");
+			return false;
+		}else if(inquiry_comment_content == "" || inquiry_comment_content.length == 0){
+			alert("댓글을 입력하세요.");
+			return false;
+		}
+		
+		
+		
+		var url = "/insertcomment";
+		var sendData = {
+			"inquiry_comment_userid" : inquiry_comment_userid,
+			"inquiry_comment_content" : inquiry_comment_content
+		};
+		
+		$.post(url , sendData , function(rData){
+			console.log(rData);
+			if(rData == "success"){
+				alert("성공적으로 댓글이 입력 되었습니다.");
+				$("#commentclose").trigger("click");
+				location.href = "/inquiry/listall";
+			}
+		});
+	});
+	// 댓글보기 클릭 시 이벤트
+	$("#showcomment").click(function(e){
+		e.preventDefault();
+		var inquiry_userid = $("#inquiry_userid").val();
+		var url = "/showcomment";
+		var sendData = {
+				"inquiry_userid" : inquiry_userid
+		};
+		
+		// 댓글보기 무결성 검사
+		if(inquiry_userid == "" || inquiry_userid.length == 0){
+			alert("아이디를 입력하세요.");
+		}else if(inquiry_userid.length >= 51){
+			alert("아이디의 길이는 50byte입니다.");
+		}
+		
+		
+		$.get(url , sendData , function(rData){
+			console.log(rData);
+			$.each(rData , function(){
+				$(".comment_userid").html("<h4> 아이디 : " + this.inquiry_comment_userid + "</h4>");
+				$(".comment_content").html("<h4> 내용 : " + this.inquiry_comment_content + "</h4>");
+				$(".comment_date").html("<h4> 시간 : " + changeDateString(this.inquiry_comment_date) + "</h4>");
+			});
+			$("#commentshow").show(1000);
+		});
+	});
 });
+
+	function changeDateString(timestamp){
+		var dateF = new Date(timestamp);
+		
+		var year = dateF.getFullYear();
+		var month = make2digits(dateF.getMonth() + 1);
+		var date = make2digits(dateF.getDate());
+		var hour = make2digits(dateF.getHours());
+		var minute = make2digits(dateF.getMinutes());
+		var second = make2digits(dateF.getSeconds());
+		var dateString = year + "-" + month + "-" + date + "-" + hour + ":" + minute + ":" + second;
+		return dateString;
+	}
+	
+	function make2digits(num){
+		if(num < 10){
+			num = "0" + num;
+		}
+		return num;
+	}
 </script>
+</head>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			 <a id="modal-162465" href="#modal-container-162465" role="button" class="btn" data-toggle="modal" style="display: none;">Launch demo modal</a>
+			<div class="modal fade" id="modal-container-162465" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="myModalLabel">댓글을 입력하세요.</h5> 
+							<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<label for="inquiry_comment_userid">아이디 : </label>
+							<input type="text" id="inquiry_comment_userid" name="inquiry_comment_userid" placeholder="아이디 입력"><br>
+							<label for="inquiry_comment_content">댓글 : </label>
+							<input type="text" id="inquiry_comment_content" name="inquiry_comment_content" placeholder="댓글 입력" style="width: 300px;">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" id="saveComment">댓글 저장</button> 
+							<button type="button" class="btn btn-secondary" data-dismiss="modal" id="commentclose">닫기</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -110,16 +230,12 @@ $(function(){
 							<input type="hidden" id="inquiry_date" name="inquiry_date"> 
 						</div>
 						<div class="modal-footer">
-							 
-							<button type="button" class="btn btn-primary" id="updateSave">Save changes</button> 
-							<button type="button" class="btn btn-secondary" id="close" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary" id="updateSave">수정저장</button> 
+							<button type="button" class="btn btn-secondary" id="close" data-dismiss="modal">취소</button>
 						</div>
 					</div>
-					
 				</div>
-				
 			</div>
-			
 		</div>
 	</div>
 </div>
@@ -136,7 +252,7 @@ $(function(){
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<form role="form" action="" method="">
+			<form role="form">
 				<div class="form-group">
 					<label for="class_board_title">건의 제목</label>
 					<input type="text" class="form-control" id="inquiry_title" name="inquiry_title" style="width:300px;" readonly="readonly" value="${inquiryBoardVo.inquiry_title}"/>
@@ -151,8 +267,15 @@ $(function(){
 				</div>
 				<button type="button" class="btn btn-warning" id="commentBoard">댓글쓰기</button>
 				<button type="button" class="btn btn-primary" id="updateBoard">수정</button>
-				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button>
+				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button><br><br>
+				<input type="text" id="inquiry_userid" name="inquiry_userid" placeholder="댓글을 볼 게시자 아이디">
+				<button type="button" class="btn btn-info" id="showcomment">댓글보기</button>
 			</form> 
+		</div><br>
+		<div id="commentshow" style="display: none;">
+			<p id="comment_userid" class="comment_userid"></p>
+			<p id="comment_content" class="comment_content"></p>
+			<p id="comment_date" class="comment_date"></p>
 		</div>
 	</div>
 </div>

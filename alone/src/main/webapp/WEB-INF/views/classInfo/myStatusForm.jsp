@@ -23,25 +23,9 @@
 			} else {
 				r_num = r_num1 + r_num2;
 			}
-			console.log("주민번호: " + r_num);
-			var student_name = $("#c_name").val();
-			console.log("신청자 이름: " + c_name); //신청자이름
-			if (student_name.langth == 0) {
-				alert("이름을 입력해주세요.");
-			}
-			var sData = {
-				"r_num" : r_num,
-				"student_name" : student_name
-			}
-			var url = "/classInfo/myStatusRun";
-			$.post(url, sData, function(rData) {
-				if (rData == "success") {
-					console.log(r_num);
-									location.href = "/classInfo/myStatusView?r_num=" + r_num;
-				} else {
-					alert("주민번호를 확인해 주세요.");
-				}
-			});
+			$("#r_num").val(r_num);
+			$("#r_numForm").submit();
+			
 		});
 	});
 </script>
@@ -61,7 +45,8 @@
 							<div class="row">
 								<div class="col-md-2"></div>
 								<div class="col-md-8">
-									<form role="form">
+									<form role="form" action="/classInfo/myStatusRun" id="r_numForm" method="post">
+									<input type="hidden" name="r_num" id="r_num">
 										<div class="form-group">
 											<table>
 												<thead>
@@ -85,7 +70,7 @@
 												</thead>
 												<tbody>
 													<tr>
-														<td><input type="text" class="form-control" id="c_name" style="width: 50;" required="required" /></td>
+														<td><input type="text" class="form-control"  style="width: 50;" required="required" /></td>
 
 													</tr>
 												</tbody>

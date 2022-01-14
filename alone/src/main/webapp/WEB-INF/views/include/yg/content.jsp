@@ -19,16 +19,18 @@ $(function(){
 								<table class="table" >
 									<thead>
 										<tr>
+											<th>#</th>
 											<th>과정명</th>
 											<th>교육기간</th>
 											<th>신청하기</th>
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${list}" var="ClassInfoVo">
+									<c:forEach items="${list}" var="classInfoVo">
 										<tr>
-											<td>${ClassInfoVo.c_title}</td>
-											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
+											<td>${classInfoVo.info_code}</td>
+											<td>${classInfoVo.c_title} / ${classInfoVo.c_time}시간 / ${classInfoVo.time_code_name }</td>
+											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
 											<td><a href="${classInfoVo.info_code}" class="homeRegist btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
@@ -41,16 +43,18 @@ $(function(){
 								<table class="table">
 									<thead>
 										<tr>
+											<th>#</th>
 											<th>과정명</th>
 											<th>교육기간</th>
 											<th>신청하기</th>
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${weekly}" var="ClassInfoVo">
+									<c:forEach items="${weekly}" var="classInfoVo">
 										<tr>
-											<td>${ClassInfoVo.c_title }</td>
-											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
+											<td>${classInfoVo.info_code}</td>
+											<td>${classInfoVo.c_title} / ${classInfoVo.c_time}시간 / ${classInfoVo.time_code_name }</td>
+											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
 											<td><a href="${classInfoVo.info_code}" class="homeRegist btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
@@ -63,16 +67,19 @@ $(function(){
 								<table class="table">
 								<thead>
 										<tr>
+											<th>#</th>
 											<th>과정명</th>
 											<th>교육기간</th>
 											<th>신청하기</th>
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${weekend}" var="ClassInfoVo">
+									<c:forEach items="${night}" var="classInfoVo">
 										<tr>
-											<td>${ClassInfoVo.c_title }</td>
-											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
+											<td>${classInfoVo.info_code}</td>
+											<td>${classInfoVo.c_title} / ${classInfoVo.c_time}시간 / ${classInfoVo.time_code_name }</td>
+											<td>${classInfoVo.c_title }</td>
+											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
 											<td><a href="${classInfoVo.info_code}" class="homeRegist btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>
@@ -85,16 +92,18 @@ $(function(){
 								<table class="table">
 								<thead>
 										<tr>
+											<th>#</th>
 											<th>과정명</th>
 											<th>교육기간</th>
 											<th>신청하기</th>
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${night}" var="ClassInfoVo">
+									<c:forEach items="${weekend}" var="classInfoVo">
 										<tr>
-											<td>${ClassInfoVo.c_title }</td>
-											<td>${ClassInfoVo.start_date}<br>${ClassInfoVo.end_date}</td>
+											<td>${classInfoVo.info_code}</td>
+											<td>${classInfoVo.c_title} / ${classInfoVo.c_time}시간 / ${classInfoVo.time_code_name }</td>
+											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
 											<td><a href="${classInfoVo.info_code}" class="homeRegist btn btn-sm btn-outline-danger">신청하기</a></td>
 										</tr>
 									</c:forEach>

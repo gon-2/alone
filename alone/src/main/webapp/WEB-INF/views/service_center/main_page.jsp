@@ -9,13 +9,6 @@
 </head>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12" align="center">
-			<img alt="Bootstrap Image Preview" src="https://mblogthumb-phinf.pstatic.net/MjAxOTA4MDZfMTY1/MDAxNTY1MDU0MzE3MjIy.wM-TmJTbL63s_YyZ7497_aENIs3SHp8tYoB4a7h462sg.zPZhyu5aeGAZ90vUeIrlH6mQhUove_uZBcFlb5mkFaog.JPEG.creativeintelligence/%EB%A7%88%ED%81%AC%EC%A3%BC%EC%BB%A4%EB%B2%84%EA%B7%B8.jpg?type=w800" style="width:auto; height:auto; margin-bottom: 100px; margin-right:100px;"/>
-		</div>
-	</div>
-</div>
-<div class="container-fluid">
-	<div class="row">
 		<div class="col-md-6">
 			<h4 align="center" style="margin-right: 100px;"><a href="/customer_main/faq">자주 묻는 질문 - 수강신청</a></h4>
 			<br>

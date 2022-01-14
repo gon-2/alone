@@ -18,7 +18,7 @@ import com.kh.alone.vo.RegistCommentVo;
 @Repository
 public class RegistCommentDao {
 	
-	private static final String NAMESPACE = "com.kh.alone.mappers.comment.";
+	private static final String NAMESPACE = "com.kh.alone.mappers.classregcomment.";
 
 	@Inject
 	private SqlSession session;

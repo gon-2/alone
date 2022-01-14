@@ -14,41 +14,37 @@
 		<a href="#">상담신청하기</a>
 	</header>
 </section>
+
 <!-- Main -->
 <section class="wrapper style1">
-	<div class="container">
-		<div class="clear overflow">
-			<section class="col-md-12">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-12">
-							<table class="table table-hover table-striped">
-								<thead>
-									<tr>
-										<th>#</th>
-										<th>훈련직종 분류</th>
-										<th>교육과정 분류</th>
-										<th>과정 제목</th>
-										<th>이름</th>
-										<th>신청현황</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${mine}" var="studentClassRegistVo">
-										<tr>
-											<td>1</td>
-											
-											<td>${StudentClassRegist.student_name}</td>
-											<td>신청완료</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</section>
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>신청자</th>
+						<th>강의명</th>
+						<th>강의시작일</th>
+						<th>강의종료일</th>
+						<th>진행현황</th>
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach items="${mineList}" var="studentClassRegistVo">
+					<tr>
+						<td>${studentClassRegistVo.student_name}</td>
+						<td>${studentClassRegistVo.c_title} / ${studentClassRegistVo.time_code_name} / ${studentClassRegistVo.c_time}시간</td>						
+						<td>${studentClassRegistVo.start_date}</td>
+						<td>${studentClassRegistVo.end_date}</td>
+						<td>진행중</td>
+					</tr>
+				</c:forEach>
+						
+				</tbody>
+			</table>
 		</div>
 	</div>
+</div>
 </section>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

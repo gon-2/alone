@@ -6,6 +6,34 @@
 <%@ include file="/WEB-INF/views/include/hoon/hoonheader.jsp" %>
 <head>
 	<title>수강신청 게시판 페이지</title>
+<script>
+	// 무결성 검사
+	function checkValue(){
+		var class_board_userid_getid = document.getElementById("class_board_userid");
+		var class_board_title_getid = document.getElementById("class_board_title");
+		var class_board_content_getid = document.getElementById("class_board_content");
+		var frmReg = document.frmReg;
+		
+		var class_board_userid_value = class_board_userid_getid.value;
+		var class_board_title_value = class_board_title_getid.value;
+		var class_board_content_value = class_board_content.value;
+		
+		if(class_board_userid_value == "" || class_board_userid_value.length == 0 || class_board_userid_value.length >= 51){
+			alert("아이디의 길이는 총 50byte 까지 입니다.");
+			return false;
+		}else if(class_board_title_value == "" || class_board_title_value.length == 0 || class_board_title_value.length >= 301){
+			alert("제목의 길이는 총 300byte 까지 입니다.");
+			return false;
+		}else if(class_board_content_value == "" || class_board_content_value.length == 0 || class_board_content_value.length >= 3001){
+			alert("내용의 길이는 총 3000byte 까지 입니다.");
+			return false;
+		}else{
+			frmReg.action = "/class_board/run";
+			frmReg.method = "post";
+			frmReg.submit();
+		}
+	}
+</script>
 </head>
 <div class="container-fluid">
 	<div class="row">
@@ -20,7 +48,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<form role="form" action="/class_board/run" method="post">
+			<form role="form" name="frmReg">
 				<div class="form-group">		 
 					<label for="class_board_userid">아이디</label>
 					<input type="text" class="form-control" id="class_board_userid" name="class_board_userid" style="width:200px;" placeholder="아이디 입력"/>
@@ -41,7 +69,7 @@
 					<label for="class_board_content">상담 내용</label><br>
 					<textarea style="width:300px; height:100px;" placeholder="상담할 내용을 입력하세요." id="class_board_content" name="class_board_content"></textarea>
 				</div>
-				<button type="submit" class="btn btn-primary">게시</button>
+				<button type="submit" class="btn btn-primary" onclick="checkValue();">게시</button>
 				<button type="reset" class="btn btn-success">다시 입력</button>
 			</form> 
 		</div>

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
-import javax.websocket.server.PathParam;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -70,32 +69,35 @@ public class ClassInfoController {
 	
 	
 	
-	//온라인 접수 동의
+	// 온라인 접수 동의(메뉴바에서 접근)
 	@RequestMapping(value="/onlineAgree", method=RequestMethod.GET)
 	public String onlineAgree() {
 		return "classInfo/onlineAgree";
 	}
 	
+	
+	
 	//메인페이지에서 수강 신청 하기 눌렀을때 데이터 넘겨주기
 	@RequestMapping(value="/homeRegist", method=RequestMethod.GET)
-	public String selectTitle(Model model, int info_code, HttpSession session) {
+	public String selectTitle(Model model, int info_code) {
 		List<ClassInfoVo> list = service.selectAll();
 		model.addAttribute("list", list);
 		ClassInfoVo classInfoVo = service.selectByCno(info_code);
-		session.setAttribute("classInfoVo", classInfoVo);
-		return"redirect:/classInfo/onlineAgree";
+		model.addAttribute("classInfoVo", classInfoVo);
+		return "classInfo/onlineAgree";
 	}
 	
 	// 온라인 접수 동의 후 입력양식폼
 	@RequestMapping(value="/onlineRegist", method=RequestMethod.GET)
-	public String onlineRegist(HttpSession session, Model model) {
+	public String onlineRegist(HttpSession session, Model model, int info_code) {
 		List<ClassInfoVo> list = service.selectAll();
 		
 		List<ClassInfoVo> weekly = service.classListByTimeCode(WEEKLY);
 		List<ClassInfoVo> night = service.classListByTimeCode(NIGHT);
 		List<ClassInfoVo> weekend = service.classListByTimeCode(WEEKEND);
+		ClassInfoVo classInfoVo = service.selectByCno(info_code);
 		
-		
+		model.addAttribute("classInfoVo", classInfoVo);
 		model.addAttribute("list", list);
 		model.addAttribute("weekly", weekly);
 		model.addAttribute("night", night);
@@ -120,7 +122,6 @@ public class ClassInfoController {
 		System.out.println("time_code:" + time_code);
 		service.classListByTimeCode(time_code);
 		List<ClassInfoVo> timeList = service.classListByTimeCode(time_code);
-		System.out.println("timeList: " + timeList);
 		return timeList;
 	}
 	
@@ -144,22 +145,15 @@ public class ClassInfoController {
 	
 	// 주민번호로 확인하는 진행현황확인 처리
 	@RequestMapping(value="/myStatusRun", method=RequestMethod.POST)
-	@ResponseBody
-	public String myStatus(StudentClassRegistVo vo) {
-		String r_num = vo.getR_num();
-		String mine = service.selectMine(r_num);
-		if (mine.length() == 0) {
-			return "false";
-		}
-		return "success";
+	public String myStatus(String r_num, Model model) {
+		StudentClassRegistVo mine = service.selectMine(r_num);
+		model.addAttribute("r_num", r_num);
+		model.addAttribute("mine", mine);
+		
+		List<StudentClassRegistVo> mineList = service.selectMineList(r_num);
+		model.addAttribute("mineList", mineList);
+		return  "/classInfo/myStatusView";
 	}
 	
-	// 주민번호로 확인하는 진행현황 보여주기
-	@RequestMapping(value="/myStatusView", method=RequestMethod.GET)
-	public String myStatusView(Model model, String r_num) {
-		List<StudentClassRegistVo> mine = service.selectMineList(r_num);
-		model.addAttribute("mine", mine);
-		return "/classInfo/myStatusView";
-	}
 
 }
