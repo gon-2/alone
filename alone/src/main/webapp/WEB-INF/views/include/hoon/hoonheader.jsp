@@ -188,7 +188,10 @@
                     	 <c:when test="${empty sessionScope.memberVo}">
 
                      	 </c:when>
-                     	<c:otherwise><h1 id="userid">${sessionScope.memberVo.userid}</h1></c:otherwise>
+                     	<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}"><h1 align="center">관리자님 환영합니다!</h1></c:when>
+                     	<c:otherwise>
+                     		<h1>${sessionScope.memberVo.userid}님 환영합니다!</h1>
+                     	</c:otherwise>
                     </c:choose> 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">

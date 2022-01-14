@@ -146,7 +146,14 @@ $(function(){
 							<td>${InquiryBoardVo.inquiry_number}</td>
 							<td><a href="/inquiry/getBoard?inquiry_title=${InquiryBoardVo.inquiry_title}" id="getBoard" class="getBoard">${InquiryBoardVo.inquiry_title}</a></td>
 							<td>${InquiryBoardVo.inquiry_content}</td>
-							<td>${InquiryBoardVo.inquiry_userid}</td>
+							<c:choose>
+								<c:when test="${InquiryBoardVo.inquiry_userid == 'service_center_admin'}">
+									<td>관리자</td>
+								</c:when>
+								<c:otherwise>
+									<td>${InquiryBoardVo.inquiry_userid}</td>
+								</c:otherwise>
+							</c:choose>
 							<td><fmt:formatDate value="${InquiryBoardVo.inquiry_date}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
 							<td>${InquiryBoardVo.inquiry_viewcnt}</td>
 							<td><a href="/inquiry/deleteBoardAdmin?inquiry_title=${InquiryBoardVo.inquiry_title}" class="btn btn-sm btn-danger">삭제</a></td>				
