@@ -298,7 +298,7 @@
                                         <div class="small text-gray-500" id="messageDate"></div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">메시지 더 보기</a>
+                                <a class="dropdown-item text-center small text-gray-500" id="messageList" href="/messageList">메시지 더 보기</a>
                             </div>
                         </li>
 

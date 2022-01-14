@@ -10,7 +10,6 @@ package com.kh.alone.vo;
 import java.sql.Timestamp;
 
 public class ServiceMessageVo {
-	private int service_message_number;
 	private String service_message_sender;
 	private String service_message_receiver;
 	private String service_message_title;
@@ -22,15 +21,6 @@ public class ServiceMessageVo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public int getService_message_number() {
-		return service_message_number;
-	}
-
-	public void setService_message_number(int service_message_number) {
-		this.service_message_number = service_message_number;
-	}
-
 	public String getService_message_sender() {
 		return service_message_sender;
 	}
@@ -78,15 +68,16 @@ public class ServiceMessageVo {
 	public void setService_message_count(int service_message_count) {
 		this.service_message_count = service_message_count;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "ServiceMessageVo [service_message_number=" + service_message_number + ", service_message_sender="
-				+ service_message_sender + ", service_message_receiver=" + service_message_receiver
-				+ ", service_message_title=" + service_message_title + ", service_message_content="
-				+ service_message_content + ", service_message_count=" + service_message_count
-				+ ", service_message_date=" + service_message_date + "]";
+		return "ServiceMessageVo [service_message_sender=" + service_message_sender + ", service_message_receiver="
+				+ service_message_receiver + ", service_message_title=" + service_message_title
+				+ ", service_message_content=" + service_message_content + ", service_message_count="
+				+ service_message_count + ", service_message_date=" + service_message_date + "]";
 	}
+
+
 	
 	
 

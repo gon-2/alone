@@ -39,7 +39,7 @@ public class ServiceMessageController {
 	
 	@ResponseBody
 	@RequestMapping(value="/recieveMessage" , method=RequestMethod.GET)
-	public List<ServiceMessageVo> recieveMessage(String service_message_receiver , Model model) {
+	public List<ServiceMessageVo> recieveMessage(String service_message_receiver) {
 		List<ServiceMessageVo> recieverList = messageservice.recieveMessage(service_message_receiver);
 		System.out.println("ServiceMessageController , recieveMessage , recieverList >> " + recieverList);
 		if(recieverList == null) {
@@ -48,4 +48,13 @@ public class ServiceMessageController {
 		
 		return recieverList;
 	}
+	
+	@RequestMapping(value="/messageList" , method=RequestMethod.GET)
+	public String MessageList(Model model){
+		List<ServiceMessageVo> recieverLists = messageservice.recieveMessages();
+		System.out.println("ServiceMessageController , recieveMessage , recieverList >> " + recieverLists);
+		model.addAttribute("recieverLists" , recieverLists);
+		return "/consult/message_list_page";
+	}
+	
 }

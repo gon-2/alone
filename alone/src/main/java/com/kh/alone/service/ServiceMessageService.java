@@ -35,5 +35,10 @@ public class ServiceMessageService {
 		return recieverList;
 	}
 
+	// 전체 메시지 내용
+	public List<ServiceMessageVo> recieveMessages(){
+		List<ServiceMessageVo> recieverList = messagedao.recieveMessages();
+		return recieverList;
+	}
 
 }

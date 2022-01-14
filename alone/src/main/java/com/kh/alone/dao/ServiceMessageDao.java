@@ -36,4 +36,9 @@ public class ServiceMessageDao {
 		List<ServiceMessageVo> recieverList = session.selectList(NAMESPACE + "recieveMessage" , service_message_receiver);
 		return recieverList;
 	}
+	// 전체 메시지 내용
+	public List<ServiceMessageVo> recieveMessages(){
+		List<ServiceMessageVo> recieverList = session.selectList(NAMESPACE + "recieveMessages");
+		return recieverList;
+	}
 }
