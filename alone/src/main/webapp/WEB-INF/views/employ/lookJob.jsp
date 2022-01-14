@@ -56,13 +56,13 @@ $(function() {
 					</tr>
 				</thead>
 				<tbody>
-				<tr>
 					<c:forEach items="${employList}" var="LookJobVo">
+				<tr>
 						<td class="td_lookJob">${LookJobVo.jobno}</td>
 						<td class="td_lookJob" width="600px"><a href="/employ/lookJobInformation?jobno=${LookJobVo.jobno}">${LookJobVo.company}</a></td>
 						<td class="td_lookJob">${LookJobVo.recruitmentStart} ~ ${LookJobVo.recruitmentEnd}</td>
-					</c:forEach>		
 				</tr>
+					</c:forEach>		
 				</tbody>
 			</table>
 			<nav>
