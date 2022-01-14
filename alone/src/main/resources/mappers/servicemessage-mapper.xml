@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper			
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"			
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.alone.mappers.servicemessage">
+	<!-- 메시지 보내기 -->
+	<insert id="sendMessage">
+		insert into tbl_service_message(service_message_sender , service_message_receiver , service_message_title , service_message_content , service_message_date)
+		values(#{service_message_sender} , #{service_message_receiver} , #{service_message_title} , #{service_message_content} , sysdate)
+	</insert>
+	<!-- 메시지 받은사람은 메세지 개수 + 1 -->
+	<update id="receiveCount">
+		update tbl_service_message set service_message_count = service_message_count + 1
+		where service_message_receiver = #{service_message_receiver}
+	</update>
+	<!-- 메세지 받은 사람의 메세지 내용들 -->
+	<select id="recieveMessage" resultType="ServiceMessageVo">
+		select * from tbl_service_message
+		where service_message_receiver = #{service_message_receiver}
+	</select>
+
+</mapper>

@@ -64,6 +64,16 @@ create table tbl_inquiry_board_comment(
     inquiry_comment_date timestamp default sysdate
 );
 
+-- 메세지 테이블 (보낸사람 , 받는사람 , 메세지 제목 , 내용 , 보낸 날짜 )  
+create table tbl_service_message(
+    service_message_sender varchar(50) references tbl_member(userid) not null,                                                  
+    service_message_receiver varchar(50) references tbl_member(userid) not null,                                                                        
+    service_message_title varchar2(500) not null,                                                                               
+    service_message_content varchar2(1000) not null,
+    service_message_count number default 0,
+    service_message_date timestamp default sysdate                                                                  
+);
+
 -- 건의사항 게시판 댓글 글번호 시퀀스
 create sequence seq_inquiry_comment_no;
 

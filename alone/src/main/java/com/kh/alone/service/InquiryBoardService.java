@@ -66,4 +66,5 @@ public class InquiryBoardService {
 	public void updateBoard(InquiryBoardVo inboardvo) {
 		boardDao.updateBoard(inboardvo);
 	}
+
 }

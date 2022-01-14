@@ -191,7 +191,14 @@ $(function(){
 				</select>&nbsp;
 				<input type="text" id="keyword" name="keyword" placeholder="검색어 입력" style="width:300px;">&nbsp;&nbsp;&nbsp;
 				<button type="button" class="btn btn-primary" id="btnSearch">검색</button>
-				<a href="/inquiry/form" class="btn btn-success" style="float:right; margin-right:100px;">글 작성</a>
+				<c:choose>
+					<c:when test="${empty sessionScope.memberVo}">
+						
+					</c:when>
+					<c:otherwise>
+						<a href="/inquiry/form" class="btn btn-success" style="float:right; margin-right:100px;">글 작성</a>
+					</c:otherwise>
+				</c:choose>
 			</div> 		
 		</div>
 	</div>

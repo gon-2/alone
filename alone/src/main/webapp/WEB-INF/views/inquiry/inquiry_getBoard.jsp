@@ -127,6 +127,10 @@ $(function(){
 			$("#commentshow").show(1000);
 		});
 	});
+	
+	$("#logins").click(function(){
+		location.href = "/login_form";
+	});
 });
 
 	function changeDateString(timestamp){
@@ -267,7 +271,14 @@ $(function(){
 				</div>
 				<button type="button" class="btn btn-warning" id="commentBoard">댓글쓰기</button>
 				<button type="button" class="btn btn-primary" id="updateBoard">수정</button>
-				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button><br><br>
+				<c:choose>
+					<c:when test="${empty sessionScope.memberVo}">
+						<button type="button" id="logins" class="btn btn-primary">로그인</button>
+					</c:when>
+					<c:otherwise>
+						<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button><br><br>
+					</c:otherwise>
+				</c:choose>
 				<input type="text" id="inquiry_userid" name="inquiry_userid" placeholder="댓글을 볼 게시자 아이디">
 				<button type="button" class="btn btn-info" id="showcomment">댓글보기</button>
 			</form> 

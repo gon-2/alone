@@ -28,7 +28,53 @@
 
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-
+    <script>
+    	$(function(){
+    		$("#Clickmessages").click(function(e){
+    			console.log("클릭됨");
+    			e.preventDefault();
+    		});
+    		$("#check").click(function(e){
+    			e.preventDefault();
+    			$("#check").prop("click" , false);
+    		 	var service_message_receiver = $("#service_message_receiver").val();
+    		 	var sendData = {
+    		 			"service_message_receiver" : service_message_receiver
+    		 	};
+    		 	var url = "/recieveMessage";
+    		 	
+    		 	$.get(url , sendData , function(rData){
+    		 		e.preventDefault();
+    		 		console.log(rData);
+    		 		$.each(rData , function(i){
+    		 			$("#message_count").text(this.service_message_count);
+    		 			$("#messageContent").text(this.service_message_sender + "님의 메시지입니다.");
+    		 			$("#messageDate").html(this.service_message_content + "<br>" + changeDateString(this.service_message_date));
+    		 		});
+    			});
+    		});
+    	});
+    	
+    	function changeDateString(timestamp){
+    		var dateF = new Date(timestamp);
+    		
+    		var year = dateF.getFullYear();
+    		var month = make2digits(dateF.getMonth() + 1);
+    		var date = make2digits(dateF.getDate());
+    		var hour = make2digits(dateF.getHours());
+    		var minute = make2digits(dateF.getMinutes());
+    		var second = make2digits(dateF.getSeconds());
+    		var dateString = year + "-" + month + "-" + date + "-" + hour + ":" + minute + ":" + second;
+    		return dateString;
+    	}
+    	
+    	function make2digits(num){
+    		if(num < 10){
+    			num = "0" + num;
+    		}
+    		return num;
+    	}
+    </script>
 </head>
 
 <body id="page-top">
@@ -81,14 +127,14 @@
             <hr class="sidebar-divider">
 
             <!--  Nav Item - Charts -->
-            <li class="nav-item">
+<!--             <li class="nav-item">
                 <a class="nav-link" href="/customer_main/notice">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <span>공지 사항</span></a>
-            </li>
+            </li> -->
             
             <li class="nav-item">
-                <a class="nav-link" href="/customer_main/consult">
+                <a class="nav-link" href="/customer_main/consultmessage">
                     <i class="fas fa-coffee"></i>
                     <span>수강생 상담</span></a>
             </li>
@@ -142,7 +188,7 @@
                     	 <c:when test="${empty sessionScope.memberVo}">
                     	 	<h1>로그인 하세요.</h1>
                      	 </c:when>
-                     	<c:otherwise><h1>${sessionScope.memberVo.userid}(${sessionScope.memberVo.username})</h1></c:otherwise>
+                     	<c:otherwise><h1 id="userid">${sessionScope.memberVo.userid}</h1></c:otherwise>
                     </c:choose> 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -229,72 +275,33 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Messages -->
-<!--                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                        <!-- Nav Item - 상담 메시지 -->
+                         <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="Clickmessages" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                Counter - Messages
-                                <span class="badge badge-danger badge-counter">7</span>
+                           <c:choose>
+                           		<c:when test="${empty sessionScope.memberVo}"></c:when>
+                                <c:otherwise>
+                                	<i class="fas fa-envelope fa-fw"></i>메시지
+                                </c:otherwise>
+                           </c:choose>
                             </a>
- --><!--                             Dropdown - Messages
+                            <!--  Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
+                                <h6 class="dropdown-header">상담 메시지</h6>
+                                <input type="text" id="service_message_receiver" name="service_message_receiver" placeholder="사용자 아이디를 입력">
+                                <button type="button" id="check">확인</button>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="/img/undraw_profile_1.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                    <div class="font-weight-bold" id="messagelist">
+                                        <div class="text-truncate" id="messageContent"></div>
+                                        <div class="small text-gray-500" id="messageDate"></div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="/img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="/img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">메시지 더 보기</a>
                             </div>
                         </li>
- -->
+
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
