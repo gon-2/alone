@@ -55,7 +55,7 @@ public class CustomerServiceMainController {
 	}
 
 	// 수강생 상담 메시지 페이지
-	@RequestMapping(value="/consult" , method=RequestMethod.GET)
+	@RequestMapping(value="/consultmessage" , method=RequestMethod.GET)
 	public String consultPage() {
 		return "/consult/message_consult_page";
 	}
