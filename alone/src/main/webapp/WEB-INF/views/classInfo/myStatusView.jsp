@@ -23,16 +23,21 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>#</th>
-						<th>강의명</th>
 						<th>신청자</th>
+						<th>강의명</th>
+						<th>강의시작일</th>
+						<th>강의종료일</th>
 						<th>진행현황</th>
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach items="mine" var="studentClassRegistVo">
+				<c:forEach items="${mineList}" var="studentClassRegistVo">
 					<tr>
-						<td>${studentClassRegistVo.student_name }</td>
+						<td>${studentClassRegistVo.student_name}</td>
+						<td>${studentClassRegistVo.c_title} / ${studentClassRegistVo.time_code_name} / ${studentClassRegistVo.c_time}시간</td>						
+						<td>${studentClassRegistVo.start_date}</td>
+						<td>${studentClassRegistVo.end_date}</td>
+						<td>진행중</td>
 					</tr>
 				</c:forEach>
 						

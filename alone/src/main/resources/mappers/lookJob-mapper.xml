@@ -16,6 +16,35 @@
        order by jobno desc
     </select>
     
+    <select id="getLookJobUpload" resultType="LookJobVo">
+    	select * from lookJob
+    	where address = #{address}
+    </select>
+    
+    <insert id="insertJobImages">
+    	insert into job_images(job_image, jobno)
+		values(#{job_image}, #{jobno})
+    </insert>
+    
+    <select id="JobImages" resultType="LookJobVo">
+    	select * from job_images
+		where jobno = #{jobno}
+    </select>
+    
+    <select id="getJobnoNextVal" resultType="int">
+		select seq_jobno.nextval
+		from dual
+	</select>
+    
+    <insert id="insertJobInforMation">
+    	insert into lookJob(jobno, company, employForm, companyNum, companyForm,
+							representative, personInCharge, contact, fax, mail, address, department,
+							work, workTime, salary, recruitmentStart, recruitmentEnd, content)
+		values(#{jobno}, #{company}, #{employForm}, #{companyNum}, #{companyForm},
+		#{representative}, #{personInCharge}, #{contact}, #{fax}, #{mail}, #{address}, #{department},
+		#{work}, #{workTime}, #{salary}, #{recruitmentStart}, #{recruitmentEnd}, #{content})
+    </insert>
+    
 	<select id="lookJobTestList" resultType="JobTestVo">
 		select tno, title, writers, to_char(sysdate, 'YYYY-MM-DD')
 		test_date, to_char(sysdate, 'HH:MI') test_time from test

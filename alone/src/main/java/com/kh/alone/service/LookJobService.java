@@ -33,6 +33,34 @@ public class LookJobService {
 		return lookJobVo;
 	}
 	
+	// 업로드 구인정보 불러오기
+	public LookJobVo getLookJobUpload(LookJobVo vo) {
+		LookJobVo lookJobVo = lookJobDao.getLookJobUpload(vo);
+		return lookJobVo;
+	}
+	
+	// 구인정보 업로드 이미지 저장
+	public void insertJobImages(int jobno, String safeFile) {
+		lookJobDao.insertJobImages(jobno, safeFile);
+	}
+	
+	// 구인정보 이미지 불러오기
+	public List<LookJobVo> JobImage(int jobno) {
+		List<LookJobVo> jobImageList = lookJobDao.JobImage(jobno);
+		return jobImageList;
+	}
+	
+	// 구인 rno 얻기
+	public int getJobnoNextVal() {
+		int jobno = lookJobDao.getJobnoNextVal();
+		return jobno;
+	}
+	
+	// 회사구인 정보 추가하기
+	public void insertJobInforMation(LookJobVo lookJobVo) {
+		lookJobDao.insertJobInforMation(lookJobVo);
+	}
+	
 	// 자격증 안내 확인
 	public List<JobTestVo> lookJobTestList() {
 		List<JobTestVo> list = lookJobDao.lookJobTestList();

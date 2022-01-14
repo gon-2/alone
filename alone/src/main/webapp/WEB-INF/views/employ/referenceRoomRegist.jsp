@@ -23,7 +23,7 @@ $(function() {
 		var formData = new FormData();
 			
 		formData.append("file", $("input[name=r_images]")[i].files[0]);
-		var url = "/upload/upload";
+		var url = "/upload/uploadAjax";
 			$.ajax({
 	                url: url,
 	                processData: false,

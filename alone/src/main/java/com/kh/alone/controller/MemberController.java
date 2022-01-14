@@ -25,14 +25,13 @@ public class MemberController {
 	private MemberService memberService;
 	
 	
-//	@RequestMapping(value="/list_all", method=RequestMethod.GET)
-//	public String memberListAll(Model model, PagingDto pagingDto) {
-//		System.out.println("MemberController, memberListAll, pagingDto:" + pagingDto);
-//		List<MemberVo> list = memberService.selectAll(pagingDto);
-//		model.addAttribute("list", list);
-//		model.addAttribute("pagingDto", pagingDto);
-//		return "member/list_all";
-//	}
+	@RequestMapping(value="/list_all", method=RequestMethod.GET)
+	public String memberListAll(Model model) {
+		System.out.println("MemberController, memberListAll");
+		List<MemberVo> list = memberService.selectAll();
+		model.addAttribute("list", list);
+				return "member/list_all";
+	}
 	
 	// 회원등록
 	@RequestMapping(value="/regist_form", method=RequestMethod.GET)

@@ -53,7 +53,7 @@ public class ClassRegistBoardDaoTest {
 		vo.setInquiry_content("내용1");
 		vo.setInquiry_userid("user01");
 		vo.setInquiry_password("1234");
-		vo.setInquiry_photoname("C:\\fakepath\\suneung.jpg");
+//		vo.setInquiry_photoname("C:\\fakepath\\suneung.jpg");
 		dao.insertinquire(vo);
 	}
 	*/

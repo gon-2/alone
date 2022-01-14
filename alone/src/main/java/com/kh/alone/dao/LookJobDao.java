@@ -39,6 +39,40 @@ public class LookJobDao {
 		return lookJobVo;
 	}
 	
+	// 업로드 구인정보 불러오기
+	public LookJobVo getLookJobUpload(LookJobVo vo) {
+		LookJobVo lookJobVo = sqlSession.selectOne(NAMESPACE + "getLookJobUpload", vo);
+		return lookJobVo;
+	}
+	
+	// 구인정보 업로드 이미지 저장
+	public void insertJobImages(int jobno, String safeFile) {
+		System.out.println("jobno: " + jobno);
+		System.out.println("safeFile: " + safeFile);
+		Map<String, Object> map = new HashMap<>();
+		map.put("jobno", jobno);
+		map.put("job_image", safeFile);
+		System.out.println("map: " + map);
+		sqlSession.insert(NAMESPACE + "insertJobImages", map);
+	}
+	
+	// 구인정보 이미지 불러오기
+	public List<LookJobVo> JobImage(int jobno) {
+		List<LookJobVo> jobImageList = sqlSession.selectList(NAMESPACE + "JobImages", jobno);
+		return jobImageList;
+	}
+	
+	// 구인 jobno 얻기
+	public int getJobnoNextVal() {
+		int jobno = sqlSession.selectOne(NAMESPACE + "getJobnoNextVal");
+		return jobno;
+	}
+	
+	// 회사구인 정보 추가
+	public void insertJobInforMation(LookJobVo lookJobVo) {
+		sqlSession.insert(NAMESPACE + "insertJobInforMation", lookJobVo);
+	}
+	
 	// 자격증 안내 확인
 	public List<JobTestVo> lookJobTestList() {
 		List<JobTestVo> list = sqlSession.selectList(NAMESPACE + "lookJobTestList");

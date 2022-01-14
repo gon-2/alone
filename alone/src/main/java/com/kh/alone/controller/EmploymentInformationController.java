@@ -41,13 +41,25 @@ public class EmploymentInformationController {
 	public String LookJobInformation(Model model, int jobno) {
 		System.out.println(jobno);
 		LookJobVo lookJobVo = lookJobService.getLookJob(jobno);
+		List<LookJobVo> jobImageList = lookJobService.JobImage(jobno);
 		model.addAttribute("lookJobVo", lookJobVo);
+		model.addAttribute("jobImageList", jobImageList);
 		return "employ/lookJobInformation";
 	}
 	
 	@RequestMapping(value="/lookJobInforMationRegist", method=RequestMethod.GET)
 	public String lookJobInforMationRegist() {
 		return "employ/lookJobInforMationRegist";
+	}
+	
+	@RequestMapping(value="/lookJobInforMationRegist_run", method=RequestMethod.POST)
+	@ResponseBody
+	public String lookJobInforMationRegist_run(LookJobVo lookJobVo) {
+		System.out.println(lookJobVo);
+		int jobno = lookJobService.getJobnoNextVal();
+		lookJobVo.setJobno(jobno);
+		lookJobService.insertJobInforMation(lookJobVo);
+		return "success";
 	}
 	
 	@RequestMapping(value="/lookJobTestList", method=RequestMethod.GET)

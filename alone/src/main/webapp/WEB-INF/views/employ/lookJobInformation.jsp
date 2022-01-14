@@ -97,7 +97,12 @@ $(function() {
 				</tbody>
 			</table>
 			<div>
-				<img src="/images/${lookJobVo.content}" width="1200px"/><br>
+				<div>
+						${lookJobVo.content}
+				</div>
+				<c:forEach items="${jobImageList}" var="jobImageList">
+					<img src="/upload/download?fileName=${jobImageList.job_image}" width="1200px"/><br>
+				</c:forEach>
 			</div>
 		</form>
 		</div>

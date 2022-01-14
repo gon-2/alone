@@ -291,11 +291,11 @@ ${classInfoVo}
 		<table class="tbl-l tbl-fix" summary="온라인 수강신청을 위한 과정을 선택하세요.">
 			<colgroup><col width="110" /><col width="*" /><col width="110" /><col width="*" /></colgroup>
 			<tbody>
-						<tr>
-							<td class="td_reference">${classInfoVo.cate_code_name}</td>
-							<td class="td_reference">${classInfoVo.time_code}</td>
-							<td class="td_reference">${classInfoVo.c_title}</td>
-						</tr>
+<!-- 						<tr> -->
+<%-- 							<td class="td_reference">${classInfoVo.cate_code_name}</td> --%>
+<%-- 							<td class="td_reference">${classInfoVo.time_code}</td> --%>
+<%-- 							<td class="td_reference">${classInfoVo.c_title}</td> --%>
+<!-- 						</tr> -->
 				<tr>
 					<th class="c_time"><label for="c_time">훈련직종분류</label></th>
 					<td class="td_infomation">
