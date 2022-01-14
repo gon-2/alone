@@ -18,7 +18,7 @@
 			
 <section class="wrapper style1">
 	<div class="container">
-				<h1>회원정보 수정</h1><br>
+				<h2>회원정보 수정</h2><br>
 		<div class="clear overflow">
 			<section class="col-md-12">
 				</section>
@@ -66,7 +66,7 @@
 					<input type="text" class="form-control" id="pnumber" name="pnumber"/>
 				</div>
 				
-				<button type="submit" class="btn btn-primary">수정완료</button>		
+				<button type="submit" class="btn btn-primary">수정하기</button>		
 			</form>
 				
 		</div>

@@ -26,12 +26,9 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
-				<div class="col-md-2">
-				</div>
+				<div class="col-md-2"></div>
 				<div class="col-md-8">
-					<h1>
-						내 강의실
-					</h1><br>
+					<h2>내 강의실</h2><br>
 					
 				</div>
 				<div class="col-md-2">
@@ -44,7 +41,8 @@
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8">
-		<img src="/images/member_class2.jpg" width="1070px"/>
+		<img src="/images/member_class2.jpg" width="1090px" height ="700px"/>
+		
 				
 		</div><br>
 		
