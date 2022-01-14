@@ -2,9 +2,9 @@
 <!DOCTYPE mapper			
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"			
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kh.ex01.mappers.member">
-		
-	<insert id="insertTeam">
+<mapper namespace="com.kh.alone.mappers.member">
+	<!--  회원등록 -->	
+	<insert id="insertMember">
 		insert into tbl_member(userid, userpw, userpwd, username, birthdate , email, gender, pnumber)
 		values (#{userid}, #{userpw}, #{userpwd}, #{username}, #{birthdate}, #{email}, #{gender}, #{pnumber})
 	</insert>
@@ -34,6 +34,19 @@
 		select * from tbl_member
 		where userid = #{userid}
 	</select>
+	<!--  회원정보 수정처리 -->
+	<update id="modifyRun">
+		update tbl_member set
+			userpw = #{userpw},
+			userpwd = #{userpwd},
+			username = #{username},
+			birthdate = #{birthdate},
+			email = #{email},
+			gender = #{gender},
+			pnumber = #{pnumber}
+		where userid = #{userid}
+	</update>
+	
 	
 	<!--  회원탈퇴폼  -->
 	<select id="memberOut" resultType="MemberVo">

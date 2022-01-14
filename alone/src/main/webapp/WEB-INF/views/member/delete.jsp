@@ -12,7 +12,7 @@ $(function(){
 </script>
 <section class="wrapper style1">
 	<div class="container">
-				<h1>회원 탈퇴</h1><br>
+				<h2>회원 탈퇴</h2><br>
 			
 		<div class="clear overflow">
 			<section class="col-md-12">
@@ -34,6 +34,7 @@ $(function(){
 					</textarea><br>
 					<button type="button" class="btn btn-primary btn-sm" id="btnDrop">회원탈퇴</button>
 		</div>
+	</div>
 	</div>
 </section>
 

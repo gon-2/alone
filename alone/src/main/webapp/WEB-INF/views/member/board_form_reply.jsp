@@ -18,20 +18,20 @@ $(function() {
 });
 
 	</script>
-	
-<div class="container-fluid">
+<section class="wrapper style1">
+<div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="jumbotron">
-				<h2>답글쓰기 양식</h2>
+					<h2>답글쓰기 양식</h2><br>
 				<p>
-					<a class="btn btn-primary btn-large" href="/member/board_form">글목록</a>
+					<a class="btn btn-primary" href="/member/board_form">글목록</a>
 				</p>
 			</div>
 		</div>
 	</div>
-	
-				
+	</section>
+<section class="wrapper style1">
+<div class="container">			
 	<div class="row">
 		<div class="col-md-12">
 				<input type="hidden" name="re_group" value="${memberBoardVo.re_group}">
@@ -40,8 +40,7 @@ $(function() {
 				
 		<form role="form" action="/member/board_form_reply_run" 
 				method="post">
-				
-			
+	
 				<div class="form-group">
 					<label for="userid">아이디</label>
 					<input type="text" class="form-control" 
@@ -60,7 +59,6 @@ $(function() {
 				</div>
 				&rdsh;
 				
-					& # x21B3;
 				<button type="submit" class="btn btn-primary" id="btnReply">
 					작성 완료
 				</button>
@@ -68,4 +66,5 @@ $(function() {
 		</div>
 	</div>
 </div>
+</section>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

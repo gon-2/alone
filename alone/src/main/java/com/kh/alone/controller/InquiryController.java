@@ -1,3 +1,8 @@
+/*
+ * 2021-01-14
+ * Author : 이정훈
+ * code Explanation : 건의사항 페이지 controller
+ */
 package com.kh.alone.controller;
 
 import java.util.List;
@@ -23,6 +28,7 @@ public class InquiryController {
 	@Inject
 	private InquiryBoardService inquireboardservice;
 	
+	// 건의사항 게시판 글 올리기 실행
 	@ResponseBody
 	@RequestMapping(value="/insertrun" , method=RequestMethod.POST)
 	public String insertinquire(InquiryBoardVo inboardVo , RedirectAttributes rttr) {
@@ -31,6 +37,7 @@ public class InquiryController {
 		rttr.addFlashAttribute("msg" , "success");
 		return "success";
 	}
+	
 	// 게시판 리스트 조회
 	@RequestMapping(value="/listall" , method=RequestMethod.GET)
 	public String listAll(PagingDto dto , Model model) {
@@ -71,6 +78,7 @@ public class InquiryController {
 		return "true";
 	}*/
 	
+	// 건의사항 게시판 삭제
 	@ResponseBody
 	@RequestMapping(value="/deleteBoard" , method=RequestMethod.POST)
 	public String deleteBoard(String inquiry_password , int inquiry_number) {
@@ -78,6 +86,7 @@ public class InquiryController {
 		return "success";
 	}
 	
+	// 건의사항 게시판 수정
 	@ResponseBody
 	@RequestMapping(value="/updateBoard" , method=RequestMethod.POST)
 	public String updateBoard(InquiryBoardVo inboardvo) {
@@ -85,4 +94,10 @@ public class InquiryController {
 		return "success";
 	}
 	
+	@RequestMapping(value="/deleteBoardAdmin" , method=RequestMethod.GET)
+	public String deleteBoardAdmin(String inquiry_title) {
+		inquireboardservice.deleteBoardAdmin(inquiry_title);
+		return "redirect:/inquiry/listall"; 
+	}
+
 }
