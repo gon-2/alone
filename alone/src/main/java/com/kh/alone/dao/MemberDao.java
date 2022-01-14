@@ -16,7 +16,7 @@ import com.kh.alone.vo.PagingDto;
 
 @Repository
 public class MemberDao {
-	private static final String NAMESPACE = "com.kh.ex01.mappers.member.";
+	private static final String NAMESPACE = "com.kh.alone.mappers.member.";
 	
 	@Inject
 	private SqlSession sqlSession;
@@ -70,7 +70,7 @@ public class MemberDao {
 	}
 	// 회원탈퇴폼
 	public MemberVo memberOut(String userid) {
-		System.out.println(userid);
+//		System.out.println(userid);
 		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "memberOut", userid);
 //		System.out.println(" 서비스 vo값 받아오는지 확인하기 : " + memberVo);
 		return memberVo;
