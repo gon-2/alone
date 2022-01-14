@@ -48,8 +48,7 @@ public class MemberController {
 	
 	// 회원정보 수정
 	@RequestMapping(value="/modify_form", method=RequestMethod.GET)
-	public String memberModify(String userid) {
-		MemberVo memberVo = memberService.memberModify(userid);
+	public String memberModify() {
 		return "member/modify_form";
 	}
 	// 수정처리 

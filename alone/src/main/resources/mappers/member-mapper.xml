@@ -40,6 +40,7 @@
 			userpw = #{userpw},
 			userpwd = #{userpwd},
 			username = #{username},
+			birthdate = #{birthdate},
 			email = #{email},
 			gender = #{gender},
 			pnumber = #{pnumber}
