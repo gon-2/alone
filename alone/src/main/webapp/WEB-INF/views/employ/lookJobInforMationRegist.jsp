@@ -93,7 +93,7 @@ $(function() {
 				</div>
 				<div class="col-md-6">
 					<h2>
-						업체 정보
+						구인현황 등록하기
 					</h2>
 				</div>
 				<div class="col-md-3">

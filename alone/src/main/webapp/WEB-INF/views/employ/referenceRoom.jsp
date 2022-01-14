@@ -106,7 +106,7 @@ $(function() {
 		</div>
 		<div class="col-md-8" style="text-align:center">
 			<c:forEach items="${data}" var="data">
-				<img src="/images/${data.r_image}" width="500px" height="700px"/><br>
+				<img src="/upload/download?fileName=${data.r_image}" width="500px" height="700px"/><br>
 			</c:forEach>
 			<div style="text-align:left">
 					${referenceVo.r_content}

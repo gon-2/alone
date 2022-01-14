@@ -6,8 +6,15 @@
 	
 
 	<select id="selectAll" resultType="LookJobVo">
-		select * from lookJob
-		order by jobno desc
+		select * from 
+		(select rownum rnum, a.* from 
+      			 		 (select * from lookJob
+       						 order by jobno desc) a)
+		where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="job_getCount" resultType="int">
+		select count(*) from lookJob
 	</select>
 	
     <select id="getLookJob" resultType="LookJobVo">
@@ -45,16 +52,23 @@
 		#{work}, #{workTime}, #{salary}, #{recruitmentStart}, #{recruitmentEnd}, #{content})
     </insert>
     
+    <select id="test_getCount" resultType="int">
+    	select count(*) from test
+    </select>
+    
 	<select id="lookJobTestList" resultType="JobTestVo">
 		select tno, title, writers, to_char(sysdate, 'YYYY-MM-DD')
-		test_date, to_char(sysdate, 'HH:MI') test_time from test
-		order by tno desc
+		test_date, to_char(sysdate, 'HH:MI') test_time from
+		(select rownum rnum, a.* from 
+      			 		 (select * from test
+       						 order by tno desc) a)
+		where rnum between #{startRow} and #{endRow}
 	</select>
 	
 	<select id="getTest" resultType="JobTestVo">
-		select * from test
+		select tno, title, writers, to_char(sysdate, 'YYYY-MM-DD')
+		test_date, to_char(sysdate, 'HH:MI') test_time from test
 		where tno = #{tno}
-		order by tno desc
 	</select>
 	
 	<select id="testImage" resultType="JobTestVo">
@@ -63,9 +77,36 @@
 		order by tno desc
 	</select>
 	
+	<select id="getTnoNextVal" resultType="int">
+		select seq_tno.nextval
+		from dual
+	</select>
+	
+	<insert id="insertTestRegist">
+		insert into test (tno, title, writers)
+		values (#{tno}, #{title}, #{writers})
+	</insert>
+	
+	<select id="getTestUpload" resultType="JobTestVo">
+    	select * from test
+    	where title = #{title}
+    </select>
+    
+    <insert id="insertTestImages">
+    	insert into images(images, tno)
+		values(#{images}, #{tno})
+    </insert>
+	
+	<select id="fno_getCount" resultType="int">
+    	select count(*) from find
+    </select>
+	
 	<select id="findPositionList" resultType="FindVo">
-		select * from find
-		order by fno desc
+		select * from
+		(select rownum rnum, a.* from 
+      			 		 (select * from find
+       						 order by fno desc) a)
+		where rnum between #{startRow} and #{endRow}
 	</select>
 	
 	<select id="getFind" resultType="FindVo">
@@ -79,6 +120,28 @@
 		where fno = #{fno}
 		order by fno desc
 	</select>
+	
+	<select id="getFnoNextVal" resultType="int">
+		select seq_fno.nextval
+		from dual
+	</select>
+	
+	<insert id="insertFindRegist">
+		insert into find (fno, company, fname, fday, course_name)
+		values (#{fno}, #{company}, #{fname}, #{fday}, #{course_name})
+	</insert>
+	
+	<select id="getFindUpload" resultType="FindVo">
+    	select * from find
+    	where company = #{company}
+    	or fday = #{fday}
+    	or course_name = #{course_name}
+    </select>
+    
+    <insert id="insertFindImages">
+    	insert into f_images(images, fno)
+		values(#{images}, #{fno})
+    </insert>
 	
 	<select id="referenceRoomList" resultType="ReferenceVo">
 		select rno, rtitle, rwriter, recommend, hits, to_char(sysdate, 'YYYY-MM-DD')

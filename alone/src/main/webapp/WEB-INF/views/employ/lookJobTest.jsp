@@ -8,6 +8,14 @@
 	padding-right:200px;
 	text-align:right;
 }
+th {
+	background-color:#969696;
+	width:100px;
+}
+td {
+	width:200px;
+	background-color:#F4FFFF;
+}
 </style>
 
 <script>
@@ -27,6 +35,22 @@ $(function() {
 				<div class="col-md-8">
 					<h2>자격증 시험안내</h2>
 					<br>
+					<table class="table">
+				<tbody>
+					<tr>
+						<th>번호</th>
+						<td>${JobTestvo.tno}</td>
+						<th>작성자</th>
+						<td>${JobTestvo.writers}</td>
+						<th>등록일</th>
+						<td>${JobTestvo.test_date}</td>
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td colspan="5">${JobTestvo.title}</td>
+					</tr>
+				</tbody>
+			</table>
 				</div>
 				<div class="col-md-2">
 				</div>
@@ -37,7 +61,7 @@ $(function() {
 				</div>
 				<div class="col-md-8" style="text-align:center">
 					<c:forEach items="${imageList}" var="image">
-						<img src="/images/${image.images}" width="1000px"/><br>
+						<img src="/upload/download?fileName=${image.images}" width="1000px"/><br>
 					</c:forEach>
 				</div>
 				<div class="col-md-2">
