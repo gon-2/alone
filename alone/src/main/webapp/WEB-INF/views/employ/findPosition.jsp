@@ -46,7 +46,7 @@ td {
 	<div class="row">
 		<div class="col-md-12">
 			<c:forEach items="${imageList}" var="image">
-				<img src="/images/${image.images}" width="1200px"/><br>
+				<img src="/upload/download?fileName=${image.images}" width="1200px"/><br>
 			</c:forEach>
 		</div>
 	</div>

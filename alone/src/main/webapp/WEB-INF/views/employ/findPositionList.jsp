@@ -2,8 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/paging_form.jsp" %>
 <script>
 $(function() {
+	$(".page-link").click(function(e) {
+		e.preventDefault(); // 브라우저의 기본기능 막기
+		console.log($(this));
+		var page =	$(this).attr("href");
+		$("#frmPaging > input[name=page]").val(page);
+		$("#frmPaging").submit();
+	});
+	
 	$(".f_course").click(function(e) {
 		e.preventDefault();
 		var fno = $(this).attr("href");
@@ -47,6 +56,9 @@ $(function() {
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8">
+			<div style="text-align:right; margin-bottom:10px;">
+			<a href="/employ/findPositionRegist" class="btn btn-sm btn-success">글 쓰기</a>
+			</div>
 			<table class="table">
 				<thead>
 					<tr>
@@ -58,40 +70,44 @@ $(function() {
 					</tr>
 				</thead>
 				<tbody>
-				<tr>
 					<c:forEach items="${list}" var="findVo">
+				<tr>
 						<td class="td_find">${findVo.fno}</td>
 						<td class="td_find">${findVo.company}</td>
 						<td class="td_find">${findVo.fname}</td>
 						<td class="td_find">${findVo.fday}</td>
 						<td class="td_find"><a class="f_course" href="${findVo.fno}">${findVo.course_name}</a></td>
-					</c:forEach>		
 				</tr>
+					</c:forEach>		
 				</tbody>
 			</table>
 			<nav>
-				<ul class="pagination">
+				<ul class="pagination justify-content-center">
+					<c:if test="${pagingVo.startPage != 1}">
 					<li class="page-item">
-						<a class="page-link" href="#">Previous</a>
+						<a class="page-link" href="${pagingVo.startPage - 1}">이전</a>
 					</li>
+					</c:if>
+					<c:forEach var="v" begin="${pagingVo.startPage}" 
+									   end="${pagingVo.endPage}">
+					<li 
+						<c:choose>
+							<c:when test="${pagingVo.page == v}">
+								class="page-item active"
+							</c:when>
+							<c:otherwise>
+								class="page-item"
+							</c:otherwise>
+						</c:choose>
+					>
+						<a class="page-link" href="${v}">${v}</a>
+					</li>
+					</c:forEach>
+					<c:if test="${pagingVo.endPage < pagingVo.totalPage}">
 					<li class="page-item">
-						<a class="page-link" href="#">1</a>
+						<a class="page-link" href="${pagingVo.endPage + 1}">다음</a>
 					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">2</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">3</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">4</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">5</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">Next</a>
-					</li>
+					</c:if>
 				</ul>
 			</nav>
 		</div>

@@ -24,10 +24,15 @@ public class LookJobDao {
 	@Inject
 	private SqlSession sqlSession;
 	
+	// 구인 게시판 카운트
+	public int job_getCount(PagingVo pagingVo) {
+		int count = sqlSession.selectOne(NAMESPACE + "job_getCount", pagingVo);
+		return count;
+	}
 	
 	// 구인정보 확인
-	public List<LookJobVo> selectAll() {
-		List<LookJobVo> list = sqlSession.selectList(NAMESPACE + "selectAll");
+	public List<LookJobVo> selectAll(PagingVo pagingVo) {
+		List<LookJobVo> list = sqlSession.selectList(NAMESPACE + "selectAll", pagingVo);
 		return list;
 	}
 	
@@ -73,9 +78,15 @@ public class LookJobDao {
 		sqlSession.insert(NAMESPACE + "insertJobInforMation", lookJobVo);
 	}
 	
+	// 자격증 게시판 게시글 수
+	public int test_getCount(PagingVo pagingVo) {
+		int count = sqlSession.selectOne(NAMESPACE + "test_getCount", pagingVo);
+		return count;
+	}
+	
 	// 자격증 안내 확인
-	public List<JobTestVo> lookJobTestList() {
-		List<JobTestVo> list = sqlSession.selectList(NAMESPACE + "lookJobTestList");
+	public List<JobTestVo> lookJobTestList(PagingVo pagingVo) {
+		List<JobTestVo> list = sqlSession.selectList(NAMESPACE + "lookJobTestList", pagingVo);
 		return list;
 	}
 	
@@ -87,15 +98,45 @@ public class LookJobDao {
 	
 	// 자격증 안내 이미지 파일 받아오기
 	public List<JobTestVo> testImage(int tno) {
-		System.out.println(tno);
 		List<JobTestVo> imageList = sqlSession.selectList(NAMESPACE + "testImage", tno);
 		System.out.println(imageList);
 		return imageList;
 	}
 	
+	// 자격증 테이블 tno 번호 얻기
+	public int getTnoNextVal() {
+		int tno = sqlSession.selectOne(NAMESPACE + "getTnoNextVal");
+		return tno;
+	}
+	
+	// 자격증 안내 등록하기
+	public void insertTestRegist(JobTestVo jobTestVo) {
+		sqlSession.insert(NAMESPACE + "insertTestRegist", jobTestVo);
+	}
+	
+	// 업로드 자격증 안내 불러오기
+	public JobTestVo getTestUpload(JobTestVo vo) {
+		JobTestVo jobTestVo = sqlSession.selectOne(NAMESPACE + "getTestUpload", vo);
+		return jobTestVo;
+	}
+	
+	// 자격증 안내 이미지 저장
+	public void insertTestImages(int tno, String safeFile) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("tno", tno);
+		map.put("images", safeFile);
+		sqlSession.insert(NAMESPACE + "insertTestImages", map);
+	}
+	
+	// 취업자 게시판 수
+	public int fno_getCount(PagingVo pagingVo) {
+		int count = sqlSession.selectOne(NAMESPACE + "fno_getCount", pagingVo);
+		return count;
+	}
+	
 	// 취업자 현황
-	public List<FindVo> findPositionList() {
-		List<FindVo> list = sqlSession.selectList(NAMESPACE + "findPositionList");
+	public List<FindVo> findPositionList(PagingVo pagingVo) {
+		List<FindVo> list = sqlSession.selectList(NAMESPACE + "findPositionList", pagingVo);
 		return list;
 	}
 	
@@ -107,12 +148,35 @@ public class LookJobDao {
 	
 	// 취업자 현황 이미지 파일 받아오기
 	public List<FindVo> findImage(int fno) {
-		System.out.println(fno);
 		List<FindVo> imageList = sqlSession.selectList(NAMESPACE + "findImage", fno);
-		System.out.println(imageList);
 		return imageList;
 	}
 	
+	// 취업자 현황 fno 얻기
+	public int getFnoNextVal() {
+		int fno = sqlSession.selectOne(NAMESPACE + "getFnoNextVal");
+		return fno;
+	}
+	
+	// 취업자 현황 등록하기
+	public void insertFindRegist(FindVo findVo) {
+		sqlSession.insert(NAMESPACE + "insertFindRegist", findVo);
+	}
+	
+	// 업로드 취업현황 불러오기
+	public FindVo getFindUpload(FindVo vo) {
+		FindVo findVo = sqlSession.selectOne(NAMESPACE + "getFindUpload", vo);
+		return findVo;
+	}
+	
+	// 취업현황 이미지 저장
+	public void insertFindImages(int fno, String safeFile) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("fno", fno);
+		map.put("images", safeFile);
+		sqlSession.insert(NAMESPACE + "insertFindImages", map);
+	}
+		
 	// 자료실
 	public List<ReferenceVo> referenceRoomList(PagingVo pagingVo) {
 		List<ReferenceVo> list = sqlSession.selectList(NAMESPACE + "referenceRoomList", pagingVo);

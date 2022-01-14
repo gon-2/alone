@@ -31,8 +31,11 @@ public class EmploymentInformationController {
 	private LookJobService lookJobService;
 	
 	@RequestMapping(value="/lookJob", method=RequestMethod.GET)
-	public String employLookJob(Model model) {
-		List<LookJobVo> employList = lookJobService.selectAll();
+	public String employLookJob(Model model, PagingVo pagingVo) {
+		int count = lookJobService.job_getCount(pagingVo);
+		pagingVo.setCount(count);
+		pagingVo.setPageInfo();
+		List<LookJobVo> employList = lookJobService.selectAll(pagingVo);
 		model.addAttribute("employList", employList);
 		return "employ/lookJob";
 	}
@@ -63,8 +66,11 @@ public class EmploymentInformationController {
 	}
 	
 	@RequestMapping(value="/lookJobTestList", method=RequestMethod.GET)
-	public String lookJobTestList(Model model) {
-		List<JobTestVo> list = lookJobService.lookJobTestList();
+	public String lookJobTestList(Model model, PagingVo pagingVo) {
+		int count = lookJobService.test_getCount(pagingVo);
+		pagingVo.setCount(count);
+		pagingVo.setPageInfo();
+		List<JobTestVo> list = lookJobService.lookJobTestList(pagingVo);
 		model.addAttribute("list", list);
 		return "employ/lookJobTestList";
 	}
@@ -78,9 +84,27 @@ public class EmploymentInformationController {
 		return "employ/lookJobTest";
 	}
 	
+	@RequestMapping(value="/lookJobTestRegist", method=RequestMethod.GET)
+	public String lookJobTestRegist() {
+		return "employ/lookJobTestRegist";
+	}
+	
+	@RequestMapping(value="/lookJobTestRegist_run", method=RequestMethod.POST)
+	@ResponseBody
+	public String lookJobTestRegist_run(JobTestVo jobTestVo) {
+		int tno = lookJobService.getTnoNextVal();
+		jobTestVo.setTno(tno);
+		System.out.println(tno);
+		lookJobService.insertTestRegist(jobTestVo);
+		return "success";
+	}
+	
 	@RequestMapping(value="/findPositionList", method=RequestMethod.GET)
-	public String findPositionList(Model model) {
-		List<FindVo> list = lookJobService.findPositionList();
+	public String findPositionList(Model model, PagingVo pagingVo) {
+		int count = lookJobService.fno_getCount(pagingVo);
+		pagingVo.setCount(count);
+		pagingVo.setPageInfo();
+		List<FindVo> list = lookJobService.findPositionList(pagingVo);
 		model.addAttribute("list", list);
 		return "employ/findPositionList";
 	}
@@ -92,6 +116,21 @@ public class EmploymentInformationController {
 		model.addAttribute("imageList", imageList);
 		model.addAttribute("findVo", findVo);
 		return "employ/findPosition";
+	}
+	
+	@RequestMapping(value="/findPositionRegist", method=RequestMethod.GET)
+	public String findPositionRegist() {
+		return "employ/findPositionRegist";
+	}
+	
+	@RequestMapping(value="/findPositionRegist_run", method=RequestMethod.POST)
+	@ResponseBody
+	public String findPositionRegist_run(FindVo findVo) {
+		System.out.println(findVo);
+		int fno = lookJobService.getFnoNextVal();
+		findVo.setFno(fno);
+		lookJobService.insertFindRegist(findVo);
+		return "success";
 	}
 	
 	@RequestMapping(value="/referenceRoomList", method=RequestMethod.GET)
