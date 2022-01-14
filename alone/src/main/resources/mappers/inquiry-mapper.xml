@@ -81,6 +81,5 @@
    		set inquiry_title = #{inquiry_title} , inquiry_content = #{inquiry_content} , inquiry_date = sysdate
    		where inquiry_password = #{inquiry_password}
    </update>
-   
-
+ 
 </mapper>
