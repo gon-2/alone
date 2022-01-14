@@ -25,24 +25,7 @@ public class MemberDao {
 		Object obj = sqlSession.selectOne(NAMESPACE + "getDate");
 		System.out.println(obj);
 	}
-	// 주간반 조회
-//	public List<MemberVo> selectWeekly(){
-//		List<MemberVo> weekly = sqlSession.selectList(NAMESPACE + "selectWeekly");
-//		return weekly;
-//		}
-//		
-//		// 주말반 조회
-//	public List<MemberVo> selectWeekend(){
-//		List<MemberVo> weekend = sqlSession.selectList(NAMESPACE + "selectWeekend");
-//		return weekend;
-//		}
-//		
-//		// 야간반 조회
-//	public List<MemberVo> selectNight(){
-//		List<MemberVo> night = sqlSession.selectList(NAMESPACE + "selectNight");
-//		return night;
-//	}
-	
+
 	public List<MemberVo> selectAll() {
 		List<MemberVo> list = sqlSession.selectList(NAMESPACE + "selectAll");
 		return list;
@@ -54,9 +37,9 @@ public class MemberDao {
 		return list;
 	}
 	// 회원등록
-	public void insertTeam(MemberVo memberVo) {
+	public void insertMember(MemberVo memberVo) {
 		System.out.println(memberVo);
-		sqlSession.insert(NAMESPACE + "insertTeam", memberVo);
+		sqlSession.insert(NAMESPACE + "insertMember", memberVo);
 	}
 	// 회원정보 확인
 	public MemberVo memberModify(String userid) {
@@ -64,6 +47,13 @@ public class MemberDao {
 		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "memberModify", userid);
 		return memberVo;
 	}
+	// 회원정보 처리 
+	public MemberVo modifyRun(MemberVo memberVo) {
+		System.out.println(memberVo);
+		sqlSession.update(NAMESPACE + "modifyRun", memberVo);
+		return memberVo;
+	}
+	
 	// 답글확인 
 	public void insertReply(MemberBoardVo memberBoardVo) {
 		sqlSession.insert(NAMESPACE + "insertReply", memberBoardVo);
