@@ -54,10 +54,10 @@ public class CustomerServiceMainController {
 		return "/service_center/faq_page";
 	}
 
-	// 수강생 상담 페이지
+	// 수강생 상담 메시지 페이지
 	@RequestMapping(value="/consult" , method=RequestMethod.GET)
 	public String consultPage() {
-		return "/service_center/consult_page";
+		return "/consult/message_consult_page";
 	}
 	
 	// 수강신청의 제목으로 시작하는 모든 내용들 찾기
