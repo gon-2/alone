@@ -73,7 +73,7 @@ public class CustomerServiceMainController {
 	public String inquiryFindTitle(String inquiry_title , Model model) {
 		List<InquiryBoardVo> findList = mainservice.inquiryFindTitle(inquiry_title);
 		model.addAttribute("findList" , findList);
-		return "service_center/inquiry_find_page";
+		return "/inquiry/inquiry_find_page";
 	}
 
 	
