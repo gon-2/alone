@@ -67,7 +67,7 @@
 	}
 </script>
 </head>
-<%@ include file="/WEB-INF/views/class_regist_form/class_paging_form.jsp" %>
+<%@ include file="/WEB-INF/views/class_regist/class_paging_form.jsp" %>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">

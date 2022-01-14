@@ -66,13 +66,19 @@ public class InquiryBoardDao {
 		session.update(NAMESPACE + "viewcnt" , inquiry_title);
 	}
 	
-	// 글 번호와 비밀번호 입력 시 삭제
+	// 사용자가 삭제할 글 번호와 비밀번호 입력 시 삭제
 	public void deleteBoard(int inquiry_number , String inquiry_password) {
 		Map<String, Object> maps = new HashMap<>();
 		maps.put("inquiry_password", inquiry_password);
 		maps.put("inquiry_number" , inquiry_number);
 		session.delete(NAMESPACE + "deleteBoard" , maps);
 	}
+	
+	// 관리자가 삭제버튼 클릭시 글 제목으로 삭제
+	public void deleteBoardAdmin(String inquiry_title) {
+		session.delete(NAMESPACE + "deleteBoardAdmin" , inquiry_title);
+	}
+	
 	// 제목과 내용 , 작성일자 수정
 	public void updateBoard(InquiryBoardVo inboardvo) {
 		session.update(NAMESPACE + "updateBoard" , inboardvo);

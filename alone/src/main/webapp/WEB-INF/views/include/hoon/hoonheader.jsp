@@ -186,7 +186,7 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
             		<c:choose>
                     	 <c:when test="${empty sessionScope.memberVo}">
-                    	 	<h1>로그인 하세요.</h1>
+
                      	 </c:when>
                      	<c:otherwise><h1 id="userid">${sessionScope.memberVo.userid}</h1></c:otherwise>
                     </c:choose> 
@@ -298,7 +298,7 @@
                                         <div class="small text-gray-500" id="messageDate"></div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">메시지 더 보기</a>
+                                <a class="dropdown-item text-center small text-gray-500" id="messageList" href="/messageList">메시지 더 보기</a>
                             </div>
                         </li>
 

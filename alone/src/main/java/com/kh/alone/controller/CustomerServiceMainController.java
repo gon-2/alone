@@ -65,7 +65,7 @@ public class CustomerServiceMainController {
 	public String classFindTitle(String class_board_title , Model model) {
 		List<RegistBoardVo> findList = mainservice.classFindTitle(class_board_title);
 		model.addAttribute("findList", findList);
-		return "service_center/class_find_page";
+		return "/class_regist/class_find_page";
 	}
 	
 	// 건의사항의 제목으로 시작하는 모든 내용들 찾기
@@ -73,7 +73,7 @@ public class CustomerServiceMainController {
 	public String inquiryFindTitle(String inquiry_title , Model model) {
 		List<InquiryBoardVo> findList = mainservice.inquiryFindTitle(inquiry_title);
 		model.addAttribute("findList" , findList);
-		return "service_center/inquiry_find_page";
+		return "/inquiry/inquiry_find_page";
 	}
 
 	

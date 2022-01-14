@@ -92,7 +92,7 @@ $(function() {
 		</div>
 		<div class="col-md-8">
 			<div>
-				<a href="#">회원가입</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+				<a href="/regist_form">회원가입</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
 				<a href="#">아이디/비번찾기</a>
 			</div>
 		</div>
