@@ -10,7 +10,15 @@ $(function() {
 		console.log($(this));
 		var page =	$(this).attr("href");
 		$("#frmPaging > input[name=page]").val(page);
-		$("#frmPaging").submit();
+		$("#frmPaging").attr("action", "/employ/lookJobTestList")
+					   .submit();
+	});
+	$(".tno_title").click(function(e){
+		e.preventDefault();
+		var tno = $(this).attr("href");
+		$("#frmPaging > input[name=rno]").attr("name", "tno").val(tno);
+		$("#frmPaging").attr("action", "/employ/lookJobTest")
+					   .submit();
 	});
 });
 </script>
@@ -61,7 +69,7 @@ $(function() {
 					<c:forEach items="${list}" var="jobTestVo">
 				<tr>
 						<td class="td_test">${jobTestVo.tno}</td>
-						<td class="td_test"><a href="/employ/lookJobTest?tno=${jobTestVo.tno}">${jobTestVo.title}</a></td>
+						<td class="td_test"><a class="tno_title" href="${jobTestVo.tno}">${jobTestVo.title}</a></td>
 						<td class="td_test">${jobTestVo.writers}</td>
 						<td class="td_test">${jobTestVo.test_date}</td>
 				</tr>

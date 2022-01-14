@@ -13,6 +13,7 @@ $(function() {
 		$("#frmPaging").submit();
 	});
 	
+	
 	$(".f_course").click(function(e) {
 		e.preventDefault();
 		var fno = $(this).attr("href");

@@ -11,7 +11,15 @@ $(function() {
 		console.log($(this));
 		var page =	$(this).attr("href");
 		$("#frmPaging > input[name=page]").val(page);
-		$("#frmPaging").submit();
+		$("#frmPaging").attr("action", "/employ/lookJob")
+			    	   .submit();
+	});
+	$(".jobno_title").click(function(e){
+		e.preventDefault();
+		var jobno = $(this).attr("href");
+		$("#frmPaging > input[name=rno]").attr("name", "jobno").val(jobno);
+		$("#frmPaging").attr("action", "/employ/lookJobInformation")
+					   .submit();
 	});
 });
 </script>

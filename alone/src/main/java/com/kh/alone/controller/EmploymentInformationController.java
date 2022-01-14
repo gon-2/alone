@@ -41,7 +41,7 @@ public class EmploymentInformationController {
 	}
 	
 	@RequestMapping(value="/lookJobInformation", method=RequestMethod.GET)
-	public String LookJobInformation(Model model, int jobno) {
+	public String LookJobInformation(Model model, int jobno, PagingVo pagingVo) {
 		System.out.println(jobno);
 		LookJobVo lookJobVo = lookJobService.getLookJob(jobno);
 		List<LookJobVo> jobImageList = lookJobService.JobImage(jobno);
@@ -76,7 +76,7 @@ public class EmploymentInformationController {
 	}
 	
 	@RequestMapping(value="/lookJobTest", method=RequestMethod.GET)
-	public String lookJobTest(Model model, int tno) {
+	public String lookJobTest(Model model, int tno, PagingVo pagingVo) {
 		JobTestVo JobTestvo = lookJobService.getTest(tno);
 		List<JobTestVo> imageList = lookJobService.testImage(tno);
 		model.addAttribute("imageList", imageList);
@@ -110,7 +110,7 @@ public class EmploymentInformationController {
 	}
 	
 	@RequestMapping(value="/findPosition", method=RequestMethod.GET)
-	public String findPosition(Model model, int fno) {
+	public String findPosition(Model model, int fno, PagingVo pagingVo) {
 		FindVo findVo = lookJobService.getFind(fno);
 		List<FindVo> imageList = lookJobService.findImage(fno);
 		model.addAttribute("imageList", imageList);
