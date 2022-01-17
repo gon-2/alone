@@ -239,6 +239,7 @@ $(function(){
 		
 		
 		$.get(url, sendData, function(rData){
+			console.log("rData", rData);
 			var options = "<option value=''>선택해주세요</option>";
 		
 			$.each(rData, function(index){

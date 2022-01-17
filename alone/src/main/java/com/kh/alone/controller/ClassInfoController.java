@@ -162,7 +162,7 @@ public class ClassInfoController {
 	@ResponseBody
 	public List<ClassInfoVo> classListByCateCode(@PathVariable("cate_code") int cate_code) {
 		System.out.println("cate_code: " + cate_code);
-		classInfoService.classListByTimeCode(cate_code);
+//		 classInfoService.classListByTimeCode(cate_code);
 		List<ClassInfoVo> cateList = classInfoService.classListByCateCode(cate_code);
 		System.out.println("cateList : " + cateList);
 		return cateList;

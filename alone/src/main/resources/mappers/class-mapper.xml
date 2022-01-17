@@ -78,11 +78,12 @@
 	</select>
 	
 	<!-- 수업 파트별 구하기 -->
-	<select id="classListByCateCode" resultType="ReviewVo">
-		select review_number, review_title, review_writer, write_date, viewcnt,
-        decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name		
-		from tbl_review 
-		where cate_code = #{cate_code} order by review_number desc
+	<select id="classListByCateCode" resultType="ClassInfoVo">
+		select info_code, c_title, c_time, cate_code, time_code, start_date, end_date,
+			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인') cate_code_name,
+			decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반') time_code_name
+        from c_class_info
+		where cate_code = #{cate_code}
 	</select>
 	
 	<!-- 글 상세 보기 -->
