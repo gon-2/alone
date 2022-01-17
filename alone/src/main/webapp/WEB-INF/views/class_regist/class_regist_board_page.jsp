@@ -51,7 +51,7 @@
 			<form role="form" name="frmReg">
 				<div class="form-group">		 
 					<label for="class_board_userid">아이디</label>
-					<input type="text" class="form-control" id="class_board_userid" name="class_board_userid" style="width:200px;" placeholder="아이디 입력"/>
+					<input type="text" class="form-control" id="class_board_userid" name="class_board_userid" style="width:200px;" value="${sessionScope.memberVo.userid}"/>
 				</div>
 				<div class="form-group">
 					<label for="class_board_title">상담 제목</label>

@@ -26,6 +26,21 @@
 			
 			var url = "/message/sendMessage";
 			
+			// 무결성 검사
+			if(service_message_sender.length >= 51 || service_message_sender == ""){
+				alert("보내는사람의 길이는 50자 이하입니다.");
+				return false;
+			}else if(service_message_receiver.length >= 51 || service_message_receiver == ""){
+				alert("받는사람의 길이는 50자 이하입니다.");
+				return false;				
+			}else if(service_message_title.length >= 501 || service_message_title == ""){
+				alert("제목의 길이는 50자 이하입니다.");
+				return false;								
+			}else if(service_message_content.length >= 1001 || service_message_content == ""){
+				alert("내용의 길이는 50자 이하입니다.");
+				return false;				
+			}
+			
 			$.post(url , sendData, function(rData){
 				console.log(rData);
 				if(rData == "success"){

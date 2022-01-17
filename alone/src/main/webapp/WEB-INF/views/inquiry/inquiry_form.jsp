@@ -54,7 +54,7 @@
 	});
 </script>
 <div class="container-fluid">
-	<div class="row">ㄴ
+	<div class="row">
 		<div class="col-md-12">
 			<div class="jumbotron">
 				<h2>건의사항 신청 페이지</h2>
@@ -62,7 +62,7 @@
 			<form role="form">
 					<div class="form-group"> 
 						<label for="inquiry_userid">아이디</label>
-						<input type="text" class="form-control" id="inquiry_userid" name="inquiry_userid" style="width:500px;"/>
+						<input type="text" class="form-control" id="inquiry_userid" name="inquiry_userid" style="width:500px;" value="${sessionScope.memberVo.userid}"/>
 					</div>
 					<div class="form-group">
 						<label for="inquiry_title">글 제목</label>
