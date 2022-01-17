@@ -46,5 +46,4 @@ public class ServiceMessageService {
 		ServiceMessageVo messageVo = messagedao.getMessage(tbl_service_message);
 		return messageVo;
 	}
-
 }

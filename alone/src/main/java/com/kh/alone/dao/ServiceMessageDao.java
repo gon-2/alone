@@ -46,6 +46,5 @@ public class ServiceMessageDao {
 		ServiceMessageVo messageVo = session.selectOne(NAMESPACE + "getMessage" , tbl_service_message);
 		return messageVo;
 	}
-	
-	
+
 }

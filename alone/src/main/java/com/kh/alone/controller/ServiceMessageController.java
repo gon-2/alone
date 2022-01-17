@@ -27,6 +27,7 @@ public class ServiceMessageController {
 	@Inject
 	private ServiceMessageService messageservice;
 	
+	// 메세지 보내기
 	@ResponseBody
 	@RequestMapping(value="/sendMessage" , method=RequestMethod.POST)
 	public String sendMessage(ServiceMessageVo messagevo , String service_message_receiver) {
@@ -38,6 +39,7 @@ public class ServiceMessageController {
 		return "success";
 	}
 	
+	// 메세지 받기 
 	@ResponseBody
 	@RequestMapping(value="/recieveMessage" , method=RequestMethod.GET)
 	public List<ServiceMessageVo> recieveMessage(String service_message_receiver) {
@@ -50,6 +52,7 @@ public class ServiceMessageController {
 		return recieverList;
 	}
 	
+	// 전체 메시지 리스트
 	@RequestMapping(value="/messageList" , method=RequestMethod.GET)
 	public String MessageList(Model model){
 		List<ServiceMessageVo> recieverLists = messageservice.recieveMessages();
@@ -58,6 +61,7 @@ public class ServiceMessageController {
 		return "/consult/message_list_page";
 	}
 	
+	// 하나의 메시지 확인
 	@RequestMapping(value="/getMessage" , method=RequestMethod.GET)
 	public String getMessage(Model model , String tbl_service_message) {
 		ServiceMessageVo messageVo = messageservice.getMessage(tbl_service_message);
