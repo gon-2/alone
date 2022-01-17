@@ -47,13 +47,38 @@
 	<!-- AuthInterceptor  -->
 	<!-- mapping path == 가로챌 경로 -->
 	<!-- exclude-mapping path= 가로채지 않을 경로 -->
+	
+	<!-- 고객센터 인터셉터 시작 -->
  	<interceptors>
  		<interceptor>
-			<mapping path=""/>
- 			<exclude-mapping path=""/>
+			<mapping path="/customer_main/consultmessage"/>
+			<mapping path="/class_board/form"/>
+			<mapping path="/class_board/run"/>
+			<mapping path="/class_board/deleteBoard"/>
+			<mapping path="/class_board/modcontent"/>
+			<mapping path="/comment/insertcomment"/>
+			<mapping path="/comment/listComment"/>
+			<mapping path="/comment/deleteComment"/>
+			<mapping path="/inquiry/insertrun"/>
+			<mapping path="/inquiry/form"/>
+			<mapping path="/inquiry/deleteBoard"/>
+			<mapping path="/inquiry/updateBoard"/>
+			<mapping path="/insertcomment"/>
+			<mapping path="/message/*"/>
+			<exclude-mapping path="/customer_main/home"/>
+			<exclude-mapping path="/customer_main/inquiry_list"/>
+			<exclude-mapping path="/customer_main/faq"/>
+			<exclude-mapping path="/customer_main/classFindTitle"/>
+			<exclude-mapping path="/customer_main/inquiryFindTitle"/>
+			<exclude-mapping path="/class_board/getBoard"/>
+			<exclude-mapping path="/class_board/class_regist"/>
+ 			<exclude-mapping path="/faq/*"/>
+ 			<exclude-mapping path="/inquiry/listall"/>
+ 			<exclude-mapping path="/inquiry/getBoard"/>
+ 			<exclude-mapping path="/showcomment"/>
  			<beans:ref bean="DefaultInterceptor"/>
  		</interceptor> 
  	</interceptors> 
-
+	<!-- 고객센터 인터셉터 끝 -->
 	
 </beans:beans>
