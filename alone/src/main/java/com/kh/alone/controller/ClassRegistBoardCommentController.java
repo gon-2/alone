@@ -35,6 +35,9 @@ public class ClassRegistBoardCommentController {
 	public String insertcomment(RegistCommentVo commentvo) {
 		System.out.println("ClassRegistBoardController , insertcomment , commentvo >> " + commentvo);
 		registcommentservice.insertcomment(commentvo);
+		if(commentvo == null) {
+			return "fail";
+		}
 		return "success";
 	}
 	

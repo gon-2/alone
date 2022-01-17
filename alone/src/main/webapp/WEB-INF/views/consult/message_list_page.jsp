@@ -69,9 +69,9 @@
 						</div>
 						<div class="modal-body">
 							<label for="service_message_sender">보내는사람 : </label>
-							<input type="text" id="service_message_senders" name="service_message_sender"><br>
+							<input type="text" id="service_message_senders" name="service_message_sender" value="${sessionScope.memberVo.userid}"><br>
 							<label for="service_message_receiver">받는사람 : </label>
-							<input type="text" id="service_message_receivers" name="service_message_receiver"><br>
+							<input type="text" id="service_message_receivers" name="service_message_receiver" value="service_center_admin"><br>
 							<label for="service_message_title">제목 : </label>
 							<input type="text" id="service_message_titles" name="service_message_title"><br>
 							<label for="service_message_content">내용 : </label>

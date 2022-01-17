@@ -13,8 +13,8 @@ public class ServiceMessageVo {
 	private String service_message_sender;
 	private String service_message_receiver;
 	private String service_message_title;
-	private String service_message_content;
 	private int service_message_count;
+	private String service_message_content;
 	private Timestamp service_message_date;
 	
 	public ServiceMessageVo() {
@@ -60,25 +60,21 @@ public class ServiceMessageVo {
 	public void setService_message_date(Timestamp service_message_date) {
 		this.service_message_date = service_message_date;
 	}
-
+	
 	public int getService_message_count() {
 		return service_message_count;
 	}
-
 	public void setService_message_count(int service_message_count) {
 		this.service_message_count = service_message_count;
 	}
-	
 	@Override
 	public String toString() {
 		return "ServiceMessageVo [service_message_sender=" + service_message_sender + ", service_message_receiver="
 				+ service_message_receiver + ", service_message_title=" + service_message_title
-				+ ", service_message_content=" + service_message_content + ", service_message_count="
-				+ service_message_count + ", service_message_date=" + service_message_date + "]";
+				+ ", service_message_count=" + service_message_count + ", service_message_content="
+				+ service_message_content + ", service_message_date=" + service_message_date + "]";
 	}
 
-
 	
 	
-
 }

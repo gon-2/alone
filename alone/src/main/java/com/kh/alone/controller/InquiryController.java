@@ -35,6 +35,9 @@ public class InquiryController {
 		inquireboardservice.insertinquire(inboardVo);
 		System.out.println("InquiryController , insertinquire , inboardVo >> " + inboardVo);
 		rttr.addFlashAttribute("msg" , "success");
+		if(inboardVo == null) {
+			return "fail";
+		}
 		return "success";
 	}
 	

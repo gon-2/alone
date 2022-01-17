@@ -288,7 +288,7 @@ $(function(){
 			
 				<c:choose>
 					<c:when test="${empty sessionScope.memberVo}">
-						<button type="button" id="logins" class="btn btn-primary">로그인</button>
+						
 					</c:when>
 					<c:when test="${sessionScope.memberVo.userid == inquiryBoardVo.inquiry_userid}">
 						<button type="button" class="btn btn-primary" id="updateBoard">수정</button>
