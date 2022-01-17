@@ -24,13 +24,13 @@
 				"service_message_content" : service_message_content
 			}
 			
-			var url = "/sendMessage";
+			var url = "/message/sendMessage";
 			
 			$.post(url , sendData, function(rData){
 				console.log(rData);
 				if(rData == "success"){
 					alert("답장이 완료되었습니다.");
-					location.href="/messageList";
+					location.href="/message/messageList";
 				}else{
 					alert("답장에 실패하였습니다.");
 					return false;
@@ -96,10 +96,10 @@
 									<td>${ServiceMessageVo.service_message_sender}</td>
 									<td>${ServiceMessageVo.service_message_receiver}</td>
 									<c:if test="${sessionScope.memberVo.userid == ServiceMessageVo.service_message_receiver}">
-										<td><a href="/getMessage?tbl_service_message=${ServiceMessageVo.service_message_title}">${ServiceMessageVo.service_message_title}</a></td>
+										<td><a href="/message/getMessage?tbl_service_message=${ServiceMessageVo.service_message_title}">${ServiceMessageVo.service_message_title}</a></td>
 									</c:if>
 									<c:if test="${sessionScope.memberVo.userid != ServiceMessageVo.service_message_receiver}">
-										<td><a href="/getMessage?tbl_service_message=${ServiceMessageVo.service_message_title}">${ServiceMessageVo.service_message_title}</a></td>
+										<td><a href="/message/getMessage?tbl_service_message=${ServiceMessageVo.service_message_title}">${ServiceMessageVo.service_message_title}</a></td>
 									</c:if>
 									<td><fmt:formatDate value="${ServiceMessageVo.service_message_date}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
 									<td>${ServiceMessageVo.service_message_count}</td>

@@ -21,6 +21,7 @@ import com.kh.alone.service.ServiceMessageService;
 import com.kh.alone.vo.ServiceMessageVo;
 
 @Controller
+@RequestMapping("/message")
 public class ServiceMessageController {
 	
 	@Inject

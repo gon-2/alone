@@ -11,7 +11,7 @@
 			$("#classRegist").one("click" , function(e){
 				$("#classboard").html("수강신청 조회");
 				e.preventDefault();
-				var url = "/classboard";
+				var url = "/faq/classboard";
 				
 				$.get(url , function(rData){
 					console.log(rData);
@@ -34,7 +34,7 @@
 			$("#inquiry").one("click" , function(e){
 				$("#inquiryboard").html("건의사항 조회");
 				e.preventDefault();
-				var url = "/inquiryBoard";
+				var url = "/faq/inquiryBoard";
 				$.get(url , function(rData){
 					console.log(rData);
 					$.each(rData , function(){

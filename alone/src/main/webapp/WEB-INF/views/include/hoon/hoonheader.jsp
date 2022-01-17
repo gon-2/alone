@@ -41,11 +41,12 @@
     		 	var sendData = {
     		 			"service_message_receiver" : service_message_receiver
     		 	};
-    		 	var url = "/recieveMessage";
+    		 	var url = "/message/recieveMessage";
     		 	
     		 	$.get(url , sendData , function(rData){
     		 		e.preventDefault();
     		 		console.log(rData);
+    		 		$("#Clickmessages").trigger("click");
     		 		$.each(rData , function(i){
     		 			$("#message_count").text(this.service_message_count);
     		 			$("#messageContent").text(this.service_message_sender + "님의 메시지입니다.");
@@ -291,7 +292,7 @@
                             </a>
                             <!--  Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
+                                aria-labelledby="messagesDropdown" id="dropMessage">
                                 <h6 class="dropdown-header">상담 메시지</h6>
                                 <input type="text" id="service_message_receiver" name="service_message_receiver" placeholder="사용자 아이디를 입력">
                                 <button type="button" id="check">확인</button>
@@ -300,7 +301,7 @@
                                         <div class="text-truncate" id="messageContent"></div>
                                         <div class="small text-gray-500" id="messageDate"></div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" id="messageList" href="/messageList">메시지 더 보기</a>
+                                <a class="dropdown-item text-center small text-gray-500" id="messageList" href="/message/messageList">메시지 더 보기</a>
                             </div>
                         </li>
 

@@ -16,7 +16,7 @@
 			var service_message_receiver = $("#service_receiver").val();
 			var service_message_title = $("#service_message_title").val();
 			var service_message_content = $("#service_message_content").val();
-			var url = "/sendMessage";
+			var url = "/message/sendMessage";
 			
 			var sendData = {
 					"service_message_sender" : service_message_sender,
@@ -30,7 +30,7 @@
 				console.log(rData);
 				if(rData == "success"){
 					alert("메세지가 성공적으로 발송되었습니다.");
-					location.href="/messageList";
+					location.href="/message/messageList";
 				}else if(rData == "fail"){
 					alert("존재하는 사용자가 없습니다.");
 					return false;

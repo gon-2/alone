@@ -22,6 +22,7 @@ import com.kh.alone.vo.RegistBoardVo;
 
 @Controller
 @RestController
+@RequestMapping("/faq")
 public class FaqController {
 	
 	@Inject
@@ -36,19 +37,12 @@ public class FaqController {
 		System.out.println("QnaController , classBoardSetViewcnt, classboardlist >> " + classboardlist);
 		return classboardlist;
 	}
-	
+	// 자주묻는 질문 - 조회수 10개 이상의 건의사항 게시글 출력
 	@RequestMapping(value="/inquiryBoard" , method=RequestMethod.GET)
 	public List<InquiryBoardVo> inquiryBoardSetViewcnt(Model model){
 		List<InquiryBoardVo> inquiryboardlist = faqservice.inquiryBoardSetViewcnt();
 		model.addAttribute("inquiryboardlist" , inquiryboardlist);
 		System.out.println("QnaController , inquiryBoardSetViewcnt , inquiryboardlist >> " + inquiryboardlist);
 		return inquiryboardlist;
-	}
-	
-	@RequestMapping(value="/qnagetBoard" , method=RequestMethod.GET)
-	public String qnagetBoard(String class_board_title) {
-		RegistBoardVo registBoardVo = faqservice.faqgetBoard(class_board_title);
-		System.out.println("QnaController , qnagetBoard , registBoardVo >> " + registBoardVo);
-		return "/class_regist/class_regist_board_getBoard";
 	}
 }
