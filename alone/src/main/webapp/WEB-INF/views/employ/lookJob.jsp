@@ -6,19 +6,35 @@
 <%@ include file="/WEB-INF/views/include/paging_form.jsp" %>
 <script>
 $(function() {
+	// 페이징 클릭
 	$(".page-link").click(function(e) {
 		e.preventDefault(); // 브라우저의 기본기능 막기
 		console.log($(this));
 		var page =	$(this).attr("href");
 		$("#frmPaging > input[name=page]").val(page);
+		$("#frmPaging > input[name=searchType]").val("${pagingDto.searchType}");
+		$("#frmPaging > input[name=keyword]").val("${pagingDto.keyword}");
 		$("#frmPaging").attr("action", "/employ/lookJob")
 			    	   .submit();
 	});
+	
+	// 타이틀 클릭
 	$(".jobno_title").click(function(e){
 		e.preventDefault();
 		var jobno = $(this).attr("href");
 		$("#frmPaging > input[name=rno]").attr("name", "jobno").val(jobno);
 		$("#frmPaging").attr("action", "/employ/lookJobInformation")
+					   .submit();
+	});
+	
+	// 검색
+	$("#btnSearch").click(function() {
+		var searchType = $("#searchType").val();
+		var keyword = $("#keyword").val();
+		$("#frmPaging > input[name=page]").val("1");
+		$("#frmPaging > input[name=searchType]").val(searchType);
+		$("#frmPaging > input[name=keyword]").val(keyword);
+		$("#frmPaging").attr("action", "/employ/lookJob")
 					   .submit();
 	});
 });
@@ -59,6 +75,32 @@ $(function() {
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8">
+		<div>
+			<select name="searchType" id="searchType">
+				<option value="t"
+					<c:if test="${pagingDto.searchType == 't'}">
+						selected
+					</c:if>
+				>회사</option>
+				<option value="t"
+					<c:if test="${pagingDto.searchType == 'c'}">
+						selected
+					</c:if>
+				>내용</option>
+				<option value="tc"
+					<c:if test="${pagingDto.searchType == 'tc'}">
+						selected
+					</c:if>
+				>제목+내용</option>
+			</select>
+				<label style="width:200px;">
+					<input type="text" name="keyword" 
+						id="keyword" placeholder="검색어 입력"
+						value="${pagingDto.keyword}">
+				</label>
+			<a type="button" class="btn btn-sm btn-success"
+				id="btnSearch">검색</a>
+		</div>
 		<div style="text-align:right; margin-bottom:10px;">
 		<a href="/employ/lookJobInforMationRegist" class="btn btn-sm btn-success">글 쓰기</a>
 		</div>

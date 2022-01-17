@@ -10,6 +10,8 @@ $(function() {
 		console.log($(this));
 		var page =	$(this).attr("href");
 		$("#frmPaging > input[name=page]").val(page);
+		$("#frmPaging > input[name=searchType]").val("${pagingDto.searchType}");
+		$("#frmPaging > input[name=keyword]").val("${pagingDto.keyword}");
 		$("#frmPaging").attr("action", "/employ/lookJobTestList")
 					   .submit();
 	});
@@ -18,6 +20,16 @@ $(function() {
 		var tno = $(this).attr("href");
 		$("#frmPaging > input[name=rno]").attr("name", "tno").val(tno);
 		$("#frmPaging").attr("action", "/employ/lookJobTest")
+					   .submit();
+	});
+	// 검색
+	$("#btnSearch").click(function() {
+		var searchType = $("#searchType").val();
+		var keyword = $("#keyword").val();
+		$("#frmPaging > input[name=page]").val("1");
+		$("#frmPaging > input[name=searchType]").val(searchType);
+		$("#frmPaging > input[name=keyword]").val(keyword);
+		$("#frmPaging").attr("action", "/employ/lookJobTestList")
 					   .submit();
 	});
 });
@@ -53,6 +65,33 @@ $(function() {
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8">
+			<div>
+				<select name="searchType" id="searchType">
+					<option value="t"
+						<c:if test="${pagingDto.searchType == 't'}">
+							selected
+						</c:if>
+					>제목</option>
+					<option value="w"
+						<c:if test="${pagingDto.searchType == 'w'}">
+							selected
+						</c:if>
+					>작성자</option>
+					<option value="tw"
+						<c:if test="${pagingDto.searchType == 'tw'}">
+							selected
+						</c:if>
+					>제목+작성자</option>
+				</select>
+					<label style="width:200px;">
+						<input type="text" name="keyword" 
+							id="keyword" placeholder="검색어 입력"
+							value="${pagingDto.keyword}">
+					</label>
+				<a type="button" class="btn btn-sm btn-success"
+					id="btnSearch">검색</a>
+			</div>
+			
 			<div style="text-align:right; margin-bottom:10px;">
 			<a href="/employ/lookJobTestRegist" class="btn btn-sm btn-success">글 쓰기</a>
 			</div>

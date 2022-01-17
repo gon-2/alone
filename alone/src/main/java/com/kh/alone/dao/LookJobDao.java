@@ -185,6 +185,7 @@ public class LookJobDao {
 	
 	// 자료실 상세보기
 	public ReferenceVo getReference(int rno) {
+		sqlSession.update(NAMESPACE + "RRHits", rno);
 		ReferenceVo vo = sqlSession.selectOne(NAMESPACE + "getReference", rno);
 		return vo;
 	}
