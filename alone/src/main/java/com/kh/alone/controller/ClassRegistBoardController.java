@@ -37,7 +37,7 @@ public class ClassRegistBoardController {
 	// 글 올리기 폼 이동
 	@RequestMapping(value="/form" , method=RequestMethod.GET)
 	public String classboardForm() {
-		return "/class_regist_form/class_regist_board_page";
+		return "/class_regist/class_regist_board_page";
 	}
 	
 	// 글 올리기 실행 후 수강신청 페이지로 이동해서 보여줌.
@@ -52,7 +52,7 @@ public class ClassRegistBoardController {
 	public String getBoard(String class_board_title, Model model) {
 		RegistBoardVo registboardvo = registboardservice.getBoard(class_board_title);
 		model.addAttribute("registboardvo" , registboardvo);
-		return "/class_regist_form/class_regist_board_getBoard";
+		return "/class_regist/class_regist_board_getBoard";
 	}
 	
 	// 수강신청 페이지 리스트
@@ -64,7 +64,7 @@ public class ClassRegistBoardController {
 		List<RegistBoardVo> list = registboardservice.listBoard(dto);
 		model.addAttribute("dto" , dto);
 		model.addAttribute("list", list);
-		return "/service_center/class_regist_page";
+		return "/class_regist/class_regist_page";
 	}
 	
 	// 게시판 삭제 , (댓글 삭제 이후 게시글 삭제)

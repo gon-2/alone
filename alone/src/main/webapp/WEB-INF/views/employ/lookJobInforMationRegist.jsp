@@ -74,7 +74,14 @@ $(function() {
 				"recruitmentStart" 	: recruitmentStart,
 				"recruitmentEnd" 	: recruitmentEnd,
 				"content" 			: content,
-		}
+		};
+		
+		$.post(url, sData, function(rData) {
+			console.log(rData);
+			if (rData == "success") {
+				$("form")[0].submit();
+			}
+		});
 	});
 });
 </script>
@@ -86,7 +93,7 @@ $(function() {
 				</div>
 				<div class="col-md-6">
 					<h2>
-						업체 정보
+						구인현황 등록하기
 					</h2>
 				</div>
 				<div class="col-md-3">
@@ -98,7 +105,7 @@ $(function() {
 		<div class="col-md-3">
 		</div>
 		<div class="col-md-6">
-			<form name="lookJob">
+			<form name="lookJob" action="/upload/uploadLookJob" method="post" enctype="multipart/form-data">
 			<table class="table">
 				<tbody>
 					<tr>
@@ -157,6 +164,11 @@ $(function() {
 					<tr>
 						<td colspan="4" class="rboard_td">
 							<textarea id="content" id="content" name="content" style="float: left; resize: none; width: 872px; height: 437px; margin-top:30px; margin-bottom:10px;"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4" class="rboard_td">
+							<input multiple="multiple" type="file" name="file" placeholder="파일 선택">
 						</td>
 					</tr>
 				</tbody>

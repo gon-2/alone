@@ -63,6 +63,10 @@ create table test (
 -- 시퀀스 생성
 create sequence seq_tno;
 
+-- 자격증 안내 게시판 추가
+insert into test (tno, title, writers)
+values (#{tno}, #{title}, #{writers})
+
 -- 타임 select
 select tno, title, writers, to_char(sysdate, 'YYYY-MM-DD')
 test_date, to_char(sysdate, 'HH:MI') test_time from test

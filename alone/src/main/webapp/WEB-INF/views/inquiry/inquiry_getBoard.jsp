@@ -127,6 +127,10 @@ $(function(){
 			$("#commentshow").show(1000);
 		});
 	});
+	
+	$("#logins").click(function(){
+		location.href = "/login_form";
+	});
 });
 
 	function changeDateString(timestamp){
@@ -243,7 +247,14 @@ $(function(){
 	<div class="row">
 		<div class="col-md-12">
 			<div class="jumbotron" align="center">
-				<h2>${inquiryBoardVo.inquiry_userid}님의   글번호 ${inquiryBoardVo.inquiry_number}번 건의사항 글입니다.</h2>
+			<c:choose>
+				<c:when test="${inquiryBoardVo.inquiry_userid == 'service_center_admin'}">
+					<h2>관리자의 게시글 입니다.</h2>
+				</c:when>
+				<c:otherwise>
+					<h2>${inquiryBoardVo.inquiry_userid}님의   글번호 ${inquiryBoardVo.inquiry_number}번 건의사항 글입니다.</h2>
+				</c:otherwise>
+			</c:choose>	
 				<p>
 					<a href="/inquiry/listall" class="btn btn-primary">목록으로</a>
 				</p>
@@ -267,7 +278,14 @@ $(function(){
 				</div>
 				<button type="button" class="btn btn-warning" id="commentBoard">댓글쓰기</button>
 				<button type="button" class="btn btn-primary" id="updateBoard">수정</button>
-				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button><br><br>
+				<c:choose>
+					<c:when test="${empty sessionScope.memberVo}">
+						<button type="button" id="logins" class="btn btn-primary">로그인</button>
+					</c:when>
+					<c:otherwise>
+						<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button><br><br>
+					</c:otherwise>
+				</c:choose>
 				<input type="text" id="inquiry_userid" name="inquiry_userid" placeholder="댓글을 볼 게시자 아이디">
 				<button type="button" class="btn btn-info" id="showcomment">댓글보기</button>
 			</form> 

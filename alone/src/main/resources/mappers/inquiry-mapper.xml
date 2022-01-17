@@ -63,11 +63,19 @@
    		where inquiry_password = #{inquiry_password}
    </select>
    
-   <!-- 삭제 시 글 번호와 입력 -->
+   <!-- 사용자가 삭제 시 글 번호와 입력 -->
    <delete id="deleteBoard">
    		delete from tbl_inquiry_board
 		where inquiry_number = #{inquiry_number} and inquiry_password = #{inquiry_password}
    </delete>
+   
+   <!-- 관리자가 삭제 시 -->
+   <delete id="deleteBoardAdmin">
+   		delete from tbl_inquiry_board
+   		where inquiry_title = #{inquiry_title}
+   </delete>
+   
+   
    
    <!-- 제목 클릭 시 조회수 증가 -->
    <update id="viewcnt">
@@ -81,6 +89,5 @@
    		set inquiry_title = #{inquiry_title} , inquiry_content = #{inquiry_content} , inquiry_date = sysdate
    		where inquiry_password = #{inquiry_password}
    </update>
-   
-
+ 
 </mapper>

@@ -1,3 +1,9 @@
+/*
+ * 2021-01-14
+ * Author : 이정훈
+ * code Explanation : 게시판 DTO
+ */
+
 package com.kh.alone.vo;
 
 public class PagingDto {

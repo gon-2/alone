@@ -12,9 +12,6 @@ $(function() {
 		$("#frmPaging > input[name=page]").val(page);
 		$("#frmPaging").submit();
 	});
-	$("#r_boardBtn").click(function() {
-		location.href="/employ/referenceRoomRegist";
-	});
 	$(".rno_title").click(function(e) {
 		e.preventDefault();
 		var rno = $(this).attr("href");
@@ -58,7 +55,7 @@ $(function() {
 		</div>
 		<div class="col-md-8">
 			<div style="text-align:right; margin-bottom:10px;">
-							<input type="button" class="btn btn-sm" value="글쓰기" id="r_boardBtn">
+			<a href="/employ/referenceRoomRegist" class="btn btn-sm btn-success">글 쓰기</a>
 			</div>
 			
 			<table class="table">

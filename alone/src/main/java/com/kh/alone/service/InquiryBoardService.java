@@ -62,8 +62,14 @@ public class InquiryBoardService {
 		boardDao.deleteBoard(inquiry_number , inquiry_password);
 	}
 	
+	// 관리자가 삭제버튼 클릭시 글 제목으로 삭제
+	public void deleteBoardAdmin(String inquiry_title) {
+		boardDao.deleteBoardAdmin(inquiry_title);
+	}
+	
 	// 제목과 내용 , 작성일자 수정
 	public void updateBoard(InquiryBoardVo inboardvo) {
 		boardDao.updateBoard(inboardvo);
 	}
+
 }

@@ -4,12 +4,14 @@
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 
-<h2>내 게시판</h2><br>
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-		
+
+<section class="wrapper style1">
+	<div class="container">
+				<h2>내 게시판</h2><br>
+		<div class="clear overflow">
+			<section class="col-md-12">
+			</section>	
 				<label for="board_form">분류</label> 
 				<select id="board_form" name="board" size="1">
 					<option value="">선택하세요.</option>
@@ -51,7 +53,7 @@
 				</form>
 		</div>
 	</div>
-</div>
+</section>
 
 
 

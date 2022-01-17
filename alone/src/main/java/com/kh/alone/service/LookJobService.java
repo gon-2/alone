@@ -21,9 +21,15 @@ public class LookJobService {
 	@Inject
 	private LookJobDao lookJobDao;
 	
+	// 구인 게이판 카운트
+	public int job_getCount(PagingVo pagingVo) {
+		int count = lookJobDao.job_getCount(pagingVo);
+		return count;
+	}
+	
 	// 구인정보 확인
-	public List<LookJobVo> selectAll() {
-		List<LookJobVo> list = lookJobDao.selectAll();
+	public List<LookJobVo> selectAll(PagingVo pagingVo) {
+		List<LookJobVo> list = lookJobDao.selectAll(pagingVo);
 		return list;
 	}
 
@@ -33,9 +39,43 @@ public class LookJobService {
 		return lookJobVo;
 	}
 	
+	// 업로드 구인정보 불러오기
+	public LookJobVo getLookJobUpload(LookJobVo vo) {
+		LookJobVo lookJobVo = lookJobDao.getLookJobUpload(vo);
+		return lookJobVo;
+	}
+	
+	// 구인정보 업로드 이미지 저장
+	public void insertJobImages(int jobno, String safeFile) {
+		lookJobDao.insertJobImages(jobno, safeFile);
+	}
+	
+	// 구인정보 이미지 불러오기
+	public List<LookJobVo> JobImage(int jobno) {
+		List<LookJobVo> jobImageList = lookJobDao.JobImage(jobno);
+		return jobImageList;
+	}
+	
+	// 구인 rno 얻기
+	public int getJobnoNextVal() {
+		int jobno = lookJobDao.getJobnoNextVal();
+		return jobno;
+	}
+	
+	// 회사구인 정보 추가하기
+	public void insertJobInforMation(LookJobVo lookJobVo) {
+		lookJobDao.insertJobInforMation(lookJobVo);
+	}
+	
+	// 자격증 게시판 게시글 수
+	public int test_getCount(PagingVo pagingVo) {
+		int count = lookJobDao.test_getCount(pagingVo);
+		return count;
+	}
+	
 	// 자격증 안내 확인
-	public List<JobTestVo> lookJobTestList() {
-		List<JobTestVo> list = lookJobDao.lookJobTestList();
+	public List<JobTestVo> lookJobTestList(PagingVo pagingVo) {
+		List<JobTestVo> list = lookJobDao.lookJobTestList(pagingVo);
 		return list;
 	}
 	
@@ -51,9 +91,37 @@ public class LookJobService {
 		return imageList;
 	}
 	
+	// 자격증 테이블 tno 번호 얻기
+	public int getTnoNextVal() {
+		int tno = lookJobDao.getTnoNextVal();
+		return tno;
+	}
+	
+	// 자격증 안내 등록하기
+	public void insertTestRegist(JobTestVo jobTestVo) {
+		lookJobDao.insertTestRegist(jobTestVo);
+	}
+	
+	// 업로드 자격증 안내 불러오기
+	public JobTestVo getTestUpload(JobTestVo vo) {
+		JobTestVo jobTestVo = lookJobDao.getTestUpload(vo);
+		return jobTestVo;
+	}
+	
+	// 자격증 안내 이미지 저장
+	public void insertTestImages(int tno, String safeFile) {
+		lookJobDao.insertTestImages(tno, safeFile);
+	}
+	
+	// 취업자 게시판 수
+	public int fno_getCount(PagingVo pagingVo) {
+		int count = lookJobDao.fno_getCount(pagingVo);
+		return count;
+	}
+	
 	// 취업자 현황
-	public List<FindVo> findPositionList() {
-		List<FindVo> list = lookJobDao.findPositionList();
+	public List<FindVo> findPositionList(PagingVo pagingVo) {
+		List<FindVo> list = lookJobDao.findPositionList(pagingVo);
 		return list;
 	}
 	
@@ -67,6 +135,28 @@ public class LookJobService {
 	public List<FindVo> findImage(int fno) {
 		List<FindVo> imageList = lookJobDao.findImage(fno);
 		return imageList;
+	}
+	
+	// 취업자 현황 fno 얻기
+	public int getFnoNextVal() {
+		int fno = lookJobDao.getFnoNextVal();
+		return fno;
+	}
+	
+	// 취업자 현황 등록하기
+	public void insertFindRegist(FindVo findVo) {
+		lookJobDao.insertFindRegist(findVo);
+	}
+	
+	// 업로드 취업현황 불러오기
+	public FindVo getFindUpload(FindVo vo) {
+		FindVo findVo = lookJobDao.getFindUpload(vo);
+		return findVo;
+	}
+	
+	// 취업현황 이미지 저장
+	public void insertFindImages(int fno, String safeFile) {
+		lookJobDao.insertFindImages(fno, safeFile);
 	}
 	
 	// 자료실

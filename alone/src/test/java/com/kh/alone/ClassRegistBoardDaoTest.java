@@ -18,9 +18,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.kh.alone.dao.ClassRegistBoardDao;
 import com.kh.alone.dao.InquiryBoardDao;
 import com.kh.alone.dao.RegistCommentDao;
+import com.kh.alone.dao.ServiceMessageDao;
 import com.kh.alone.vo.InquiryBoardVo;
 import com.kh.alone.vo.RegistBoardVo;
 import com.kh.alone.vo.RegistCommentVo;
+import com.kh.alone.vo.ServiceMessageVo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/**/*.xml")
@@ -31,6 +33,9 @@ public class ClassRegistBoardDaoTest {
 	
 	@Inject
 	private InquiryBoardDao dao;
+	
+	@Inject
+	private ServiceMessageDao messagedao;
 
 	@Test
 	public void insertcommentTest() {
@@ -40,7 +45,7 @@ public class ClassRegistBoardDaoTest {
 		registCommentDao.insertcomment(vo);
 	}
 	
-	@Test
+/*	@Test
 	public void insertinquire() {
 		InquiryBoardVo vo = new InquiryBoardVo();
 		vo.setInquiry_number(2);
@@ -51,7 +56,7 @@ public class ClassRegistBoardDaoTest {
 //		vo.setInquiry_photoname("C:\\fakepath\\suneung.jpg");
 		dao.insertinquire(vo);
 	}
-	
+	*/
 	@Test
 	public void testcheckPassword() {
 		String password = "1234";
@@ -65,4 +70,12 @@ public class ClassRegistBoardDaoTest {
 		RegistCommentVo registcommentvo = registCommentDao.onecomment(class_board_number);
 		System.out.println("registcommentvo >> " + registcommentvo);
 	}
-*/}
+*/
+	
+	@Test
+	public void getMessage() {
+		String service_message_receiver = "user02";
+		List<ServiceMessageVo> receiver = messagedao.recieveMessage(service_message_receiver);
+		System.out.println("receiver >> " + receiver);
+	}
+}

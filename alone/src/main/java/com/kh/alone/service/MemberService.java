@@ -25,39 +25,25 @@ public class MemberService {
 		return list;
 	}
 	
-	
 	// 맴버 브로드 리스트 조회
 	public List<MemberBoardVo> memberBoardForm() {
 		List<MemberBoardVo> list = memberDao.memberBoardForm();
 		return list;
 	}
-	
-//	// 주간반 조회
-//	public List<MemberVo> selectWeekly(){
-//		List<MemberVo> weekly = memberDao.selectWeekly();
-//		return weekly;
-//		}
-//		
-//		// 주말반 조회
-//	public List<MemberVo> selectWeekend(){
-//		List<MemberVo> weekend = memberDao.selectWeekend();
-//		return weekend;
-//		}
-//		
-//		// 야간반 조회
-//	public List<MemberVo> selectNight(){
-//		List<MemberVo> night = memberDao.selectNight();
-//		return night;
-//		}
-	
+		
 	// 회원등록
-	public void insertTeam(MemberVo memberVo) {
-		memberDao.insertTeam(memberVo); 
+	public void insertMember(MemberVo memberVo) {
+		memberDao.insertMember(memberVo); 
 	}
 	
 	// 회원정보 확인
 	public MemberVo memberModify(String userid) {
 		MemberVo memberVo = memberDao.memberModify(userid);
+		return memberVo;
+	}
+	// 회원정보 처리
+	public MemberVo modifyRun(MemberVo memberVo) {
+		memberDao.modifyRun(memberVo);
 		return memberVo;
 	}
 
