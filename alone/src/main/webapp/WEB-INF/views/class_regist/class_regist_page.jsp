@@ -36,9 +36,11 @@
 
 		$("#btnSearch").click(function(){
 			var searchType = $("#searchType").val();
-			console.log("searchType >> " + searchType);
 			var keyword = $("#keyword").val();
-			console.log("keyword >> " + keyword);
+			if(keyword.length == 0 || keyword == ""){
+				alert("검색어를 입력하세요.");
+				return false;
+			}
 			$("#frmPaging > input[name=page]").val("1");
 			$("#frmPaging > input[name=searchType]").val(searchType);
 			$("#frmPaging > input[name=keyword]").val(keyword);
@@ -80,7 +82,7 @@
 				</p>
 			</div>
 			<table class="table">
-				<thead>
+				<thead class="thead-dark">
 					<tr align="center">
 						<th>글 번호</th>
 						<th>제목</th>

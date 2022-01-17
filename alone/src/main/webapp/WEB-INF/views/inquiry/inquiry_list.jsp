@@ -61,6 +61,10 @@ $(function(){
 		console.log("searchType >> " + searchType);
 		var keyword = $("#keyword").val();
 		console.log("keyword >> " + keyword);
+		if(keyword.length == 0 || keyword == ""){
+			alert("검색어를 입력하세요.");
+			return false;
+		}
 		$("#frmPaging > input[name=page]").val("1");
 		$("#frmPaging > input[name=searchType]").val(searchType);
 		$("#frmPaging > input[name=keyword]").val(keyword);
@@ -110,7 +114,7 @@ $(function(){
 			<!-- 관리자로 로그인 했을 경우 th , tr 시작 -->
 			<c:choose>
 				<c:when test="${sessionScope.memberVo == InquiryBoardVo.inquiry_userid == 'service_center_admin'}">
-					<thead>
+					<thead class="thead-dark">
 						<tr align="center">
 							<th>글 번호</th>
 							<th>제목</th>
