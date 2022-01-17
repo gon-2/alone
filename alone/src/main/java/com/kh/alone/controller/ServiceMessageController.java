@@ -57,4 +57,13 @@ public class ServiceMessageController {
 		return "/consult/message_list_page";
 	}
 	
+	@RequestMapping(value="/getMessage" , method=RequestMethod.GET)
+	public String getMessage(Model model , String tbl_service_message) {
+		ServiceMessageVo messageVo = messageservice.getMessage(tbl_service_message);
+		System.out.println("ServiceMessageController , recieveMessage , messageVo >> " + messageVo);
+		System.out.println("ServiceMessageController , recieveMessage , tbl_service_message >> " + tbl_service_message);
+		model.addAttribute("messageVo" , messageVo);
+		return "/consult/message_get_page";
+	}
+	
 }
