@@ -113,7 +113,7 @@
 										<td><button type="submit" class="btn btn-sm btn-danger">삭제</button></td>
 									</form>
 								</c:when>
-								<c:when test="${sessionScope.memberVo == InquiryBoardVo.inquiry_userid == 'service_center_admin'}">
+								<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
 			 						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
 										<td><button type="submit" class="btn btn-sm btn-danger">삭제</button></td>
 									</form>

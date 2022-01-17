@@ -113,7 +113,7 @@ $(function(){
 			<table class="table">
 			<!-- 관리자로 로그인 했을 경우 th , tr 시작 -->
 			<c:choose>
-				<c:when test="${sessionScope.memberVo == InquiryBoardVo.inquiry_userid == 'service_center_admin'}">
+				<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
 					<thead class="thead-dark">
 						<tr align="center">
 							<th>글 번호</th>
@@ -160,7 +160,14 @@ $(function(){
 							</c:choose>
 							<td><fmt:formatDate value="${InquiryBoardVo.inquiry_date}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
 							<td>${InquiryBoardVo.inquiry_viewcnt}</td>
-							<td><a href="/inquiry/deleteBoardAdmin?inquiry_title=${InquiryBoardVo.inquiry_title}" class="btn btn-sm btn-danger">삭제</a></td>				
+							<c:choose>
+								<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
+									<td><a href="/inquiry/deleteBoardAdmin?inquiry_title=${InquiryBoardVo.inquiry_title}" class="btn btn-sm btn-danger">삭제</a></td>	
+								</c:when>
+								<c:when test="${sessionScope.memberVo.userid == ClassRegistBoardVo.class_board_userid}">
+									<td><a href="/inquiry/deleteBoardAdmin?inquiry_title=${InquiryBoardVo.inquiry_title}" class="btn btn-sm btn-danger">삭제</a></td>
+								</c:when>
+							</c:choose>			
 	 					</tr>
 						</c:forEach>
 					</tbody>
