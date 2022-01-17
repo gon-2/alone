@@ -247,7 +247,14 @@ $(function(){
 	<div class="row">
 		<div class="col-md-12">
 			<div class="jumbotron" align="center">
-				<h2>${inquiryBoardVo.inquiry_userid}님의   글번호 ${inquiryBoardVo.inquiry_number}번 건의사항 글입니다.</h2>
+			<c:choose>
+				<c:when test="${inquiryBoardVo.inquiry_userid == 'service_center_admin'}">
+					<h2>관리자의 게시글 입니다.</h2>
+				</c:when>
+				<c:otherwise>
+					<h2>${inquiryBoardVo.inquiry_userid}님의   글번호 ${inquiryBoardVo.inquiry_number}번 건의사항 글입니다.</h2>
+				</c:otherwise>
+			</c:choose>	
 				<p>
 					<a href="/inquiry/listall" class="btn btn-primary">목록으로</a>
 				</p>

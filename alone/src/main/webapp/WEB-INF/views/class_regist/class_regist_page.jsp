@@ -36,9 +36,11 @@
 
 		$("#btnSearch").click(function(){
 			var searchType = $("#searchType").val();
-			console.log("searchType >> " + searchType);
 			var keyword = $("#keyword").val();
-			console.log("keyword >> " + keyword);
+			if(keyword.length == 0 || keyword == ""){
+				alert("검색어를 입력하세요.");
+				return false;
+			}
 			$("#frmPaging > input[name=page]").val("1");
 			$("#frmPaging > input[name=searchType]").val(searchType);
 			$("#frmPaging > input[name=keyword]").val(keyword);
@@ -80,7 +82,7 @@
 				</p>
 			</div>
 			<table class="table">
-				<thead>
+				<thead class="thead-dark">
 					<tr align="center">
 						<th>글 번호</th>
 						<th>제목</th>
@@ -94,28 +96,33 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="ClassRegistBoardVo">
-					<tr align="center">
-						<td>${ClassRegistBoardVo.class_board_number}</td>
-						<td><a href="/class_board/getBoard?class_board_title=${ClassRegistBoardVo.class_board_title}">${ClassRegistBoardVo.class_board_title}</a></td>
-						<td>${ClassRegistBoardVo.class_board_content}</td>
-						<td>${ClassRegistBoardVo.class_board_enroll}</td>
-						<td>${ClassRegistBoardVo.class_board_userid}</td>
-						<td><fmt:formatDate value="${ClassRegistBoardVo.class_board_postdate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
-						<td>${ClassRegistBoardVo.class_board_viewcnt}</td>
-				<c:choose>		
-					<c:when test="${empty sessionScope.memberVo}">
-						<td>로그인 하세요.</td>
-					</c:when>
-					<c:when test="${sessionScope.memberVo.userid == ClassRegistBoardVo.class_board_userid}">
- 						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
-							<td><button type="submit" class="btn btn-primary">삭제</button></td>
-						</form>
-					</c:when>
-					<c:otherwise>
-						<td>로그인 하세요.</td>
-					</c:otherwise>
-				</c:choose>					
- 					</tr>
+						<tr align="center">
+							<td>${ClassRegistBoardVo.class_board_number}</td>
+							<td><a href="/class_board/getBoard?class_board_title=${ClassRegistBoardVo.class_board_title}">${ClassRegistBoardVo.class_board_title}</a></td>
+							<td>${ClassRegistBoardVo.class_board_content}</td>
+							<td>${ClassRegistBoardVo.class_board_enroll}</td>
+							<td>${ClassRegistBoardVo.class_board_userid}</td>
+							<td><fmt:formatDate value="${ClassRegistBoardVo.class_board_postdate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+							<td>${ClassRegistBoardVo.class_board_viewcnt}</td>
+							<c:choose>		
+								<c:when test="${empty sessionScope.memberVo}">
+									<td>로그인 하세요.</td>
+								</c:when>
+								<c:when test="${sessionScope.memberVo.userid == ClassRegistBoardVo.class_board_userid}">
+			 						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
+										<td><button type="submit" class="btn btn-sm btn-danger">삭제</button></td>
+									</form>
+								</c:when>
+								<c:when test="${sessionScope.memberVo == InquiryBoardVo.inquiry_userid == 'service_center_admin'}">
+			 						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
+										<td><button type="submit" class="btn btn-sm btn-danger">삭제</button></td>
+									</form>
+								</c:when>
+								<c:otherwise>
+									<td>로그인 하세요.</td>
+								</c:otherwise>
+							</c:choose>					
+	 					</tr>
 					</c:forEach>
 				</tbody>
 			</table>

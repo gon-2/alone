@@ -97,7 +97,7 @@ $(function(){
 										<input type="hidden" id="cate_code" value="${classInfoVo.cate_code}">
 										<tr>
 											<td>${classInfoVo.info_code}</td>
-											<td>${classInfoVo.c_title} / ${classInfoVo.c_time}시간  /${classInfoVo.time_code_name }</td>
+											<td><a href="/classInfo/classInfoView?info_code=${classInfoVo.info_code}">${classInfoVo.c_title} / ${classInfoVo.c_time}시간  /${classInfoVo.time_code_name }</a></td>
 											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
 											<td><a class="homeRegist btn btn-sm btn-outline-danger" id="homeRegist" href="${classInfoVo.info_code}">신청</a></td>
 										</tr>
@@ -124,7 +124,7 @@ $(function(){
 										<input type="hidden" id="cate_code" value="${classInfoVo.cate_code}">
 										<tr>
 											<td>${classInfoVo.info_code}</td>
-											<td>${classInfoVo.c_title} / ${classInfoVo.c_time}시간 / ${classInfoVo.time_code_name }</td>
+												<td><a href="/classInfo/classInfoView?info_code=${classInfoVo.info_code}">${classInfoVo.c_title} / ${classInfoVo.c_time}시간  /${classInfoVo.time_code_name }</a></td>
 											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
 											<td><a class="homeRegist btn btn-sm btn-outline-danger"  id="homeRegist" href="${classInfoVo.info_code}">신청</a></td>
 										</tr>
@@ -151,7 +151,7 @@ $(function(){
 										<input type="hidden" id="cate_code" value="${classInfoVo.cate_code}">
 										<tr>
 											<td>${classInfoVo.info_code}</td>
-											<td>${classInfoVo.c_title} / ${classInfoVo.c_time}시간 / ${classInfoVo.time_code_name }</td>
+											<td><a href="/classInfo/classInfoView?info_code=${classInfoVo.info_code}">${classInfoVo.c_title} / ${classInfoVo.c_time}시간  /${classInfoVo.time_code_name }</a></td>
 											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
 											<td><a class="homeRegist btn btn-sm btn-outline-danger" id="homeRegist" href="${classInfoVo.info_code}">신청</a></td>
 										</tr>
@@ -178,7 +178,7 @@ $(function(){
 										<input type="hidden" id="cate_code" value="${classInfoVo.cate_code}">
 										<tr>
 											<td>${classInfoVo.info_code}</td>
-											<td>${classInfoVo.c_title} / ${classInfoVo.c_time}시간 / ${classInfoVo.time_code_name}</td>
+												<td><a href="/classInfo/classInfoView?info_code=${classInfoVo.info_code}">${classInfoVo.c_title} / ${classInfoVo.c_time}시간  /${classInfoVo.time_code_name }</a></td>
 											<td>${classInfoVo.start_date}<br>${classInfoVo.end_date}</td>
 											<td><a class="homeRegist btn btn-sm btn-outline-danger"  id="homeRegist" href="${classInfoVo.info_code}">신청</a></td>
 										</tr>

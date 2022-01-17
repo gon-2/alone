@@ -19,6 +19,7 @@ public class ClassInfoDao {
 	
 	// 수업추가하기
 	public void insertClassInfo(ClassInfoVo vo) {
+		System.out.println("다오 Vo" + vo);
 		sqlSession.insert(NAMESPACE + "insertClassInfo", vo);
 	}
 	
@@ -68,6 +69,14 @@ public class ClassInfoDao {
 		List<StudentClassRegistVo> mineList = sqlSession.selectList(NAMESPACE + "selectMineList", r_num);
 		return mineList;
 	}
+	
+	// 수업정보 상세보기
+	public ClassInfoVo getClassInfo(int info_code) {
+		ClassInfoVo vo = sqlSession.selectOne(NAMESPACE + "getClassInfo", info_code);
+		return vo;
+	}
+	
+	
 	
 }
 	
