@@ -48,8 +48,7 @@
     		 		console.log(rData);
     		 		$("#Clickmessages").trigger("click");
     		 		$.each(rData , function(i){
-    		 			$("#message_count").text(this.service_message_count);
-    		 			$("#messageContent").text(this.service_message_sender + "님의 메시지입니다.");
+    		 			$("#messageContent").html(this.service_message_sender);
     		 			$("#messageDate").html(this.service_message_content + "<br>" + changeDateString(this.service_message_date));
     		 		});
     			});
@@ -135,7 +134,7 @@
             </li> -->
             
             <li class="nav-item">
-                <a class="nav-link" href="/customer_main/consultmessage">
+                <a class="nav-link" href="/message/messageList">
                     <i class="fas fa-coffee"></i>
                     <span>수강생 상담</span></a>
             </li>

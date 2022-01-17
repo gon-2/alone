@@ -118,7 +118,7 @@ BODY {
 										<li><a href="/customer_main/faq">자주묻는 질문</a></li>
 										<li><a href="/class_board/class_regist">수강신청</a></li>
 										<li><a href="/inquiry/listall">건의사항</a></li>
-										<li><a href="/customer_main/consultmessage">상담메시지</a></li>
+										<li><a href="/message/messageList">상담메시지</a></li>
 									</ul>
 								</li>
 								<li>
@@ -132,6 +132,6 @@ BODY {
 								</li>
 							</ul>
 						</nav>
-	</div>
+					</div>
 				</div>
 				<section class="wrapper style1">

@@ -4,6 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
 <%@ include file="/WEB-INF/views/include/hoon/hoonheader.jsp" %>
+<head>
+	<title>${messageVo.service_message_sender}의 ${messageVo.service_message_title}</title>
+</head>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">

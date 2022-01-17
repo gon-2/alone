@@ -127,7 +127,7 @@ $(function(){
 					</thead>
 				</c:when>
 				<c:otherwise>
-					<thead>
+					<thead class="thead-dark">
 						<tr align="center">
 							<th>글 번호</th>
 							<th>제목</th>
@@ -135,6 +135,7 @@ $(function(){
 							<th>작성자</th>
 							<th>게시일</th>
 							<th>조회수</th>
+							<th>삭제</th>
 						</tr>
 					</thead>
 				</c:otherwise>
@@ -142,8 +143,6 @@ $(function(){
 			<!-- 관리자로 로그인 했을 경우 th , tr 끝 -->
 			
 			<!-- 관리자로 로그인 했을 경우 tbody 시작 -->
-			<c:choose>
-				<c:when test="${sessionScope.memberVo == InquiryBoardVo.inquiry_userid == 'service_center_admin'}">
 					<tbody>
 						<c:forEach items="${list}" var="InquiryBoardVo">
 						<tr align="center">
@@ -164,15 +163,16 @@ $(function(){
 								<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
 									<td><a href="/inquiry/deleteBoardAdmin?inquiry_title=${InquiryBoardVo.inquiry_title}" class="btn btn-sm btn-danger">삭제</a></td>	
 								</c:when>
-								<c:when test="${sessionScope.memberVo.userid == ClassRegistBoardVo.class_board_userid}">
+								<c:when test="${sessionScope.memberVo.userid == InquiryBoardVo.inquiry_userid}">
 									<td><a href="/inquiry/deleteBoardAdmin?inquiry_title=${InquiryBoardVo.inquiry_title}" class="btn btn-sm btn-danger">삭제</a></td>
 								</c:when>
+								<c:otherwise>
+									<td>로그인하세요.</td>
+								</c:otherwise>
 							</c:choose>			
 	 					</tr>
 						</c:forEach>
 					</tbody>
-				</c:when>
-			</c:choose>
 			<!-- 관리자로 로그인 했을 경우 tbody 끝 -->
 			</table>
 					<nav><!-- 페이지네이션 가운데 정렬 -->
