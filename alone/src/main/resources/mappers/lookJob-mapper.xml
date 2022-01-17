@@ -9,9 +9,28 @@
 		select * from 
 		(select rownum rnum, a.* from 
       			 		 (select * from lookJob
+      			 		 <include refid="jobSearch"></include>
        						 order by jobno desc) a)
 		where rnum between #{startRow} and #{endRow}
 	</select>
+	
+	<!-- 검색 조건 -->
+	<sql id="jobSearch">
+		<if test="searchType != null and keyword != null">
+      		<choose>
+      			<when test='searchType == "t"'>
+      				where company like '%' || #{keyword} || '%'
+      			</when>
+      			<when test='searchType == "c"'>
+      				where content like '%' || #{keyword} || '%'
+      			</when>
+      			<when test='searchType == "tc"'>
+      				where company like '%' || #{keyword} || '%'
+      				or content  like '%' || #{keyword} || '%'
+      			</when>
+      		</choose>
+      	</if>
+	</sql>
 	
 	<select id="job_getCount" resultType="int">
 		select count(*) from lookJob
@@ -61,9 +80,28 @@
 		test_date, to_char(sysdate, 'HH:MI') test_time from
 		(select rownum rnum, a.* from 
       			 		 (select * from test
+      			 		 <include refid="testSearch"></include>
        						 order by tno desc) a)
 		where rnum between #{startRow} and #{endRow}
 	</select>
+	
+	<!-- 검색 조건 -->
+	<sql id="testSearch">
+		<if test="searchType != null and keyword != null">
+      		<choose>
+      			<when test='searchType == "t"'>
+      				where title like '%' || #{keyword} || '%'
+      			</when>
+      			<when test='searchType == "w"'>
+      				where writers like '%' || #{keyword} || '%'
+      			</when>
+      			<when test='searchType == "tc"'>
+      				where title like '%' || #{keyword} || '%'
+      				or writers  like '%' || #{keyword} || '%'
+      			</when>
+      		</choose>
+      	</if>
+	</sql>
 	
 	<select id="getTest" resultType="JobTestVo">
 		select tno, title, writers, to_char(sysdate, 'YYYY-MM-DD')
@@ -105,9 +143,28 @@
 		select * from
 		(select rownum rnum, a.* from 
       			 		 (select * from find
+      			 		 <include refid="findSearch"></include>
        						 order by fno desc) a)
 		where rnum between #{startRow} and #{endRow}
 	</select>
+	
+	<!-- 검색 조건 -->
+	<sql id="findSearch">
+		<if test="searchType != null and keyword != null">
+      		<choose>
+      			<when test='searchType == "c"'>
+      				where company like '%' || #{keyword} || '%'
+      			</when>
+      			<when test='searchType == "cn"'>
+      				where course_name like '%' || #{keyword} || '%'
+      			</when>
+      			<when test='searchType == "ccn"'>
+      				where company like '%' || #{keyword} || '%'
+      				or course_name  like '%' || #{keyword} || '%'
+      			</when>
+      		</choose>
+      	</if>
+	</sql>
 	
 	<select id="getFind" resultType="FindVo">
 		select * from find
@@ -148,9 +205,34 @@
 		reference_date, to_char(sysdate, 'HH:MI') reference_time, re_group, re_seq, re_level from 
 		(select rownum rnum, a.* from 
       			 		 (select * from tbl_reference
+      			 		 <include refid="referenceRoomSearch"></include>
        						 order by re_group desc, re_seq asc) a)
 		where rnum between #{startRow} and #{endRow}
 	</select>
+	
+	<!-- 검색 조건 -->
+	<sql id="referenceRoomSearch">
+		<if test="searchType != null and keyword != null">
+      		<choose>
+      			<when test='searchType == "t"'>
+      				where rtitle like '%' || #{keyword} || '%'
+      			</when>
+      			<when test='searchType == "w"'>
+      				where rwriter like '%' || #{keyword} || '%'
+      			</when>
+      			<when test='searchType == "tc"'>
+      				where rtitle like '%' || #{keyword} || '%'
+      				or rwriter  like '%' || #{keyword} || '%'
+      			</when>
+      		</choose>
+      	</if>
+	</sql>
+	
+	<update id="RRHits">
+		update tbl_reference set
+		hits = hits + 1
+		where rno = #{rno}
+	</update>
 	
 	<select id="getReference" resultType="ReferenceVo">
 		select * from tbl_reference
@@ -193,5 +275,4 @@
 	   	insert into r_file(r_images, rno)
 		values(#{r_images}, #{rno})
     </insert>
-	
 </mapper>

@@ -1,18 +1,18 @@
 package com.kh.alone.vo;
 
 public class ClassInfoVo {
-	private int info_code; // 시퀀스랑 연결
-	private String c_title; //수업 이름
-	private int c_time; //수업 기간
-	private String start_date; //수업 기간
-	private String end_date; //수업 시간
-	private int price;    //강의실 호수
-	private int class_room;   //총원
-	private int class_total;  //수강료
-	private int cate_code;  // (프로그램, 디자인) 각각 수업종류 전공이라해야하나..
-	private int time_code;  // (주간반 야간반 주말반)수업 타임 분류
-	private String cate_code_name; // 전공코드에 이름 부여하기
-	private String time_code_name; // 주간반, 야간반 , 주말반code에 이름 부여하기
+	private int info_code; 
+	private String c_title; 
+	private int c_time;
+	private String start_date; 
+	private String end_date;
+	private int price;    
+	private int class_room;   
+	private int class_total;  
+	private int cate_code; 
+	private int time_code;  
+	private String cate_code_name; 
+	private String time_code_name; 
 	
 	public ClassInfoVo() {
 		super();

@@ -24,6 +24,7 @@
 					</ul>
 					<%@ include file="/WEB-INF/views/include/yg/content.jsp"%>
 				</div>
+				<a href="/classInfo/insertClassInfo">수업 등록하기</a>
 			</section>
 		</div>
 	</div>

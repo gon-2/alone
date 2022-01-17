@@ -64,4 +64,10 @@ public class ClassInfoService {
 		List<StudentClassRegistVo> mineList = dao.selectMineList(r_num);
 		return mineList;
 	}
+	
+	// 수업정보 상세보기
+	public ClassInfoVo getClassInfo(int info_code) {
+		ClassInfoVo vo = dao.getClassInfo(info_code);
+		return vo;
+	}
 }

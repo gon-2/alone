@@ -22,11 +22,11 @@
 			
 			<div class="atag">
 				<c:choose>
-					<c:when test="${classInfoVo.info_code !=''}">
+					<c:when test="${not empty classInfoVo.info_code}">
 					<a href="/classInfo/onlineRegist?info_code=${classInfoVo.info_code}" class="btn btn-sm btn-outline-secondary">동의</a> 
 					</c:when>
 					<c:when test="${empty classInfoVo.info_code}">
-					<a href="/classInfo/onlineRegist" class="btn btn-sm btn-outline-secondary">동의</a> 
+					<a href="/classInfo/onlineRegist2" class="btn btn-sm btn-outline-secondary">동의</a> 
 					</c:when>
 				</c:choose>
 				<a href="home" class="btn btn-sm btn-outline-danger">취소</a>

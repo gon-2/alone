@@ -20,6 +20,7 @@
 
 <script>
 $(function(){
+	// 취성패 참여여부
 	$(".sy").change(function() {
 		if ($(this).attr("id") == "employment3") {
 			$(".sy1").attr("disabled", true);
@@ -95,18 +96,14 @@ $(function(){
 			console.log("일반전화: " + home_num);
 		}else{
 			home_num = home_num1 + "-" + home_num2 + "-" + home_num3;
-			console.log("123일반전화: " + home_num);
 		}
 		
 		
 		var e_mail1 = $("#e_mail1").val();
-// 		console.log("e_mail1: " + e_mail1);
 		
 		var e_mail2 = $("#e_mail2").val();
-// 		console.log("e_mail2: " + e_mail2);
 		
 		var email_domain = $("#email_domain").val();
-// 		console.log("email_domain" + email_domain);
 		
 		var e_mail = "";
 		
@@ -115,7 +112,6 @@ $(function(){
 			return false;
 		}
 		e_mail = e_mail1 + "@" + e_mail2;
-		console.log("e_mail: ", e_mail);
 		
 
 		var regist_path = $("input:radio[name=regist_path]:checked").val();
@@ -131,43 +127,34 @@ $(function(){
 	    
 	    if( employment1 == "Ⅰ유형" ){
 	    	employment = "1유형";
-	    	console.log("1유형 확인하기: " + employment);
 	    }else if( employment1 == "Ⅱ유형" ){
 	    	employment = "2유형";
-	    	console.log("2유형 확인하기: " + employment);
 	    }else{
 	    	employment = "미참여";
-	    	console.log("미참여 확인하기: " + employment);
 	    }
 	    
 	    var employment_center1 = $("#employment_center").val();
 	    var employment_center = "";
 	    if(employment_center1 == ""){
 	    	employment_center ="미참여";
-	    	console.log("참여센터: " + employment_center);
 	    }else{
 	    	employment_center = $("#employment_center").val();
-	    	console.log("참여센터: " + employment_center);
 	    }
 	    var employment_staff1 = $("#employment_staff").val();
 	    var employment_staff = "";
 	    
 	    if(employment_staff == ""){
 	    	employment_staff = "미참여";
-	    	console.log("담당자: " + employment_staff);
 	    }else{
 	    	employment_staff = $("#employment_staff").val();
-	    	console.log("담당자: " + employment_staff);
 	    }
 	    
 	    var employment_num1 = $("#employment_num").val();
 	    var employment_num = "";
 	    if(employment_num1 == ""){
 	    	employment_num = "미참여";
-	    	console.log("연락처: " + employment_num);
 	    }else{
 	    	employment_num = $("#employment_num").val();
-	    	console.log("연락처: " + employment_num);
 	    }
 	    
 	    var sData = {
@@ -218,9 +205,7 @@ $(function(){
 				alert("훈련직종분류를 선택해주세요.");
 				return false;
 			}
-// 			console.log("time_code: " + time_code);
 			var url = "/classInfo/classListByTimeCode/" + time_code;
-// 			console.log("url: " + url);
 			
 			var sendData = {
 					"time_code" : time_code
@@ -228,12 +213,10 @@ $(function(){
 			
 			$.get(url, sendData, function(rData) {
 				
-// 				console.log("rData: ", rData);
 				var options = "<option value=''>선택해주세요</option>";
 				$.each(rData, function(index) {
 					$("#c_cate").empty();
 					options += "<option value='" + this.cate_code + "'>" + this.cate_code_name;
-// 					console.log("위options: ", options);
 					
 				});
 				$("#c_cate").append(options);
@@ -243,7 +226,6 @@ $(function(){
 		
 	$("#c_cate").change(function(){
 		var cate_code = $(this).val();
-// 		console.log("cate_code", cate_code);
 		if(cate_code == ""){
 			alert("과정명을 선택해주세요.");
 			return false;
@@ -262,7 +244,6 @@ $(function(){
 			$.each(rData, function(index){
 				$("#c_title").empty();
 				options += "<option value='" + this.info_code + "'>" + this.c_title;
-// 				console.log("아래options: ", options);
 				
 			});
 			$("#c_title").append(options);
@@ -273,7 +254,6 @@ $(function(){
 });
 
 </script>
-${classInfoVo}
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -291,28 +271,37 @@ ${classInfoVo}
 		<table class="tbl-l tbl-fix" summary="온라인 수강신청을 위한 과정을 선택하세요.">
 			<colgroup><col width="110" /><col width="*" /><col width="110" /><col width="*" /></colgroup>
 			<tbody>
-<!-- 						<tr> -->
-<%-- 							<td class="td_reference">${classInfoVo.cate_code_name}</td> --%>
-<%-- 							<td class="td_reference">${classInfoVo.time_code}</td> --%>
-<%-- 							<td class="td_reference">${classInfoVo.c_title}</td> --%>
-<!-- 						</tr> -->
 				<tr>
 					<th class="c_time"><label for="c_time">훈련직종분류</label></th>
 					<td class="td_infomation">
 					
 						<select id="c_time" name="c_time" class="c_time">
-							<option value="">선택해주세요</option>
-							<option value="1">주간반</option>
-							<option value="2">야간반</option>
-							<option value="3">주말반</option>
+							
+							<c:choose>
+								<c:when test="${not empty classInfoVo.info_code}">
+									<option value="${classInfoVo.time_code}">${classInfoVo.time_code_name}</option>
+								</c:when>
+								<c:when test="${empty classInfoVo.info_code}">
+									<option value="">선택해주세요</option>
+									<option value="1">주간반</option>
+									<option value="2">야간반</option>
+									<option value="3">주말반</option>
+								</c:when>
+							</c:choose>
 						</select>
 					</td>
 					<th class="j-spot">
 					<label for="c_cate">교육과정분류</label></th>
 					<td>
-					
 						<select name="c_cate" id="c_cate" required>
-							<option value="">선택해주세요</option>
+							<c:choose>
+								<c:when test="${not empty classInfoVo.info_code}">
+									<option value="${classInfoVo.cate_code}">${classInfoVo.cate_code_name}</option>
+								</c:when>
+								<c:when test="${empty classInfoVo.info_code}">
+									 <option value="">선택해주세요</option>
+								</c:when>
+							</c:choose>
 						</select>
 					</td>
 				</tr>
@@ -320,7 +309,14 @@ ${classInfoVo}
 					<th class="c_title"><label for="c_title">과정명</label></th>
 					<td colspan="3">
 						<select name="c_title" id="c_title" style="width: 200px;">
-								<option class="slt_option">선택해주세요</option>
+							<c:choose>
+								<c:when test="${not empty classInfoVo.info_code}">
+									<option value="${classInfoVo.info_code}">${classInfoVo.c_title}</option>
+								</c:when>
+								<c:when test="${empty classInfoVo.info_code}">
+									 <option value="">선택해주세요</option>
+								</c:when>
+							</c:choose>
 						</select>
 					</td>
 				</tr>
@@ -330,7 +326,6 @@ ${classInfoVo}
 			<hr>
 			<h3 class="hidden">기본정보</h3>
 			<div>
-				<!-- <div class="ej-conts"> 2019-03-10 00:26:32-->
 				<table class="tbl-l tbl-fix" summary="온라인 수강신청을 위한 기본정보를 입력하세요.">
 					<colgroup><col width="110" /><col width="*" /><col width="110" /><col width="*" /></colgroup>
 					<tbody>
