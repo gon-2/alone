@@ -55,7 +55,7 @@ public class MemberController {
 	@RequestMapping(value="/modify_run", method=RequestMethod.POST)
 	public String modifyRun(MemberVo memberVo) {
 		memberService.modifyRun(memberVo);
-		return "redirect:/member/modify_form";
+		return "redirect:/";
 	}
 	// 내 게시판
 	@RequestMapping(value="/board_form", method = RequestMethod.GET)

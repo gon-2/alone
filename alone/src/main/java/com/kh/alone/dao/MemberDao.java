@@ -49,7 +49,6 @@ public class MemberDao {
 	}
 	// 회원정보 처리 
 	public MemberVo modifyRun(MemberVo memberVo) {
-		System.out.println(memberVo);
 		sqlSession.update(NAMESPACE + "modifyRun", memberVo);
 		return memberVo;
 	}
@@ -60,7 +59,6 @@ public class MemberDao {
 	}
 	// 회원탈퇴폼
 	public MemberVo memberOut(String userid) {
-//		System.out.println(userid);
 		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "memberOut", userid);
 //		System.out.println(" 서비스 vo값 받아오는지 확인하기 : " + memberVo);
 		return memberVo;

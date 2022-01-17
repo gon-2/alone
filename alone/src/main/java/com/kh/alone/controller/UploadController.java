@@ -20,6 +20,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.alone.service.LookJobService;
+import com.kh.alone.vo.FindVo;
+import com.kh.alone.vo.JobTestVo;
 import com.kh.alone.vo.LookJobVo;
 
 @Controller
@@ -45,7 +47,7 @@ public class UploadController {
 	}
 	
 	@RequestMapping(value="uploadLookJob", method=RequestMethod.POST)
-    public String requestupload2(MultipartHttpServletRequest mtfRequest, LookJobVo vo) {
+    public String uploadLookJob(MultipartHttpServletRequest mtfRequest, LookJobVo vo) {
 		LookJobVo lookJobVo = lookJobService.getLookJobUpload(vo);
 		int jobno = lookJobVo.getJobno();
 		System.out.println(lookJobVo);
@@ -81,6 +83,74 @@ public class UploadController {
         return "redirect:/employ/lookJob";
     }
 
+	@RequestMapping(value="uploadTest", method=RequestMethod.POST)
+    public String uploadTest(MultipartHttpServletRequest mtfRequest, JobTestVo vo) {
+		JobTestVo jobTestVo = lookJobService.getTestUpload(vo);
+		int tno = jobTestVo.getTno();
+		System.out.println(jobTestVo);
+        List<MultipartFile> fileList = mtfRequest.getFiles("file");
+        String src = mtfRequest.getParameter("src");
+        System.out.println("src value : " + src);
+
+        for (MultipartFile mf : fileList) {
+            String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+            long fileSize = mf.getSize(); // 파일 사이즈
+
+            System.out.println("originFileName : " + originFileName);
+            System.out.println("fileSize : " + fileSize);
+            
+            UUID uuid = UUID.randomUUID();
+            String safeFile = uuid + "_" + originFileName;
+            
+            System.out.println(safeFile);
+            lookJobService.insertTestImages(tno, safeFile);
+            try {
+                mf.transferTo(new File(UPLOAD_PATH, safeFile));
+            } catch (IllegalStateException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+        return "redirect:/employ/lookJobTestList";
+    }
+	
+	@RequestMapping(value="uploadFind", method=RequestMethod.POST)
+    public String uploadFind(MultipartHttpServletRequest mtfRequest, FindVo vo) {
+		FindVo findVo = lookJobService.getFindUpload(vo);
+		int fno = findVo.getFno();
+        List<MultipartFile> fileList = mtfRequest.getFiles("file");
+        String src = mtfRequest.getParameter("src");
+        System.out.println("src value : " + src);
+
+        for (MultipartFile mf : fileList) {
+            String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+            long fileSize = mf.getSize(); // 파일 사이즈
+
+            System.out.println("originFileName : " + originFileName);
+            System.out.println("fileSize : " + fileSize);
+            
+            UUID uuid = UUID.randomUUID();
+            String safeFile = uuid + "_" + originFileName;
+            
+            System.out.println(safeFile);
+            lookJobService.insertFindImages(fno, safeFile);
+            try {
+                mf.transferTo(new File(UPLOAD_PATH, safeFile));
+            } catch (IllegalStateException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+        return "redirect:/employ/findPositionList";
+    }
 
 	
 	@RequestMapping(value = "/download", method = RequestMethod.GET)

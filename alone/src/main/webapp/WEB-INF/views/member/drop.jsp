@@ -25,12 +25,12 @@ $(function(){
 </script>
 <section class="wrapper style1">
 	<div class="container">
-				<h1>회원탈퇴</h1><br>
+				<h2>회원탈퇴</h2><br>
 		
 		<div class="clear overflow">
 			<section class="col-md-12">
 				</section>
-				<div class="form-group">
+			<div class="form-group">	
 					<label>아이디</label> &nbsp;&nbsp; <span>${memberVo.userid}</span>
 				</div> 
 				<div class="form-group">

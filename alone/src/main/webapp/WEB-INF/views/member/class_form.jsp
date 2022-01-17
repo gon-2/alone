@@ -10,10 +10,11 @@ $(function(){
 });
 
 </script>
-
-<div class="container-fluid">
+<section class="wrapper style1">
+	<div class="container">
+		<div class="container-fluid">
 	<div class="row">
-			<h1>내 강의실</h1>
+			<h2>내 강의실</h2>
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-2">
@@ -31,7 +32,7 @@ $(function(){
 					<form class="form-inline">
 						<input class="form-control" type="text" />
 						<button class="btn btn-primary my-2 my-sm-0" type="submit">
-							Search</button>
+							찾기</button>
 					</form>
 
 					<div class="dropdown-menu dropdown-menu-right"
@@ -61,7 +62,7 @@ $(function(){
 							</td>
 						<td>프로그래밍</td>
 						<td>2021/06/01 ~ 2022/01/01</td>
-						<td><div class="progress"><div class="progress-bar w-100">100%</div></td>
+						<td><div class="progress"><div class="progress-bar w-100">100%</div></div></td>
 						<td><button id="btnEnter"> 강의실 입장</button></td>
 					</tr>
 				</tbody>
@@ -97,5 +98,9 @@ $(function(){
 		</div>
 	</div>
 </div>
-
+</div>
+</div>
+</div>
+</div>
+</section>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
