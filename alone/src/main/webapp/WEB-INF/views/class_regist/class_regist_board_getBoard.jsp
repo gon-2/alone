@@ -278,16 +278,17 @@
 				
         <c:choose>
             <c:when test="${empty sessionScope.memberVo}">
+       	    </c:when>
+       	    <c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
+  	    		<button type="button" class="btn btn-warning" id="inComment">상담자 댓글달기</button>
        	    </c:when>    
             <c:otherwise> 
 				<button type="button" class="btn btn-primary" id="modcontent">수정</button>
 				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button>
 			</c:otherwise>
 		</c:choose>
-				<button type="button" class="btn btn-warning" id="inComment">상담자 댓글달기</button>
-		<c:if test="${empty sessionScope.memberVo}">
+				<!-- <button type="button" class="btn btn-warning" id="inComment" style="display: none;">상담자 댓글달기</button> -->
 				<button type="button" class="btn btn-secondary" id="showComment">댓글보기</button>
-		</c:if>
 			</form> 
 		</div>
 	</div>
@@ -328,7 +329,13 @@
 					<p id="first_userid" class="first_userid"></p>
 					<p id="first_content" class="first_content"></p>
 					<p id="first_date" class="first_date"></p>
-					<button type="button" id="deleteComment" class="btn btn-warning">댓글 삭제</button>
+					<c:choose>
+						<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
+							<button type="button" id="deleteComment" class="btn btn-warning">댓글 삭제</button>
+						</c:when>
+						<c:otherwise>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</form>
 		</div>

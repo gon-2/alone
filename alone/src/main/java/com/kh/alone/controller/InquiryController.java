@@ -94,10 +94,10 @@ public class InquiryController {
 		return "success";
 	}
 	
-	@RequestMapping(value="/deleteBoardAdmin" , method=RequestMethod.GET)
+/*	@RequestMapping(value="/deleteBoardAdmin" , method=RequestMethod.GET)
 	public String deleteBoardAdmin(String inquiry_title) {
 		inquireboardservice.deleteBoardAdmin(inquiry_title);
 		return "redirect:/inquiry/listall"; 
-	}
+	}*/
 
 }

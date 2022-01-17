@@ -41,19 +41,19 @@
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
 	<!-- 인터셉터 빈 생성 , id는 beans:ref의 빈 이름에 사용 -->
-<!-- 	<beans:bean class="com.kh.alone.interceptor.DefaultInterceptor" id="DefaultInterceptor"> -->
-<!-- 	</beans:bean> -->
+	<beans:bean class="com.kh.alone.interceptor.DefaultInterceptor" id="DefaultInterceptor">
+	</beans:bean>
 	
 	<!-- AuthInterceptor  -->
 	<!-- mapping path == 가로챌 경로 -->
 	<!-- exclude-mapping path= 가로채지 않을 경로 -->
-<!-- 	<interceptors> -->
-<!-- 		<interceptor> -->
-<!-- 			<mapping path=""/> -->
-<!-- 			<exclude-mapping path=""/> -->
-<!-- 			<beans:ref bean="DefaultInterceptor"/> -->
-<!-- 		</interceptor> -->
-<!-- 	</interceptors> -->
+ 	<interceptors>
+ 		<interceptor>
+			<mapping path=""/>
+ 			<exclude-mapping path=""/>
+ 			<beans:ref bean="DefaultInterceptor"/>
+ 		</interceptor> 
+ 	</interceptors> 
 
 	
 </beans:beans>
