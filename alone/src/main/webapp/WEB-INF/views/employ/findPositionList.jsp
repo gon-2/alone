@@ -10,6 +10,8 @@ $(function() {
 		console.log($(this));
 		var page =	$(this).attr("href");
 		$("#frmPaging > input[name=page]").val(page);
+		$("#frmPaging > input[name=searchType]").val(searchType);
+		$("#frmPaging > input[name=keyword]").val(keyword);
 		$("#frmPaging").submit();
 	});
 	
@@ -22,6 +24,17 @@ $(function() {
 	    var f_name = "pop";
 	    var option = "width=1300,height=800,history=no,resizable=no,status=no,scrollbars=yes,menubar=no";
 		window.open(f_url, f_name, option);
+	});
+	
+	// 검색
+	$("#btnSearch").click(function() {
+		var searchType = $("#searchType").val();
+		var keyword = $("#keyword").val();
+		$("#frmPaging > input[name=page]").val("1");
+		$("#frmPaging > input[name=searchType]").val(searchType);
+		$("#frmPaging > input[name=keyword]").val(keyword);
+		$("#frmPaging").attr("action", "/employ/findPositionList")
+					   .submit();
 	});
 });
 </script>
@@ -57,6 +70,32 @@ $(function() {
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8">
+			<div>
+				<select name="searchType" id="searchType">
+					<option value="c"
+						<c:if test="${pagingDto.searchType == 'c'}">
+							selected
+						</c:if>
+					>회사명</option>
+					<option value="cn"
+						<c:if test="${pagingDto.searchType == 'cn'}">
+							selected
+						</c:if>
+					>과정명</option>
+					<option value="ccn"
+						<c:if test="${pagingDto.searchType == 'ccn'}">
+							selected
+						</c:if>
+					>회사명+과정명</option>
+				</select>
+					<label style="width:200px;">
+						<input type="text" name="keyword" 
+							id="keyword" placeholder="검색어 입력"
+							value="${pagingDto.keyword}">
+					</label>
+				<a type="button" class="btn btn-sm btn-success"
+					id="btnSearch">검색</a>
+			</div>
 			<div style="text-align:right; margin-bottom:10px;">
 			<a href="/employ/findPositionRegist" class="btn btn-sm btn-success">글 쓰기</a>
 			</div>
