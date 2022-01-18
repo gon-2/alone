@@ -25,6 +25,14 @@ $(function(){
 				"inquiry_number" : inquiry_number,
 				"inquiry_password" : inquiry_password
 		};
+		// 무결성 검사
+		if(inquiry_number.length == 0 || inquiry_number == ""){
+			alert("번호를 입력하세요.");
+			return false;
+		}else if(inquiry_password.length >= 5 || inquiry_password == "" || inquiry_password.length == 0){
+			alert("비밀번호는 4자리까지 입력가능합니다. 다시 입력하세요.");
+			return false;
+		}
 		
 		$.post(url , sendData , function(rData){
 			console.log(rData);
@@ -52,6 +60,17 @@ $(function(){
 			"inquiry_title" : inquiry_title,
 			"inquiry_content" : inquiry_content,
 		};
+		// 무결성 검사
+		if(inquiry_password.length == 0 || inquiry_password.length >= 5 || inquiry_password == ""){
+			alert("비밀번호의 길이는 4자리 이하입니다. 다시 입력하세요.");
+			return false;
+		}else if(inquiry_title.length == 0 || inquiry_title.length >= 301 || inquiry_title == ""){
+			alert("제목의 길이는 300바이트 이하입니다. 다시 입력하세요.");
+			return false;
+		}else if(inquiry_content.length == 0 || inquiry_content.length >= 3001 || inquiry_content == ""){
+			alert("내용의 길이는 3000바이트 이하입니다. 다시 입력하세요.");
+			return false;
+		}
 	
 		$.post(url , sendData , function(rData){
 			console.log(rData);
@@ -72,19 +91,14 @@ $(function(){
 		var inquiry_comment_content = $("#inquiry_comment_content").val();
 		
 		// 댓글 무결성 검사
-		if(inquiry_comment_userid == "" || inquiry_comment_userid.length == 0){
-			alert("아이디를 입력하세요.");
+		if(inquiry_comment_userid == "" || inquiry_comment_userid.length == 0 || inquiry_comment_userid.length >= 51){
+			alert("아이디의 길이는 50바이트 입니다. 다시 입력하세요.");
 			return false;
-		}else if(inquiry_comment_userid.length >= 51){
-			alert("아이디의 길이는 50byte 까지 입니다.");
-			return false;
-		}else if(inquiry_comment_content == "" || inquiry_comment_content.length == 0){
-			alert("댓글을 입력하세요.");
+		}else if(inquiry_comment_content == "" || inquiry_comment_content.length == 0 || inquiry_content.length >= 301){
+			alert("댓글의 길이는 300바이트 입니다. 다시 입력하세요.");
 			return false;
 		}
-		
-		
-		
+	
 		var url = "/insertcomment";
 		var sendData = {
 			"inquiry_comment_userid" : inquiry_comment_userid,
