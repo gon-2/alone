@@ -7,7 +7,13 @@ $(function(){
 	$("#btnEnter").click(function(){
 		location.href="/member/class_form_run";
 	});
+	
+	$(".btn1").click(function(){
+		location.href="/member/class_form_run2";
+	});
+	
 });
+	
 
 </script>
 <section class="wrapper style1">
@@ -17,28 +23,23 @@ $(function(){
 			<h2>내 강의실</h2>
 		<div class="col-md-12">
 			<div class="row">
-				<div class="col-md-2">
-				</div>
-				<div class="col-md-8">
-				</div>
-				<div class="col-md-2">
-				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-8"></div>
+				<div class="col-md-2"></div>
 			<nav class="navbar navbar-expand-lg">
 				<a class="navbar-brand" href="#"></a>
-				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1">
-
-
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				
+				<div style="text-align:right; margin-bottom:10px;">
 					<form class="form-inline">
-						<input class="form-control" type="text" />
-						<button class="btn btn-primary my-2 my-sm-0" type="submit">
-							찾기</button>
+						<input class="form-control" type="text"/>
+						<button class="btn btn-sm" type="submit">찾기</button>
 					</form>
-
+				</div>
 					<div class="dropdown-menu dropdown-menu-right"
 						aria-labelledby="navbarDropdownMenuLink"></div>
-
-				</div>
+					</div>
+			
 			</nav>
 			</div>
 			<table class="table">
@@ -60,7 +61,7 @@ $(function(){
 								<img src="https://cms.step.or.kr/api/file/get?path=/Polaris/course_content/2018/03/AD9B9301-24A5-2D8F-7A9C-C6EE86470AEE.png"
 									alt="" class="cropImg" style="display: none;">
 							</td>
-						<td>프로그래밍</td>
+						<td><span class="btn1" style="cursor:pointer;color:#38ACEC;">프로그래밍</span></td>
 						<td>2021/06/01 ~ 2022/01/01</td>
 						<td><div class="progress"><div class="progress-bar w-100">100%</div></div></td>
 						<td><button id="btnEnter"> 강의실 입장</button></td>

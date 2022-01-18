@@ -92,6 +92,12 @@ public class MemberController {
 		return "/member/class_form_run";
 	}
 	
+	// 내 강의실 처리2 	
+	@RequestMapping(value="/class_form_run2", method=RequestMethod.GET)
+	public String ClassFormRun2() {
+		return "/member/class_form_run2";
+	}
+	
 	// 회원탈퇴  
 	@RequestMapping(value="/drop", method = RequestMethod.GET)
 	public String memberOut() {
