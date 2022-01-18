@@ -10,11 +10,11 @@ package com.kh.alone.vo;
 import java.sql.Timestamp;
 
 public class RegistCommentVo {
-	private int class_board_comment_no;
-	private String class_board_comment_content;
-	private String class_board_comment_userid;
-	private Timestamp class_board_comment_date;
-	private int class_board_comment_cnt;
+	private int class_board_comment_no;						// 댓글 번호
+	private String class_board_comment_content;				// 댓글 내용
+	private String class_board_comment_userid;				// 댓글 아이디
+	private Timestamp class_board_comment_date;				// 댓글 날짜
+	private int class_board_comment_cnt;					// 댓글 개수
 	
 	public RegistCommentVo() {
 		super();
