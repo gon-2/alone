@@ -134,7 +134,7 @@
             </li> -->
             
             <li class="nav-item">
-                <a class="nav-link" href="/message/messageList">
+                <a class="nav-link" href="/customer_main/consultmessage">
                     <i class="fas fa-coffee"></i>
                     <span>수강생 상담</span></a>
             </li>

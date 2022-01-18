@@ -29,11 +29,13 @@
 			(seq_bno.nextval, #{title}, #{content}, #{userid}, 
 			#{re_group}, #{re_seq} + 1, #{re_level} + 1)
 	</insert>		
+	
 	<!--  회원정보 수정 -->
 	<select id="memberModify" resultType="MemberVo">
 		select * from tbl_member
 		where userid = #{userid}
 	</select>
+	
 	<!--  회원정보 수정처리 -->
 	<update id="modifyRun">
 		update tbl_member set
@@ -46,7 +48,6 @@
 			pnumber = #{pnumber}
 		where userid = #{userid}
 	</update>
-	
 	
 	<!--  회원탈퇴폼  -->
 	<select id="memberOut" resultType="MemberVo">

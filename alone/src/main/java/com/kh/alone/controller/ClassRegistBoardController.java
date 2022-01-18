@@ -80,6 +80,9 @@ public class ClassRegistBoardController {
 	@ResponseBody
 	public String modcontent(RegistBoardVo registBoardVo) {
 		registboardservice.modcontent(registBoardVo);
+		if(registBoardVo == null) {
+			return "fail";
+		}
 		return "success";
 	}
 }

@@ -26,6 +26,21 @@
 			
 			var url = "/message/sendMessage";
 			
+			// 무결성 검사
+			if(service_message_sender.length >= 51 || service_message_sender == ""){
+				alert("보내는사람의 길이는 50자 이하입니다.");
+				return false;
+			}else if(service_message_receiver.length >= 51 || service_message_receiver == ""){
+				alert("받는사람의 길이는 50자 이하입니다.");
+				return false;				
+			}else if(service_message_title.length >= 501 || service_message_title == ""){
+				alert("제목의 길이는 50자 이하입니다.");
+				return false;								
+			}else if(service_message_content.length >= 1001 || service_message_content == ""){
+				alert("내용의 길이는 50자 이하입니다.");
+				return false;				
+			}
+			
 			$.post(url , sendData, function(rData){
 				console.log(rData);
 				if(rData == "success"){
@@ -54,9 +69,9 @@
 						</div>
 						<div class="modal-body">
 							<label for="service_message_sender">보내는사람 : </label>
-							<input type="text" id="service_message_senders" name="service_message_sender"><br>
+							<input type="text" id="service_message_senders" name="service_message_sender" value="${sessionScope.memberVo.userid}"><br>
 							<label for="service_message_receiver">받는사람 : </label>
-							<input type="text" id="service_message_receivers" name="service_message_receiver"><br>
+							<input type="text" id="service_message_receivers" name="service_message_receiver" value="service_center_admin"><br>
 							<label for="service_message_title">제목 : </label>
 							<input type="text" id="service_message_titles" name="service_message_title"><br>
 							<label for="service_message_content">내용 : </label>

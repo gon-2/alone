@@ -10,7 +10,7 @@
 </head>
 <script>
 $(function(){
-/* 		// 링크 걸린 제목 클릭 시 이벤트
+/*  		// 링크 걸린 제목 클릭 시 이벤트
 		$(".getBoard").click(function(e){
 			e.preventDefault();
 			console.log("클릭됨");
@@ -33,11 +33,10 @@ $(function(){
 					alert("비밀번호를 다시 입력하세요.");
 					return false;
 				}else if(rData == "true"){
-					location.href="/inquiry/getBoard";	
+					location.href="/inquiry/getBoard";
 				}
 			});
-		});
- 		 */
+		}); */
 	$(".page-link").click(function(e) {
 		e.preventDefault(); 
 		// 클릭한 링크 알아내기

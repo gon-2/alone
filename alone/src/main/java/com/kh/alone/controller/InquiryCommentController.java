@@ -30,6 +30,9 @@ public class InquiryCommentController {
 	public String insertcomment(InquiryCommentVo commentvo) {
 		commentservice.insertcomment(commentvo);
 		System.out.println("InquiryCommentController , insertcomment , commentvo >> " + commentvo);
+		if(commentvo == null) {
+			return "fail";
+		}
 		return "success";
 	}
 	

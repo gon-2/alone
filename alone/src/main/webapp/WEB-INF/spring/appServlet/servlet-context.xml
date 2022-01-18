@@ -41,18 +41,31 @@
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
 	<!-- 인터셉터 빈 생성 , id는 beans:ref의 빈 이름에 사용 -->
-	<beans:bean class="com.kh.alone.interceptor.DefaultInterceptor" id="DefaultInterceptor">
+	<beans:bean class="com.kh.alone.interceptor.DefaultInterceptor" id="defaultInterceptor">
 	</beans:bean>
 	
 	<!-- AuthInterceptor  -->
 	<!-- mapping path == 가로챌 경로 -->
 	<!-- exclude-mapping path= 가로채지 않을 경로 -->
+	
+	<!-- 고객센터 인터셉터 시작 -->
  	<interceptors>
  		<interceptor>
-			<mapping path="/classInfo/reviewRegist"/>
-			<mapping path="/classInfo/reviewRegistRun"/>
-			<mapping path="/classInfo/reviewModify"/>
-			<mapping path="/classInfo/reviewModifyRun"/>
+			<mapping path="/classInfo/**/*"/>
+			<mapping path="/customer_main/consultmessage"/>
+			<mapping path="/class_board/form"/>
+			<mapping path="/class_board/run"/>
+			<mapping path="/class_board/deleteBoard"/>
+			<mapping path="/class_board/modcontent"/>
+			<mapping path="/comment/insertcomment"/>
+			<mapping path="/comment/listComment"/>
+			<mapping path="/comment/deleteComment"/>
+			<mapping path="/inquiry/insertrun"/>
+			<mapping path="/inquiry/form"/>
+			<mapping path="/inquiry/deleteBoard"/>
+			<mapping path="/inquiry/updateBoard"/>
+			<mapping path="/insertcomment"/>
+			<mapping path="/message/*"/>
  			<exclude-mapping path="/classInfo/insertClassInfo"/>
  			<exclude-mapping path="/classInfo/insertClassInfoRun"/>
  			<exclude-mapping path="/classInfo/list_all"/>
@@ -68,9 +81,20 @@
  			<exclude-mapping path="/classInfo/myStatusRun"/>
  			<exclude-mapping path="/classInfo/reviewList"/>
  			<exclude-mapping path="/classInfo/reviewContent"/>
- 			<beans:ref bean="DefaultInterceptor"/>
- 		</interceptor> 
+			<exclude-mapping path="/customer_main/home"/>
+			<exclude-mapping path="/customer_main/inquiry_list"/>
+			<exclude-mapping path="/customer_main/faq"/>
+			<exclude-mapping path="/customer_main/classFindTitle"/>
+			<exclude-mapping path="/customer_main/inquiryFindTitle"/>
+			<exclude-mapping path="/class_board/getBoard"/>
+			<exclude-mapping path="/class_board/class_regist"/>
+ 			<exclude-mapping path="/faq/*"/>
+ 			<exclude-mapping path="/inquiry/listall"/>
+ 			<exclude-mapping path="/inquiry/getBoard"/>
+ 			<exclude-mapping path="/showcomment"/>
+ 			<beans:ref bean="defaultInterceptor"/>
+ 		</interceptor>
  	</interceptors> 
-
+	<!-- 고객센터 인터셉터 끝 -->
 	
 </beans:beans>

@@ -1,3 +1,9 @@
+/*
+ * 2021-01-17
+ * Author : 이정훈
+ * code Explanation : 주 인터셉터
+ */
+
 package com.kh.alone.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
