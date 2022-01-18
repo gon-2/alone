@@ -30,12 +30,12 @@ $(function(){
 				<a class="navbar-brand" href="#"></a>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				
-				<div style="text-align:right; margin-bottom:10px;">
+				
 					<form class="form-inline">
-						<input class="form-control" type="text"/>
-						<button class="btn btn-sm" type="submit">찾기</button>
-					</form>
-				</div>
+						<input class="form-control" type="text" style="margin-left: 700px;"/>&nbsp;
+						<button class="btn" type="submit">찾기</button>
+					</form><br><br>
+			
 					<div class="dropdown-menu dropdown-menu-right"
 						aria-labelledby="navbarDropdownMenuLink"></div>
 					</div>
