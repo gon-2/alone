@@ -120,7 +120,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach items="${product}" var="reviewVo">
+													<c:forEach items="${print}" var="reviewVo">
 														<tr>
 															<td>${reviewVo.review_number}</td>
 															<td><a class="a_title" href="/classInfo/reviewContent?review_number=${reviewVo.review_number}" >[${reviewVo.cate_code_name}] ${reviewVo.review_title}</a></td>
@@ -129,6 +129,8 @@
 															<td>${reviewVo.viewcnt}</td>
 														</tr>
 													</c:forEach>
+
+													
 												</tbody>
 											</table>
 										</div>
@@ -146,7 +148,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach items="${print}" var="reviewVo">
+													<c:forEach items="${product}" var="reviewVo">
 														<tr>
 															<td>${reviewVo.review_number}</td>
 															<td><a class="a_title" href="/classInfo/reviewContent?review_number=${reviewVo.review_number}" >[${reviewVo.cate_code_name}] ${reviewVo.review_title}</a></td>

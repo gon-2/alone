@@ -4,6 +4,31 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kh.alone.mappers.class">
 
+	<!-- 전체보기 -->
+	<select id="selectAll" resultType="ClassInfoVo">
+	select info_code, c_title, c_time, cate_code, time_code, start_date, end_date,
+			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name,
+			decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
+        from c_class_info
+	</select>
+	
+	<!-- 수업 파트별 구하기 -->
+	<select id="classListByCateCode" resultType="ClassInfoVo">
+		select info_code, c_title, c_time, cate_code, time_code, start_date, end_date,
+			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name,
+			decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
+        from c_class_info
+		where cate_code = #{cate_code}
+	</select>
+	
+	<!-- 수업정보 상세보기 -->
+	<select id="getClassInfo" resultType="ClassInfoVo">
+		select info_code, c_title, c_time, cate_code, time_code, start_date, end_date, price, class_room, class_total,
+			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name,
+			decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
+        from c_class_info 
+        where info_code = #{info_code}
+	</select>
 	
 	
 	<!-- info_code로 찾기 -->	
@@ -15,15 +40,6 @@
 			where info_code = #{info_code}
 		</select>
 		
-	<!-- 전체보기 -->
-	<select id="selectAll" resultType="ClassInfoVo">
-	select info_code, c_title, c_time, cate_code, time_code, start_date, end_date,
-			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name,
-			decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
-        from c_class_info
-			
-	</select>
-	
 
 	<!-- 주말 주간 야간 구하기 -->
 	<select id="classListByTimeCode" resultType="ClassInfoVo">
@@ -33,13 +49,36 @@
         from c_class_info
 		where time_code = #{time_code}
 	</select>
+	
+	<!-- 제목으로 수업 찾기 -->
+	<select id="classListByTitle" resultType="ClassInfoVo">
+		select info_code, c_title, c_time, cate_code, time_code, start_date, end_date,
+			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name,
+			decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
+        from c_class_info
+		where c_title = #{c_title}
+	</select>
 
 	<!-- 수업 추가하기 -->
 	<select id="insertClassInfo">
 		insert into c_class_info(info_code, c_title, c_time, start_date, end_date, price, class_room, class_total, cate_code, time_code)
 		values( seq_class_info.nextval, #{c_title}, #{c_time}, #{start_date}, #{end_date}, #{price}, #{class_room}, #{class_total}, #{cate_code}, #{time_code})
 	</select>
-
+	
+	<!-- 수업 수정하기 -->
+	<select id="classInfoModify">
+		update c_class_info set
+			c_title = #{c_title},
+			c_time = #{c_time},
+			start_date = #{start_date},
+			end_date = #{end_date},
+			price = #{price},
+			class_room = #{class_room},
+			class_total = #{class_total}, 
+			cate_code = #{cate_code}, 
+			time_code = #{time_code}
+		where info_code = #{info_code}
+	</select>
 	
 	<!-- 신청양식 추가하기 -->
 	<insert id="insertOnlineRegist">
@@ -77,14 +116,15 @@
        order by review_number desc
 	</select>
 	
-	<!-- 수업 파트별 구하기 -->
-	<select id="classListByCateCode" resultType="ClassInfoVo">
-		select info_code, c_title, c_time, cate_code, time_code, start_date, end_date,
-			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인') cate_code_name,
-			decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반') time_code_name
-        from c_class_info
-		where cate_code = #{cate_code}
+	
+	<!-- 후기 cate_code로 보기 -->
+	<select id="selectReviewListByCateCode" resultType="ReviewVo">
+		select review_number, review_title, review_writer, write_date, viewcnt,
+	        decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name		
+			from tbl_review 
+		where cate_code = #{cate_code} order by review_number desc
 	</select>
+ 		
 	
 	<!-- 글 상세 보기 -->
 	<select id="getReview" resultType="ReviewVo">
@@ -112,7 +152,7 @@
 			content = #{content},
 			cate_code = #{cate_code},
 			review_writer = #{review_writer}
-		where review_number = #{revie_number}
+		where review_number = #{review_number}
 	</update>
 	
 	<select id="getReviewNextVal" resultType="int">
@@ -120,13 +160,9 @@
 		from dual
 	</select>
 	
-	<!-- 수업정보 상세보기 -->
-	<select id="getClassInfo" resultType="ClassInfoVo">
-		select info_code, c_title, c_time, cate_code, time_code, start_date, end_date, price, class_room, class_total,
-			decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name,
-			decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
-        from c_class_info 
-        where info_code = #{info_code}
-	</select>
-	
+	<!-- 후기 삭제하기 -->
+	<delete id="reviewDelete">
+		delete from tbl_review
+		where review_number = #{review_number}
+	</delete>	
 </mapper>

@@ -24,7 +24,9 @@
 					</ul>
 					<%@ include file="/WEB-INF/views/include/yg/content.jsp"%>
 				</div>
-				<a href="/classInfo/insertClassInfo">수업 등록하기</a>
+				<c:if test="${memberVo.userid == 'test01'}">
+					<a href="/classInfo/insertClassInfo">수업 등록하기</a>
+				</c:if>
 			</section>
 		</div>
 	</div>

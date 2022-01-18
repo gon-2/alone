@@ -49,8 +49,25 @@
 	<!-- exclude-mapping path= 가로채지 않을 경로 -->
  	<interceptors>
  		<interceptor>
-			<mapping path=""/>
- 			<exclude-mapping path=""/>
+			<mapping path="/classInfo/reviewRegist"/>
+			<mapping path="/classInfo/reviewRegistRun"/>
+			<mapping path="/classInfo/reviewModify"/>
+			<mapping path="/classInfo/reviewModifyRun"/>
+ 			<exclude-mapping path="/classInfo/insertClassInfo"/>
+ 			<exclude-mapping path="/classInfo/insertClassInfoRun"/>
+ 			<exclude-mapping path="/classInfo/list_all"/>
+ 			<exclude-mapping path="/classInfo/classInfoView"/>
+ 			<exclude-mapping path="/classInfo/onlineAgree"/>
+ 			<exclude-mapping path="/classInfo/homeRegist"/>
+ 			<exclude-mapping path="/classInfo/onlineRegist"/>
+ 			<exclude-mapping path="/classInfo/onlineRegist2"/>
+ 			<exclude-mapping path="/classInfo/onlineRegistRun"/>
+ 			<exclude-mapping path="/classInfo/classListByTimeCode/{time_code}"/>
+ 			<exclude-mapping path="/classInfo/classListByCateCode/{cate_code}"/>
+ 			<exclude-mapping path="/classInfo/myStatusForm"/>
+ 			<exclude-mapping path="/classInfo/myStatusRun"/>
+ 			<exclude-mapping path="/classInfo/reviewList"/>
+ 			<exclude-mapping path="/classInfo/reviewContent"/>
  			<beans:ref bean="DefaultInterceptor"/>
  		</interceptor> 
  	</interceptors> 
