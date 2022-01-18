@@ -105,8 +105,8 @@
 							<td><fmt:formatDate value="${ClassRegistBoardVo.class_board_postdate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
 							<td>${ClassRegistBoardVo.class_board_viewcnt}</td>
 							<c:choose>		
-								<c:when test="${empty sessionScope.memberVo}">
-									<td>로그인 하세요.</td>
+								<c:when test="${sessionScope.memberVo.userid != ClassRegistBoardVo.class_board_userid}">
+									<td>해당하는 사용자가 아닙니다.</td>
 								</c:when>
 								<c:when test="${sessionScope.memberVo.userid == ClassRegistBoardVo.class_board_userid}">
 			 						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
