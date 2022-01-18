@@ -77,20 +77,18 @@ $(function() {
 						<td>${referenceVo.rno}</td>
 						<th>작성자</th>
 						<td>${referenceVo.rwriter}</td>
-						<th>추천</th>
-						<td>${referenceVo.recommend}</td>
 						<th>조회수</th>
 						<td>${referenceVo.hits}</td>
 					</tr>
 					<tr>
 						<th>제목</th>
-						<td colspan="5">${referenceVo.rtitle}</td>
+						<td colspan="3">${referenceVo.rtitle}</td>
 						<th>등록일</th>
 						<td>${referenceVo.reference_date} ${referenceVo.reference_time}</td>
 					</tr>
 					<tr>
 						<th>링크</th>
-						<td colspan="7">
+						<td colspan="5">
 						<c:forEach items="${data}" var="data">
 						<a href="/upload/download?fileName=${data.r_image}">${data.r_image}</a> &nbsp;&nbsp;
 						</c:forEach>

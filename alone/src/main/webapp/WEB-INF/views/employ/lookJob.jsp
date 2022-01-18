@@ -78,17 +78,17 @@ $(function() {
 		<div>
 			<select name="searchType" id="searchType">
 				<option value="t"
-					<c:if test="${pagingDto.searchType == 't'}">
+					<c:if test="${pagingVo.searchType == 't'}">
 						selected
 					</c:if>
 				>회사</option>
 				<option value="t"
-					<c:if test="${pagingDto.searchType == 'c'}">
+					<c:if test="${pagingVo.searchType == 'c'}">
 						selected
 					</c:if>
 				>내용</option>
 				<option value="tc"
-					<c:if test="${pagingDto.searchType == 'tc'}">
+					<c:if test="${pagingVo.searchType == 'tc'}">
 						selected
 					</c:if>
 				>제목+내용</option>
@@ -96,7 +96,7 @@ $(function() {
 				<label style="width:200px;">
 					<input type="text" name="keyword" 
 						id="keyword" placeholder="검색어 입력"
-						value="${pagingDto.keyword}">
+						value="${pagingVo.keyword}">
 				</label>
 			<a type="button" class="btn btn-sm btn-success"
 				id="btnSearch">검색</a>
