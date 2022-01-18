@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
+import org.eclipse.jdt.internal.compiler.parser.ParserBasicInformation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +46,7 @@ public class EmploymentInformationController {
 		System.out.println(jobno);
 		LookJobVo lookJobVo = lookJobService.getLookJob(jobno);
 		List<LookJobVo> jobImageList = lookJobService.JobImage(jobno);
+		System.out.println(lookJobVo);
 		model.addAttribute("lookJobVo", lookJobVo);
 		model.addAttribute("jobImageList", jobImageList);
 		return "employ/lookJobInformation";

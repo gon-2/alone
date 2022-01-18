@@ -44,6 +44,7 @@ $(function() {
 .td_reference {
 	text-align:center;
 }
+
 </style>
 <div class="container-fluid">
 	<div class="row">
@@ -70,17 +71,17 @@ $(function() {
 			<div>
 				<select name="searchType" id="searchType">
 					<option value="t"
-						<c:if test="${pagingDto.searchType == 't'}">
+						<c:if test="${pagingVo.searchType == 't'}">
 							selected
 						</c:if>
 					>제목</option>
 					<option value="w"
-						<c:if test="${pagingDto.searchType == 'w'}">
+						<c:if test="${pagingVo.searchType == 'w'}">
 							selected
 						</c:if>
 					>작성자</option>
 					<option value="tw"
-						<c:if test="${pagingDto.searchType == 'tw'}">
+						<c:if test="${pagingVo.searchType == 'tw'}">
 							selected
 						</c:if>
 					>제목+작성자</option>
@@ -88,7 +89,7 @@ $(function() {
 					<label style="width:200px;">
 						<input type="text" name="keyword" 
 							id="keyword" placeholder="검색어 입력"
-							value="${pagingDto.keyword}">
+							value="${pagingVo.keyword}">
 					</label>
 				<a type="button" class="btn btn-sm btn-success"
 					id="btnSearch">검색</a>
@@ -104,7 +105,6 @@ $(function() {
 						<th class="th_reference">번호</th>
 						<th class="th_reference" width="600px">제목</th>
 						<th class="th_reference">작성자</th>
-						<th class="th_reference">추천</th>
 						<th class="th_reference">조회수</th>
 						<th class="th_reference">등록일</th>
 					</tr>
@@ -115,7 +115,6 @@ $(function() {
 							<td class="td_reference">${ReferenceVo.rno}</td>
 							<td class="td_reference"><a class="rno_title" href="${ReferenceVo.rno}">${ReferenceVo.rtitle}</a></td>
 							<td class="td_reference">${ReferenceVo.rwriter}</td>
-							<td class="td_reference">${ReferenceVo.recommend}</td>
 							<td class="td_reference">${ReferenceVo.hits}</td>
 							<td class="td_reference">${ReferenceVo.reference_date}</td>
 						</tr>

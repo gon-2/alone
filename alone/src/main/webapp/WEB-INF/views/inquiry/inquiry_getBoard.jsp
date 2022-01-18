@@ -117,22 +117,28 @@ $(function(){
 	// 댓글보기 클릭 시 이벤트
 	$("#showcomment").click(function(e){
 		e.preventDefault();
-		var inquiry_userid = $("#inquiry_userid").val();
+		var inquiry_comment_userid = $("#inquiry_comment_userids").val();
 		var url = "/showcomment";
 		var sendData = {
-				"inquiry_userid" : inquiry_userid
+				"inquiry_comment_userid" : inquiry_comment_userid
 		};
 		
 		// 댓글보기 무결성 검사
-		if(inquiry_userid == "" || inquiry_userid.length == 0){
+		if(inquiry_comment_userid == "" || inquiry_comment_userid.length == 0){
 			alert("아이디를 입력하세요.");
-		}else if(inquiry_userid.length >= 51){
+			return false;
+		}else if(inquiry_comment_userid.length >= 51){
 			alert("아이디의 길이는 50byte입니다.");
+			return false;
 		}
 		
 		
 		$.get(url , sendData , function(rData){
 			console.log(rData);
+			if(rData == ""){
+				alert("해당하는 댓글이 없습니다.")
+				return false;
+			}
 			$.each(rData , function(){
 				$(".comment_userid").html("<h4> 아이디 : " + this.inquiry_comment_userid + "</h4>");
 				$(".comment_content").html("<h4> 내용 : " + this.inquiry_comment_content + "</h4>");
@@ -183,7 +189,7 @@ $(function(){
 						</div>
 						<div class="modal-body">
 							<label for="inquiry_comment_userid">아이디 : </label>
-							<input type="text" id="inquiry_comment_userid" name="inquiry_comment_userid" placeholder="아이디 입력"><br>
+							<input type="text" id="inquiry_comment_userid" name="inquiry_comment_userid" value="${sessionScope.memberVo.userid}"><br>
 							<label for="inquiry_comment_content">댓글 : </label>
 							<input type="text" id="inquiry_comment_content" name="inquiry_comment_content" placeholder="댓글 입력" style="width: 300px;">
 						</div>
@@ -292,8 +298,8 @@ $(function(){
 				</div>
 				
 				<c:choose>
-					<c:when test="${not empty sessionScope.memberVo}">
-						<button type="button" class="btn btn-warning" id="commentBoard">댓글쓰기</button>
+					<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
+						<button type="button" class="btn btn-warning" id="commentBoard">상담자 댓글 쓰기</button>
 					</c:when>
 					<c:otherwise>
 					
@@ -311,7 +317,7 @@ $(function(){
 					<c:otherwise>
 					</c:otherwise>
 				</c:choose>
-				<input type="text" id="inquiry_userid" name="inquiry_userid" placeholder="댓글을 볼 게시자 아이디">
+				<input type="text" id="inquiry_comment_userids" name="inquiry_comment_userid" placeholder="댓글을 볼 게시자 아이디">
 				<button type="button" class="btn btn-info" id="showcomment">댓글보기</button>
 			</form> 
 		</div><br>

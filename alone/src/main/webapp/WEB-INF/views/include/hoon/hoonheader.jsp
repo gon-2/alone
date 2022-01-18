@@ -279,15 +279,13 @@
                         </li>
 
                         <!-- Nav Item - 상담 메시지 -->
+                   <c:choose>
+                      	 <c:when test="${empty sessionScope.memberVo}"></c:when>
+                      	 <c:otherwise>
                          <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="Clickmessages" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <c:choose>
-                           		<c:when test="${empty sessionScope.memberVo}"></c:when>
-                                <c:otherwise>
                                 	<i class="fas fa-envelope fa-fw"></i>상담 메시지
-                                </c:otherwise>
-                           </c:choose>
                             </a>
                             <!--  Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -303,6 +301,8 @@
                                 <a class="dropdown-item text-center small text-gray-500" id="messageList" href="/message/messageList">메시지 더 보기</a>
                             </div>
                         </li>
+                        </c:otherwise>
+                 </c:choose>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
