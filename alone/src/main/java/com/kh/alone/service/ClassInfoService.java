@@ -21,6 +21,23 @@ public class ClassInfoService {
 		dao.insertClassInfo(vo);
 	}
 	
+	// 수업 수정하기
+	public void classInfoModify(ClassInfoVo vo) {
+		dao.classInfoModify(vo);
+	}
+	
+	//수업 삭제하기
+	public void classInfoDelete(int info_code) {
+		dao.classInfoDelete(info_code);
+	}
+	
+	// 관리자 신청현황조회
+	public List<StudentClassRegistVo> adminList(){
+		List<StudentClassRegistVo> list = dao.adminList();
+		return list;
+	}
+	
+	
 	// 모집현황 전체조회
 	public List<ClassInfoVo> selectAll(){
 		List<ClassInfoVo> list = dao.selectAll();

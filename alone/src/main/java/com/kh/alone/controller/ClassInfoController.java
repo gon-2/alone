@@ -54,6 +54,32 @@ public class ClassInfoController {
 		return "success";
 	}
 	
+	// 수업 수정하기
+	@RequestMapping(value="/classInfoModify", method=RequestMethod.GET)
+	public String classInfoModify(Model model, int info_code) {
+		ClassInfoVo classInfoVo = classInfoService.getClassInfo(info_code);
+		model.addAttribute("classInfoVo", classInfoVo);
+		return "classInfo/classInfoModify";
+	}
+	
+	//수업 수정하기 처리
+	@RequestMapping(value="/classInfoModifyRun", method=RequestMethod.POST)
+	public String classInfoModifyRun(ClassInfoVo vo) {
+		System.out.println(vo);
+		classInfoService.classInfoModify(vo);
+		return "redirect:/classInfo/list_all";
+	}
+	
+	//수업 삭제하기
+	@RequestMapping(value="/classInfoDelete", method=RequestMethod.GET)
+	public String classInfoDelete(int info_code) {
+		System.out.println("컨트롤info_code: " + info_code);
+		classInfoService.classInfoDelete(info_code);
+		return "redirect:/classInfo/list_all";
+	}
+	
+	
+	
 	// 모집현황 페이지에서 조회기능
 	@RequestMapping(value="/list_all", method=RequestMethod.GET)
 	public String selectAll(Model model) {
