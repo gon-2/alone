@@ -28,17 +28,11 @@
 			
 			
  			// 댓글 무결성 검사
- 			if(class_board_comment_userid == "" || class_board_comment_userid.length == 0){
- 				alert("아이디를 입력 하세요.");
+ 			if(class_board_comment_userid == "" || class_board_comment_userid.length == 0 || class_board_comment_userid.length >= 51){
+ 				alert("아이디를 입력 하세요. 길이는 50바이트 까지 입니다.");
  				return false;
- 			}else if(class_board_comment_userid.length >= 51){
- 				alert("아이디의 길이는 50byte까지 입니다.");
- 				return false;
- 			}else if(class_board_comment_content == "" || class_board_comment_content.length == 0){
- 				alert("댓글을 입력하세요.");
- 				return false;
- 			}else if(class_board_comment_content.length >= 301){
- 				alert("댓글의 길이는 300 byte까지 입니다.");
+ 			}else if(class_board_comment_content == "" || class_board_comment_content.length == 0 || class_board_comment_content.length >= 301){
+ 				alert("댓글을 입력하세요. 길이는 300바이트 까지 입니다.");
  				return false;
  			}else if(class_board_comment_no.length == 0){
  				alert("번호를 입력하세요.");
@@ -58,7 +52,7 @@
  			e.preventDefault();
   			$("#modal-991051").trigger("click");
 		});
- 		// 댓글 저장 버튼 클릭시 이벤트
+ 		// 댓글 보기버튼 클릭시 이벤트
  		$("#showbtn").click(function(e){
  			e.preventDefault();
  			var class_board_number = $("#class_board_number").val();
@@ -68,6 +62,12 @@
  			var sendData = {
  				"class_board_number" : class_board_number	
  			};
+ 			
+ 			// 무결성 검사
+ 			if(class_board_number == ""){
+ 				alert("댓글을 보기위해 해당 글의 번호를 입력하세요.");
+ 				return false;
+ 			}
  				
  			$.get(url , sendData, function(rData){
  				console.log(rData);
@@ -94,6 +94,12 @@
  			var sendData = {
  					"class_board_number" : class_board_number
  			};
+ 			
+ 			// 무결성 검사
+ 			if(class_board_number == ""){
+ 				alert("댓글을 삭제하기 위해 글 번호를 입력하세요.");
+ 				return false;
+ 			}
  			
  			$.post(url , sendData , function(rData){
  				console.log(rData);
@@ -122,6 +128,18 @@
  			var class_board_title = $("#class_board_title").val();
  			var class_board_userid = $("#class_board_userid").val();
  			var url = "/class_board/modcontent";
+ 			
+ 			// 무결성 검사
+ 			if(class_board_content == "" || class_board_content.length == 0 || class_board_content.length >= 3001){
+ 				alert("글 내용을 다시 입력하세요 , 길이는 3000바이트 까지 입니다.");
+ 				return false;
+ 			}else if(class_board_title == "" || class_board_title.length == 0 || class_board_title.length >= 301){
+ 				alert("글 제목을 다시 입력하세요 , 길이는 300바이트 까지 입니다.");
+ 				return false;
+ 			}else if(class_board_userid == "" || class_board_userid.length == 0 || class_board_userid.length >= 51){
+ 				alert("글 작성자를 다시 입력하세요 , 길이는 50바이트 까지 입니다.");
+ 				return false;
+ 			}
  		
  			var sendData = {
  				"class_board_content" : class_board_content,
@@ -278,16 +296,17 @@
 				
         <c:choose>
             <c:when test="${empty sessionScope.memberVo}">
+       	    </c:when>
+       	    <c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
+  	    		<button type="button" class="btn btn-warning" id="inComment">상담자 댓글달기</button>
        	    </c:when>    
             <c:otherwise> 
 				<button type="button" class="btn btn-primary" id="modcontent">수정</button>
 				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button>
 			</c:otherwise>
 		</c:choose>
-				<button type="button" class="btn btn-warning" id="inComment">상담자 댓글달기</button>
-		<c:if test="${empty sessionScope.memberVo}">
+				<!-- <button type="button" class="btn btn-warning" id="inComment" style="display: none;">상담자 댓글달기</button> -->
 				<button type="button" class="btn btn-secondary" id="showComment">댓글보기</button>
-		</c:if>
 			</form> 
 		</div>
 	</div>
@@ -328,7 +347,13 @@
 					<p id="first_userid" class="first_userid"></p>
 					<p id="first_content" class="first_content"></p>
 					<p id="first_date" class="first_date"></p>
-					<button type="button" id="deleteComment" class="btn btn-warning">댓글 삭제</button>
+					<c:choose>
+						<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
+							<button type="button" id="deleteComment" class="btn btn-warning">댓글 삭제</button>
+						</c:when>
+						<c:otherwise>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</form>
 		</div>

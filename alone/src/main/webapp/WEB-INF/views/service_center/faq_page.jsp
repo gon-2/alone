@@ -11,7 +11,7 @@
 			$("#classRegist").one("click" , function(e){
 				$("#classboard").html("수강신청 조회");
 				e.preventDefault();
-				var url = "/classboard";
+				var url = "/faq/classboard";
 				
 				$.get(url , function(rData){
 					console.log(rData);
@@ -34,7 +34,7 @@
 			$("#inquiry").one("click" , function(e){
 				$("#inquiryboard").html("건의사항 조회");
 				e.preventDefault();
-				var url = "/inquiryBoard";
+				var url = "/faq/inquiryBoard";
 				$.get(url , function(rData){
 					console.log(rData);
 					$.each(rData , function(){
@@ -47,10 +47,9 @@
 						trs.find("td").eq(4).text(changeDateString(this.inquiry_date));
 						trs.find("td").eq(5).text(this.inquiry_viewcnt);
 						$("#inquiryboardlist").fadeIn(1000).append(trs);
-						$("#classboard").fadeIn();
 						$("#classboardlist").fadeOut();
 						$("#classboardDiv").fadeOut();
-						$("#classboard").fadeOut();
+ 						$("#classboard").fadeOut();
 					});
 				});
 			});

@@ -16,7 +16,7 @@
 			var service_message_receiver = $("#service_receiver").val();
 			var service_message_title = $("#service_message_title").val();
 			var service_message_content = $("#service_message_content").val();
-			var url = "/sendMessage";
+			var url = "/message/sendMessage";
 			
 			var sendData = {
 					"service_message_sender" : service_message_sender,
@@ -24,12 +24,30 @@
 					"service_message_title" : service_message_title,
 					"service_message_content" : service_message_content
 			};
+			
+			// 무결성 검사
+			if(service_message_sender.length >= 51 || service_message_sender == ""){
+				alert("보내는사람의 길이는 50자 이하입니다.");
+				return false;
+			}else if(service_message_receiver.length >= 51 || service_message_receiver == ""){
+				alert("받는사람의 길이는 50자 이하입니다.");
+				return false;				
+			}else if(service_message_title.length >= 501 || service_message_title == ""){
+				alert("제목의 길이는 50자 이하입니다.");
+				return false;								
+			}else if(service_message_content.length >= 1001 || service_message_content == ""){
+				alert("내용의 길이는 50자 이하입니다.");
+				return false;				
+			}
+			
+			
 			console.log("service_message_sender >> " + service_message_sender);
 			console.log("service_message_receiver >> " + service_message_receiver);
 			$.post(url , sendData , function(rData){
 				console.log(rData);
 				if(rData == "success"){
 					alert("메세지가 성공적으로 발송되었습니다.");
+					location.href="/message/messageList";
 				}else if(rData == "fail"){
 					alert("존재하는 사용자가 없습니다.");
 					return false;
@@ -42,14 +60,34 @@
 	<div class="row">
 		<div class="col-md-12">
 			<form role="form">
-				<div class="form-group">
-					<label for="service_message_sender">관리자 아이디 </label>
-					<input type="text" id="service_message_sender" name="service_message_sender" class="form-control" style="width: 200px;" placeholder="아이디를 입력하세요."/>
-				</div>
-				<div class="form-group">
-					<label for="service_message_receiver">받는 수강생 아이디</label>
-					<input type="text" id="service_receiver" name="service_message_receiver" class="form-control" style="width: 200px;" placeholder="비밀번호를 입력하세요." />
-				</div>
+				<c:choose>
+					<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
+						<div class="form-group">
+							<label for="service_message_sender">관리자 아이디 </label>
+							<input type="text" id="service_message_sender" name="service_message_sender" class="form-control" style="width: 330px;" placeholder="관리자의 아이디는 service_center_admin" value="${sessionScope.memberVo.userid}"/>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="form-group">
+							<label for="service_message_sender">수강생 아이디 </label>
+							<input type="text" id="service_message_sender" name="service_message_sender" class="form-control" style="width: 330px;" placeholder="수강생의 아이디를 입력하세요." value="${sessionScope.memberVo.userid}"/>
+						</div>
+					</c:otherwise>					
+				</c:choose>
+			<c:choose>
+				<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">	
+					<div class="form-group">
+						<label for="service_message_receiver">수강생 아이디</label>
+						<input type="text" id="service_receiver" name="service_message_receiver" class="form-control" style="width: 330px;" placeholder="수강생의 아이디를 입력하세요." />
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="form-group">
+						<label for="service_message_receiver">관리자 아이디</label>
+						<input type="text" id="service_receiver" name="service_message_receiver" class="form-control" style="width: 330px;" placeholder="관리자의 아이디는 service_center_admin" />
+					</div>				
+				</c:otherwise>
+			</c:choose>
 				<div class="form-group">
 					<label for="service_message_title">제목</label>
 					<input type="text" id="service_message_title" name="service_message_title" class="form-control" style="width: 400px;" placeholder="제목을 입력하세요"/>

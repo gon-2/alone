@@ -239,11 +239,12 @@ $(function(){
 		
 		
 		$.get(url, sendData, function(rData){
+			console.log("rData", rData);
 			var options = "<option value=''>선택해주세요</option>";
 		
 			$.each(rData, function(index){
 				$("#c_title").empty();
-				options += "<option value='" + this.info_code + "'>" + this.c_title;
+				options += "<option value='" + this.info_code + "'>" + this.c_title + "</option>";
 				
 			});
 			$("#c_title").append(options);

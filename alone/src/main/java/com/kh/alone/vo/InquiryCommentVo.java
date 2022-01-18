@@ -8,10 +8,10 @@ package com.kh.alone.vo;
 import java.sql.Timestamp;
 
 public class InquiryCommentVo {
-	private int inquiry_comment_no;
-	private String inquiry_comment_userid;
-	private String inquiry_comment_content;
-	private Timestamp inquiry_comment_date;
+	private int inquiry_comment_no;					// 댓글번호
+	private String inquiry_comment_userid;			// 댓글 아이디
+	private String inquiry_comment_content;			// 내용
+	private Timestamp inquiry_comment_date;			// 날짜
 	
 	public InquiryCommentVo() {
 		super();

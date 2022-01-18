@@ -14,13 +14,13 @@ import java.util.Arrays;
 import oracle.sql.BLOB;
 
 public class InquiryBoardVo {
-	private int inquiry_number;
-	private String inquiry_userid;
-	private String inquiry_title;
-	private String inquiry_content;
-	private String inquiry_password;
-	private Timestamp inquiry_date;
-	private int inquiry_viewcnt;
+	private int inquiry_number;						// 글 번호
+	private String inquiry_userid;					// 게시자
+	private String inquiry_title;					// 글 제목
+	private String inquiry_content;					// 글 내용
+	private String inquiry_password;				// 삭제 비밀번호
+	private Timestamp inquiry_date;					// 게시일자
+	private int inquiry_viewcnt;					// 조회수
 	
 	public InquiryBoardVo() {
 		super();

@@ -28,6 +28,12 @@ public class ClassInfoService {
 		return list;
 	}
 	
+	//수업 제목으로 조회
+	public List<ClassInfoVo> classListByTitle(String c_title) {
+		List<ClassInfoVo> classInfoVo = dao.classListByTitle(c_title);
+		return classInfoVo;
+	}
+	
 	// info_code로 조회
 	public ClassInfoVo selectByCno(int info_code){
 //		System.out.println("서비스서비스: " + info_code);

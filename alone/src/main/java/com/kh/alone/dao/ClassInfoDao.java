@@ -37,6 +37,11 @@ public class ClassInfoDao {
 		return classInfoVo;
 	}
 	
+	//수업 제목으로 조회
+	public List<ClassInfoVo> classListByTitle(String c_title) {
+		List<ClassInfoVo> classInfoVo = sqlSession.selectOne(NAMESPACE + "classListByTitle", c_title);
+		return classInfoVo;
+	}
 	
 	// 타임코드로 주말 주간 야간 조회
 	public List<ClassInfoVo> classListByTimeCode(int time_code){
