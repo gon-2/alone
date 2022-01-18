@@ -80,6 +80,12 @@
 		where info_code = #{info_code}
 	</select>
 	
+	<!-- 수업 삭제하기 -->
+	<delete id="classInfoDelete">
+		delete from c_class_info
+		where info_code = #{info_code}
+	</delete>
+	
 	<!-- 신청양식 추가하기 -->
 	<insert id="insertOnlineRegist">
 		insert into student_class_regist(r_num, info_code, student_name, gender, nationality, phone_num, home_num, e_mail, 
@@ -99,6 +105,12 @@
 	<select id="selectMine" resultType="StudentClassRegistVo">
 		select * from student_class_regist
 		where r_num = #{r_num}
+	</select>
+	
+	<!-- 관리자 수강신청 조회 -->
+	<select id="adminList">
+		select s.student_name, i.c_title, s.gender, s.nationality, s.phone_num, s.employment, s.employment_center, s.employment_staff, s.employment_num
+		from student_class_regist s, c_class_info i
 	</select>
 	
 	<select id="selectMineList" resultType="StudentClassRegistVo">

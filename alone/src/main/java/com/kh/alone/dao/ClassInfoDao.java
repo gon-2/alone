@@ -23,6 +23,22 @@ public class ClassInfoDao {
 		sqlSession.insert(NAMESPACE + "insertClassInfo", vo);
 	}
 	
+	// 수업 수정하기
+	public void classInfoModify(ClassInfoVo vo) {
+		sqlSession.update(NAMESPACE + "classInfoModify", vo);
+	}
+	
+	// 수업 삭제하기
+	public void classInfoDelete(int info_code) {
+		sqlSession.delete(NAMESPACE + "classInfoDelete", info_code);
+	}
+	
+	// 관리자 신청현황조회
+	public List<StudentClassRegistVo> adminList(){
+		List<StudentClassRegistVo> list = sqlSession.selectList(NAMESPACE + "adminList");
+		return list;
+	}
+	
 	// 전체조회
 	public List<ClassInfoVo> selectAll(){
 //		System.out.println("sqlSession:" + sqlSession);
