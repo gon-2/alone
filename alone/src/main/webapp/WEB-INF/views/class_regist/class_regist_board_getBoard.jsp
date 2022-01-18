@@ -71,7 +71,10 @@
  				
  			$.get(url , sendData, function(rData){
  				console.log(rData);
- 				
+ 				if(rData == ""){
+ 					alert("해당하는 댓글이 없습니다.")
+ 					return false;
+ 				}
  				$.each(rData , function(){
  	 				$("#first_userid").html("<h4>상담자 : " + this.class_board_comment_userid + "</h4>");
  	 				$("#first_content").html("<h4>내용 : " + this.class_board_comment_content + "</h4>");
@@ -300,9 +303,11 @@
        	    <c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
   	    		<button type="button" class="btn btn-warning" id="inComment">상담자 댓글달기</button>
        	    </c:when>    
-            <c:otherwise> 
+            <c:when test="${registboardvo.class_board_userid == sessionScope.memberVo.userid}"> 
 				<button type="button" class="btn btn-primary" id="modcontent">수정</button>
 				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button>
+			</c:when>
+			<c:otherwise>
 			</c:otherwise>
 		</c:choose>
 				<!-- <button type="button" class="btn btn-warning" id="inComment" style="display: none;">상담자 댓글달기</button> -->

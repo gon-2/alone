@@ -38,8 +38,8 @@ public class InquiryCommentController {
 	
 	// 댓글 보기
 	@RequestMapping(value="/showcomment" , method=RequestMethod.GET)
-	public List<InquiryCommentVo> showcomment(String inquiry_userid) {
-		List<InquiryCommentVo> commentList = commentservice.showcomment(inquiry_userid);
+	public List<InquiryCommentVo> showcomment(String inquiry_comment_userid) {
+		List<InquiryCommentVo> commentList = commentservice.showcomment(inquiry_comment_userid);
 		System.out.println("InquiryCommentController , showcomment , commentList >> " + commentList);
 		return commentList;
 	}
