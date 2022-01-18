@@ -219,7 +219,7 @@
 						</div>
 						<div class="modal-body">
 							<label for="class_board_comment_userid">아이디 입력</label>
-							<input type="text" name="class_board_comment_userid" id="class_board_comment_userid" placeholder="아이디를 입력하세요." value="${class_board_comment_userid}"><br>
+							<input type="text" name="class_board_comment_userid" id="class_board_comment_userid" placeholder="아이디를 입력하세요." value="${sessionScope.memberVo.userid}"><br>
 							<label for="class_board_comment_content">댓글 입력</label><br>
 							<textarea name="class_board_comment_content" id="class_board_comment_content" placeholder="댓글을 입력하세요." value="${class_board_comment_content}"></textarea>
 							<input type="number" name="class_board_comment_no" id="class_board_comment_no" placeholder="현재 글번호를 입력하세요." >

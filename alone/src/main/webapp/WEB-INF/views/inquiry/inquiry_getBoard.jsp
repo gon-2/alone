@@ -183,7 +183,7 @@ $(function(){
 						</div>
 						<div class="modal-body">
 							<label for="inquiry_comment_userid">아이디 : </label>
-							<input type="text" id="inquiry_comment_userid" name="inquiry_comment_userid" placeholder="아이디 입력"><br>
+							<input type="text" id="inquiry_comment_userid" name="inquiry_comment_userid" value="${sessionScope.memberVo.userid}"><br>
 							<label for="inquiry_comment_content">댓글 : </label>
 							<input type="text" id="inquiry_comment_content" name="inquiry_comment_content" placeholder="댓글 입력" style="width: 300px;">
 						</div>
@@ -292,8 +292,8 @@ $(function(){
 				</div>
 				
 				<c:choose>
-					<c:when test="${not empty sessionScope.memberVo}">
-						<button type="button" class="btn btn-warning" id="commentBoard">댓글쓰기</button>
+					<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
+						<button type="button" class="btn btn-warning" id="commentBoard">상담자 댓글 쓰기</button>
 					</c:when>
 					<c:otherwise>
 					
