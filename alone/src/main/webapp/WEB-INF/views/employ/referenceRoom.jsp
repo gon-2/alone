@@ -49,7 +49,6 @@ $(function() {
 					   .submit();
 	});
 });
-
 </script>
 
 <div class="container-fluid">
@@ -103,9 +102,9 @@ $(function() {
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8" style="text-align:center">
-			<c:forEach items="${data}" var="data">
-				<img src="/upload/download?fileName=${data.r_image}" width="500px" height="700px"/><br>
-			</c:forEach>
+				<c:forEach items="${data}" var="data">
+					<img id="r_images" style="" src="/upload/download?fileName=${data.r_image}" width="500px" height="700px"/><br>
+				</c:forEach>
 			<div style="text-align:left">
 					${referenceVo.r_content}
 			</div>
@@ -158,4 +157,20 @@ $(function() {
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	var[] image = ${data.r_image};
+	console.log(image);
+	for (var i = 0; i < image.length; i++) {
+		var dotIndex = image[i].lastIndexOf(".");
+		var extName = image[i].substring(dotIndex + 1);
+		if (extName.equals("JPG") || 
+				extName.equals("PNG") || 
+				extName.equals("GIF")) {
+			$("#r_images").attr("style", "display:none;");
+		}
+	}
+});
+</script>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
