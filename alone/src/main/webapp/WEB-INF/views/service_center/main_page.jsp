@@ -10,7 +10,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6">
-			<h4 align="center" style="margin-right: 100px;"><a href="/customer_main/faq">자주 묻는 질문 - 수강신청</a></h4>
+			<h4 align="center"><a href="/customer_main/faq">자주 묻는 질문 - 수강신청</a></h4>
 			<br>
 			<table class="table" align="center" style="width:500px; margin-right:100px;">
 				<thead>
@@ -33,7 +33,7 @@
 		</div>
 		
 		<div class="col-md-6">
-			<h4 align="center" style="margin-right: 100px;"><a href="/customer_main/faq">자주 묻는 질문 - 건의사항</a></h4>
+			<h4 align="center" style="margin-left: 20px;"><a href="/customer_main/faq">자주 묻는 질문 - 건의사항</a></h4>
 			<br>
 			<table class="table" align="center" style="width:500px; margin-right:100px;">
 				<thead>
@@ -57,7 +57,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-6"><br><br>
-			<h4 align="center" style="margin-right: 100px;"><a href="/class_board/class_regist">수강 신청</a></h4>
+			<h4 align="center"><a href="/class_board/class_regist">수강 신청</a></h4>
 			<br>
 			<table class="table" align="center" style="width:500px; margin-right:100px;">
 				<thead>
@@ -79,7 +79,7 @@
 			</table>
 		</div>
 		<div class="col-md-6"><br><br>
-			<h4 align="center" style="margin-right: 100px;"><a href="/inquiry/listall">건의 사항</a></h4>		
+			<h4 align="center"><a href="/inquiry/listall">건의 사항</a></h4>		
 			<br>
 			<table class="table" align="center" style="width:500px; margin-right:100px;">
 				<thead>

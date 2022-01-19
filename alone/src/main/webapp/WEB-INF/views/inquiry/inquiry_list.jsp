@@ -166,7 +166,7 @@ $(function(){
 									<td><a href="/inquiry/deleteBoardAdmin?inquiry_title=${InquiryBoardVo.inquiry_title}" class="btn btn-sm btn-danger">삭제</a></td>
 								</c:when>
 								<c:otherwise>
-									<td>로그인하세요.</td>
+									<td>해당하는 사용자가 아닙니다.</td>
 								</c:otherwise>
 							</c:choose>			
 	 					</tr>

@@ -69,5 +69,10 @@ public class MemberDao {
 		sqlSession.delete(NAMESPACE +"memberOutRun", userid); 
 		
 	}
+	// 수업상세 보기
+	public MemberBoardVo getMemberBoard(String content) {
+		MemberBoardVo memberBoardVo = sqlSession.selectOne(NAMESPACE + "getMemberBoard", content);
+		return memberBoardVo;
+	}
 
 }

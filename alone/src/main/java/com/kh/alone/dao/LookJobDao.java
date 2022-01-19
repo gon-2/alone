@@ -222,10 +222,10 @@ public class LookJobDao {
 	}
 	
 	// 자료실 이미지 추가하기
-	public void insertReferenceRoomImages(String images_name, int rno) {
-		if (!images_name.equals("")) {
+	public void insertReferenceRoomImages(String r_images, int rno) {
+		if (!r_images.equals("")) {
 			Map<String, Object> map = new HashMap<>();
-			map.put("r_images", images_name);
+			map.put("r_images", r_images);
 			map.put("rno", rno);
 			sqlSession.insert(NAMESPACE + "insertReferenceRoomImages", map);			
 		}

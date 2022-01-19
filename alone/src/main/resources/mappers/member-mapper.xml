@@ -14,20 +14,35 @@
 		order by userid
 	</select>
 	
-	<!-- 답글 -->
+	<!--  글 상세보기 -->
+	<select id="getMemberBoard" resultType="MemberBoardVo">
+		select * from tbl_memberboard
+		where content = #{content}
+	
+	</select>
+	
+	
+	<!-- 게시글 추가 -->
+<!-- 	<insert id="insertReply"> -->
+<!-- 		insert into tbl_memberboard  -->
+<!-- 			(bno, title, content, userid,  -->
+<!-- 			 re_group, re_seq, re_level) -->
+<!-- 		values -->
+<!-- 			(seq_bno.nextval, #{title}, #{content}, #{userid},  -->
+<!-- 			#{re_group}, #{re_seq} + 1, #{re_level} + 1) -->
+<!-- 	</insert>		 -->
+	<!-- 게시글 -->
 	<select id="memberBoardForm" resultType="MemberBoardVo">
 		select bno, title, content, userid, to_char(sysdate, 'YYYY-MM-DD')
 		regdate from tbl_memberboard
 	</select>
 	
-	<!-- 답글 추가 -->
+	<!-- 게시글 추가 -->
 	<insert id="insertReply">
 		insert into tbl_memberboard 
-			(bno, title, content, userid, 
-			 re_group, re_seq, re_level)
+			(bno, title, content, userid)
 		values
-			(seq_bno.nextval, #{title}, #{content}, #{userid}, 
-			#{re_group}, #{re_seq} + 1, #{re_level} + 1)
+			(seq_bno.nextval, #{title}, #{content}, #{userid})
 	</insert>		
 	
 	<!--  회원정보 수정 -->

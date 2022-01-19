@@ -142,14 +142,14 @@ $(function() {
 <script type="text/javascript">
 $(document).ready(function() {
 		
-		var myLatlng = new google.maps.LatLng(${lookJobVo.y_point}, ${lookJobVo.x_point});// 위치값 위도 경도
+// 		var myLatlng = new google.maps.LatLng(${lookJobVo.y_point}, ${lookJobVo.x_point});
 		var Ypoint = ${lookJobVo.y_point};
 		var Xpoint = ${lookJobVo.x_point};
 		var zoomLevel = 18; // 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
-		var markerTitle = "구글 맵지도 회사 지도입니다."; // 현재 위치 마커에 마우스를 오버을때 나타나는 정보
+		var markerTitle = "구인중 회사입니다."; // 현재 위치 마커에 마우스를 오버을때 나타나는 정보
 		var markerMaxWidth = 300; // 마커를 클릭했을때 나타나는 말풍선의 최대 크기 // 말풍선 내용
-		var contentString = '<div>' + '구글 맵지도 회사 지도입니다.' + '<p>안녕하세요. 구글지도입니다.</p>' + '</div>';
-		var myLatlng = new google.maps.LatLng(Ypoint, Xpoint);
+		var contentString = '<div>' + '해당 회사 지도입니다.' + '<p>안녕하세요. 구글지도입니다.</p>' + '</div>';
+		var myLatlng = new google.maps.LatLng(Ypoint, Xpoint); // 위치값 위도 경도
 		var mapOptions = {
 				zoom: zoomLevel,
 				center: myLatlng,
@@ -158,7 +158,8 @@ $(document).ready(function() {
 		var map = new google.maps.Map(document.getElementById('map_ma'), mapOptions);
 		var marker = new google.maps.Marker({
 			position: myLatlng,
-			map: map, title: markerTitle
+			map: map,
+			title: markerTitle
 			});
 		var infowindow = new google.maps.InfoWindow({
 			content: contentString,
@@ -166,6 +167,9 @@ $(document).ready(function() {
 			});
 		google.maps.event.addListener(marker, 'click', function() {
 			infowindow.open(map, marker);
+		
+			
+		
 	});
 });
 

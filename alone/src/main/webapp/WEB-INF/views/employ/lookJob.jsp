@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <%@ include file="/WEB-INF/views/include/paging_form.jsp" %>
 <script>
@@ -101,9 +100,13 @@ $(function() {
 			<a type="button" class="btn btn-sm btn-success"
 				id="btnSearch">검색</a>
 		</div>
-		<div style="text-align:right; margin-bottom:10px;">
-		<a href="/employ/lookJobInforMationRegist" class="btn btn-sm btn-success">글 쓰기</a>
-		</div>
+		<c:choose>
+			<c:when test="${sessionScope.memberVo.userid == 'star01'}">
+				<div style="text-align:right; margin-bottom:10px;">
+					<a href="/employ/lookJobInforMationRegist" class="btn btn-sm btn-success">글 쓰기</a>
+				</div>
+			</c:when>
+		</c:choose>
 			<table class="table">
 				<thead>
 					<tr>

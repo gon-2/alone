@@ -37,8 +37,9 @@ public class UploadController {
 	@ResponseBody
 	public String upload(@RequestParam("file") MultipartFile file, ModelAndView mv, Model model) throws IllegalStateException, IOException {
 		System.out.println(file);
-		if(!file.getOriginalFilename().isEmpty()) {
-			file.transferTo(new File(UPLOAD_PATH, file.getOriginalFilename()));
+		String originFileName = file.getOriginalFilename();
+		if(!originFileName.isEmpty()) {
+			file.transferTo(new File(UPLOAD_PATH, originFileName));
 			model.addAttribute("msg", "File uploaded successfully.");
 		}else {
 			model.addAttribute("msg", "Please select a valid mediaFile..");

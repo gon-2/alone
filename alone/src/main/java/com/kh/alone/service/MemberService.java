@@ -65,6 +65,11 @@ public class MemberService {
 		memberDao.memberOutRun(userid);
 
 	}
+	// 멤버 게시판 상세 보기 
+	public MemberBoardVo getMemberBoard(String content) {
+		MemberBoardVo memberBoardVo = memberDao.getMemberBoard(content);
+		return memberBoardVo;
+	}
 
 }
 	

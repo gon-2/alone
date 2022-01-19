@@ -3,7 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 
+<script>
+// 타이틀 클릭
+$(function() {
+$(".btnClick").click(function(e){
+	e.preventDefault();
+	location.href="/member/answer_form";
+	});
+});
 
+
+</script>
 
 
 <section class="wrapper style1">
@@ -38,10 +48,10 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="MemberBoardVo">
-						<tr>
-							<td>${MemberBoardVo.bno}</td>
+						<tr >
+							<td> ${MemberBoardVo.bno}</td>
 							<td>${MemberBoardVo.title}</td>
-							<td>${MemberBoardVo.content}</td>
+							<td><a class="btnClick" href="/member/board_form">${MemberBoardVo.content} </a></td>
 							<td>${MemberBoardVo.userid}</td>
 							<td>${MemberBoardVo.regdate}</td>
 						</tr>
@@ -49,7 +59,7 @@
 			
 				</tbody>
 			</table>
-				<button type="submit"> 답글쓰기 </button>
+				<button type="submit"> 게시글쓰기 </button>
 				</form>
 		</div>
 	</div>
