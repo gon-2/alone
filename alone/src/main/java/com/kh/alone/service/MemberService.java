@@ -66,8 +66,8 @@ public class MemberService {
 
 	}
 	// 멤버 게시판 상세 보기 
-	public MemberBoardVo getClass(int bno) {
-		MemberBoardVo memberBoardVo = memberDao.getClass(bno);
+	public MemberBoardVo getMemberBoard(String content) {
+		MemberBoardVo memberBoardVo = memberDao.getMemberBoard(content);
 		return memberBoardVo;
 	}
 
