@@ -10,13 +10,11 @@
 							<section class="col-3 col-6-narrower col-12-mobilep">
 								<h3>수강후기</h3>
 								<ul class="links">
-									<li><a href="#">Mattis et quis rutrum</a></li>
-									<li><a href="#">Suspendisse amet varius</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum accumsan dolor</a></li>
-									<li><a href="#">Mattis rutrum accumsan</a></li>
-									<li><a href="#">Suspendisse varius nibh</a></li>
-									<li><a href="#">Sed et dapibus mattis</a></li>
+								<c:forEach items="${mainList}" var="reviewVo">
+									<li><a href="#"> [${reviewVo.cate_code_name}] ${reviewVo.review_title }</a></li>
+								</c:forEach>	
+									<li><a href="/classInfo/reviewList">더보기</a></li>
+
 								</ul>
 							</section>
 							<section class="col-3 col-6-narrower col-12-mobilep">
@@ -29,6 +27,7 @@
 									<li><a href="#">Duis neque nisi sed</a></li>
 									<li><a href="#">Sed et dapibus quis</a></li>
 									<li><a href="#">Rutrum amet varius</a></li>
+									<li><a href="/classInfo/reviewList">더보기</a></li>
 								</ul>
 							</section>
 							<section class="col-6 col-12-narrower">

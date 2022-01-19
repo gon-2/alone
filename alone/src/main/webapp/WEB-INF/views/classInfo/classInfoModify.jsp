@@ -35,15 +35,6 @@ $(function() {
 		var end_date = $("#end_date").val();
 		
 		
-		console.log(cate_code);
-		console.log(time_code);
-		console.log(c_title);
-		console.log(c_time);
-		console.log(price);
-		console.log(class_room);
-		console.log(class_total);
-		console.log(start_date);
-		console.log(end_date);
 		
 		var info_code = $("#info_code").val();
 		$("form")[0].submit();
@@ -51,7 +42,6 @@ $(function() {
  	});
 });
 </script>
-${classInfoVo.info_code }
 	<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">

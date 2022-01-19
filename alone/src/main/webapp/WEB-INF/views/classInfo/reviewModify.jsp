@@ -8,19 +8,15 @@ $(function(){
 	$("#btnOk").click(function(e){
 		e.preventDefault();
 		var cate_code = $("#cate_code").val();
-		console.log("cate_code", cate_code);
 		if(cate_code == ""){
 			alert("전공을 선택해주세요.");
 		}
 		
 		var review_writer = $("#review_writer").val();
-		console.log("review_writer", review_writer);
 		
 		var content = $("#content").val();
-		console.log("content", content);
 		
 		var review_title = $("#review_title").val();
-		console.log("title: " + review_title);
 		
 		var review_number = $("#review_number").val();
 		$("form")[0].submit();

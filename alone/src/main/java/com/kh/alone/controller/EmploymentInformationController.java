@@ -43,7 +43,6 @@ public class EmploymentInformationController {
 	
 	@RequestMapping(value="/lookJobInformation", method=RequestMethod.GET)
 	public String LookJobInformation(Model model, int jobno, PagingVo pagingVo) {
-		System.out.println(jobno);
 		LookJobVo lookJobVo = lookJobService.getLookJob(jobno);
 		List<LookJobVo> jobImageList = lookJobService.JobImage(jobno);
 		System.out.println(lookJobVo);
@@ -60,7 +59,6 @@ public class EmploymentInformationController {
 	@RequestMapping(value="/lookJobInforMationRegist_run", method=RequestMethod.POST)
 	@ResponseBody
 	public String lookJobInforMationRegist_run(LookJobVo lookJobVo) {
-		System.out.println(lookJobVo);
 		int jobno = lookJobService.getJobnoNextVal();
 		lookJobVo.setJobno(jobno);
 		lookJobService.insertJobInforMation(lookJobVo);

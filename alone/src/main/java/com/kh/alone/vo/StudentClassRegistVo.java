@@ -18,6 +18,7 @@ public class StudentClassRegistVo {
 	private String end_date;
 	private String time_code_name;
 	private int c_time;
+	private String regist_check;
 	
 	public StudentClassRegistVo() {
 		super();
@@ -159,6 +160,14 @@ public class StudentClassRegistVo {
 		this.c_time = c_time;
 	}
 
+	public String getRegist_check() {
+		return regist_check;
+	}
+
+	public void setRegist_check(String regist_check) {
+		this.regist_check = regist_check;
+	}
+
 	@Override
 	public String toString() {
 		return "StudentClassRegistVo [r_num=" + r_num + ", info_code=" + info_code + ", student_name=" + student_name
@@ -166,10 +175,6 @@ public class StudentClassRegistVo {
 				+ home_num + ", e_mail=" + e_mail + ", employment=" + employment + ", employment_center="
 				+ employment_center + ", employment_staff=" + employment_staff + ", employment_num=" + employment_num
 				+ ", c_title=" + c_title + ", start_date=" + start_date + ", end_date=" + end_date + ", time_code_name="
-				+ time_code_name + ", c_time=" + c_time + "]";
+				+ time_code_name + ", c_time=" + c_time + ", regist_check=" + regist_check + "]";
 	}
-
-	
-
-
 }
