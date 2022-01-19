@@ -66,6 +66,7 @@ public class MemberController {
 		return "/member/board_form";
 	}
 	
+	
 	// 내 게시판 답글
 	@RequestMapping(value="/board_form_reply", method=RequestMethod.GET)
 	public String replyForm(MemberBoardVo memberBoardVo) {
@@ -126,5 +127,12 @@ public class MemberController {
 		return "success";
 	}
 	
+	// 게시판 상세 보기
+		@RequestMapping(value="/memberBoardForm", method=RequestMethod.GET)
+		public String getMemberBoard(Model model, int bno) {
+			MemberBoardVo memberBoardVo = memberService.getClass(bno);
+			model.addAttribute("MemberBoardVo", memberBoardVo);
+			return "/member/boardform";
+		}
 }
 
