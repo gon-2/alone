@@ -244,7 +244,7 @@ $(function(){
 		
 			$.each(rData, function(index){
 				$("#c_title").empty();
-				options += "<option value='" + this.info_code + "'>" + this.c_title;
+				options += "<option value='" + this.info_code + "'>" + this.c_title + "</option>";
 				
 			});
 			$("#c_title").append(options);

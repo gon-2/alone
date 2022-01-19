@@ -31,8 +31,8 @@ public class InquiryCommentDao {
 	
 	
 	// 댓글 보기
-	public List<InquiryCommentVo> showcomment(String inquiry_userid) {
-		List<InquiryCommentVo> list = session.selectList(NAMESPACE + "showcomment" , inquiry_userid);
+	public List<InquiryCommentVo> showcomment(String inquiry_comment_userid) {
+		List<InquiryCommentVo> list = session.selectList(NAMESPACE + "showcomment" , inquiry_comment_userid);
 		return list;
 	}
 	

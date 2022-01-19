@@ -26,6 +26,16 @@ $(function() {
 	$(".btn_classInfo").click(function() {
 		location.href="/classInfo/list_all";
 	});
+	
+	$(".classInfoModify").click(function(){
+		var info_code = $(this).attr("data-info_code");
+		location.href = "/classInfo/classInfoModify?info_code=" + info_code;
+	});
+	
+	$(".classInfoDelete").click(function(){
+		var info_code = $(this).attr("data-info_code");
+		location.href = "/classInfo/classInfoDelete?info_code=" + info_code;
+	});
 });
 
 
@@ -98,6 +108,10 @@ $(function() {
 				<div class="col-md-8">
 					<div class="divBottom">
 						<input type="button" class="btn_classInfo btn-sm" value="목록">
+						<c:if test="${memberVo.userid == 'test01'}">
+					 		| <a class="classInfoModify" data-info_code="${classInfoVo.info_code}"> 수정하기  </a> 								
+					 		| <a class="classInfoDelete" data-info_code="${classInfoVo.info_code}"> 삭제하기 </a> 								
+						</c:if>
 					</div>
 				</div>
 				<div class="col-md-2">

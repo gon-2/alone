@@ -20,6 +20,8 @@ public class LookJobVo {
 	private String recruitmentEnd;
 	private String content;
 	private String job_image;
+	private String y_point;
+	private String x_point;
 	
 	public LookJobVo() {
 		super();
@@ -28,7 +30,7 @@ public class LookJobVo {
 	public LookJobVo(int jobno, String company, String employForm, String companyNum, String companyForm,
 			String representative, String personInCharge, String contact, String fax, String mail, String address,
 			String department, String work, String workTime, String salary, String recruitmentStart,
-			String recruitmentEnd, String content, String job_image) {
+			String recruitmentEnd, String content, String job_image, String y_point, String x_point) {
 		super();
 		this.jobno = jobno;
 		this.company = company;
@@ -49,6 +51,8 @@ public class LookJobVo {
 		this.recruitmentEnd = recruitmentEnd;
 		this.content = content;
 		this.job_image = job_image;
+		this.y_point = y_point;
+		this.x_point = x_point;
 	}
 
 	public int getJobno() {
@@ -203,6 +207,22 @@ public class LookJobVo {
 		this.job_image = job_image;
 	}
 
+	public String getY_point() {
+		return y_point;
+	}
+
+	public void setY_point(String y_point) {
+		this.y_point = y_point;
+	}
+
+	public String getX_point() {
+		return x_point;
+	}
+
+	public void setX_point(String x_point) {
+		this.x_point = x_point;
+	}
+
 	@Override
 	public String toString() {
 		return "LookJobVo [jobno=" + jobno + ", company=" + company + ", employForm=" + employForm + ", companyNum="
@@ -210,6 +230,7 @@ public class LookJobVo {
 				+ ", personInCharge=" + personInCharge + ", contact=" + contact + ", fax=" + fax + ", mail=" + mail
 				+ ", address=" + address + ", department=" + department + ", work=" + work + ", workTime=" + workTime
 				+ ", salary=" + salary + ", recruitmentStart=" + recruitmentStart + ", recruitmentEnd=" + recruitmentEnd
-				+ ", content=" + content + ", job_image=" + job_image + "]";
+				+ ", content=" + content + ", job_image=" + job_image + ", y_point=" + y_point + ", x_point=" + x_point
+				+ "]";
 	}
 }

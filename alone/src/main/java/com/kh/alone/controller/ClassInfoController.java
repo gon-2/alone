@@ -54,6 +54,32 @@ public class ClassInfoController {
 		return "success";
 	}
 	
+	// 수업 수정하기
+	@RequestMapping(value="/classInfoModify", method=RequestMethod.GET)
+	public String classInfoModify(Model model, int info_code) {
+		ClassInfoVo classInfoVo = classInfoService.getClassInfo(info_code);
+		model.addAttribute("classInfoVo", classInfoVo);
+		return "classInfo/classInfoModify";
+	}
+	
+	//수업 수정하기 처리
+	@RequestMapping(value="/classInfoModifyRun", method=RequestMethod.POST)
+	public String classInfoModifyRun(ClassInfoVo vo) {
+		System.out.println(vo);
+		classInfoService.classInfoModify(vo);
+		return "redirect:/classInfo/list_all";
+	}
+	
+	//수업 삭제하기
+	@RequestMapping(value="/classInfoDelete", method=RequestMethod.GET)
+	public String classInfoDelete(int info_code) {
+		System.out.println("컨트롤info_code: " + info_code);
+		classInfoService.classInfoDelete(info_code);
+		return "redirect:/classInfo/list_all";
+	}
+	
+	
+	
 	// 모집현황 페이지에서 조회기능
 	@RequestMapping(value="/list_all", method=RequestMethod.GET)
 	public String selectAll(Model model) {
@@ -162,11 +188,13 @@ public class ClassInfoController {
 	@ResponseBody
 	public List<ClassInfoVo> classListByCateCode(@PathVariable("cate_code") int cate_code) {
 		System.out.println("cate_code: " + cate_code);
-//		 classInfoService.classListByTimeCode(cate_code);
+		classInfoService.classListByCateCode(cate_code);
 		List<ClassInfoVo> cateList = classInfoService.classListByCateCode(cate_code);
 		System.out.println("cateList : " + cateList);
 		return cateList;
 	}
+	
+	
 	
 	// 주민번호로 확인하는 진행현황확인 폼
 	@RequestMapping(value="/myStatusForm", method=RequestMethod.GET)
@@ -194,11 +222,11 @@ public class ClassInfoController {
 		List<ReviewVo> list = reviewService.selectReviewList();
 		
 		
-		List<ClassInfoVo> program = classInfoService.classListByCateCode(PROGRAM);
-		List<ClassInfoVo> office = classInfoService.classListByCateCode(OFFICE);
-		List<ClassInfoVo> product = classInfoService.classListByCateCode(PRODUCT);
-		List<ClassInfoVo> print = classInfoService.classListByCateCode(PRINT);
-		List<ClassInfoVo> design = classInfoService.classListByCateCode(DESIGN);
+		List<ClassInfoVo> program = reviewService.selectReviewListByCateCode(PROGRAM);
+		List<ClassInfoVo> office = reviewService.selectReviewListByCateCode(OFFICE);
+		List<ClassInfoVo> product = reviewService.selectReviewListByCateCode(PRODUCT);
+		List<ClassInfoVo> print = reviewService.selectReviewListByCateCode(PRINT);
+		List<ClassInfoVo> design = reviewService.selectReviewListByCateCode(DESIGN);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("program", program);
@@ -234,8 +262,27 @@ public class ClassInfoController {
 	
 	// 후기 수정하기
 	@RequestMapping(value="/reviewModify", method=RequestMethod.GET)
-	public String modifyReview() {
+	public String modifyReview(Model model, int review_number) {
+		ReviewVo reviewVo = reviewService.getReview(review_number);
+		model.addAttribute("reviewVo", reviewVo);
 		return "classInfo/reviewModify";
 	}
+	
+	// 후기 수정처리
+	@RequestMapping(value="/reviewModifyRun", method=RequestMethod.POST)
+	public String modifyReviewRun(ReviewVo reviewVo) {
+		System.out.println(reviewVo);
+		reviewService.modifyReview(reviewVo);
+		return "redirect:/classInfo/reviewList";
+	}
+	
+	// 후기 삭제
+	@RequestMapping(value="/reviewDelete", method=RequestMethod.GET)
+	public String reviewDelete(int review_number) {
+		System.out.println("리뷰너머: " + review_number);
+		reviewService.reviewDelete(review_number);
+		return "redirect:/classInfo/reviewList";
+	}
+	
 	
 }
