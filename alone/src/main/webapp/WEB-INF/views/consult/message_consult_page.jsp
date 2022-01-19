@@ -54,6 +54,18 @@
 				}
 			});
 		});
+		
+		// 글자 수 세기
+		$("#service_message_content").on("keyup" , function(){
+			var service_message_content = $(this).val().length;
+			$("#test-cnt").html("(" + service_message_content + " / 3000");
+			
+			if(service_message_content > 3000){
+				 $(this).val($(this).val().substring(0, 3000));
+				 $("#test-cnt").html("(3000 / 3000)");
+			}
+		});
+		
 	});
 </script>
 <div class="container-fluid">
@@ -94,7 +106,7 @@
 				</div>
 				<div class="form-group">
 					<label for="service_message_content">내용</label>
-					<input type="text" id="service_message_content" name="service_message_content" class="form-control" style="width: 400px; height: 200px;" placeholder="내용을 입력하세요." />
+					<input type="text" id="service_message_content" name="service_message_content" class="form-control" style="width: 400px; height: 200px;" placeholder="내용을 입력하세요." /><div id="test-cnt">(0 / 3000)</div>
 				</div>
 				<button type="button" id="sendMessage" class="btn btn-primary">보내기</button>
 				<button type="reset" class="btn btn-primary">초기화</button>
