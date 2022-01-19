@@ -215,7 +215,7 @@
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="myModalLabel">댓글을 입력하세요.</h5> 
+							<h5 class="modal-title" id="myModalLabel">관리자님 , 댓글을 입력하세요.</h5> 
 							<button type="button" class="close" data-dismiss="modal">
 								<span aria-hidden="true">×</span>
 							</button>
@@ -224,7 +224,8 @@
 							<label for="class_board_comment_userid">아이디 입력</label>
 							<input type="text" name="class_board_comment_userid" id="class_board_comment_userid" placeholder="아이디를 입력하세요." value="${sessionScope.memberVo.userid}"><br>
 							<label for="class_board_comment_content">댓글 입력</label><br>
-							<textarea name="class_board_comment_content" id="class_board_comment_content" placeholder="댓글을 입력하세요." value="${class_board_comment_content}"></textarea>
+							<textarea name="class_board_comment_content" id="class_board_comment_content" placeholder="댓글을 입력하세요." value="${class_board_comment_content}"></textarea><br>
+							<label for="class_board_comment_no">글 번호 입력</label>
 							<input type="number" name="class_board_comment_no" id="class_board_comment_no" placeholder="현재 글번호를 입력하세요." >
 							<input type="hidden" name="class_board_comment_date" id="class_board_comment_date">
 						</div>
