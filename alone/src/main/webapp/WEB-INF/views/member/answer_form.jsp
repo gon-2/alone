@@ -5,8 +5,14 @@
 <script>
 //답글
 $(function() {
-	$("#btnReply").click(function() {
-	var loc = "/member/board_form_reply?";
+	$("#btnReply2").click(function() {
+	var re_group = "${memberBoardVo.re_group}";
+	var re_seq = "${memberBoardVo.re_seq}";
+	var re_level = "${memberBoardVo.re_level}";
+	var loc = "/member/answer_form?";
+	loc += "re_group=" + re_group;
+	loc += "&re_seq=" + re_seq;
+	loc += "&re_level=" + re_level;
 	location.href = loc;
 	});
 });
@@ -16,7 +22,7 @@ $(function() {
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-					<h2>게시글쓰기 양식</h2><br>
+					<h2>답글쓰기 양식</h2><br>
 				<p>
 					<a class="btn btn-primary" href="/member/board_form">글목록</a>
 				</p>
@@ -28,8 +34,11 @@ $(function() {
 <div class="container">			
 	<div class="row">
 		<div class="col-md-12">
-							
-		<form role="form" action="/member/board_form_reply_run" 
+				<input type="hidden" name="re_group" value="${memberBoardVo.re_group}">
+				<input type="hidden" name="re_seq" value="${memberBoardVo.re_seq}">
+				<input type="hidden" name="re_level" value="${memberBoardVo.re_level}">
+				
+		<form role="form" action="/member/answer_form_run" 
 				method="post">
 	
 				<div class="form-group">
@@ -48,9 +57,9 @@ $(function() {
 					<textarea class="form-control" 
 						id="content" name="content"></textarea>
 				</div>
+				&rdsh;
 				
-				
-				<button type="submit" class="btn btn-primary" id="btnReply">
+				<button type="submit" class="btn btn-primary" id="btnReply2">
 					작성 완료
 				</button>
 			</form>

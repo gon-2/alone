@@ -68,7 +68,7 @@ public class ClassRegistBoardController {
 	}
 	
 	// 게시판 삭제 , (댓글 삭제 이후 게시글 삭제)
-	@RequestMapping(value="/deleteBoard" , method=RequestMethod.POST)
+	@RequestMapping(value="/deleteBoard" , method=RequestMethod.GET)
 	public String deleteBoard(String class_board_content) {
 		registboardservice.deleteBoard(class_board_content);
 		System.out.println("ClassRegistBoardController , deleteBoard , class_board_title >> " + class_board_content);

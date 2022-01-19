@@ -47,26 +47,6 @@
 			$("#frmPaging").submit();
 		});
 	});
-	
-	function changeDateString(timestamp){
-		var dateF = new Date(timestamp);
-		
-		var year = dateF.getFullYear();
-		var month = make2digits(dateF.getMonth() + 1);
-		var date = make2digits(dateF.getDate());
-		var hour = make2digits(dateF.getHours());
-		var minute = make2digits(dateF.getMinutes());
-		var second = make2digits(dateF.getSeconds());
-		var dateString = year + "-" + month + "-" + date + "-" + hour + ":" + minute + ":" + second;
-		return dateString;
-	}
-	
-	function make2digits(num){
-		if(num < 10){
-			num = "0" + num;
-		}
-		return num;
-	}
 </script>
 </head>
 <%@ include file="/WEB-INF/views/class_regist/class_paging_form.jsp" %>
@@ -105,18 +85,11 @@
 							<td><fmt:formatDate value="${ClassRegistBoardVo.class_board_postdate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
 							<td>${ClassRegistBoardVo.class_board_viewcnt}</td>
 							<c:choose>		
-								<c:when test="${sessionScope.memberVo.userid != ClassRegistBoardVo.class_board_userid}">
-									<td>해당하는 사용자가 아닙니다.</td>
-								</c:when>
 								<c:when test="${sessionScope.memberVo.userid == ClassRegistBoardVo.class_board_userid}">
-			 						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
-										<td><button type="submit" class="btn btn-sm btn-danger">삭제</button></td>
-									</form>
+									<td><a href="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" class="btn btn-sm btn-danger">삭제</a></td>
 								</c:when>
 								<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
-			 						<form action="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" method="post">
-										<td><button type="submit" class="btn btn-sm btn-danger">삭제</button></td>
-									</form>
+									<td><a href="/class_board/deleteBoard?class_board_content=${ClassRegistBoardVo.class_board_content}" class="btn btn-sm btn-danger">삭제</a></td>
 								</c:when>
 								<c:otherwise>
 									<td>로그인 하세요.</td>

@@ -46,9 +46,9 @@
 	
 	<!-- AuthInterceptor  -->
 	<!-- mapping path == 가로챌 경로 -->
-	<!-- exclude-mapping path= 가로채지 않을 경로 -->
+	<!-- exclude-mapping path == 가로채지 않을 경로 -->
 	
-		<!-- 고객센터 인터셉터 시작 -->
+	<!-- 인터셉터 시작 -->
  	<interceptors>
  		<interceptor>
 			<mapping path="/classInfo/**/*"/>
@@ -95,6 +95,6 @@
  			<beans:ref bean="defaultInterceptor"/>
  		</interceptor>
  	</interceptors> 
-	<!-- 고객센터 인터셉터 끝 -->
+	<!-- 인터셉터 끝 -->
 	
 </beans:beans>

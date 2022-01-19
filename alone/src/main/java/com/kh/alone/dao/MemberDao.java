@@ -70,8 +70,8 @@ public class MemberDao {
 		
 	}
 	// 수업상세 보기
-	public MemberBoardVo getClass(int bno) {
-		MemberBoardVo memberBoardVo = sqlSession.selectOne(NAMESPACE + "getMemberBoard", bno);
+	public MemberBoardVo getMemberBoard(String content) {
+		MemberBoardVo memberBoardVo = sqlSession.selectOne(NAMESPACE + "getMemberBoard", content);
 		return memberBoardVo;
 	}
 

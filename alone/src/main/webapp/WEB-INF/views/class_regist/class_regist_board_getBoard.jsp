@@ -353,7 +353,7 @@
 					<p id="first_content" class="first_content"></p>
 					<p id="first_date" class="first_date"></p>
 					<c:choose>
-						<c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
+						<c:when test="${sessionScope.memberVo.userid == registboardvo.class_board_userid || sessionScope.memberVo.userid == 'service_center_admin'}">
 							<button type="button" id="deleteComment" class="btn btn-warning">댓글 삭제</button>
 						</c:when>
 						<c:otherwise>
