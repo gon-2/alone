@@ -128,11 +128,16 @@ public class MemberController {
 	}
 	
 	// 게시판 상세 보기
-		@RequestMapping(value="/memberBoardForm", method=RequestMethod.GET)
-		public String getMemberBoard(Model model, int bno) {
-			MemberBoardVo memberBoardVo = memberService.getClass(bno);
+		@RequestMapping(value="/answer_form", method=RequestMethod.GET)
+		public String getMemberBoard() {
+			return "/member/answer_form";
+		}
+	// 게시판 답글 	
+		@RequestMapping(value="/answer_form", method=RequestMethod.POST)
+		public String getMemberBoard(Model model, String content) {
+			MemberBoardVo memberBoardVo = memberService.getMemberBoard(content);
 			model.addAttribute("MemberBoardVo", memberBoardVo);
-			return "/member/boardform";
+			return "/member/answer_form";
 		}
 }
 

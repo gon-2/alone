@@ -5,11 +5,12 @@
 
 <script>
 // 타이틀 클릭
-$("#btnClick").click(function(e){
+$(function() {
+$(".btnClick").click(function(e){
 	e.preventDefault();
-	
+	location.href="/member/answer_form";
+	});
 });
-
 
 
 </script>
@@ -50,7 +51,7 @@ $("#btnClick").click(function(e){
 						<tr >
 							<td> ${MemberBoardVo.bno}</td>
 							<td>${MemberBoardVo.title}</td>
-							<td><a href="/member/board_form">${MemberBoardVo.content} </a></td>
+							<td><a class="btnClick" href="/member/board_form">${MemberBoardVo.content} </a></td>
 							<td>${MemberBoardVo.userid}</td>
 							<td>${MemberBoardVo.regdate}</td>
 						</tr>
