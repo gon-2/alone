@@ -27,6 +27,9 @@
 			$("#r_numForm").submit();
 		});
 		
+		$("#btnAdmin").click(function(){
+			location.href = "/classInfo/adminList";
+		});
 		
 	});
 </script>
@@ -79,8 +82,7 @@
 										</div>
 										<button type="button" id="btnOk" class="btn btn-primary">조회하기</button>
 										<c:if test="${memberVo.userid == 'test01' }">
-											<a type="button" id="btnAdmin" href=""class="btn btn-primary">관리자 조회하기</a>
-										
+											<a type="button" id="btnAdmin" class="btn btn-primary">관리자 조회하기</a>
 										</c:if>
 									</form>
 								</div>

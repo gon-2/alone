@@ -7,16 +7,12 @@
 $(function(){
 	$("#btnOk").click(function(){
 		var cate_code = $("#cate_code").val();
-		console.log("cate_code", cate_code);
 		
 		var review_writer = $("#review_writer").val();
-		console.log("review_writer", review_writer);
 		
 		var content = $("#content").val();
-		console.log("content", content);
 		
 		var review_title = $("#review_title").val();
-		console.log("title: " + review_title);
 		var url = "/classInfo/reviewRegistRun";
 		var sData = {
 				"review_writer" : review_writer,
@@ -25,11 +21,9 @@ $(function(){
 				"cate_code" : cate_code
 		};
 		
-		console.log("sData: ", sData);
 		
 		$.post(url, sData, function(rData){
 			if(rData == "success"){
-				console.log(rData);
 				alert("후기 등록이 완료되었습니다.");
 				location.href = "/classInfo/reviewList";
 			}

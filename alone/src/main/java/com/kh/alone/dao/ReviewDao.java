@@ -18,11 +18,20 @@ public class ReviewDao {
 	@Inject
 	private SqlSession sqlSession;
 	
+	
+	
 	// 후기 전체조회
 	public List<ReviewVo> selectReviewList(){
 		List<ReviewVo> list = sqlSession.selectList(NAMESPACE + "selectReviewList");
 		return list;
 	}
+
+	//메인페이지에서 후기 10개만 띄우기
+	public List<ReviewVo> mainReview(){
+		List<ReviewVo> list = sqlSession.selectList(NAMESPACE + "mainReview");
+		return list;
+	}
+	
 	
 	// 수업과정별 나누기
 	public List<ClassInfoVo> selectReviewListByCateCode(int cate_code){
@@ -58,8 +67,6 @@ public class ReviewDao {
 	
 	// 후기 삭제하기
 	public void reviewDelete(int review_number) {
-		System.out.println("다오 리뷰넘버: " + review_number);
 		sqlSession.delete(NAMESPACE + "reviewDelete", review_number);
-		System.out.println("다오 삭제후");
 	}
 }

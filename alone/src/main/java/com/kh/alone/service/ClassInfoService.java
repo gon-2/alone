@@ -37,11 +37,15 @@ public class ClassInfoService {
 		return list;
 	}
 	
+	// 관리자 신청확인체크
+	public void regist_check(String r_num) {
+		dao.regist_check(r_num);
+	}
+	
 	
 	// 모집현황 전체조회
 	public List<ClassInfoVo> selectAll(){
 		List<ClassInfoVo> list = dao.selectAll();
-//		System.out.println("서비스 list" + list);
 		return list;
 	}
 	
@@ -53,7 +57,6 @@ public class ClassInfoService {
 	
 	// info_code로 조회
 	public ClassInfoVo selectByCno(int info_code){
-//		System.out.println("서비스서비스: " + info_code);
 		ClassInfoVo classInfoVo = dao.selectByCno(info_code);
 		return classInfoVo;
 	}

@@ -86,7 +86,7 @@
 		where info_code = #{info_code}
 	</delete>
 	
-	<!-- 신청양식 추가하기 -->
+	<!-- 수강신청하기  -->
 	<insert id="insertOnlineRegist">
 		insert into student_class_regist(r_num, info_code, student_name, gender, nationality, phone_num, home_num, e_mail, 
 								  		  employment, employment_center, employment_staff, employment_num)
@@ -108,13 +108,31 @@
 	</select>
 	
 	<!-- 관리자 수강신청 조회 -->
-	<select id="adminList">
-		select s.student_name, i.c_title, s.gender, s.nationality, s.phone_num, s.employment, s.employment_center, s.employment_staff, s.employment_num
+	<select id="adminList" resultType="StudentClassRegistVo">
+		select s.r_num, s.student_name, i.c_title, s.gender, s.nationality, s.phone_num, s.employment, s.employment_center, s.employment_staff, s.employment_num, s.regist_check
 		from student_class_regist s, c_class_info i
+		where s.info_code = i.info_code order by i.info_code
+	</select>
+	
+	<!-- 신청현황 확인 업데이트 -->
+	<update id="regist_check">
+		update student_class_regist set
+			regist_check = '확인완료'
+		where r_num = #{r_num}
+	</update>
+	
+	<!-- 메인페이지 후기 10개만 보여주기 -->
+	<select id="mainReview" resultType="ReviewVo">
+		select cate_code, review_title, decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name 
+			from
+				(select a.*, rownum rnum from (select * from tbl_review
+               order by review_number desc) a)
+               
+		where rnum between 1 and 7
 	</select>
 	
 	<select id="selectMineList" resultType="StudentClassRegistVo">
-		select s.student_name, i.c_title, i.start_date, i.end_date, i.c_time,
+		select s.student_name, i.c_title, i.start_date, i.end_date, i.c_time, s.regist_check,
 			decode ( time_code, 1, '주간반', 2, '야간반', 3, '주말반')time_code_name
 			from student_class_regist s, c_class_info i
 		where s.info_code = i.info_code AND s.r_num = #{r_num}

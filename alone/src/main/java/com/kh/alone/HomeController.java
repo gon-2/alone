@@ -18,8 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.alone.service.ClassInfoService;
 import com.kh.alone.service.HomeService;
+import com.kh.alone.service.ReviewService;
 import com.kh.alone.vo.ClassInfoVo;
 import com.kh.alone.vo.MemberVo;
+import com.kh.alone.vo.ReviewVo;
 
 @Controller
 public class HomeController {
@@ -31,9 +33,11 @@ public class HomeController {
 	
 	
 	@Inject
-	private ClassInfoService service;
+	private ClassInfoService classInfoService;
 	@Inject
 	private HomeService homeService;
+	@Inject
+	private ReviewService reviewService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -42,16 +46,17 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		List<ClassInfoVo> list = service.selectAll();
-		List<ClassInfoVo> weekly = service.classListByTimeCode(WEEKLY);
-		List<ClassInfoVo> night = service.classListByTimeCode(NIGHT);
-		List<ClassInfoVo> weekend = service.classListByTimeCode(WEEKEND);
-		
+		List<ClassInfoVo> list = classInfoService.selectAll();
+		List<ClassInfoVo> weekly = classInfoService.classListByTimeCode(WEEKLY);
+		List<ClassInfoVo> night = classInfoService.classListByTimeCode(NIGHT);
+		List<ClassInfoVo> weekend = classInfoService.classListByTimeCode(WEEKEND);
+		List<ReviewVo> mainList = reviewService.mainReview();
 		
 		model.addAttribute("list", list);
 		model.addAttribute("weekly", weekly);
 		model.addAttribute("night", night);
 		model.addAttribute("weekend", weekend);
+		model.addAttribute("mainList", mainList);
 		return "home";
 	}
 	
@@ -105,5 +110,4 @@ public class HomeController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
 }

@@ -19,7 +19,6 @@ $(function() {
 	
 	var price = ${classInfoVo.price};
 	price = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	console.log("price: " + price);
 	
 	$("#price").append(price + " 원");
 	

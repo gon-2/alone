@@ -49,7 +49,6 @@ public class ClassInfoController {
 	@RequestMapping(value="/insertClassInfoRun", method=RequestMethod.POST)
 	@ResponseBody
 	public String insertClassInfoRun(ClassInfoVo vo) {
-		System.out.println(vo);
 		classInfoService.insertClassInfo(vo);
 		return "success";
 	}
@@ -65,7 +64,6 @@ public class ClassInfoController {
 	//수업 수정하기 처리
 	@RequestMapping(value="/classInfoModifyRun", method=RequestMethod.POST)
 	public String classInfoModifyRun(ClassInfoVo vo) {
-		System.out.println(vo);
 		classInfoService.classInfoModify(vo);
 		return "redirect:/classInfo/list_all";
 	}
@@ -73,12 +71,9 @@ public class ClassInfoController {
 	//수업 삭제하기
 	@RequestMapping(value="/classInfoDelete", method=RequestMethod.GET)
 	public String classInfoDelete(int info_code) {
-		System.out.println("컨트롤info_code: " + info_code);
 		classInfoService.classInfoDelete(info_code);
 		return "redirect:/classInfo/list_all";
 	}
-	
-	
 	
 	// 모집현황 페이지에서 조회기능
 	@RequestMapping(value="/list_all", method=RequestMethod.GET)
@@ -89,8 +84,6 @@ public class ClassInfoController {
 		List<ClassInfoVo> night = classInfoService.classListByTimeCode(NIGHT);
 		List<ClassInfoVo> weekend = classInfoService.classListByTimeCode(WEEKEND);
 		
-		
-		
 		model.addAttribute("list", list);
 		model.addAttribute("weekly", weekly);
 		model.addAttribute("night", night);
@@ -98,25 +91,20 @@ public class ClassInfoController {
 		return "classInfo/list_all";
 	}
 	
-	
 	// 수업정보 상세보기
 	@RequestMapping(value="/classInfoView", method=RequestMethod.GET)
 	public String classInfoView(Model model, int info_code) {
 		ClassInfoVo classInfoVo = classInfoService.getClassInfo(info_code);
 		model.addAttribute("classInfoVo", classInfoVo);
-		System.out.println("classInfoVo: " + classInfoVo);
 		return "/classInfo/classInfoView";
 		
 	}
-	
 	
 	// 온라인 접수 동의(메뉴바에서 접근)
 	@RequestMapping(value="/onlineAgree", method=RequestMethod.GET)
 	public String onlineAgree() {
 		return "classInfo/onlineAgree";
 	}
-	
-	
 	
 	//메인페이지에서 수강 신청 하기 눌렀을때 데이터 넘겨주기
 	@RequestMapping(value="/homeRegist", method=RequestMethod.GET)
@@ -167,8 +155,6 @@ public class ClassInfoController {
 	@ResponseBody
 	@RequestMapping(value="/onlineRegistRun", method=RequestMethod.POST)
 	public String onlineRegistRun(StudentClassRegistVo vo) {
-		System.out.println("onlineRegistRun");
-		System.out.println("컨트롤러 입력 값 받아오기: " + vo);
 		classInfoService.insertOnlineRegist(vo);
 		return "success";
 	}
@@ -177,7 +163,6 @@ public class ClassInfoController {
 	@RequestMapping(value="/classListByTimeCode/{time_code}", method=RequestMethod.GET)
 	@ResponseBody
 	public List<ClassInfoVo> classListByTimeCode(@PathVariable("time_code") int time_code) {
-		System.out.println("time_code:" + time_code);
 		classInfoService.classListByTimeCode(time_code);
 		List<ClassInfoVo> timeList = classInfoService.classListByTimeCode(time_code);
 		return timeList;
@@ -187,10 +172,8 @@ public class ClassInfoController {
 	@RequestMapping(value="/classListByCateCode/{cate_code}", method=RequestMethod.GET)
 	@ResponseBody
 	public List<ClassInfoVo> classListByCateCode(@PathVariable("cate_code") int cate_code) {
-		System.out.println("cate_code: " + cate_code);
 		classInfoService.classListByCateCode(cate_code);
 		List<ClassInfoVo> cateList = classInfoService.classListByCateCode(cate_code);
-		System.out.println("cateList : " + cateList);
 		return cateList;
 	}
 	
@@ -199,7 +182,6 @@ public class ClassInfoController {
 	// 주민번호로 확인하는 진행현황확인 폼
 	@RequestMapping(value="/myStatusForm", method=RequestMethod.GET)
 	public String myStatusForm() {
-		
 		return "/classInfo/myStatusForm";
 	}
 	
@@ -215,6 +197,22 @@ public class ClassInfoController {
 		return  "/classInfo/myStatusView";
 	}
 	
+	// 관리자가 확인하는 수업신청리스트
+	@RequestMapping(value="/adminList", method=RequestMethod.GET)
+	public String adminList(Model model) {
+		List<StudentClassRegistVo> admin = classInfoService.adminList();
+		model.addAttribute("admin", admin);
+		return "/classInfo/myStatusView";
+		
+	}
+	
+	// 관리자 수강신청 확인체크
+	@RequestMapping(value="/adminListCheck", method=RequestMethod.POST)
+	@ResponseBody
+	public String regist_check(String r_num) {
+		classInfoService.regist_check(r_num);
+		return "success";
+	}
 	
 	// 수료생후기 리스트
 	@RequestMapping(value="/reviewList", method=RequestMethod.GET)
@@ -255,7 +253,6 @@ public class ClassInfoController {
 	@RequestMapping(value="/reviewRegistRun", method=RequestMethod.POST)
 	@ResponseBody
 	public String reviewRegistRun(ReviewVo vo) {
-		System.out.println("리뷰 vo" + vo);
 		reviewService.insertReview(vo);
 		return "success";
 	}
@@ -271,7 +268,6 @@ public class ClassInfoController {
 	// 후기 수정처리
 	@RequestMapping(value="/reviewModifyRun", method=RequestMethod.POST)
 	public String modifyReviewRun(ReviewVo reviewVo) {
-		System.out.println(reviewVo);
 		reviewService.modifyReview(reviewVo);
 		return "redirect:/classInfo/reviewList";
 	}
@@ -279,10 +275,8 @@ public class ClassInfoController {
 	// 후기 삭제
 	@RequestMapping(value="/reviewDelete", method=RequestMethod.GET)
 	public String reviewDelete(int review_number) {
-		System.out.println("리뷰너머: " + review_number);
 		reviewService.reviewDelete(review_number);
 		return "redirect:/classInfo/reviewList";
 	}
-	
 	
 }
