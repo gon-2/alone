@@ -22,11 +22,17 @@ public class ReviewService {
 		return list;
 	}
 	
+	//메인페이지에서 후기 10개만 띄우기
+	public List<ReviewVo> mainReview(){
+		List<ReviewVo> list = dao.mainReview();
+		return list;
+	}
+	
 	// 수업과정별 나누기
-		public List<ClassInfoVo> selectReviewListByCateCode(int cate_code){
-			List<ClassInfoVo> cate_list = dao.selectReviewListByCateCode(cate_code);
-			return cate_list;
-		}
+	public List<ClassInfoVo> selectReviewListByCateCode(int cate_code){
+		List<ClassInfoVo> cate_list = dao.selectReviewListByCateCode(cate_code);
+		return cate_list;
+	}
 	
 	// 후기 상세보기
 	public ReviewVo getReview(int review_number) {
@@ -49,8 +55,6 @@ public class ReviewService {
 	
 	// 후기 삭제하기
 	public void reviewDelete(int review_number) {
-		System.out.println("서비스 리뷰넘버: " + review_number);
 		dao.reviewDelete(review_number);
-		System.out.println("서비스 삭제후");
 	}
 }

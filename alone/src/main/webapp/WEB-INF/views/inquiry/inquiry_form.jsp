@@ -51,6 +51,17 @@
 				}
 			});
 		});
+		// 글자 수 세기
+		$("#inquiry_content").on("keyup" , function(){
+			var inquiry_content = $(this).val().length;
+			console.log(inquiry_content);
+			$("#test-cnt").html("(" + inquiry_content + " / 3000)");
+			
+			if(inquiry_content > 3000){
+				 $(this).val($(this).val().substring(0, 3000));
+				 $("#test-cnt").html("(3000 / 3000)");
+			}
+		});
 	});
 </script>
 <div class="container-fluid">
@@ -69,7 +80,7 @@
 						<input type="text" class="form-control" id="inquiry_title" name="inquiry_title" style="width:500px;"/>
 					</div>
 					<div class="form-group">
-						<label for="inquiry_content">글 내용</label>
+						<label for="inquiry_content">글 내용</label><div id="test-cnt">(0 / 3000)</div>
 						<textarea class="form-control" rows="5" id="inquiry_content" name="inquiry_content" cols="5" style="width:500px;"></textarea>
 					</div>
 					<div class="form-group">

@@ -19,7 +19,6 @@ public class ClassInfoDao {
 	
 	// 수업추가하기
 	public void insertClassInfo(ClassInfoVo vo) {
-		System.out.println("다오 Vo" + vo);
 		sqlSession.insert(NAMESPACE + "insertClassInfo", vo);
 	}
 	
@@ -39,16 +38,19 @@ public class ClassInfoDao {
 		return list;
 	}
 	
+	// 관리자 신청확인체크
+	public void regist_check(String r_num) {
+		sqlSession.update(NAMESPACE + "regist_check", r_num);
+	}
+	
 	// 전체조회
 	public List<ClassInfoVo> selectAll(){
-//		System.out.println("sqlSession:" + sqlSession);
 		List<ClassInfoVo> list = sqlSession.selectList(NAMESPACE + "selectAll");
 		return list;
 	}
 	
 	// info_code로 조회
 	public ClassInfoVo selectByCno(int info_code){
-//		System.out.println("다오다오 : " + info_code);
 		ClassInfoVo classInfoVo = sqlSession.selectOne(NAMESPACE + "selectByCno", info_code);
 		return classInfoVo;
 	}

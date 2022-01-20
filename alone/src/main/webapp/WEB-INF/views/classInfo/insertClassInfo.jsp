@@ -34,17 +34,6 @@ $(function() {
 		var end_date = $("#end_date").val();
 		
 		
-		console.log(cate_code);
-		console.log(time_code);
-		console.log(c_title);
-		console.log(c_time);
-		console.log(price);
-		console.log(class_room);
-		console.log(class_total);
-		console.log(start_date);
-		console.log(end_date);
-		
-		
 		var url = "/classInfo/insertClassInfoRun"
 		var sData = {
 				"c_title" 		: c_title,
@@ -57,7 +46,6 @@ $(function() {
 				"cate_code" 	: cate_code,
 				"time_code" 	: time_code
 		}
-		console.log(sData);
 		
 		$.post(url, sData, function(rData){
 			if(rData == "success"){

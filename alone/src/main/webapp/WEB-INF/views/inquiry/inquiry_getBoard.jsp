@@ -47,6 +47,18 @@ $(function(){
 		e.preventDefault();
 		$("#modal-338142").trigger("click");
 	});
+	// 글자 수 세기
+	$("#inquiry_contents").on("keyup" , function(){
+		var inquiry_contents = $(this).val().length;
+		console.log(inquiry_contents);
+		
+		$("#test-cnt").html("(" + inquiry_contents + " / 3000)");
+ 			
+		if(inquiry_contents > 3000){
+			 $(this).val($(this).val().substring(0, 3000));
+			 $("#test-cnt").html("(3000 / 3000)");
+		}
+	});
 	// 수정 저장 버튼 클릭 시 이벤트
 	$("#updateSave").click(function(e){
 		e.preventDefault();
@@ -250,7 +262,7 @@ $(function(){
 							<label for="inquiry_title">글 제목:</label>
 							<input type="text" id="inquiry_titles" name="inquiry_title" value="${inquiryBoardVo.inquiry_title}"><br>
 							<label for="inquiry_content">글 내용:</label>
-							<textarea id="inquiry_contents" name="inquiry_content"></textarea>
+							<textarea id="inquiry_contents" name="inquiry_content"></textarea><div id="test-cnt">(0 / 3000)</div>
 							<input type="hidden" id="inquiry_date" name="inquiry_date"> 
 						</div>
 						<div class="modal-footer">

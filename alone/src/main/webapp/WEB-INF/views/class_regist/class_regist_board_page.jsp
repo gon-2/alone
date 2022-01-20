@@ -33,6 +33,19 @@
 			frmReg.submit();
 		}
 	}
+	
+	$(function(){
+		// 글자 수 세기
+		$("#class_board_content").on('keyup' , function(){
+			/* console.log($(this).val().length); */
+			$("#test-cnt").html("(" + $(this).val().length + " / 3000)");
+			
+			if($(this).val().length > 3000) {
+				 $(this).val($(this).val().substring(0, 3000));
+				 $("#test-cnt").html("(3000 / 3000)");
+			}
+		});
+	});
 </script>
 </head>
 <div class="container-fluid">
@@ -66,9 +79,10 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="class_board_content">상담 내용</label><br>
+					<label for="class_board_content">상담 내용</label><br> <div id="test-cnt">(0/3000)</div>
 					<textarea style="width:300px; height:100px;" placeholder="상담할 내용을 입력하세요." id="class_board_content" name="class_board_content"></textarea>
 				</div>
+				
 				<button type="submit" class="btn btn-primary" onclick="checkValue();">게시</button>
 				<button type="reset" class="btn btn-success">다시 입력</button>
 			</form> 

@@ -24,13 +24,11 @@ $(function(){
 	$(".sy").change(function() {
 		if ($(this).attr("id") == "employment3") {
 			$(".sy1").attr("disabled", true);
-			console.log("막기");
 			$("#employment_center").val("");
 			$("#employment_staff").val("");
 			$("#employment_num").val("");
 		} else {
 			$(".sy1").attr("disabled", false);
-			console.log("사용가능");
 		}
 		
 	});
@@ -45,14 +43,11 @@ $(function(){
 		}else{
 			r_num = r_num1 + r_num2;	
 		}
-		console.log("주민번호: " + r_num);
 		
 		
 		var info_code = $("#c_title").val();
-		console.log(info_code);
 		
 		var student_name = $("#c_name").val();
-		console.log("신청자 이름: " + student_name); //신청자이름
 		if(c_name.langth == 0){
 			alert("이름을 입력해주세요.");
 		}
@@ -62,10 +57,8 @@ $(function(){
 		
 		
 		var gender = $("input:radio[name=gender]:checked").val();
-		console.log("성별: " + gender);     //성별받아오기
 		
 		var nationality = $("input:radio[name=nationality1]:checked").val();
-		console.log("내/외국인: " + nationality); // 내/외국인 받아오기
 		
 		var phone_num1 = $("#phone_num1").val();
 		var phone_num2 = $("#phone_num2").val();
@@ -93,7 +86,6 @@ $(function(){
 			alert("일반전화를 확인해주세요.");
 		}else if( (home_num1.length == 0) && (home_num2.length == 0) && (home_num3.length == 0) ){
 			home_num = "미등록";
-			console.log("일반전화: " + home_num);
 		}else{
 			home_num = home_num1 + "-" + home_num2 + "-" + home_num3;
 		}
@@ -115,7 +107,6 @@ $(function(){
 		
 
 		var regist_path = $("input:radio[name=regist_path]:checked").val();
-		console.log("지원경로: " + regist_path);
 		if(regist_path == undefined){
 			alert("지원경로를 선택해주세요.");
 		}
@@ -173,12 +164,10 @@ $(function(){
 	    	"employment_num" 		: employment_num
 	    };
 	    
-	    console.log(" sData : " , sData );
 	    
 	    var url = "/classInfo/onlineRegistRun";
 	    
 	    $.post (url, sData, function(rData) {
-	    	console.log(rData);
 	    	if (rData == "success") {
 	    		
 	    		location.href = "/classInfo/myStatusForm";
@@ -239,7 +228,6 @@ $(function(){
 		
 		
 		$.get(url, sendData, function(rData){
-			console.log("rData", rData);
 			var options = "<option value=''>선택해주세요</option>";
 		
 			$.each(rData, function(index){
