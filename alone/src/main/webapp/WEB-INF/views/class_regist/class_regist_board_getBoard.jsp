@@ -350,7 +350,7 @@
   	    		<button type="button" class="btn btn-warning" id="inComment">상담자 댓글달기</button>
        	    </c:when>     
 		</c:choose>
-		<c:if test="${not empty sessionScope.memberVo}">
+		<c:if test="${sessionScope.memberVo.userid == registboardvo.class_board_userid}">
 				<button type="button" class="btn btn-primary" id="modcontent">수정</button>
 				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button>
 		</c:if>
