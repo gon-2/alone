@@ -52,6 +52,17 @@
 				}
 			});
 		});
+		// 글자 수 세기
+		$("#service_message_contents").on("keyup" , function(){
+			var service_message_contents = $(this).val().length;
+			
+			$("#test-cnt").html("(" + service_message_contents + " / 3000");
+			
+			if(service_message_contents > 3000){
+				 $(this).val($(this).val().substring(0, 3000));
+				 $("#test-cnt").html("(3000 / 3000)");
+			}
+		});
 	});
 </script>
 <div class="container-fluid">
@@ -75,7 +86,7 @@
 							<label for="service_message_title">제목 : </label>
 							<input type="text" id="service_message_titles" name="service_message_title"><br>
 							<label for="service_message_content">내용 : </label>
-							<input type="text" id="service_message_contents" name="service_message_content" style="width:400px; height:200px;" >
+							<input type="text" id="service_message_contents" name="service_message_content" style="width:400px; height:200px;" ><div id="test-cnt">(0 / 3000)</div>
  						</div>
 						<div class="modal-footer">
 							<button type="button" id="resendbtn" class="btn btn-primary resendbtn">답장</button> 
