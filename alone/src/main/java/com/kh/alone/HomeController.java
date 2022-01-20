@@ -91,9 +91,10 @@ public class HomeController {
 		return "pwFail";
 	}
 	
-	@RequestMapping(value="/login_run/{userid}/{userpw}/{saveId}", method=RequestMethod.GET)
-	public String loginRun(RedirectAttributes rttr,	HttpSession session,
-			@PathVariable("userid") String userid, @PathVariable("userpw") String userpw, @PathVariable("saveId") String saveId) {
+	@RequestMapping(value="/login_run", method=RequestMethod.POST)
+	public String loginRun(RedirectAttributes rttr,	HttpSession session, MemberVo vo) {
+		String userid = vo.getUserid();
+		String userpw = vo.getUserpw();
 		MemberVo memberVo = homeService.login(userid, userpw);
 		
 		System.out.println("login_run, memberVo:" + memberVo);

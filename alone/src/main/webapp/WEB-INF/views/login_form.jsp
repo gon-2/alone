@@ -33,7 +33,7 @@ $(function() {
 				} else {
 					$("#checkId").html("");
 					$("#checkPw").html("");
-					location.href="/login_run/" + userid + "/" + userpw + "/" + saveId;
+					$("form")[0].submit();
 				}
 			});
 		}
