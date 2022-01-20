@@ -19,7 +19,7 @@
 		select bno, title, content, userid, to_char(sysdate, 'YYYY-MM-DD')
 			regdate, re_group, re_seq, re_level 
 		from tbl_memberboard
-		order by re_group asc, re_seq desc
+		order by re_group asc, re_seq asc
 	</select>
 	
 	<!-- 게시글 추가 -->
