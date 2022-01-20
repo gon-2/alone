@@ -29,7 +29,7 @@
 					<a href="/classInfo/onlineRegist2" class="btn btn-sm btn-outline-secondary">동의</a> 
 					</c:when>
 				</c:choose>
-				<a href="home" class="btn btn-sm btn-outline-danger">취소</a>
+				<a href="/classInfo/list_all" class="btn btn-sm btn-outline-danger">취소</a>
 			</div>	
 			</section>
 		</div>
