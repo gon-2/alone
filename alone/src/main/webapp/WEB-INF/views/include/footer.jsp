@@ -39,6 +39,7 @@ $(document).ready(function() { emailjs.init("user_ushn98S0NY4Wd6onKlTkr");
      	       location.href = '/';
      	    }, function(error) {
      	       console.log('FAILED...', error);
+     	       alert("메일 전송을 실패하였습니다.");
      	    });
      	       
 		$("")
