@@ -297,11 +297,9 @@
                                 <h6 class="dropdown-header">상담 메시지</h6>
                                 <input type="text" id="service_message_receiver" name="service_message_receiver" placeholder="사용자 아이디를 입력">
                                 <button type="button" id="check">확인</button>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="font-weight-bold" id="messagelist"></div>
-                                        <div class="text-truncate" id="messageContent"></div>
-                                        <div class="small text-gray-500" id="messageDate"></div>
-                                </a>
+                                <div class="font-weight-bold" id="messagelist"></div>
+                                <div class="text-truncate" id="messageContent"></div>
+                                <div class="small text-gray-500" id="messageDate"></div>         
                                 <a class="dropdown-item text-center small text-gray-500" id="messageList" href="/message/messageList">메시지 더 보기</a>
                             </div>
                         </li>
