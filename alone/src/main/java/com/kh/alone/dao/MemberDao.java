@@ -53,10 +53,11 @@ public class MemberDao {
 		return memberVo;
 	}
 	
-	// 답글확인 
+	// 원글 등록
 	public void insertReply(MemberBoardVo memberBoardVo) {
 		sqlSession.insert(NAMESPACE + "insertReply", memberBoardVo);
 	}
+	
 	// 회원탈퇴폼
 	public MemberVo memberOut(String userid) {
 		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "memberOut", userid);
@@ -69,10 +70,9 @@ public class MemberDao {
 		sqlSession.delete(NAMESPACE +"memberOutRun", userid); 
 		
 	}
-	// 수업상세 보기
-	public MemberBoardVo getMemberBoard(String content) {
-		MemberBoardVo memberBoardVo = sqlSession.selectOne(NAMESPACE + "getMemberBoard", content);
-		return memberBoardVo;
+	// 답글 쓰기
+	public void insertResponse(MemberBoardVo memberBoardVo) {
+		sqlSession.insert(NAMESPACE + "insertResponse", memberBoardVo);
 	}
 
 }
