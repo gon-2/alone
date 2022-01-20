@@ -64,6 +64,38 @@
 			}
 		});
 	});
+		
+    function fnChkByte(obj, maxByte){
+        var str = obj.value;
+        var str_len = str.length;
+ 
+        var rbyte = 0;
+        var rlen = 0;
+        var one_char = "";
+        var str2 = "";
+ 
+        for(var i=0; i<str_len; i++){
+            one_char = str.charAt(i);
+            if(escape(one_char).length > 4){
+                rbyte += 2;    //한글2Byte
+            }else{
+                rbyte++;    //영문 등 나머지 1Byte
+            }
+ 
+            if(rbyte <= maxByte){
+                rlen = i+1;    //return할 문자열 갯수
+            }
+        }
+ 
+        if(rbyte > maxByte){
+            alert("한글 " +"1699자 / 영문 "+maxByte+"자를 초과 입력할 수 없습니다.");
+            str2 = str.substr(0,rlen);    //문자열 자르기
+            obj.value = str2;
+            fnChkByte(obj, maxByte);
+        }else{
+            document.getElementById('byteInfo').innerText = "바이트 수 : " + rbyte;
+        }
+    }
 </script>
 <div class="container-fluid">
 	<div class="row">
@@ -86,7 +118,8 @@
 							<label for="service_message_title">제목 : </label>
 							<input type="text" id="service_message_titles" name="service_message_title"><br>
 							<label for="service_message_content">내용 : </label>
-							<input type="text" id="service_message_contents" name="service_message_content" style="width:400px; height:200px;" ><div id="test-cnt">(0 / 3000)</div>
+							<input type="text" id="service_message_contents" name="service_message_content" style="width:400px; height:200px;" onkeyup="fnChkByte(this, 3000)"><div id="test-cnt">글자수 : (0 / 3000)</div>
+ 							<span id="byteInfo">바이트수 : 0</span>
  						</div>
 						<div class="modal-footer">
 							<button type="button" id="resendbtn" class="btn btn-primary resendbtn">답장</button> 
@@ -97,19 +130,22 @@
 			</div>
 			
 			<div class="jumbotron">
-				<h2 align="center">메세지 리스트</h2>
+				<h2 align="center">메세지 내역</h2>
 			</div>
 			<table class="table">
 				<thead>
-							<tr align="center">
-								<th>보낸사람</th>
-								<th>받은사람</th>
-								<th>메세지 제목</th>
-								<th>날짜</th>
-								<th>메세지 갯수</th>
-								<th>답장</th>
-							</tr>
-
+					<c:if test="${sessionScope.memberVo.userid != ServiceMessageVo.service_message_receiver}">	
+						<tr align="center">
+							<th>보낸사람</th>
+							<th>받은사람</th>
+							<th>메세지 제목</th>
+							<th>날짜</th>
+							<th>답장</th>
+						</tr>
+					</c:if>
+					<c:if test="${sessionScope.memberVo.userid == ServiceMessageVo.service_message_receiver}">
+					
+					</c:if>
 				</thead>
 				<tbody>
 					<c:choose>
@@ -119,21 +155,15 @@
 						<c:otherwise>
 							<c:forEach items="${recieverLists}" var="ServiceMessageVo">
 								<tr align="center">
-									<td>${ServiceMessageVo.service_message_sender}</td>
-									<td>${ServiceMessageVo.service_message_receiver}</td>
 									<c:if test="${sessionScope.memberVo.userid == ServiceMessageVo.service_message_receiver}">
+										<td>${ServiceMessageVo.service_message_sender}</td>
+										<td>${ServiceMessageVo.service_message_receiver}</td>
 										<td><a href="/message/getMessage?tbl_service_message=${ServiceMessageVo.service_message_title}">${ServiceMessageVo.service_message_title}</a></td>
-									</c:if>
-									<c:if test="${sessionScope.memberVo.userid != ServiceMessageVo.service_message_receiver}">
-										<td><a href="/message/getMessage?tbl_service_message=${ServiceMessageVo.service_message_title}">${ServiceMessageVo.service_message_title}</a></td>
-									</c:if>
-									<td><fmt:formatDate value="${ServiceMessageVo.service_message_date}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
-									<td>${ServiceMessageVo.service_message_count}</td>
-									<c:if test="${sessionScope.memberVo.userid == ServiceMessageVo.service_message_receiver}">
+										<td><fmt:formatDate value="${ServiceMessageVo.service_message_date}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
 										<td><button class="btn btn-sm btn-primary resend" id="resend">답장</button></td>
 									</c:if>
 									<c:if test="${sessionScope.memberVo.userid != ServiceMessageVo.service_message_receiver}">
-										<td>답장 불가능한 ID</td>
+
 									</c:if>
 								</tr>
 							</c:forEach>

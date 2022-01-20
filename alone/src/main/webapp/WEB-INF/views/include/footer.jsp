@@ -20,27 +20,29 @@ $(function(){
 	emailjs.init("user_ushn98S0NY4Wd6onKlTkr");
 })();
 
-$(document).ready(function() {
-	emailjs.init("user_ushn98S0NY4Wd6onKlTkr");		
+$(document).ready(function() { emailjs.init("user_ushn98S0NY4Wd6onKlTkr");		
+	
     $('input[name=submit]').click(function(){       	 
       
       var templateParams = {	
-      //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성!
             name: $('input[name=name]').val(),
             phone: $('input[name=phone]').val(), 
             email : $('input[name=email]').val(),
             message : $('textarea[name=message]').val()
-       				};
+     	};
                 
             	
      emailjs.send('gmail', 'template_spqvfig', templateParams)
      	    .then(function(response) {
      	       console.log('SUCCESS!', response.status, response.text);
+     	       alert("메일 전송을 성공하였습니다.");
+     	       location.href = '/';
      	    }, function(error) {
      	       console.log('FAILED...', error);
+     	       alert("메일 전송을 실패하였습니다.");
      	    });
      	       
-
+		$("")
 
     });
     
@@ -71,7 +73,7 @@ $(document).ready(function() {
 							</section>
 							<section class="col-6 col-12-narrower">
 								<h3>상담예약 메일보내기</h3>
-								<form>
+								<form >
 									<div class="row gtr-50">
 										<div class="col-6 col-12-mobilep">
 											<input type="text" name="name" id="name" placeholder="Name" required="required"/>

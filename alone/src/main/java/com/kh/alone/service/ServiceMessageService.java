@@ -40,6 +40,7 @@ public class ServiceMessageService {
 		List<ServiceMessageVo> recieverList = messagedao.recieveMessages();
 		return recieverList;
 	}
+
 	
 	// 하나의 메세지 내용들
 	public ServiceMessageVo getMessage(String tbl_service_message){

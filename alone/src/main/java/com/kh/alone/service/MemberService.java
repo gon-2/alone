@@ -25,7 +25,7 @@ public class MemberService {
 		return list;
 	}
 	
-	// 맴버 브로드 리스트 조회
+	// 맴버보드  리스트 조회
 	public List<MemberBoardVo> memberBoardForm() {
 		List<MemberBoardVo> list = memberDao.memberBoardForm();
 		return list;
@@ -47,7 +47,7 @@ public class MemberService {
 		return memberVo;
 	}
 
-	// 답글확인
+	// 게시글처리
 	public void insertReply(MemberBoardVo memberBoardVo) {
 		memberDao.insertReply(memberBoardVo);
 		
@@ -65,10 +65,10 @@ public class MemberService {
 		memberDao.memberOutRun(userid);
 
 	}
-	// 멤버 게시판 상세 보기 
-	public MemberBoardVo getMemberBoard(String content) {
-		MemberBoardVo memberBoardVo = memberDao.getMemberBoard(content);
-		return memberBoardVo;
+	
+	// 답글 쓰기
+	public void insertResponse(MemberBoardVo memberBoardVo) {
+		memberDao.insertResponse(memberBoardVo);
 	}
 
 }
