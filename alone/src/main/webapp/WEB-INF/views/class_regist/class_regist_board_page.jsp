@@ -112,9 +112,8 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="class_board_content">상담 내용</label><br> <div id="test-cnt">글자수 : (0/3000)</div>
-					<textarea style="width:300px; height:100px;" placeholder="상담할 내용을 입력하세요." id="class_board_content" name="class_board_content" onkeyup="fnChkByte(this, 3000)"></textarea>
-					<span id="byteInfo">바이트수 : 0</span>	
+					<label for="class_board_content">상담 내용</label><br> <div id="test-cnt">글자수 : (0/3000)</div>  
+					<textarea style="width:300px; height:100px;" placeholder="상담할 내용을 입력하세요." id="class_board_content" name="class_board_content" onkeyup="fnChkByte(this, 3000)"></textarea>&nbsp;<span id="byteInfo">바이트수 : 0</span>	
 				</div>
 				
 				<button type="submit" class="btn btn-primary" onclick="checkValue();">게시</button>

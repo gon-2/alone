@@ -236,7 +236,8 @@ $(function(){
 							<label for="inquiry_comment_userid">아이디 : </label>
 							<input type="text" id="inquiry_comment_userid" name="inquiry_comment_userid" value="${sessionScope.memberVo.userid}"><br>
 							<label for="inquiry_comment_content">댓글 : </label>
-							<input type="text" id="inquiry_comment_content" name="inquiry_comment_content" placeholder="댓글 입력" style="width: 300px;">
+							<input type="text" id="inquiry_comment_content" name="inquiry_comment_content" style="width: 210px; height: 100px;" placeholder="댓글 입력" onkeyup="fnChkByte(this, 300)">
+							<span id="byteInfo">바이트수 : 0</span>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-primary" id="saveComment">댓글 저장</button> 

@@ -268,7 +268,7 @@
 							<label for="class_board_comment_userid">아이디 입력</label>
 							<input type="text" name="class_board_comment_userid" id="class_board_comment_userid" placeholder="아이디를 입력하세요." value="${sessionScope.memberVo.userid}"><br>
 							<label for="class_board_comment_content">댓글 입력</label><br>
-							<textarea name="class_board_comment_content" id="class_board_comment_content" placeholder="댓글을 입력하세요." value="${class_board_comment_content}"></textarea><br>
+							<textarea name="class_board_comment_content" id="class_board_comment_content" placeholder="댓글을 입력하세요." onkeyup="fnChkByte(this, 300)"></textarea><span id="byteInfo">바이트수 : 0</span>	<br>
 							<label for="class_board_comment_no">글 번호 입력</label>
 							<input type="number" name="class_board_comment_no" id="class_board_comment_no" placeholder="현재 글번호를 입력하세요." >
 							<input type="hidden" name="class_board_comment_date" id="class_board_comment_date">
@@ -303,7 +303,7 @@
 							<label for="class_board_title">상담글 제목 입력</label>
 							<input type="text" name="class_board_title" id="class_board_title" placeholder="글 제목을 입력하세요." value="${registboardvo.class_board_title}"><br>
 							<label for="class_board_content">상담글 내용 입력</label><div id="test-cnt">(0 / 3000)</div><br>
-							<textarea name="class_board_content" id="class_board_content" placeholder="댓글을 입력하세요." onkeyup="fnChkByte(this, 3000)"></textarea>
+							<textarea name="class_board_content" id="class_board_content" placeholder="글 내용을 입력하세요." onkeyup="fnChkByte(this, 3000)"></textarea>&nbsp;<span id="byteInfo">바이트수 : 0</span>	
 							<span id="byteInfo">바이트수 : 0</span>
 						</div>
 						<div class="modal-footer">
@@ -348,14 +348,14 @@
        	    </c:when>
        	    <c:when test="${sessionScope.memberVo.userid == 'service_center_admin'}">
   	    		<button type="button" class="btn btn-warning" id="inComment">상담자 댓글달기</button>
-       	    </c:when>    
-            <c:when test="${registboardvo.class_board_userid == sessionScope.memberVo.userid}"> 
+       	    </c:when>     
+		</c:choose>
+		<c:if test="${not empty sessionScope.memberVo}">
 				<button type="button" class="btn btn-primary" id="modcontent">수정</button>
 				<button type="submit" class="btn btn-danger" id="deleteBoard">삭제</button>
-			</c:when>
-			<c:otherwise>
-			</c:otherwise>
-		</c:choose>
+		</c:if>
+		<c:if test="${empty sessionScope.memberVo}">
+		</c:if>
 				<!-- <button type="button" class="btn btn-warning" id="inComment" style="display: none;">상담자 댓글달기</button> -->
 				<button type="button" class="btn btn-secondary" id="showComment">댓글보기</button>
 			</form> 
