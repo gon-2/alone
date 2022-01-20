@@ -148,6 +148,12 @@ public class LookJobService {
 		lookJobDao.insertFindRegist(findVo);
 	}
 	
+	// 메인페이지 취업현황 보여주기
+	public List<FindVo> mainLookJob() {
+		List<FindVo> findVo = lookJobDao.mainLookJob();
+		return findVo;
+	}
+	
 	// 업로드 취업현황 불러오기
 	public FindVo getFindUpload(FindVo vo) {
 		FindVo findVo = lookJobDao.getFindUpload(vo);

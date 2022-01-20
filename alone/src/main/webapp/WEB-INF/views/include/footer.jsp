@@ -1,7 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".f_course").click(function(e) {
+		e.preventDefault();
+		var fno = $(this).attr("href");
+		console.log(fno);
+		var f_url = "/employ/findPosition?fno=" + fno;
+	    var f_name = "pop";
+	    var option = "width=1300,height=800,history=no,resizable=no,status=no,scrollbars=yes,menubar=no";
+		window.open(f_url, f_name, option);
+	});
 
+});
+
+(function() {
+	emailjs.init("user_ushn98S0NY4Wd6onKlTkr");
+})();
+
+$(document).ready(function() {
+	emailjs.init("user_ushn98S0NY4Wd6onKlTkr");		
+    $('input[name=submit]').click(function(){       	 
+      
+      var templateParams = {	
+      //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성!
+            name: $('input[name=name]').val(),
+            phone: $('input[name=phone]').val(), 
+            email : $('input[name=email]').val(),
+            message : $('textarea[name=message]').val()
+       				};
+                
+            	
+     emailjs.send('gmail', 'template_spqvfig', templateParams)
+     	    .then(function(response) {
+     	       console.log('SUCCESS!', response.status, response.text);
+     	    }, function(error) {
+     	       console.log('FAILED...', error);
+     	    });
+     	       
+
+
+    });
+    
+  });
+</script>
 		<!-- Footer -->
 		</section>
 				<div id="footer">
@@ -11,23 +55,18 @@
 								<h3>수강후기</h3>
 								<ul class="links">
 								<c:forEach items="${mainList}" var="reviewVo">
-									<li><a href="#"> [${reviewVo.cate_code_name}] ${reviewVo.review_title }</a></li>
+									<li><a href="/classInfo/reviewContent?review_number=${reviewVo.review_number}"> [${reviewVo.cate_code_name}] ${reviewVo.review_title }</a></li>
 								</c:forEach>	
 									<li><a href="/classInfo/reviewList">더보기</a></li>
-
 								</ul>
 							</section>
 							<section class="col-3 col-6-narrower col-12-mobilep">
 								<h3>수료생 취업현황</h3>
 								<ul class="links">
-									<li><a href="#">Duis neque nisi dapibus</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum accumsan sed</a></li>
-									<li><a href="#">Mattis et sed accumsan</a></li>
-									<li><a href="#">Duis neque nisi sed</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum amet varius</a></li>
-									<li><a href="/classInfo/reviewList">더보기</a></li>
+									<c:forEach items="${findList}" var="findVo">
+										<li><a class="f_course" href="${findVo.fno}"> [${findVo.fname}] ${findVo.company}</a></li>
+									</c:forEach>
+									<li><a href="/employ/findPositionList">더보기</a></li>
 								</ul>
 							</section>
 							<section class="col-6 col-12-narrower">
@@ -35,17 +74,20 @@
 								<form>
 									<div class="row gtr-50">
 										<div class="col-6 col-12-mobilep">
-											<input type="text" name="name" id="name" placeholder="Name" />
+											<input type="text" name="name" id="name" placeholder="Name" required="required"/>
 										</div>
 										<div class="col-6 col-12-mobilep">
-											<input type="email" name="email" id="email" placeholder="Email" />
+											<input type="email" name="email" id="email" placeholder="Email" required="required"/>
+										</div>
+										<div class="col-12-mobilep">
+											<input type="text" name="phone" id="phone" placeholder="Phone" required="required"/>
 										</div>
 										<div class="col-12">
-											<textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
+											<textarea name="message" id="message" placeholder="Message" rows="5" required="required"></textarea>
 										</div>
 										<div class="col-12">
 											<ul class="actions">
-												<li><input type="submit" class="button alt" value="메일 보내기" /></li>
+												<li><input type="button" name="submit"class="button alt" value="메일 보내기" /></li>
 											</ul>
 										</div>
 									</div>

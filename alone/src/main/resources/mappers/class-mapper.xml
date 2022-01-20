@@ -123,7 +123,7 @@
 	
 	<!-- 메인페이지 후기 10개만 보여주기 -->
 	<select id="mainReview" resultType="ReviewVo">
-		select cate_code, review_title, decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name 
+		select cate_code, review_title, review_number, decode ( cate_code, 1, '프로그램', 2, '사무자동화', 3, '제품디자인', 4, '3D프린트', 5, '디자인')cate_code_name 
 			from
 				(select a.*, rownum rnum from (select * from tbl_review
                order by review_number desc) a)

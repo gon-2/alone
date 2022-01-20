@@ -169,6 +169,12 @@ public class LookJobDao {
 		return findVo;
 	}
 	
+	// 메인페이지 취업현황 보여주기
+	public List<FindVo> mainLookJob() {
+		List<FindVo> findVo = sqlSession.selectList(NAMESPACE + "mainLookJob");
+		return findVo;
+	}
+	
 	// 취업현황 이미지 저장
 	public void insertFindImages(int fno, String safeFile) {
 		Map<String, Object> map = new HashMap<>();

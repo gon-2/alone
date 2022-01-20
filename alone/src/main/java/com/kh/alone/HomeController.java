@@ -18,8 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.alone.service.ClassInfoService;
 import com.kh.alone.service.HomeService;
+import com.kh.alone.service.LookJobService;
 import com.kh.alone.service.ReviewService;
 import com.kh.alone.vo.ClassInfoVo;
+import com.kh.alone.vo.FindVo;
 import com.kh.alone.vo.MemberVo;
 import com.kh.alone.vo.ReviewVo;
 
@@ -38,6 +40,8 @@ public class HomeController {
 	private HomeService homeService;
 	@Inject
 	private ReviewService reviewService;
+	@Inject
+	private LookJobService lookJobService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -51,7 +55,9 @@ public class HomeController {
 		List<ClassInfoVo> night = classInfoService.classListByTimeCode(NIGHT);
 		List<ClassInfoVo> weekend = classInfoService.classListByTimeCode(WEEKEND);
 		List<ReviewVo> mainList = reviewService.mainReview();
+		List<FindVo> findList = lookJobService.mainLookJob();
 		
+		model.addAttribute("findList", findList);
 		model.addAttribute("list", list);
 		model.addAttribute("weekly", weekly);
 		model.addAttribute("night", night);

@@ -148,6 +148,14 @@
 		where rnum between #{startRow} and #{endRow}
 	</select>
 	
+	<select id="mainLookJob" resultType="FindVo">
+	select fname, company, fno 
+		from
+			  (select a.*, rownum rnum from (select * from find
+               order by fno desc) a)
+	where rnum between 1 and 7
+	</select>
+	
 	<!-- 검색 조건 -->
 	<sql id="findSearch">
 		<if test="searchType != null and keyword != null">
