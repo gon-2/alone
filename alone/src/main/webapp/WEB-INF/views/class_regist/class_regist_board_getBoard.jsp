@@ -218,7 +218,8 @@
             obj.value = str2;
             fnChkByte(obj, maxByte);
         }else{
-            document.getElementById('byteInfo').innerText = "바이트 수 : " + rbyte;
+          	document.getElementById('byteInfo').innerText = "바이트 수 : " + rbyte;
+            document.getElementById('byteInfos').innerText = "바이트 수 : " + rbyte;
         }
     }
 	
@@ -303,8 +304,8 @@
 							<label for="class_board_title">상담글 제목 입력</label>
 							<input type="text" name="class_board_title" id="class_board_title" placeholder="글 제목을 입력하세요." value="${registboardvo.class_board_title}"><br>
 							<label for="class_board_content">상담글 내용 입력</label><div id="test-cnt">(0 / 3000)</div><br>
-							<textarea name="class_board_content" id="class_board_content" placeholder="글 내용을 입력하세요." onkeyup="fnChkByte(this, 3000)"></textarea>&nbsp;<span id="byteInfo">바이트수 : 0</span>	
-							<span id="byteInfo">바이트수 : 0</span>
+							<textarea name="class_board_content" id="class_board_content" placeholder="글 내용을 입력하세요." onkeyup="fnChkByte(this, 3000)"></textarea>
+							<span id="byteInfos">바이트수 : 0</span>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-primary" id="btnModInfoSave">수정 저장</button> 
