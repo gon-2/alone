@@ -67,10 +67,15 @@ public class MemberService {
 	}
 	
 	// 답글 쓰기
+	@Transactional
 	public void insertResponse(MemberBoardVo memberBoardVo) {
+		memberDao.updateReSeq(memberBoardVo.getRe_seq());
 		memberDao.insertResponse(memberBoardVo);
 	}
 
+	
+	
+	
 }
 	
 	

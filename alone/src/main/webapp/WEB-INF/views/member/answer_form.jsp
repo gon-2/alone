@@ -2,21 +2,8 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
-<script>
-//답글
-$(function() {
-	$("#btnReply2").click(function() {
-	var re_group = "${memberBoardVo.re_group}";
-	var re_seq = "${memberBoardVo.re_seq}";
-	var re_level = "${memberBoardVo.re_level}";
-	var loc = "/member/answer_form?";
-	loc += "re_group=" + re_group;
-	loc += "&re_seq=" + re_seq;
-	loc += "&re_level=" + re_level;
-	location.href = loc;
-	});
-});
-
+	<script>
+	
 	</script>
 <section class="wrapper style1">
 <div class="container">
@@ -42,7 +29,9 @@ $(function() {
 				<div class="form-group">
 					<label for="userid">아이디</label>
 					<input type="text" class="form-control" 
-						id="userid" name="userid" required="required"/>
+						id="userid" name="userid" 
+						value="${sessionScope.memberVo.userid}"
+						readonly/>
 				</div>
 				
 				<div class="form-group">
@@ -55,13 +44,13 @@ $(function() {
 					<textarea class="form-control" 
 						id="content" name="content"></textarea>
 				</div>
-				&rdsh;
 				
-				<input type="hidden" name="re_group" id="re_group" value="${memberboardVo.re_group}">
-				<input type="hidden" name="re_seq" id="re_seq" value="${memberboardVo.re_group}">
-				<input type="hidden" name="re_level" id="re_level" value="${memberboardVo.re_group}">
 				
-				<button type="submit" class="btn btn-primary" id="btnReply2">
+				<input type="hidden" name="re_group" id="re_group" value="${memberBoardVo.re_group}">
+				<input type="hidden" name="re_seq" id="re_seq" value="${memberBoardVo.re_seq}">
+				<input type="hidden" name="re_level" id="re_level" value="${memberBoardVo.re_level}">
+				
+				<button type="submit" class="btn btn-primary">
 					작성 완료
 				</button>
 			</form>
