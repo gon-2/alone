@@ -97,19 +97,22 @@
 			</div>
 			
 			<div class="jumbotron">
-				<h2 align="center">메세지 리스트</h2>
+				<h2 align="center">메세지 내역</h2>
 			</div>
 			<table class="table">
 				<thead>
-							<tr align="center">
-								<th>보낸사람</th>
-								<th>받은사람</th>
-								<th>메세지 제목</th>
-								<th>날짜</th>
-								<th>메세지 갯수</th>
-								<th>답장</th>
-							</tr>
-
+					<c:if test="${sessionScope.memberVo.userid != ServiceMessageVo.service_message_receiver}">	
+						<tr align="center">
+							<th>보낸사람</th>
+							<th>받은사람</th>
+							<th>메세지 제목</th>
+							<th>날짜</th>
+							<th>답장</th>
+						</tr>
+					</c:if>
+					<c:if test="${sessionScope.memberVo.userid == ServiceMessageVo.service_message_receiver}">
+					
+					</c:if>
 				</thead>
 				<tbody>
 					<c:choose>
@@ -119,21 +122,15 @@
 						<c:otherwise>
 							<c:forEach items="${recieverLists}" var="ServiceMessageVo">
 								<tr align="center">
-									<td>${ServiceMessageVo.service_message_sender}</td>
-									<td>${ServiceMessageVo.service_message_receiver}</td>
 									<c:if test="${sessionScope.memberVo.userid == ServiceMessageVo.service_message_receiver}">
+										<td>${ServiceMessageVo.service_message_sender}</td>
+										<td>${ServiceMessageVo.service_message_receiver}</td>
 										<td><a href="/message/getMessage?tbl_service_message=${ServiceMessageVo.service_message_title}">${ServiceMessageVo.service_message_title}</a></td>
-									</c:if>
-									<c:if test="${sessionScope.memberVo.userid != ServiceMessageVo.service_message_receiver}">
-										<td><a href="/message/getMessage?tbl_service_message=${ServiceMessageVo.service_message_title}">${ServiceMessageVo.service_message_title}</a></td>
-									</c:if>
-									<td><fmt:formatDate value="${ServiceMessageVo.service_message_date}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
-									<td>${ServiceMessageVo.service_message_count}</td>
-									<c:if test="${sessionScope.memberVo.userid == ServiceMessageVo.service_message_receiver}">
+										<td><fmt:formatDate value="${ServiceMessageVo.service_message_date}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
 										<td><button class="btn btn-sm btn-primary resend" id="resend">답장</button></td>
 									</c:if>
 									<c:if test="${sessionScope.memberVo.userid != ServiceMessageVo.service_message_receiver}">
-										<td>답장 불가능한 ID</td>
+
 									</c:if>
 								</tr>
 							</c:forEach>
