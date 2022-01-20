@@ -102,8 +102,11 @@ $(function() {
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8" style="text-align:center">
+		<c:if test="">
+		</c:if>
 				<c:forEach items="${data}" var="data">
-					<img id="r_images" style="" src="/upload/download?fileName=${data.r_image}" width="500px" height="700px"/><br>
+					<input type="hidden" class="r_image" value="${data.r_image}">
+					<img class="r_images" style="display:none;" src="/upload/download?fileName=${data.r_image}" width="500px" height="700px"/><br>
 				</c:forEach>
 			<div style="text-align:left">
 					${referenceVo.r_content}
@@ -159,18 +162,26 @@ $(function() {
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
+	var image1 = $(".r_image:eq(0)").val();
+	var image2 = $(".r_image:eq(1)").val();
 	
-	var[] image = ${data.r_image};
-	console.log(image);
-	for (var i = 0; i < image.length; i++) {
-		var dotIndex = image[i].lastIndexOf(".");
-		var extName = image[i].substring(dotIndex + 1);
-		if (extName.equals("JPG") || 
-				extName.equals("PNG") || 
-				extName.equals("GIF")) {
-			$("#r_images").attr("style", "display:none;");
+		var dotIndex1 = image1.lastIndexOf(".");
+		var extName1 = image1.substring(dotIndex1 + 1);
+		
+		if (extName1 == "JPG" || extName1 == "PNG" || 
+				extName1 == "GIF" || extName1 == "jpg" || extName1 == "png" ||
+				extName1 == "gif" || extName1 == "BMP" || extName1 == "bmp") {
+			$(".r_images:eq(0)").show();
 		}
-	}
+		
+		var dotIndex2 = image2.lastIndexOf(".");
+		var extName2 = image2.substring(dotIndex2 + 1);
+		console.log(extName2);
+		if (extName2 == "JPG" || extName2 == "PNG" || 
+				extName2 == "GIF" || extName2 == "jpg" || extName2 == "png" ||
+				extName2 == "gif" || extName2 == "BMP" || extName2 == "bmp") {
+			$(".r_images:eq(1)").show();
+		}
 });
 </script>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
