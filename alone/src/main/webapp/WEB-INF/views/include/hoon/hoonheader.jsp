@@ -295,7 +295,7 @@
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown" id="dropMessage">
                                 <h6 class="dropdown-header">상담 메시지</h6>
-                                <input type="text" id="service_message_receiver" name="service_message_receiver" placeholder="사용자 아이디를 입력">
+                                <input type="text" id="service_message_receiver" name="service_message_receiver" value="${sessionScope.memberVo.userid}">
                                 <button type="button" id="check">확인</button>
                                 <div class="font-weight-bold" id="messagelist"></div>
                                 <div class="text-truncate" id="messageContent"></div>
