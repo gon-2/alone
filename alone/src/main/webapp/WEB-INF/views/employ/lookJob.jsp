@@ -11,8 +11,8 @@ $(function() {
 		console.log($(this));
 		var page =	$(this).attr("href");
 		$("#frmPaging > input[name=page]").val(page);
-		$("#frmPaging > input[name=searchType]").val("${pagingDto.searchType}");
-		$("#frmPaging > input[name=keyword]").val("${pagingDto.keyword}");
+		$("#frmPaging > input[name=searchType]").val("${pagingVo.searchType}");
+		$("#frmPaging > input[name=keyword]").val("${pagingVo.keyword}");
 		$("#frmPaging").attr("action", "/employ/lookJob")
 			    	   .submit();
 	});
@@ -81,7 +81,7 @@ $(function() {
 						selected
 					</c:if>
 				>회사</option>
-				<option value="t"
+				<option value="c"
 					<c:if test="${pagingVo.searchType == 'c'}">
 						selected
 					</c:if>

@@ -74,5 +74,10 @@ public class MemberDao {
 	public void insertResponse(MemberBoardVo memberBoardVo) {
 		sqlSession.insert(NAMESPACE + "insertResponse", memberBoardVo);
 	}
+	
+	// 답글 순서 변경
+	public void updateReSeq(int re_seq) {
+		sqlSession.update(NAMESPACE + "updateReSeq", re_seq);
+	}
 
 }

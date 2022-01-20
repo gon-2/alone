@@ -16,12 +16,10 @@
 
 <script>
 $(function() {
+	// 자격증 시험 안내 등록 (비동기)
 	$("#test_btnRegist").click(function() {
 		var title = $("#title").val();
 		var writers = $("#writers").val();
-		
-		console.log(title);
-		console.log(writers);
 		
 		var url = "/employ/lookJobTestRegist_run"
 		
