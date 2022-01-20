@@ -8,19 +8,22 @@ $(function() {
 		var userid = $("#userid").val();
 		var userpw = $("#userpw").val();
 		var saveId = $("#saveId").val();
-		var userpwd = userpw.length;
 		
 		console.log(userid);
 		console.log(userpw);
-		console.log(userpwd);
+		
+		var sData = {
+				"userid" : userid,
+				"userpw" : userpw
+		};
 		
 		if (userid == "" || userid == null) {
 			alert("아이디를 입력해주세요.");
 		} else if (userpw == "" || userpw == null) {
 			alert("비밀번호를 입력해주세요.");
 		} else {
-			var url = "/checkId/" + userid + "/" + userpw;
-			$.get(url, function(rData) {
+			var url = "/checkId";
+			$.post(url, sData, function(rData) {
 				console.log(rData);
 				if (rData == "idFail") {
 					$("#checkId").html("아이디를 다시 확인 해주세요.");
