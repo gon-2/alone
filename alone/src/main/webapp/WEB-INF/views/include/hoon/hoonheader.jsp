@@ -324,7 +324,7 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     	내 정보 수정
                                 </a>
-                                <div class="dropdown-divider"></div>
+                               
                             </div>
                         </li>
                          <li class="nav-item" style="padding-top:18px;">
