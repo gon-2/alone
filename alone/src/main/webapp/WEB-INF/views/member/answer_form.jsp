@@ -34,9 +34,7 @@ $(function() {
 <div class="container">			
 	<div class="row">
 		<div class="col-md-12">
-				<input type="hidden" name="re_group" value="${memberBoardVo.re_group}">
-				<input type="hidden" name="re_seq" value="${memberBoardVo.re_seq}">
-				<input type="hidden" name="re_level" value="${memberBoardVo.re_level}">
+
 				
 		<form role="form" action="/member/answer_form_run" 
 				method="post">
@@ -58,6 +56,10 @@ $(function() {
 						id="content" name="content"></textarea>
 				</div>
 				&rdsh;
+				
+				<input type="hidden" name="re_group" id="re_group" value="${memberboardVo.re_group}">
+				<input type="hidden" name="re_seq" id="re_seq" value="${memberboardVo.re_group}">
+				<input type="hidden" name="re_level" id="re_level" value="${memberboardVo.re_group}">
 				
 				<button type="submit" class="btn btn-primary" id="btnReply2">
 					작성 완료

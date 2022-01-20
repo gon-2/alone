@@ -54,10 +54,11 @@ public class ServiceMessageController {
 	
 	// 전체 메시지 리스트
 	@RequestMapping(value="/messageList" , method=RequestMethod.GET)
-	public String MessageList(Model model){
+	public String MessageList(String service_message_receiver , Model model){
 		List<ServiceMessageVo> recieverLists = messageservice.recieveMessages();
 		System.out.println("ServiceMessageController , recieveMessage , recieverList >> " + recieverLists);
 		model.addAttribute("recieverLists" , recieverLists);
+		model.addAttribute("service_message_receiver" , service_message_receiver);
 		return "/consult/message_list_page";
 	}
 	

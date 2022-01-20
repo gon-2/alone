@@ -132,12 +132,16 @@
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <span>공지 사항</span></a>
             </li> -->
-            
-            <li class="nav-item">
-                <a class="nav-link" href="/customer_main/consultmessage">
-                    <i class="fas fa-coffee"></i>
-                    <span>수강생 상담</span></a>
-            </li>
+            <c:choose>
+            	<c:when test="${empty sessionScope.memberVo}"></c:when>
+            	<c:when test="${not empty sessionScope.memberVo || sessionScope.memberVo.userid == 'service_center_admin'}">
+	            <li class="nav-item">
+	                <a class="nav-link" href="/customer_main/consultmessage">
+	                    <i class="fas fa-coffee"></i>
+	                    <span>수강생 상담</span></a>
+	            </li>
+	            </c:when>
+            </c:choose>
            
      
             <li class="nav-item" style="padding-top:18px;">
@@ -291,13 +295,11 @@
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown" id="dropMessage">
                                 <h6 class="dropdown-header">상담 메시지</h6>
-                                <input type="text" id="service_message_receiver" name="service_message_receiver" placeholder="사용자 아이디를 입력">
+                                <input type="text" id="service_message_receiver" name="service_message_receiver" value="${sessionScope.memberVo.userid}">
                                 <button type="button" id="check">확인</button>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="font-weight-bold" id="messagelist"></div>
-                                        <div class="text-truncate" id="messageContent"></div>
-                                        <div class="small text-gray-500" id="messageDate"></div>
-                                </a>
+                                <div class="font-weight-bold" id="messagelist"></div>
+                                <div class="text-truncate" id="messageContent"></div>
+                                <div class="small text-gray-500" id="messageDate"></div>         
                                 <a class="dropdown-item text-center small text-gray-500" id="messageList" href="/message/messageList">메시지 더 보기</a>
                             </div>
                         </li>
@@ -318,14 +320,11 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="/member/modify_form">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    	내 정보
+                                    	내 정보 수정
                                 </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">로그아웃
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                </a>
+                               
                             </div>
                         </li>
                          <li class="nav-item" style="padding-top:18px;">
