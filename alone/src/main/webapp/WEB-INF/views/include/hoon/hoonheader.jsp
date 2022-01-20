@@ -132,12 +132,16 @@
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <span>공지 사항</span></a>
             </li> -->
-            
-            <li class="nav-item">
-                <a class="nav-link" href="/customer_main/consultmessage">
-                    <i class="fas fa-coffee"></i>
-                    <span>수강생 상담</span></a>
-            </li>
+            <c:choose>
+            	<c:when test="${empty sessionScope.memberVo}"></c:when>
+            	<c:when test="${not empty sessionScope.memberVo || sessionScope.memberVo.userid == 'service_center_admin'}">
+		            <li class="nav-item">
+		                <a class="nav-link" href="/customer_main/consultmessage">
+		                    <i class="fas fa-coffee"></i>
+		                    <span>수강생 상담</span></a>
+		            </li>
+	            </c:when>
+            </c:choose>
            
      
             <li class="nav-item" style="padding-top:18px;">
