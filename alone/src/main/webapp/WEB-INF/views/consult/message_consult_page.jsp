@@ -58,7 +58,7 @@
 		// 글자 수 세기
 		$("#service_message_content").on("keyup" , function(){
 			var service_message_content = $(this).val().length;
-			$("#test-cnt").html("(" + service_message_content + " / 3000");
+			$("#test-cnt").html("(" + service_message_content + " / 3000)");
 			
 			if(service_message_content > 3000){
 				 $(this).val($(this).val().substring(0, 3000));
