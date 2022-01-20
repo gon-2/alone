@@ -20,6 +20,7 @@ td {
 
 <script>
 $(function() {
+	// 게시판으로 이동하기 (목록)
 	$(".t_btnList").click(function() {
 		location.href="/employ/lookJobTestList";
 	});

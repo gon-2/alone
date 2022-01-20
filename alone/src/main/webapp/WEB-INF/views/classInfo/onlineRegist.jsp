@@ -443,7 +443,7 @@ $(function(){
 		<hr>
 		<div>
 			<button type="button" id="btnOk" class="btn btn-primary">신청 완료</button>
-			<button type="button" id="btnNok" class="btn btn-primary">홈으로 가기</button>
+			<button type="button" id="btnNok" class="btn btn-primary">취소하기</button>
 		</div>	
 	</form>
 </div>

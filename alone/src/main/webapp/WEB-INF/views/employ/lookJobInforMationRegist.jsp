@@ -16,6 +16,7 @@
 
 <script>
 $(function() {
+	// 구인 현황 등록하기
 	$("#job_btnRegist").click(function() {
 		var company = $("#company").val();
 		var employForm = $("#employForm").val();
@@ -36,24 +37,6 @@ $(function() {
 		var recruitmentStart = $("#recruitmentStart").val();
 		var recruitmentEnd = $("#recruitmentEnd").val();
 		var content = $("#content").val();
-		
-		console.log(company);
-		console.log(employForm);
-		console.log(companyNum);
-		console.log(companyForm);
-		console.log(representative);
-		console.log(personInCharge);
-		console.log(contact);
-		console.log(fax);
-		console.log(mail);
-		console.log(address);
-		console.log(department);
-		console.log(work);
-		console.log(workTime);
-		console.log(salary);
-		console.log(recruitmentStart);
-		console.log(recruitmentEnd);
-		console.log(content);
 		
 		var url = "/employ/lookJobInforMationRegist_run"
 		var sData = {

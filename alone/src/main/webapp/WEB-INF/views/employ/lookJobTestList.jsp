@@ -5,16 +5,18 @@
 <%@ include file="/WEB-INF/views/include/paging_form.jsp" %>
 <script>
 $(function() {
+	// 페이징
 	$(".page-link").click(function(e) {
 		e.preventDefault(); // 브라우저의 기본기능 막기
 		console.log($(this));
 		var page =	$(this).attr("href");
 		$("#frmPaging > input[name=page]").val(page);
-		$("#frmPaging > input[name=searchType]").val("${pagingDto.searchType}");
-		$("#frmPaging > input[name=keyword]").val("${pagingDto.keyword}");
+		$("#frmPaging > input[name=searchType]").val("${pagingVo.searchType}");
+		$("#frmPaging > input[name=keyword]").val("${pagingVo.keyword}");
 		$("#frmPaging").attr("action", "/employ/lookJobTestList")
 					   .submit();
 	});
+	// 상세보기
 	$(".tno_title").click(function(e){
 		e.preventDefault();
 		var tno = $(this).attr("href");

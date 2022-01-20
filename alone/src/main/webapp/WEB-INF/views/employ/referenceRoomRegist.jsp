@@ -4,6 +4,7 @@
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <script>
 $(function() {
+	// 파일 Ajax이용 업로드 (비동기)
 	$("#r_RegistBtn").click(function() {
 		var form = $("form")[0];
 		if ($("#r_images1").val() == "" && $("#r_images2").val() == "") {

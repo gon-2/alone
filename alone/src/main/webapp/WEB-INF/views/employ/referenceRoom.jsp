@@ -21,9 +21,12 @@ td {
 
 <script>
 $(function() {
+	// 자료실 게시판으로 이동 (목록)
 	$(".r_btnList").click(function() {
 		location.href="/employ/referenceRoomList";
 	});
+	
+	// 이전 다음 게시판 이동
 	$(".r_btnMove").click(function(e) {
 		e.preventDefault();
 		var pageMove = $(this).attr("href");
@@ -33,13 +36,9 @@ $(function() {
 			location.href="/employ/referenceRoom?rno=" + pageMove;			
 		}
 	});
-	$(".page-link").click(function(e) {
-		e.preventDefault(); // 브라우저의 기본기능 막기
-		console.log($(this));
-		var page =	$(this).attr("href");
-		$("#frmPaging > input[name=page]").val(page);
-		$("#frmPaging").submit();
-	});
+	
+	
+	// 글 상세보기
 	$(".rno_title").click(function(e) {
 		e.preventDefault();
 		var rno = $(this).attr("href");
@@ -162,6 +161,8 @@ $(function() {
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	// 이미지 파일 과 일반 파일 구분하기
 	var image1 = $(".r_image:eq(0)").val();
 	var image2 = $(".r_image:eq(1)").val();
 	

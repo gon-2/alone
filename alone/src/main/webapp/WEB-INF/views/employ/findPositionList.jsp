@@ -5,17 +5,19 @@
 <%@ include file="/WEB-INF/views/include/paging_form.jsp" %>
 <script>
 $(function() {
+	// 페이징
 	$(".page-link").click(function(e) {
 		e.preventDefault(); // 브라우저의 기본기능 막기
 		console.log($(this));
 		var page =	$(this).attr("href");
 		$("#frmPaging > input[name=page]").val(page);
-		$("#frmPaging > input[name=searchType]").val(searchType);
-		$("#frmPaging > input[name=keyword]").val(keyword);
-		$("#frmPaging").submit();
+		$("#frmPaging > input[name=searchType]").val("${pagingVo.searchType}");
+		$("#frmPaging > input[name=keyword]").val("${pagingVo.keyword}");
+		$("#frmPaging").attr("action", "/employ/findPositionList")
+					   .submit();
 	});
 	
-	
+	// 상세보기 파업창
 	$(".f_course").click(function(e) {
 		e.preventDefault();
 		var fno = $(this).attr("href");
