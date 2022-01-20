@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -67,13 +68,13 @@ public class MemberController {
 	}
 	
 	
-	// 내 게시판 답글
+	// 게시글 양식
 	@RequestMapping(value="/board_form_reply", method=RequestMethod.GET)
 	public String replyForm(MemberBoardVo memberBoardVo) {
 		return "/member/board_form_reply";
 	}
 	
-	// 답글처리 
+	// 게시글 글 처리
 	@RequestMapping(value="/board_form_reply_run", method=RequestMethod.POST)
 	public String replyRun(MemberBoardVo memberBoardVo) {
 		System.out.println("MemberController, replyRun, memberBoardVo:" + memberBoardVo);
@@ -127,17 +128,18 @@ public class MemberController {
 		return "success";
 	}
 	
-	// 게시판 상세 보기
+	// 게시판 상세 보기- 답글
 		@RequestMapping(value="/answer_form", method=RequestMethod.GET)
-		public String getMemberBoard() {
+		public String getMemberBoard(Model model , MemberBoardVo memberboardVo) {
+			model.addAttribute("memberboardVo" , memberboardVo);
 			return "/member/answer_form";
 		}
-	// 게시판 답글 	
-		@RequestMapping(value="/answer_form", method=RequestMethod.POST)
-		public String getMemberBoard(Model model, String content) {
-			MemberBoardVo memberBoardVo = memberService.getMemberBoard(content);
-			model.addAttribute("MemberBoardVo", memberBoardVo);
-			return "/member/answer_form";
+		
+	//  답글처리 	
+		@RequestMapping(value="/answer_form_run", method=RequestMethod.POST)
+		public String insertResponse(Model model, MemberBoardVo memberboardVo) {
+			memberService.insertResponse(memberboardVo);
+			return "redirect:/member/board_form";
 		}
 }
 
