@@ -189,6 +189,39 @@
 		}
 		return num;
 	}
+	
+    function fnChkByte(obj, maxByte){
+        var str = obj.value;
+        var str_len = str.length;
+ 
+        var rbyte = 0;
+        var rlen = 0;
+        var one_char = "";
+        var str2 = "";
+ 
+        for(var i=0; i<str_len; i++){
+            one_char = str.charAt(i);
+            if(escape(one_char).length > 4){
+                rbyte += 2;    //한글2Byte
+            }else{
+                rbyte++;    //영문 등 나머지 1Byte
+            }
+ 
+            if(rbyte <= maxByte){
+                rlen = i+1;    //return할 문자열 갯수
+            }
+        }
+ 
+        if(rbyte > maxByte){
+            alert("한글 " +"1699자 / 영문 "+maxByte+"자를 초과 입력할 수 없습니다.");
+            str2 = str.substr(0,rlen);    //문자열 자르기
+            obj.value = str2;
+            fnChkByte(obj, maxByte);
+        }else{
+            document.getElementById('byteInfo').innerText = "바이트 수 : " + rbyte;
+        }
+    }
+	
 </script>
 </head>
 <div class="container-fluid">
@@ -270,7 +303,8 @@
 							<label for="class_board_title">상담글 제목 입력</label>
 							<input type="text" name="class_board_title" id="class_board_title" placeholder="글 제목을 입력하세요." value="${registboardvo.class_board_title}"><br>
 							<label for="class_board_content">상담글 내용 입력</label><div id="test-cnt">(0 / 3000)</div><br>
-							<textarea name="class_board_content" id="class_board_content" placeholder="댓글을 입력하세요."></textarea>
+							<textarea name="class_board_content" id="class_board_content" placeholder="댓글을 입력하세요." onkeyup="fnChkByte(this, 3000)"></textarea>
+							<span id="byteInfo">바이트수 : 0</span>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-primary" id="btnModInfoSave">수정 저장</button> 

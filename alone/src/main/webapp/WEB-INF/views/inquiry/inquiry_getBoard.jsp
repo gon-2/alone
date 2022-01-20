@@ -184,6 +184,39 @@ $(function(){
 		}
 		return num;
 	}
+	
+    function fnChkByte(obj, maxByte){
+        var str = obj.value;
+        var str_len = str.length;
+ 
+        var rbyte = 0;
+        var rlen = 0;
+        var one_char = "";
+        var str2 = "";
+ 
+        for(var i=0; i<str_len; i++){
+            one_char = str.charAt(i);
+            if(escape(one_char).length > 4){
+                rbyte += 2;    //한글2Byte
+            }else{
+                rbyte++;    //영문 등 나머지 1Byte
+            }
+ 
+            if(rbyte <= maxByte){
+                rlen = i+1;    //return할 문자열 갯수
+            }
+        }
+ 
+        if(rbyte > maxByte){
+            alert("한글 " +"1699자 / 영문 "+maxByte+"자를 초과 입력할 수 없습니다.");
+            str2 = str.substr(0,rlen);    //문자열 자르기
+            obj.value = str2;
+            fnChkByte(obj, maxByte);
+        }else{
+            document.getElementById('byteInfo').innerText = "바이트 수 : " + rbyte;
+        }
+    }
+	
 </script>
 </head>
 <div class="container-fluid">
@@ -262,7 +295,8 @@ $(function(){
 							<label for="inquiry_title">글 제목:</label>
 							<input type="text" id="inquiry_titles" name="inquiry_title" value="${inquiryBoardVo.inquiry_title}"><br>
 							<label for="inquiry_content">글 내용:</label>
-							<textarea id="inquiry_contents" name="inquiry_content"></textarea><div id="test-cnt">(0 / 3000)</div>
+							<textarea id="inquiry_contents" name="inquiry_content" onkeyup="fnChkByte(this, 3000)"></textarea><div id="test-cnt">(0 / 3000)</div>
+							<span id="byteInfo">바이트수 : 0</span>
 							<input type="hidden" id="inquiry_date" name="inquiry_date"> 
 						</div>
 						<div class="modal-footer">
