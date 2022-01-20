@@ -116,7 +116,7 @@
 						<c:when test="${empty sessionScope.memberVo}">
 							<td>로그인이 필요합니다.</td>
 						</c:when>
-						<c:otherwise>
+						<c:when test="${not empty sessionScope.memberVo || sessionScope.memberVo.userid == 'service_center_admin'}">
 							<c:forEach items="${recieverLists}" var="ServiceMessageVo">
 								<tr align="center">
 									<td>${ServiceMessageVo.service_message_sender}</td>
@@ -137,7 +137,7 @@
 									</c:if>
 								</tr>
 							</c:forEach>
-						</c:otherwise>
+						</c:when>
 					</c:choose>
 				</tbody>
 			</table>
