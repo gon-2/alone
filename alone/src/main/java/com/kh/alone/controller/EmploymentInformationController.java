@@ -31,6 +31,7 @@ public class EmploymentInformationController {
 	@Inject
 	private LookJobService lookJobService;
 	
+	// 구인 현황 게시판 이동
 	@RequestMapping(value="/lookJob", method=RequestMethod.GET)
 	public String employLookJob(Model model, PagingVo pagingVo) {
 		int count = lookJobService.job_getCount(pagingVo);
@@ -41,6 +42,7 @@ public class EmploymentInformationController {
 		return "employ/lookJob";
 	}
 	
+	// 구인 게시물 상세보기
 	@RequestMapping(value="/lookJobInformation", method=RequestMethod.GET)
 	public String LookJobInformation(Model model, int jobno, PagingVo pagingVo) {
 		LookJobVo lookJobVo = lookJobService.getLookJob(jobno);
@@ -51,11 +53,13 @@ public class EmploymentInformationController {
 		return "employ/lookJobInformation";
 	}
 	
+	// 구인 게시물 작성 이동
 	@RequestMapping(value="/lookJobInforMationRegist", method=RequestMethod.GET)
 	public String lookJobInforMationRegist() {
 		return "employ/lookJobInforMationRegist";
 	}
 	
+	// 구인 게시물 등록하기
 	@RequestMapping(value="/lookJobInforMationRegist_run", method=RequestMethod.POST)
 	@ResponseBody
 	public String lookJobInforMationRegist_run(LookJobVo lookJobVo) {
@@ -65,6 +69,7 @@ public class EmploymentInformationController {
 		return "success";
 	}
 	
+	// 자격증 시험 안내 게시판 이동하기
 	@RequestMapping(value="/lookJobTestList", method=RequestMethod.GET)
 	public String lookJobTestList(Model model, PagingVo pagingVo) {
 		int count = lookJobService.test_getCount(pagingVo);
@@ -75,6 +80,7 @@ public class EmploymentInformationController {
 		return "employ/lookJobTestList";
 	}
 	
+	// 자격증 게시물 상세보기
 	@RequestMapping(value="/lookJobTest", method=RequestMethod.GET)
 	public String lookJobTest(Model model, int tno, PagingVo pagingVo) {
 		JobTestVo JobTestvo = lookJobService.getTest(tno);
@@ -84,11 +90,13 @@ public class EmploymentInformationController {
 		return "employ/lookJobTest";
 	}
 	
+	// 자격증 안내 게시물 작성 이동하기
 	@RequestMapping(value="/lookJobTestRegist", method=RequestMethod.GET)
 	public String lookJobTestRegist() {
 		return "employ/lookJobTestRegist";
 	}
 	
+	// 자격증 안내 게시물 등록하기
 	@RequestMapping(value="/lookJobTestRegist_run", method=RequestMethod.POST)
 	@ResponseBody
 	public String lookJobTestRegist_run(JobTestVo jobTestVo) {
@@ -99,6 +107,7 @@ public class EmploymentInformationController {
 		return "success";
 	}
 	
+	// 취업자 현황 게시판으로 이동하기
 	@RequestMapping(value="/findPositionList", method=RequestMethod.GET)
 	public String findPositionList(Model model, PagingVo pagingVo) {
 		int count = lookJobService.fno_getCount(pagingVo);
@@ -109,6 +118,7 @@ public class EmploymentInformationController {
 		return "employ/findPositionList";
 	}
 	
+	// 취업자 현황 게시물 상세보기
 	@RequestMapping(value="/findPosition", method=RequestMethod.GET)
 	public String findPosition(Model model, int fno, PagingVo pagingVo) {
 		FindVo findVo = lookJobService.getFind(fno);
@@ -118,11 +128,13 @@ public class EmploymentInformationController {
 		return "employ/findPosition";
 	}
 	
+	// 취업자 현황 게시물 작성 이동하기
 	@RequestMapping(value="/findPositionRegist", method=RequestMethod.GET)
 	public String findPositionRegist() {
 		return "employ/findPositionRegist";
 	}
 	
+	// 취업자 현황 게시물 등록하기
 	@RequestMapping(value="/findPositionRegist_run", method=RequestMethod.POST)
 	@ResponseBody
 	public String findPositionRegist_run(FindVo findVo) {
@@ -133,6 +145,7 @@ public class EmploymentInformationController {
 		return "success";
 	}
 	
+	// 취업 자료실게시판으로 이동하기
 	@RequestMapping(value="/referenceRoomList", method=RequestMethod.GET)
 	public String referenceRoomList(Model model, PagingVo pagingVo) {
 		int count = lookJobService.r_getCount(pagingVo);
@@ -145,6 +158,7 @@ public class EmploymentInformationController {
 		return "employ/referenceRoomList";
 	}
 	
+	// 취업 자료실 상세보기
 	@RequestMapping(value="/referenceRoom", method=RequestMethod.GET)
 	public String referenceRoom(Model model, int rno, PagingVo pagingVo) {
 		int count = lookJobService.r_getCount(pagingVo);
@@ -163,11 +177,13 @@ public class EmploymentInformationController {
 		return "employ/referenceRoom";
 	}
 	
+	// 취업 자료실 게시물 작성으로 이동하기
 	@RequestMapping(value="/referenceRoomRegist", method=RequestMethod.GET)
 	public String referenceRoomRegist() {
 		return "employ/referenceRoomRegist";
 	}
 	
+	// 취업 자료실 게시물 등록하기
 	@RequestMapping(value="/referenceRoomRegist_run", method=RequestMethod.POST)
 	public String referenceRoomRegist_run(ReferenceVo referenceVo) {
 		System.out.println(referenceVo);
