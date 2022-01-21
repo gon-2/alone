@@ -51,9 +51,7 @@
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-8">
-					<div class="divBottom">
-						<input type="button" class="btnOut btn-sm" value="목록">
-					</div>
+					<input type="button" class="btnOut btn-sm" value="목록">
 				</div>
 				<div class="col-md-2">
 			</div>
