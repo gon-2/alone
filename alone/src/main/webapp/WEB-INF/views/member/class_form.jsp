@@ -32,7 +32,7 @@ $(function(){
 				
 				
 					<form class="form-inline">
-						<input class="form-control" type="text" style="margin-left: 700px;"/>&nbsp;
+						<input class="form-control" type="text" style="margin-left: 698px;"/>&nbsp;
 						<button class="btn" type="submit">찾기</button>
 					</form><br><br>
 			

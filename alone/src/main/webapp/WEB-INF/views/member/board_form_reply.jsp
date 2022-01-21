@@ -35,7 +35,8 @@ $(function() {
 				<div class="form-group">
 					<label for="userid">아이디</label>
 					<input type="text" class="form-control" 
-						id="userid" name="userid" required="required"/>
+						id="userid" name="userid" value="${sessionScope.memberVo.userid}"
+						readonly/>
 				</div>
 				
 				<div class="form-group">
