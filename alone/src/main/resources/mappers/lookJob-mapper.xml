@@ -222,8 +222,8 @@
 	<select id="getFindUpload" resultType="FindVo">
     	select * from find
     	where company = #{company}
-    	or fday = #{fday}
-    	or course_name = #{course_name}
+    	and fday = #{fday}
+    	and course_name = #{course_name}
     </select>
     
     <!-- 취업자 현황 이미지 등록하기 -->
