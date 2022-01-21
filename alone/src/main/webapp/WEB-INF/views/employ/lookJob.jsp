@@ -59,7 +59,7 @@ $(function() {
 					<h2>구인정보</h2>
 					<br>
 					
-					<p><a class="btn" href="https://www.work.go.kr/empInfo/empInfoSrch/list/dtlEmpSrchList.do">
+					<p><a class="btn btn-warning" href="https://www.work.go.kr/empInfo/empInfoSrch/list/dtlEmpSrchList.do">
 						워크넷 채용정보 바로가기 »</a></p>
 					<br>
 				</div>
