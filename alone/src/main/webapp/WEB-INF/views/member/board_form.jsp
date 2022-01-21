@@ -78,12 +78,12 @@ $(function() {
 							<c:forEach var="v" begin="1" end="${memberBoardVo.re_level}">
 								&nbsp;&nbsp;&nbsp;&nbsp; 
 							</c:forEach>
-								↳ 
+								↳ Re:
 							</c:if>
 							${memberBoardVo.title}
 							</td> 
 							<td>${memberBoardVo.content}</td>
-							<td>${memberBoardVo.userid}</td>
+							<td>${memberBoardVo.userid} </td>
 							<td>${memberBoardVo.regdate}</td>
 						</tr>
 					</c:forEach>
