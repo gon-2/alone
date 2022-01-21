@@ -33,6 +33,9 @@ $(function(){
 			<div class="form-group">	
 					<label>아이디</label> &nbsp;&nbsp; <span>${memberVo.userid}</span>
 				</div> 
+				<div class="form-group">	
+					<label>성명</label> &nbsp;&nbsp; <span>${memberVo.username}</span>
+				</div> 
 				<div class="form-group">
 					<label>생년월일</label>&nbsp;&nbsp;<span>${memberVo.birthdate}</span>
 				</div>
