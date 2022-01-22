@@ -19,6 +19,7 @@
 			var class_board_comment_userid = $("#class_board_comment_userid").val();
 			var class_board_comment_content = $("#class_board_comment_content").val();
  			var class_board_comment_no = $("#class_board_comment_no").val();
+ 			// 요청 경로
 			var url = "/comment/insertcomment";				
 			var sendData = {
  					"class_board_comment_no" : class_board_comment_no,
@@ -44,14 +45,17 @@
 					alert("댓글이 입력되었습니다");	
 				}
 			});
+			
 			$("#btnCancel").trigger("click");
  			
 		});
+		
  		// 댓글 보기버튼 클릭 시 이벤트
  		$("#showComment").click(function(e){
  			e.preventDefault();
   			$("#modal-991051").trigger("click");
 		});
+ 		
  		// 댓글 보기버튼 클릭시 이벤트
  		$("#showbtn").click(function(e){
  			e.preventDefault();
@@ -190,6 +194,7 @@
 		return num;
 	}
 	
+	// 바이트 수 계산하기
     function fnChkByte(obj, maxByte){
         var str = obj.value;
         var str_len = str.length;

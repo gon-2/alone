@@ -9,6 +9,7 @@
 </head>
 <script>
 	$(function(){
+		// 제출 버튼 클릭했을때의 이벤트
 		$("#inquiry_btn").click(function(e){
 			e.preventDefault();
 			var inquiry_userid = $("#inquiry_userid").val();

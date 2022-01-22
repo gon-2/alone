@@ -164,7 +164,7 @@ $(function(){
 		location.href = "/login_form";
 	});
 });
-
+	// 타임스탬프 형식으로 변환
 	function changeDateString(timestamp){
 		var dateF = new Date(timestamp);
 		
@@ -177,14 +177,15 @@ $(function(){
 		var dateString = year + "-" + month + "-" + date + "-" + hour + ":" + minute + ":" + second;
 		return dateString;
 	}
-	
+
 	function make2digits(num){
 		if(num < 10){
 			num = "0" + num;
 		}
 		return num;
-	}
+	}	
 	
+	// 바이트 형식으로 계산
     function fnChkByte(obj, maxByte){
         var str = obj.value;
         var str_len = str.length;

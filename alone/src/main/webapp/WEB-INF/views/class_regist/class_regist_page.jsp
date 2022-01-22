@@ -13,6 +13,7 @@
 </style>
 <script>
 	$(function(){
+		// 이전 버튼 클릭했을 때 이벤트
 		$(".page-link").click(function(e) {
 			e.preventDefault(); 
 			// 클릭한 링크 알아내기
@@ -24,6 +25,7 @@
 			$("#frmPaging").submit();
 		});
 		
+		// 몇개씩 봤을 때의 이벤트 
 		$("#perPage").change(function(){
 			var perPage = $(this).val();
 			console.log("perPage >> " + perPage);
@@ -34,6 +36,7 @@
 		var date = "${ClassRegistBoardVo.class_board_postdate}";
 		$("testdate").val(changeDateString(date));
 
+		// 검색버튼을 클릭했을때의 이벤트 
 		$("#btnSearch").click(function(){
 			var searchType = $("#searchType").val();
 			var keyword = $("#keyword").val();
