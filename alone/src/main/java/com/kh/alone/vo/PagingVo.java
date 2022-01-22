@@ -24,7 +24,7 @@ public class PagingVo {
 		this.startPage = (this.page - 1) / PAGE_BLOCK * PAGE_BLOCK + 1;
 		this.endPage = this.startPage + (PAGE_BLOCK - 1);
 
-		this.totalPage = (this.count / perPage) + ((this.count % perPage) > 0 ? 1 : 0); // 501개
+		this.totalPage = (this.count / perPage) + ((this.count % perPage) > 0 ? 1 : 0);
 		if (this.endPage > this.totalPage) {
 			this.endPage = this.totalPage;
 		}

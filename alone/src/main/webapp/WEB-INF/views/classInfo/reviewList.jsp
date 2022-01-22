@@ -62,9 +62,10 @@
 												<thead>
 													<tr>
 														<th>#</th>
-														<th>과정명</th>
-														<th>교육기간</th>
-														<th>신청하기</th>
+														<th>제목</th>
+														<th>작성자</th>
+														<th>작성일</th>
+														<th>조회수</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -88,9 +89,10 @@
 												<thead>
 													<tr>
 														<th>#</th>
-														<th>과정명</th>
-														<th>교육기간</th>
-														<th>신청하기</th>
+														<th>제목</th>
+														<th>작성자</th>
+														<th>작성일</th>
+														<th>조회수</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -114,9 +116,10 @@
 												<thead>
 													<tr>
 														<th>#</th>
-														<th>과정명</th>
-														<th>교육기간</th>
-														<th>신청하기</th>
+														<th>제목</th>
+														<th>작성자</th>
+														<th>작성일</th>
+														<th>조회수</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -142,9 +145,10 @@
 												<thead>
 													<tr>
 														<th>#</th>
-														<th>과정명</th>
-														<th>교육기간</th>
-														<th>신청하기</th>
+														<th>제목</th>
+														<th>작성자</th>
+														<th>작성일</th>
+														<th>조회수</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -168,9 +172,10 @@
 												<thead>
 													<tr>
 														<th>#</th>
-														<th>과정명</th>
-														<th>교육기간</th>
-														<th>신청하기</th>
+														<th>제목</th>
+														<th>작성자</th>
+														<th>작성일</th>
+														<th>조회수</th>
 													</tr>
 												</thead>
 												<tbody>

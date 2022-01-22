@@ -130,15 +130,16 @@ public class MemberController {
 	
 	// 게시판 상세 보기- 답글
 		@RequestMapping(value="/answer_form", method=RequestMethod.GET)
-		public String getMemberBoard(Model model , MemberBoardVo memberboardVo) {
-			model.addAttribute("memberboardVo" , memberboardVo);
+		public String getMemberBoard(Model model , MemberBoardVo memberBoardVo) {
+			model.addAttribute("memberBoardVo" , memberBoardVo);
 			return "/member/answer_form";
 		}
 		
 	//  답글처리 	
 		@RequestMapping(value="/answer_form_run", method=RequestMethod.POST)
-		public String insertResponse(Model model, MemberBoardVo memberboardVo) {
-			memberService.insertResponse(memberboardVo);
+		public String insertResponse(Model model, MemberBoardVo memberBoardVo) {
+			System.out.println("MemberController, insertResponse, memberBoardVo:" + memberBoardVo);
+			memberService.insertResponse(memberBoardVo);
 			return "redirect:/member/board_form";
 		}
 }

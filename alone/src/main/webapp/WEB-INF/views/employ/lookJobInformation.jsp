@@ -23,6 +23,7 @@
 
 <script>
 $(function() {
+	// 게시판으로 이동 (목록)
 	$(".job_btnList").click(function() {
 		location.href="/employ/lookJob";
 	});
@@ -141,7 +142,8 @@ $(function() {
 
 <script type="text/javascript">
 $(document).ready(function() {
-		
+	
+		// 구글 지도 API 이용하기
 // 		var myLatlng = new google.maps.LatLng(${lookJobVo.y_point}, ${lookJobVo.x_point});
 		var Ypoint = ${lookJobVo.y_point};
 		var Xpoint = ${lookJobVo.x_point};
@@ -173,5 +175,6 @@ $(document).ready(function() {
 	});
 });
 
-</script>						
+</script>	
+
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

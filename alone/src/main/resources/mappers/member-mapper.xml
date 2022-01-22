@@ -17,15 +17,17 @@
 	<!-- 게시글 -->
 	<select id="memberBoardForm" resultType="MemberBoardVo">
 		select bno, title, content, userid, to_char(sysdate, 'YYYY-MM-DD')
-		regdate from tbl_memberboard
+			regdate, re_group, re_seq, re_level 
+		from tbl_memberboard
+		order by re_group desc, re_seq asc
 	</select>
 	
 	<!-- 게시글 추가 -->
 	<insert id="insertReply">
 		insert into tbl_memberboard 
-			(bno, title, content, userid)
+			(bno, title, content, userid, re_group)
 		values
-			(seq_bno.nextval, #{title}, #{content}, #{userid})
+			(seq_bno.nextval, #{title}, #{content}, #{userid}, seq_bno.nextval)
 	</insert>		
 	
 	<!--  회원정보 수정 -->
@@ -62,7 +64,7 @@
 	<!--  글 상세보기- 답글폼 -->
 	<select id="getMemberBoard" resultType="MemberBoardVo">
 		select * from tbl_memberBoard
-		where content = #{content}
+		where bno = #{bno}
 	
 	</select>
 	
@@ -74,5 +76,12 @@
 			(seq_bno.nextval, #{re_level} + 1, #{re_group} , #{re_seq} + 1, sysdate, 
 			#{title}, #{content}, #{userid})
 	</insert>
+	
+	<!-- 답글 순서 변경 -->
+	<update id="updateReSeq">
+		update tbl_memberboard set
+			re_seq = re_seq + 1
+		where re_seq > #{re_seq}
+	</update>
 	
 </mapper>

@@ -2,13 +2,32 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
-
+<style>
+	.tr_item:hover {
+		background-color: #f4f3FF;
+		cursor: pointer;
+	}
+</style>
 <script>
 // 타이틀 클릭
 $(function() {
-$(".btnClick").click(function(e){
-	e.preventDefault();
-	location.href="/member/answer_form";
+// 	$(".btnClick").click(function(){
+// 		var re_group = "${memberBoardVo.re_group}";
+// 		var re_seq = "${memberBoardVo.re_seq}";
+// 		var re_level = "${memberBoardVo.re_level}";
+// 		location.href="/member/answer_form?";
+// 		loc += "re_group=" + re_group;
+// 		loc += "&re_seq=" + re_seq;
+// 		loc += "&re_level=" + re_level;
+// 		location.href = loc;
+// 	});
+	
+	$('.tr_item').click(function() {
+		var re_group = $(this).attr("data-re_group");
+		var re_level = $(this).attr("data-re_level");
+		var re_seq = $(this).attr("data-re_seq");
+		url = "/member/answer_form?re_group=" + re_group + "&re_level=" + re_level + "&re_seq=" + re_seq;
+		location.href = url;
 	});
 });
 
@@ -47,13 +66,25 @@ $(".btnClick").click(function(e){
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${list}" var="MemberBoardVo">
-						<tr >
-							<td> ${MemberBoardVo.bno}</td>
-							<td>${MemberBoardVo.title}</td>
-							<td><a class="btnClick" href="/member/board_form">${MemberBoardVo.content} </a></td>
-							<td>${MemberBoardVo.userid}</td>
-							<td>${MemberBoardVo.regdate}</td>
+				
+					<c:forEach items="${list}" var="memberBoardVo">
+						<tr class="tr_item" 
+							data-re_group="${memberBoardVo.re_group}" 
+							data-re_level="${memberBoardVo.re_level}" 
+							data-re_seq="${memberBoardVo.re_seq}">
+							<td>${memberBoardVo.bno}</td>
+							<td>
+							<c:if test="${memberBoardVo.re_level > 0}">
+							<c:forEach var="v" begin="1" end="${memberBoardVo.re_level}">
+								&nbsp;&nbsp;&nbsp;&nbsp; 
+							</c:forEach>
+								↳ Re:
+							</c:if>
+							${memberBoardVo.title}
+							</td> 
+							<td>${memberBoardVo.content}</td>
+							<td>${memberBoardVo.userid} </td>
+							<td>${memberBoardVo.regdate}</td>
 						</tr>
 					</c:forEach>
 			

@@ -4,7 +4,7 @@
 <form id="frmPaging" action="/employ/referenceRoomList" method="get">
 	<input type="hidden" name="page" value="${pagingVo.page}">
 	<input type="hidden" name="perPage" value="${pagingVo.perPage}">
-	<input type="hidden" name="searchType" value="${pagingDto.searchType}">
-	<input type="hidden" name="keyword" value="${pagingDto.keyword}">
+	<input type="hidden" name="searchType" value="${pagingVo.searchType}">
+	<input type="hidden" name="keyword" value="${pagingVo.keyword}">
 	<input type="hidden" name="rno">
 </form>

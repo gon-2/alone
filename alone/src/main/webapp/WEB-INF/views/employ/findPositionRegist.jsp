@@ -16,6 +16,8 @@
 
 <script>
 $(function() {
+	
+	// 취업자 현황 등록하기 (비동기)
 	$("#find_btnRegist").click(function() {
 		var company = $("#company").val();
 		var fname = $("#fname").val();
