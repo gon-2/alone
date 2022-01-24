@@ -7,7 +7,7 @@ $(function(){
 	$(".f_course").click(function(e) {
 		e.preventDefault();
 		var fno = $(this).attr("href");
-		console.log(fno);
+// 		console.log(fno);
 		var f_url = "/employ/findPosition?fno=" + fno;
 	    var f_name = "pop";
 	    var option = "width=1300,height=800,history=no,resizable=no,status=no,scrollbars=yes,menubar=no";
