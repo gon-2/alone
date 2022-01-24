@@ -7,12 +7,22 @@
 $(function(){
 	$("#btnOk").click(function(){
 		var cate_code = $("#cate_code").val();
+		if(cate_code == "선택해주세요"){
+			alert("전공을 선택해 주세요.");
+		}
 		
 		var review_writer = $("#review_writer").val();
-		
+		if(review_writer == ""){
+			alert("작성자를 입력해 주세요.");
+		}
 		var content = $("#content").val();
-		
+		if(content == ""){
+			alert("후기 내용을 작성해 주세요.");
+		}
 		var review_title = $("#review_title").val();
+		if(review_title == ""){
+			alert("후기 제목을 작성해 주세요.");
+		}
 		var url = "/classInfo/reviewRegistRun";
 		var sData = {
 				"review_writer" : review_writer,
@@ -50,7 +60,7 @@ $(function(){
 										<input type="hidden" value="seq_review.nextval">
 										<label>선택하세요</label>
 										<select id="cate_code">
-											<option>▼ 선택해주세요  ▼</option>
+											<option value="">▼ 선택해주세요  ▼</option>
 											<option value="1">프로그램</option>
 											<option value="2">사무자동화</option>
 											<option value="3">제품디자인</option>

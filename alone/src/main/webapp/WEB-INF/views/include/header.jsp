@@ -58,26 +58,22 @@ BODY {
 			<c:choose>
 				<c:when test="${empty sessionScope.memberVo}">
 			
-            <!-- 최고관리자이면 관리자 페이지 버튼 출력 -->
-            <!--@if($logged_info->is_admin == 'Y' && $module_info->display_setup_button != 'N')-->
-            <li><a href="{getUrl('','module','admin','act','dispBoardAdminContent')}" onclick="window.open(this.href); return false;">ADMIN&nbsp;</a> | </li>
-            <!--@end-->
 
             <!-- 회원정보 버튼 출력 -->
             <!--@if($module_info->display_login_info != 'N')-->
-            <li><a href="/regist_form" target=blank>MY INFO&nbsp;</a> | </li>
+            <li><a href="/regist_form" target=blank>회원가입&nbsp;</a> | </li>
             <!--@end-->
 
         <!-- 로그인 되어 있지 않고 레이아웃이 없으면 -->
         <!--@elseif(!$is_logged && $module_info->display_login_info != 'N')-->
-            <li><a href="/login_form" target=_top>LOGIN</a></li>
+            <li><a href="/login_form" target=_top>로그인</a></li>
         <!--@end-->
         
         		</c:when>
         		<c:otherwise>
         		
         		<li>${sessionScope.memberVo.userid}(${sessionScope.memberVo.username})<li>
-        		<li><a href="/logout">LOGOUT</a></li>
+        		<li><a href="/logout">로그아웃</a></li>
         		
         		</c:otherwise>
 			</c:choose>

@@ -17,6 +17,7 @@ $(function(){
 			var url = "/classInfo/adminListCheck";
 			$.post(url, sData, function(rData){
 				if(rData == "success"){
+					alert("확인 되었습니다.");
 					location.href = "/classInfo/adminList";
 				}
 			});

@@ -1,7 +1,5 @@
 package com.kh.alone.vo;
 
-import java.sql.Timestamp;
-import java.util.Arrays;
 
 public class MemberBoardVo {
 	private int bno;

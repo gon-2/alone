@@ -33,6 +33,7 @@ $(function() {
 	
 	$(".classInfoDelete").click(function(){
 		var info_code = $(this).attr("data-info_code");
+		alert("삭제가 완료 되었습니다.");
 		location.href = "/classInfo/classInfoDelete?info_code=" + info_code;
 	});
 });

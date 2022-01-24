@@ -97,6 +97,7 @@ public class InquiryController {
 		return "success";
 	}
 	
+	// 관리자아이디 기준 게시판 삭제
 	@RequestMapping(value="/deleteBoardAdmin" , method=RequestMethod.GET)
 	public String deleteBoardAdmin(String inquiry_title) {
 		inquireboardservice.deleteBoardAdmin(inquiry_title);

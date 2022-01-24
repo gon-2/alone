@@ -10,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kh.alone.dao.MemberDao;
 import com.kh.alone.vo.MemberBoardVo;
 import com.kh.alone.vo.MemberVo;
-import com.kh.alone.vo.PagingDto;
-
 
 
 @Service
@@ -56,7 +54,6 @@ public class MemberService {
 	// 회원탈퇴폼
 	public MemberVo memberOut(String userid) {
 		MemberVo memberVo = memberDao.memberOut(userid);
-//		System.out.println("서비스에서 vo값 받아오는지 확인하기 : " + memberVo);
 		return memberVo;
 	}
 	
@@ -74,9 +71,5 @@ public class MemberService {
 	}
 
 	
-	
-	
 }
-	
-	
 

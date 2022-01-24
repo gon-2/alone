@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.alone.vo.MemberBoardVo;
 import com.kh.alone.vo.MemberVo;
-import com.kh.alone.vo.PagingDto;
+
 
 
 
@@ -61,7 +61,6 @@ public class MemberDao {
 	// 회원탈퇴폼
 	public MemberVo memberOut(String userid) {
 		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "memberOut", userid);
-//		System.out.println(" 서비스 vo값 받아오는지 확인하기 : " + memberVo);
 		return memberVo;
 	}
 	

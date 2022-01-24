@@ -22,15 +22,23 @@ $(function(){
 
 $(document).ready(function() { emailjs.init("user_ushn98S0NY4Wd6onKlTkr");		
 	
-    $('input[name=submit]').click(function(){       	 
+    $('input[name=submit]').click(function(){     
+    	var name = $('input[name=name]').val();
+    	var phone = $('input[name=phone]').val();
+    	var email = $('input[name=email]').val();
+    	var message = $('textarea[name=message]').val();
       
       var templateParams = {	
-            name: $('input[name=name]').val(),
-            phone: $('input[name=phone]').val(), 
-            email : $('input[name=email]').val(),
-            message : $('textarea[name=message]').val()
+            "name": name,
+            "phone" :phone, 
+            "email" : email,
+            "message" : message
      	};
                 
+   	if(name == "" || phone == "" || email == "" || message == ""){
+   		alert("이름, 전화번호, 메일, 내용 중  기입되지 않은 항목이 있습니다.");
+   		return false;
+   	}
             	
      emailjs.send('gmail', 'template_spqvfig', templateParams)
      	    .then(function(response) {
