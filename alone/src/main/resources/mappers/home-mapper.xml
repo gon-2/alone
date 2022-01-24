@@ -15,4 +15,17 @@
 		and userpw = #{userpw}
 	</select>
 	
+	<select id="id_search" resultType="MemberVo">
+		select * from tbl_member
+		where username = #{username}
+		and email = #{email}
+	</select>
+	
+	<select id="pw_search" resultType="MemberVo">
+		select * from tbl_member
+		where username = #{username}
+		and email = #{email}
+		and userid = #{userid}
+	</select>
+	
 </mapper>
