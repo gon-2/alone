@@ -12,6 +12,7 @@ $(function(){
 	
 	$(".reviewDelete").click(function(){
 		var review_number = $(this).attr("data-review_number");
+		alert("삭제 되었습니다.");
 		location.href = "/classInfo/reviewDelete?review_number=" + review_number;
 	});
 	

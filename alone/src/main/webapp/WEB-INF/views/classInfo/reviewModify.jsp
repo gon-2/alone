@@ -13,18 +13,25 @@ $(function(){
 		}
 		
 		var review_writer = $("#review_writer").val();
-		
+		if(review_writer == ""){
+			alert("작성자 아이디를 입력해 주세요.");
+		}
 		var content = $("#content").val();
-		
+		if(content == ""){
+			alert("후기 내용을 작성 해 주세요.");
+		}
 		var review_title = $("#review_title").val();
+		if(review_title == ""){
+			alert("후기 제목을 작성해 주세요.");
+		}
 		
 		var review_number = $("#review_number").val();
+		alert("수정이 완료 되었습니다.");
 		$("form")[0].submit();
 	});
 });
 </script>
 
-${reviewVo.review_number }
 <section class="wrapper style1">
 	<div class="container">
 		<div class="clear overflow">

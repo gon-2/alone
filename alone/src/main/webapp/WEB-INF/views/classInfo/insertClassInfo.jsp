@@ -19,19 +19,46 @@ $(function() {
 	$("#btnClassInfo").click(function() {
 		var cate_code = $("#cate_code").val();
 		if(cate_code == ""){
-			alert("전공을 선택해주세요.");
+			alert("전공을 선택해 주세요.");
 		}
 		var time_code = $("#time_code").val();
 		if(time_code == ""){
-			alert("수업 파트를 선택해주세요.");
+			alert("수업 파트를 선택해 주세요.");
 		}
+		
 		var c_title = $("#c_title").val();
+		if(c_title == ""){
+			alert("수업 제목을 입력해 주세요.");
+		}
+		
 		var c_time = $("#c_time").val();
+		if(c_time == ""){
+			alert("수업 시간을 입력해 주세요.");
+		}
 		var price = $("#price").val();
+		if(price = ""){
+			alert("수강료를 입력해 주세요.");
+		}
+		
 		var class_room = $("#class_room").val();
+		if(class_room == ""){
+			alert("수업 교실 호수를 입력해 주세요.");
+		}
+		
 		var class_total = $("#class_total").val();
+		if(class_total == ""){
+			alert("총원을 입력 해 주세요")
+		}
+		
 		var start_date = $("#start_date").val();
+		if(start_date == ""){
+			alert("수업 시작 날짜를 입력해 주세요.");
+		}
+		
 		var end_date = $("#end_date").val();
+		if(end_date == ""){
+			alert("수료 날짜를 입력해 주세요.");
+		} 
 		
 		
 		var url = "/classInfo/insertClassInfoRun"
@@ -49,6 +76,7 @@ $(function() {
 		
 		$.post(url, sData, function(rData){
 			if(rData == "success"){
+				alert("등록이 완료 되었습니다.");
 				location.href = "/classInfo/list_all";
 			}
 		});

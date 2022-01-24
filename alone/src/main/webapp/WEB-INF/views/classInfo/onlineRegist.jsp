@@ -35,6 +35,18 @@ $(function(){
 	
 	// 온라인신청 데이터 받아오기 및 제약조건걸기
 	$("#btnOk").click(function(){
+		var c_time = $("#c_time").val();
+		var c_cate = $("#_cate").val();
+		var c_title1 = $("#c_title").val();
+		
+		if(c_time == ""){
+			alert("훈련직종 분류를 선택해주세요.");
+		}else if(c_cate == ""){
+			alert("교육과정 분류를 선택해주세요.");
+		}else if(c_title1 == ""){
+			alert("과정명을 선택해주세요.");
+		}
+		
 		var r_num1 = $("#r_num1").val();
 		var r_num2 = $("#r_num2").val();
 		var r_num = ""; // 주민번호 받아오기
@@ -48,13 +60,9 @@ $(function(){
 		var info_code = $("#c_title").val();
 		
 		var student_name = $("#c_name").val();
-		if(c_name.langth == 0){
+		if(student_name == ""){
 			alert("이름을 입력해주세요.");
 		}
-		
-		
-		
-		
 		
 		var gender = $("input:radio[name=gender]:checked").val();
 		
@@ -191,7 +199,7 @@ $(function(){
 	$(".c_time").change(function(){
 			var time_code = $(this).val();
 			if(time_code == ""){
-				alert("훈련직종분류를 선택해주세요.");
+				alert("훈련직종 분류를 선택해주세요.");
 				return false;
 			}
 			var url = "/classInfo/classListByTimeCode/" + time_code;
@@ -261,7 +269,7 @@ $(function(){
 			<colgroup><col width="110" /><col width="*" /><col width="110" /><col width="*" /></colgroup>
 			<tbody>
 				<tr>
-					<th class="c_time"><label for="c_time">훈련직종분류</label></th>
+					<th class="c_time"><label for="c_time">훈련직종 분류</label></th>
 					<td class="td_infomation">
 					
 						<select id="c_time" name="c_time" class="c_time">
@@ -280,9 +288,9 @@ $(function(){
 						</select>
 					</td>
 					<th class="j-spot">
-					<label for="c_cate">교육과정분류</label></th>
+					<label for="c_cate">교육과정 분류</label></th>
 					<td>
-						<select name="c_cate" id="c_cate" required>
+						<select name="c_cate" id="c_cate" class="c_cate" required>
 							<c:choose>
 								<c:when test="${not empty classInfoVo.info_code}">
 									<option value="${classInfoVo.cate_code}">${classInfoVo.cate_code_name}</option>
@@ -297,7 +305,7 @@ $(function(){
 				<tr>
 					<th class="c_title"><label for="c_title">과정명</label></th>
 					<td colspan="3">
-						<select name="c_title" id="c_title" style="width: 200px;">
+						<select name="c_title" id="c_title" class="c_title1" style="width: 200px;">
 							<c:choose>
 								<c:when test="${not empty classInfoVo.info_code}">
 									<option value="${classInfoVo.info_code}">${classInfoVo.c_title}</option>
