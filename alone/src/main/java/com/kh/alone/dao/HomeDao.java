@@ -31,5 +31,17 @@ public class HomeDao {
 	    paramMap.put("userpw", userpw);
 	    MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "login", paramMap);
 	    return memberVo;
-    } 
+    }
+    
+    // 아이디 찾기
+ 	public MemberVo id_search(MemberVo vo) {
+ 		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "id_search", vo);
+ 		return memberVo;
+ 	}
+ 	
+ 	// 비밀번호 찾기
+ 	public MemberVo pw_search(MemberVo vo) {
+ 		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "pw_search", vo);
+ 		return memberVo;
+ 	}
 }

@@ -3,18 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
-<script>
-// $(function(){
-// 	$("#tabbable").click(function(){
-// 		var c_day = $("#c_day").val();
-// 		console.log("정소주정 받아오기:" + c_day);
-		
-// 	});
-	
-// });
-
-
-</script>
 			
 <section class="wrapper style1">
 	<div class="container">

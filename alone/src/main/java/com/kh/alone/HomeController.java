@@ -66,16 +66,19 @@ public class HomeController {
 		return "home";
 	}
 	
+	// 회원가입 페이지 이동
 	@RequestMapping(value="/regist_form", method=RequestMethod.GET)
 	public String regist_form() {
 		return "regist_form";
 	}
 	
+	// 로그인 페이지 이동
 	@RequestMapping(value="/login_form", method=RequestMethod.GET)
 	public String login_form() {
 		return "login_form";
 	}
 	
+	// 로그인 체크
 	@RequestMapping(value="/checkId", method=RequestMethod.POST)
 	@ResponseBody
 	public String checkId(MemberVo vo) {
@@ -94,6 +97,7 @@ public class HomeController {
 		return "pwFail";
 	}
 	
+	// 로그인 처리
 	@RequestMapping(value="/login_run", method=RequestMethod.POST)
 	public String loginRun(RedirectAttributes rttr,	HttpSession session, MemberVo vo) {
 		String userid = vo.getUserid();
@@ -115,9 +119,42 @@ public class HomeController {
 		}
 	}
 	
+	// 로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
+	}
+	
+	// 아이디/비밀번호 찾기 파업창
+	@RequestMapping(value = "/search_Id_Pw", method = RequestMethod.GET)
+	public String search_Id_Pw() {
+		return "search_Id_Pw";
+	}
+	
+	// 아이디 찾기
+	@RequestMapping(value = "/id_search", method = RequestMethod.POST)
+	@ResponseBody
+	public String id_search(MemberVo vo) {
+		System.out.println(vo);
+		MemberVo memberVo = homeService.id_search(vo);
+		if (memberVo == null) {
+			return "fail";
+		}
+		String userid = memberVo.getUserid();
+		return userid;
+	}
+	
+	// 비밀번호 찾기
+	@RequestMapping(value = "/pw_search", method = RequestMethod.POST)
+	@ResponseBody
+	public String pw_search(MemberVo vo) {
+		System.out.println(vo);
+		MemberVo memberVo = homeService.pw_search(vo);
+		if (memberVo == null) {
+			return "fail";
+		}
+		String userpw = memberVo.getUserpw();
+		return userpw;
 	}
 }

@@ -41,6 +41,13 @@ $(function() {
 			});
 		}
 	});
+	$("#Id_Pw_Search").click(function(e) {
+		e.preventDefault();
+		var url = "/search_Id_Pw";
+	    var name = "pop";
+	    var option = "width=1300,height=800,history=no,resizable=no,status=no,scrollbars=yes,menubar=no";
+		window.open(url, name, option);
+	});
 });
 </script>
 <div class="container-fluid">
@@ -96,11 +103,12 @@ $(function() {
 		<div class="col-md-8">
 			<div>
 				<a href="/regist_form">회원가입</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-				<a href="#">아이디/비번찾기</a>
+				<a href="#" id="Id_Pw_Search">아이디/비번찾기</a>
 			</div>
 		</div>
 		<div class="col-md-2">
 		</div>
 	</div>
 </div>
+
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

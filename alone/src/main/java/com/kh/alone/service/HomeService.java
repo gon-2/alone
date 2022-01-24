@@ -25,5 +25,16 @@ public class HomeService {
 		return memberVo;
 	}
 	
+	// 아이디 찾기
+	public MemberVo id_search(MemberVo vo) {
+		MemberVo memberVo = homeDao.id_search(vo);
+		return memberVo;
+	}
 	
+	// 비밀번호 찾기
+	public MemberVo pw_search(MemberVo vo) {
+		MemberVo memberVo = homeDao.pw_search(vo);
+		return memberVo;
+	}
+		
 }

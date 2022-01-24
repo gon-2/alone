@@ -14,7 +14,6 @@ public class MemberVo {
 	
 	public MemberVo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	
@@ -30,10 +29,8 @@ public class MemberVo {
 		this.email = email;
 		this.gender = gender;
 		this.pnumber = pnumber;
-		
+	
 	}
-
-
 
 	public String getUserid() {
 		return userid;
