@@ -164,7 +164,7 @@ $(function(){
 		location.href = "/login_form";
 	});
 });
-
+	// 타임스탬프 형식으로 변환
 	function changeDateString(timestamp){
 		var dateF = new Date(timestamp);
 		
@@ -177,14 +177,15 @@ $(function(){
 		var dateString = year + "-" + month + "-" + date + "-" + hour + ":" + minute + ":" + second;
 		return dateString;
 	}
-	
+
 	function make2digits(num){
 		if(num < 10){
 			num = "0" + num;
 		}
 		return num;
-	}
+	}	
 	
+	// 바이트 형식으로 계산
     function fnChkByte(obj, maxByte){
         var str = obj.value;
         var str_len = str.length;
@@ -214,6 +215,7 @@ $(function(){
             fnChkByte(obj, maxByte);
         }else{
             document.getElementById('byteInfo').innerText = "바이트 수 : " + rbyte;
+            document.getElementById('byteInfos').innerText = "바이트 수 : " + rbyte;
         }
     }
 	
@@ -297,7 +299,7 @@ $(function(){
 							<input type="text" id="inquiry_titles" name="inquiry_title" value="${inquiryBoardVo.inquiry_title}"><br>
 							<label for="inquiry_content">글 내용:</label>
 							<textarea id="inquiry_contents" name="inquiry_content" onkeyup="fnChkByte(this, 3000)"></textarea><div id="test-cnt">(0 / 3000)</div>
-							<span id="byteInfo">바이트수 : 0</span>
+							<span id="byteInfos">바이트수 : 0</span>
 							<input type="hidden" id="inquiry_date" name="inquiry_date"> 
 						</div>
 						<div class="modal-footer">

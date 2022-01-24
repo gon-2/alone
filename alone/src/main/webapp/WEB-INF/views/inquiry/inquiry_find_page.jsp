@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
 <%@ include file="/WEB-INF/views/include/hoon/hoonheader.jsp" %>
-
+<!-- 요청경로 : /faq/inquiryBoard -->
 <head>
 	<title>건의사항 검색 결과</title>
 </head>
