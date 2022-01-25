@@ -35,7 +35,7 @@ public class MemberController {
 	// 회원등록
 	@RequestMapping(value="/regist_form", method=RequestMethod.GET)
 	public String memberRegistForm() {
-		return "/regist_form";
+		return "redirect:/regist_form";
 	}
 	
 	// 등록처리
