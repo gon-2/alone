@@ -11,7 +11,7 @@
 <script src="/js/digitClock.js"></script>
 <script>
 	$(function(){			
-		// 무결성 검사
+		// 유효성 검사
 		$("#searchClassBoard").click(function(){
 			var class_board_title = $("#class_board_title").val();
 			var frmSearchClass = document.frmSearchClass;

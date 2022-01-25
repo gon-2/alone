@@ -28,7 +28,7 @@
 			};	
 			
 			
- 			// 댓글 무결성 검사
+ 			// 댓글 유효성 검사
  			if(class_board_comment_userid == "" || class_board_comment_userid.length == 0 || class_board_comment_userid.length >= 51){
  				alert("아이디를 입력 하세요. 길이는 50바이트 까지 입니다.");
  				return false;
@@ -67,7 +67,7 @@
  				"class_board_number" : class_board_number	
  			};
  			
- 			// 무결성 검사
+ 			// 유효성 검사
  			if(class_board_number == ""){
  				alert("댓글을 보기위해 해당 글의 번호를 입력하세요.");
  				return false;
@@ -102,7 +102,7 @@
  					"class_board_number" : class_board_number
  			};
  			
- 			// 무결성 검사
+ 			// 유효성 검사
  			if(class_board_number == ""){
  				alert("댓글을 삭제하기 위해 글 번호를 입력하세요.");
  				return false;
@@ -136,7 +136,7 @@
  			var class_board_userid = $("#class_board_userid").val();
  			var url = "/class_board/modcontent";
  			
- 			// 무결성 검사
+ 			// 유효성 검사
  			if(class_board_content == "" || class_board_content.length == 0 || class_board_content.length >= 3001){
  				alert("글 내용을 다시 입력하세요 , 길이는 3000바이트 까지 입니다.");
  				return false;

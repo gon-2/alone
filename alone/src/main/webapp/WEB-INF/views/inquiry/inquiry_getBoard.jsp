@@ -25,7 +25,7 @@ $(function(){
 				"inquiry_number" : inquiry_number,
 				"inquiry_password" : inquiry_password
 		};
-		// 무결성 검사
+		// 유효성 검사
 		if(inquiry_number.length == 0 || inquiry_number == ""){
 			alert("번호를 입력하세요.");
 			return false;
@@ -72,7 +72,7 @@ $(function(){
 			"inquiry_title" : inquiry_title,
 			"inquiry_content" : inquiry_content,
 		};
-		// 무결성 검사
+		// 유효성 검사
 		if(inquiry_password.length == 0 || inquiry_password.length >= 5 || inquiry_password == ""){
 			alert("비밀번호의 길이는 4자리 이하입니다. 다시 입력하세요.");
 			return false;
@@ -102,7 +102,7 @@ $(function(){
 		var inquiry_comment_userid = $("#inquiry_comment_userid").val();
 		var inquiry_comment_content = $("#inquiry_comment_content").val();
 		
-		// 댓글 무결성 검사
+		// 댓글 유효성 검사
 		if(inquiry_comment_userid == "" || inquiry_comment_userid.length == 0 || inquiry_comment_userid.length >= 51){
 			alert("아이디의 길이는 50바이트 입니다. 다시 입력하세요.");
 			return false;
@@ -135,7 +135,7 @@ $(function(){
 				"inquiry_comment_userid" : inquiry_comment_userid
 		};
 		
-		// 댓글보기 무결성 검사
+		// 댓글보기 유효성 검사
 		if(inquiry_comment_userid == "" || inquiry_comment_userid.length == 0){
 			alert("아이디를 입력하세요.");
 			return false;

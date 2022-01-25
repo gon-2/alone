@@ -25,7 +25,7 @@
 					"service_message_content" : service_message_content
 			};
 			
-			// 무결성 검사
+			// 유효성 검사
 			if(service_message_sender.length >= 51 || service_message_sender == ""){
 				alert("보내는사람의 길이는 50자 이하입니다.");
 				return false;

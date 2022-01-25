@@ -24,7 +24,7 @@
 					"inquiry_password" : inquiry_password
 			};
  			
- 			// 건의 사항 폼 무결성 검사
+ 			// 건의 사항 폼 유효성 검사
  			if(inquiry_userid == "" || inquiry_userid.length == 0){
  				alert("아이디를 입력하세요.");
  				return false;

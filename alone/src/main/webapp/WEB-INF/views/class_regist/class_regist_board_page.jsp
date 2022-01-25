@@ -7,7 +7,7 @@
 <head>
 	<title>수강신청 게시판 페이지</title>
 <script type="text/javaScript">
-	// 무결성 검사
+	// 유효성 검사
 	function checkValue(){
 		var class_board_userid_getid = document.getElementById("class_board_userid");
 		var class_board_title_getid = document.getElementById("class_board_title");
