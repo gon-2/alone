@@ -61,7 +61,7 @@ BODY {
 
             <!-- 회원정보 버튼 출력 -->
             <!--@if($module_info->display_login_info != 'N')-->
-            <li><a href="/regist_form" target=blank>회원가입&nbsp;</a> | </li>
+            <li><a href="/member/regist_form" target=blank>회원가입&nbsp;</a> | </li>
             <!--@end-->
 
         <!-- 로그인 되어 있지 않고 레이아웃이 없으면 -->

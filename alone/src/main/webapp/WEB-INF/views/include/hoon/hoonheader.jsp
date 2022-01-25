@@ -148,7 +148,7 @@
      		    <c:choose>
                  	<c:when test="${empty sessionScope.memberVo}">
                  		<a class="nav-link" href="/login_form">로그인</a>
-                 		<a href="/Regist/form" class="nav-link">회원가입</a>
+                 		<a href="/member/regist_form" class="nav-link">회원가입</a>
                  	</c:when>
                  	<c:otherwise>
                  		<a class="nav-link" href="/logout" align="center">로그아웃</a>
@@ -331,7 +331,7 @@
 	                  		<c:choose>
 	                           <c:when test="${empty sessionScope.memberVo}">
 	                           		<a href="/login_form" class="btn btn-success">로그인</a>
-	                           		<a href="/Regist/form" class="btn btn-warning">회원가입</a>
+	                           		<a href="/member/regist_form" class="btn btn-warning">회원가입</a>
 	                           	</c:when>
 	                           	<c:otherwise>${sessionScope.memberVo.userid}(${sessionScope.memberVo.username})</c:otherwise>
                            </c:choose> 

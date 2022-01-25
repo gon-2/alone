@@ -29,13 +29,13 @@ public class MemberController {
 		System.out.println("MemberController, memberListAll");
 		List<MemberVo> list = memberService.selectAll();
 		model.addAttribute("list", list);
-				return "member/list_all";
+				return "/member/list_all";
 	}
 	
 	// 회원등록
 	@RequestMapping(value="/regist_form", method=RequestMethod.GET)
 	public String memberRegistForm() {
-		return "member/regist_form";
+		return "/regist_form";
 	}
 	
 	// 등록처리
@@ -48,7 +48,7 @@ public class MemberController {
 	// 회원정보 수정
 	@RequestMapping(value="/modify_form", method=RequestMethod.GET)
 	public String memberModify() {
-		return "member/modify_form";
+		return "/member/modify_form";
 	}
 	// 수정처리 
 	@RequestMapping(value="/modify_run", method=RequestMethod.POST)
